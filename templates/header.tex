@@ -1,0 +1,221 @@
+% Document type and font size
+\documentclass[12pt, twoside]{article}
+    \setlength{\parskip}{0pt}
+
+
+% The most important definition overall
+\let\oldphi\varphi \let\varphi\phi \let\phi\oldphi
+\let\oldepsilon\varepsilon \let\varepsilon\epsilon \let\epsilon\oldepsilon
+
+
+
+% List of used packages (insanely many if you ask me)
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{afterpage}
+\usepackage{placeins}
+\usepackage{esvect}
+\usepackage{multicol}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{url}
+\usepackage[left=2cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage{musicography}
+\usepackage{tikz-cd}
+\usepackage{dsfont}
+
+\usepackage{amsthm}
+\DeclareMathAlphabet{\mymathbb}{U}{BOONDOX-ds}{m}{n}
+
+
+
+% Packages required to render template
+\usepackage{xstring}
+\usepackage{subfigure}
+\usepackage{multirow}
+
+
+
+% General settings for section number display
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{3}
+\setcounter{section}{-1}
+\setlength{\parindent}{0em}
+
+
+
+% Specifies the picture path
+\graphicspath{
+	{../pics/}
+}
+
+
+
+% Allow for more dead cycles (too lazy to fix)
+% Error can occur if ~30+ pictures are displayed
+\maxdeadcycles=200
+
+
+
+% Command for quotes (often problematic when writing with ngerman)
+\newcommand{\q}[1]{\glqq #1\grqq{}}
+
+
+
+% Command that sums up the insertion of an image
+\newcommand{\img}[4][width=0.9\textwidth]{
+	\begin{figure}[ht]
+	\centering
+	\includegraphics[#1]{#2}
+	\caption[#4]{#3}
+	\label{fig:#2}
+	\end{figure}
+}
+
+
+
+% Commands to make citation and referencing look better
+\newcommand{\Abb}[1]{\textbf{figure \ref{fig:#1}}}
+\newcommand{\source}[1]{[\ref{#1}]}
+\newcommand{\dref}[1]{\textit{definition \ref{#1}}}
+\newcommand{\ssecref}[1]{\textit{subsection \ref{subsec:#1}}}
+\newcommand{\secref}[1]{\textit{section \ref{sec:#1}}}
+\newcommand{\remref}[1]{\textit{remark \ref{rem:#1}}}
+\newcommand{\exref}[1]{\textit{example \ref{ex:#1}}}
+
+
+
+% Commands to abbreviate certain script specific notation
+\newcommand{\ABS}{\\ \\ \\}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\RR}{\ensuremath{\mathbb{R}}}
+\newcommand{\NN}{\ensuremath{\mathbb{N}}}
+\newcommand{\ZZ}{\ensuremath{\mathbb{Z}}}
+\newcommand{\Ck}{\ensuremath{\mathcal{C}^{k}}}
+\newcommand{\Ci}{\ensuremath{\mathcal{C}^{\infty}}}
+\newcommand{\RP}{\ensuremath{\mathbb{R}\mathbb{P}^n}}
+\newcommand{\dd}[2]{\ensuremath{\frac{d #1}{d #2}}}
+\newcommand{\dell}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
+\newcommand{\TM}{\ensuremath{T^*M}}
+\newcommand{\VF}{\ensuremath{\mathfrak{X}}}
+\newcommand{\TR}{\ensuremath{T^*\mathbb{R}}}
+\newcommand{\HH}{\ensuremath{{\mathcal{H}}}}
+\newcommand{\LE}{\ensuremath{{\mathcal{L}_e}}}
+\newcommand{\DD}{\ensuremath{\mathfrak{D}}}
+\newcommand{\FF}{\ensuremath{{\mathcal{F}}}}
+\newcommand{\GG}{\ensuremath{{\mathcal{G}}}}
+\newcommand{\fg}{\ensuremath{\mathfrak{g}}}
+\newcommand{\MT}{\ensuremath{\widetilde{M}}}
+\newcommand{\Tp}{\ensuremath{T_p M}}
+\newcommand{\Tps}{\ensuremath{T^*_p M}}
+\newcommand{\TMT}{T^* \widetilde{M}}
+\newcommand{\TNT}{T^* \widetilde{N}}
+\newcommand{\inp}{\mathbin{\raisebox{\depth}{\scalebox{1}[-1]{$\lnot$}}}}
+\newcommand{\lie}[1]{\mathcal{L}_{#1}}
+\newcommand{\OT}{\widetilde{\omega}}
+\newcommand{\kfs}{\textit{k-forms }}
+\newcommand{\kf}{\textit{k-form }}
+\newcommand{\tens}[1]{%
+  \mathbin{\mathop{\otimes}\displaylimits_{#1}}%
+}
+\newcommand{\TMN}{\ensuremath{\mathbb{T}^m_n M}}
+\newcommand{\gf}{\ensuremath{\mathfrak{g}}}
+
+\DeclareMathOperator\arctanh{arctanh}
+\DeclareMathOperator\End{End}
+\DeclareMathOperator\Hom{Hom}
+\DeclareMathOperator\Der{Der}
+\DeclareMathOperator\id{id}
+\DeclareMathOperator\degr{deg}
+
+
+% Definition of common mathematical environments
+\raggedbottom
+\newtheorem{theo}{Theorem}[section]
+\newtheorem{definition}[theo]{Definition}
+\newtheorem{lem}[theo]{Lemma}
+\newtheorem{prop}[theo]{Proposition}
+\newtheorem{ex}[theo]{Exercise}
+\newtheorem{example}[theo]{Example}
+\newtheorem{rem}[theo]{\textit{Remark}}
+
+
+
+% Fancy pagestyle for header/footer
+\pagestyle{fancy}
+
+
+
+% Some changes in header and footer formatting
+\renewcommand{\sectionmark}[1]{\gdef\currsection{#1}}
+\renewcommand{\subsectionmark}[1]{\markright{\currsection \ \ $\cdot$ \ \  #1}}
+\fancyhead{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE,LO]{\nouppercase{\rightmark}}
+\renewcommand{\headrulewidth}{0.1pt}
+\renewcommand{\footrulewidth}{0.1pt}
+\renewcommand{\headrulewidth}{0.1pt}
+
+
+
+% Stretch artificially changes the space between letters
+% Use at own discretion (everything above 1.2 looks horrible)
+\setstretch{1.1}
+
+
+
+% Finally start the document
+\begin{document}
+
+
+
+\begin{titlepage}
+   \begin{center}
+       \vspace*{1cm}
+
+       \textbf{\large FS 2021}
+
+       \vspace{1.5cm}
+       \textbf{\Huge Mathematical Foundations of Quantum Field Theory}
+
+       \vspace{7.0cm}
+
+       \textbf{Lecture notes by:}
+
+       \vspace{0.3cm}
+
+       {\large Michele Schiavina, \ Giovanni Canepa}
+
+       \vfill
+
+       Transferred to LaTe$\chi$ by\\
+       \textit{Leon Geiger, ...}
+
+       \vspace{0.8cm}
+
+
+
+
+   \end{center}
+\end{titlepage}
+
+\newpage
+
+
+
+% Display the table of contents
+\tableofcontents\thispagestyle{fancy}
+\setcounter{page}{2}
+\clearpage
+\markboth{\thepage}{Introduction}
+ \thispagestyle{fancy}
