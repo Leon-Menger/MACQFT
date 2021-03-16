@@ -10,7 +10,6 @@ We will further make use of excerpts from \textbf{Introduction to Supergeometry}
 \subsection{The Graded Setting}
 
 In the following section we will generalize the notion of Differential Geometry to a graded setting. To this end we start with the prelimiary definitions of a graded structure and discuss some interesting examples.
-%TODO
 
 \begin{definition} (Graded Vector Space)\\
   A \textbf{graded vector space} $V^\circ$ is a collection $\{ V^k \}_{k\in\ZZ}$ of vector spaces together with a decomposition via direct sum
@@ -734,6 +733,178 @@ Now we use associated bundles, to build a bridge to a very important type of bun
   A proof of this claim can be found in \source{ModernDiffgeo}.
 \end{proof}
 \end{theo}
+
+The next important construction is that of a connection on a bundle and the induces notion of curvature both of which will play a major role when we talk about Yang-Mills-Theory later in the course.
+
+\begin{definition}
+\label{Vertical_subspace}
+(Vertical Subspace)\\
+  Let $P \overset{\pi}{\longrightarrow} M$ be a principal $G$-bundle. The \textbf{vertical subspace} of $T_pP$ is defined and denoted as
+  $$ V_pP:= \{ \tau \in T_pP | \pi_* \tau = 0 \} $$
+  Where we denote by $\pi_*$ the pushforward $TP \ra TM$.
+\end{definition}
+
+Now defining the vertical subspace leaves us with the converse concept, a kind of horizontal space. This will be achieved by defining connections on a bundle:
+
+\begin{definition}
+\label{Connections}
+(Connections)\\
+  A \textbf{connection} on a principal bundle $P \ra M$ is choice of subspaces of $TP$ denoted by $HP$ defined for each $p \in P$ such that $H_pP \subset T_pP$ and such that
+  \begin{itemize}
+    \item[1.] $T_pP \simeq H_pP \oplus V_pP \quad \forall p\in P$
+    \item[2.] $(\delta_g)_* (H_pP) = H_{pg}P \quad \forall p \in P, \ \forall g \in G$
+  \end{itemize}
+  where we denoted by $\delta_g(p) = pg$ the action of $G$.
+\end{definition}
+
+The main point is that, given a connection on a principal bundle, we can take any $\tau \in T_pP$ and uniquely decompose it as $\tau = hor(\tau) + vert(\tau)$. The same is possible for $X\in \VF(P)$ where $X = hor(X) + ver(X)$ such that $hor(X)_p \in H_pP$ and $ver(X)_p \in V_pP$ for all $p\in P$. Note that these two vector fields are smooth. Thus a connection ultimately gives us a tool to uniquely split a vector field which allows .\\
+
+
+Now in order to avoid working with spaces, we aim to give an equivalent notion using Lie algebras and some geometry. First recall that, given a Lie group $G$, we can identify the Lie algebra $\gf \simeq T_eG$. Now for $A \in \gf$ and a principal $G$-bundle $P$, we can define a vector field on $TP$ for $f:P\ra \RR$ via
+$$ X^A_p(f) := \dd{}{t}\Big|_{t=0} f(p \exp(tA)) $$
+where $t\in \RR$. We denoted by $\exp$ the well-known exponential map
+\begin{align*}
+  \exp: \gf &\longrightarrow G\\
+  x &\longmapsto \gamma(1)
+\end{align*}
+where $\gamma:\RR\longrightarrow G$ is the unique $1$-parameter subgroup with tangent vector $x$ at the identity.
+%TODO Figure Lie algebra surface (?)
+
+The exponential map is particularly important because it allows us to prove the following theorem:
+
+\begin{theo}
+  Let $P$ be a manifold on which $G$ has a right action. Then the map
+  \begin{align*}
+    \psi : \gf &\longrightarrow \VF(P)\\
+    A &\longmapsto X^A
+  \end{align*}
+  is a homomorphism of $\gf$ into the infinite dimensional Lie algebra of all vector fields on $P$, i.e.
+  $$ [X^A, X^B] = X^{[A,B]} \quad \forall A,B \in \gf $$
+\begin{proof}
+  The proof is quite complicated and can be found on page $196$ of \source{ModernDiffgeo}.
+\end{proof}
+\end{theo}
+
+Another result which further explains, why we care about these results in the context of vertical and horizontal vector fields is presented in the following proposition:
+
+\begin{prop}
+ For a principal bundle $P$, the map $\psi_p : A \ra X^A_p$ is an isomorphism of $\gf$ onto $V_pP$. This can be seen by using $D\pi(X)(f) = 0$ due to $\pi(pg) = \pi(p)$ for any $g\in G$. Note that $\dim V_pP = \dim G = \dim \gf$
+\end{prop}
+
+Hence we can denote the inverse
+$$ \psi^{-1}_p: V_pP \longrightarrow \gf $$
+mapping the vertical space at $p$ to the Lie algebra. Using the isomorphism at hand, we can define a uniquely determined one-form on a principal $G$-bundle which will turn out to be equivalent to a unique connection.
+
+\begin{definition}
+\label{Connection_Form}
+(Connection Form)\\
+  A \textbf{connection form} $\omega$ is a $\gf$-valued one-form on a principal $G$-bundle $P \ra M$ such that
+  \begin{itemize}
+    \item[1.] $\omega_p(X^A) = A \quad \forall p \in P, \ \forall A \in \gf$
+    \item[2.] $\delta_g (p) = pg$ \quad \quad $(\delta_g)_* \omega = Ad_{g^{-1}} \omega \quad \forall g \in G$
+  \end{itemize}
+  where we denote by $Ad$ the adjoint map defined as
+  \begin{align*}
+    Ad: G &\longrightarrow Aut(G)\\
+    g &\longmapsto \psi_g [h \in G \longmapsto ghg^{-1}]
+  \end{align*}
+  Note that we can also interpret $Ad$ as a map to the automorphisms of $\gf$ since
+  \begin{align*}
+    Ad_g = (d\psi_g)_e : T_eG &\longrightarrow T_eG\\
+    \Rightarrow \quad Ad: G &\longrightarrow Aut(\gf)
+  \end{align*}
+\end{definition}
+
+Now take a smooth map $\phi:M \ra N$ and look at the corresponding pullback map
+\begin{align*}
+  \phi^*: \Omega^k(N) &\longrightarrow \Omega^k(M)\\
+  \alpha &\longrightarrow \phi^*\alpha
+\end{align*}
+Now if we take $\phi = \delta_g : P \longrightarrow P$ that maps $p \mapsto pg$, we obtain a pullback map $\Omega^1(P) \longrightarrow \Omega^1(P)$. Using a connection form $\omega$ we see that $\delta_g^* \omega = Ad_{g^{-1}}\omega$ amounts to the claim
+$$\omega_{pg}(D\delta_g(\tau)) = Ad_{g^{-1}}(\omega_p(\tau))$$
+This leads us to the following theorem:
+
+\begin{theo}
+  A connection form on a principal bundle $P$ uniquely defines a connection. Vice versa a connection on $P$ uniquely defines a connection form. We can thus use the two interchangeably.
+\begin{proof}
+  With some details left out, we give the main sketch of this proof and encourage the reader to fill in the details:\\
+
+  Let $\omega$ be a connection form on $P$. Define $H_pP:= \ker \omega_p$. As an exercise one can prove that this definition of $H_pP$ indeed satisfies the properties of a connection. Basically one needs to use that $\omega_p$ maps elements of the horizontal space to zero by definition while for vertical vectors we obtain nonzero elements of the Lie algebra. Thus we obtain a way to identify vertical vectors. One then verifies, using the second property of connection forms, the second property of \ref{Connections}.\\
+
+  Starting with a connection, we can define
+  $$ \omega_p(\tau) := \psi^{-1}_p (ver(\tau)) $$
+  which clearly defines a one-form. As an exercise you can check that the thus defined form satisfies the properties of a connection form. For the first property, note that $\omega_p(X^A) = \psi^{-1}_p(\psi_p(A)) = A$. For the second, we remember $H_{pg}P = (\delta_g)_* H_pP$.
+\end{proof}
+\end{theo}
+
+We will now turn towards the notion of curvature: Given a connection on a principal $G$-bundle $P$ we have the following splittings for bundles and their sections at hand:
+\begin{itemize}
+  \item $TP = VP \oplus HP$
+  \item $T^*P = V^*P \oplus H^*P$
+  \item $\bigwedge^2 T^*P = \left( \bigwedge^2 V^*P \right) \oplus \left( V^*P \wedge H^*P\right) \oplus \left( \bigwedge^2 H^*P \right)$
+  \item $\Omega^1(P) = \Omega^1_{vert}(P) \oplus \Omega^1_{hor}(P)$
+  \item $\Omega^2(P) = \Omega^2_{vert}(P) \oplus \Omega^2_{mix}(P) \oplus \Omega^2_{hor}(P)$
+\end{itemize}
+Note that thus a connection form $\omega$ lies in $\Omega^1_{vert}(P) \tens{} \gf$. Now we use the exterior derivative (de Rham differential) to state
+$$ d\omega \in \Omega^2(P) \tens{} \gf = (\Omega^2_{vert}(P) \oplus \Omega^2_{mix}(P) \oplus \Omega^2_{hor}(P)) \tens{} \gf $$
+and thus
+$$ d\omega = d\omega_{vert} + d\omega_{mix} + d\omega_{hor} $$
+which leads us to the following proposition:
+
+\begin{prop}~
+\begin{itemize}
+  \item $d\omega_{vert}(X,Y) = [\omega(X), \omega(Y)]$
+  \item $d\omega_{mix} = 0$
+\end{itemize}
+\begin{proof}
+  The proof uses the previously presented properties of the action of forms on vector fields and the connection form. It is left as an exercise to the reader.
+\end{proof}
+\end{prop}
+
+We can now define the notion of curvature on a principal bundle using the differential of a connection form:
+
+\begin{definition}(Curvature)\\
+  Let $P$ be a principal $G$-bundle and $\omega$ a connection form on $P$. The \textbf{curvature} of $\omega$ is the unique $2$-form
+  $$ F_\omega := d\omega_{hor} \in \Omega^2_{hor}(P) \tens{} \gf $$
+\end{definition}
+
+Keep in mind that this notion will be particularly useful in Yang-Mills-Theory. Now one simple case of curvature is trivial curvature:
+
+\begin{definition}
+  A connection with zero curvature is called \textbf{flat}.
+\end{definition}
+
+\subsection{Torsors}
+
+\begin{definition} (Torsors)\\
+  A \textbf{Torsor} for a group $G$ is a non-empty set $X$ on which $G$ acts freely and transitively.
+\end{definition}
+
+Above we used an arbitrary set $X$. If we take $G$ to be a Lie group and $X$ a manifold, we need the action to be smooth to define a torsor of $G$ on $X$. Thus note, that the definition of a torsor can vary depending on the context and is thus given in a rather general form above.\\
+
+Unpacking the definition, we first note that we have an action
+\begin{align*}
+  X \times G & \longrightarrow X \quad s.t.\\
+  x \cdot e \quad &= \quad x \quad \quad \quad \ \ \ \forall x \in X\\
+  x(gh) \quad &= \quad (xg)h \quad \forall g,h \in G\\
+  \intertext{and such that the following map is an isomorphism of $X$}
+  X\times G & \longrightarrow X \times X\\
+  (x,g) & \longrightarrow (x, xg)
+\end{align*}
+Thus $X$ and $G$ are isomorphic as sets or manifolds depending on the context. We present some insightful examples of a torsor:
+
+\begin{example}~
+\begin{itemize}
+  \item A group $G$ is a torso itself using group multiplication as action on itself.
+
+  \item Take an affine space, thus a set $A$ together with a vector space $\vec{A}$ with a free and transitive action of $\vec{A}$ on $A$. An affine space $A$ underlying a vector space $\vec{A}$ is a torso for $\vec{A}$ acting as the additive group of translations.
+
+  \item A principal bundle $P \overset{\pi}{\longrightarrow} \{x\}$ over a single point as base space trivialy defines a torsor.
+\end{itemize}
+\end{example}
+
+resource: Wiki principal homogenous space.
+
 
 
 
