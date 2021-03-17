@@ -874,7 +874,7 @@ Keep in mind that this notion will be particularly useful in Yang-Mills-Theory. 
   A connection with zero curvature is called \textbf{flat}.
 \end{definition}
 
-\subsection{Torsors}
+%TODO text
 
 \begin{definition} (Torsors)\\
   A \textbf{Torsor} for a group $G$ is a non-empty set $X$ on which $G$ acts freely and transitively.
@@ -905,6 +905,195 @@ Thus $X$ and $G$ are isomorphic as sets or manifolds depending on the context. W
 
 resource: Wiki principal homogenous space.
 
+\subsection{(Co-)chain Complexes}
+
+In this subsection, we will completely change topic and turn towards the notion of \emph{chain complexes} and \emph{cochain complexes} and thus \emph{honology} and \emph{cohomology}. We start by giving the definition of a (co-)chain complex:
+
+\begin{definition}
+  A \textbf{Chain complex} is a sequence of homomorphisms of abelian groups denoted as
+  $$ ... \lra C_{n+1} \overset{\partial_{n+1}}{\lra} C_{n} \overset{\partial_{n}}{\lra} C_{n-1} \lra ... \overset{\partial_{1}}{\lra} C_{0} \overset{\partial_{0}}{\lra} 0$$
+  such that $\partial_n \circ \partial_{n+1} = 0$ for all $n \in \NN$. In other words: $\im \partial_{n+1} \subseteq \ker \partial_n$
+\end{definition}
+
+\begin{definition}
+  We call elements of $C_n$ that lie in $\ker \partial_n$ \textbf{cycles} and denote the set of cycled by $\mathcal{Z}_n$. We call elements of $C_n$ that lie in the image of $\partial_{n+1}$ \textbf{boundaries} and denote their set by $\mathcal{B}_n$.
+\end{definition}
+
+We now use the cycles and boundaries to define homology groups as quotient groups:
+
+\begin{definition}
+\label{def:Homology}
+(Homology groups)\\
+  Let $(C_\bullet, \partial_\bullet)$ be a chain complex. We define its \textbf{n-th homology group} to be the quotient group
+  $$ \mathcal{H}_n := \ker\partial_n / \im \partial_{n+1} = \mathcal{Z}_N / \mathcal{B}_n $$
+  The equivalence classes that form $\mathcal{H}_n$ (thus cosets of $\mathcal{Z}_n$) are called \textbf{homology classes}.
+\end{definition}
+
+Like for any introduced category, we are interested in the morphisms between them:
+
+\begin{definition}
+\label{def:chain_map}
+(Chain maps)\\
+  A \textbf{chain map} between two chain complexes $(C_{1\bullet}, \partial_{1\bullet})$ and $(C_{2\bullet}, \partial_{2\bullet})$ is a sequence of homomorphisms $f_n: C_{1n} \lra C_{2n}$ such that
+  $$ \partial_{2n} \circ f_n = f_{n-1} \circ \partial_{1n} $$
+\end{definition}
+
+We can pictorially denote a chain map in the following commuting diagram which of course only represents an excerpt of the full commuting diagram spanned using the chain map:
+
+\begin{center}
+\begin{tikzcd}[cells={nodes={minimum height=2em}}]
+  ...\arrow[r] & C_{1\ n+1} \arrow[r,"\partial_{1 n+1}"] \arrow[d, "f_{n+1}"] &  C_{1\ n} \arrow[r,"\partial_{1n}"] \arrow[d,"f_n"] &  C_{1\ n-1} \arrow[r]\arrow[d,"f_{n-1}"] & ...\\
+  ... \arrow[r] & C_{2\ n+1} \arrow[r,"\partial_{2n+1}"] & C_{2\ n} \arrow[r, "\partial_{2n}"] & C_{2\ n-1} \arrow[r] & ...
+\end{tikzcd}
+\end{center}
+
+
+We use the above diagram to arrive at an interesting intuitive lemma connecting the homology groups of two chain complexes:
+
+\begin{lem}
+  Let $f_\bullet :(C_{1\bullet}, \partial_{1\bullet}) \lra (C_{2\bullet}, \partial_{2\bullet})$ be a chain map. The $f_\bullet$ induces an homomorphism of homology groups
+  $$ \mathcal{H}_n (f_\bullet): \mathcal{H}_n(C_{1\bullet}) \lra \mathcal{H}_N (C_{2\bullet})  $$
+  for each $n \in \NN$, defined by
+  $$ [\mathcal{Z}_n] \lra [f_n(\mathcal{Z}_n)] $$
+\begin{proof}
+  Our main goal is to show that $f_\bullet$ maps cycles to cycles and boundaries to boundaries. This is equivalent to showing that it is a homomorphism of homology groups.\\
+
+  We begin by fixing $n\in \NN$. Note that $f_n(\mathcal{Z}_n(C_{1\bullet})) \subseteq \mathcal{Z}_n(C_{2\bullet}) $ and let $z_n \in \mathcal{Z}_n(C_{1\bullet})$ which means $\partial_{1n}z_n = 0$. Now we calculate
+  $$ \partial_{2n}(f_n(z_n)) = f_{n-1}(\partial_{1n}(z_n)) = 0 $$
+  which shows that $f_\bullet$ maps cycles to cycles. For boundaries, we note $f_n(\mathcal{B}_n)(C_{1\bullet}) \subseteq \mathcal{B}_n(C_{2\bullet})$. Now choose $b\in \mathcal{B}_n(C_{1\bullet})$ i.e. $b = \partial_{1 \ n+1}(a)$ for some $a \in C_{1 \ n+1}$. Now we calculate
+  \begin{align*}
+    f_n(b) &= f_n(\partial_{1 \ n+1}(a)) = \partial_{2 \ n+1}(f_{n+1}(a))\\
+    &\Rightarrow f_n(b) \in \im \partial_{2 \ n+1}
+  \end{align*}
+  Thus $f_n$ is constant on equivalence classes. Let now $[z^1_n]$ be an equivalence class and let $x^1, x^2$ be two representatives. Thus
+  $$ x^1, x^2 \in \mathcal{Z}_n \quad \quad and \quad \quad x^1-x^2 = b  \in \mathcal{B}_n$$
+  Which proves that the equivalence class of $f_n(x^1)$ is the same as that of $f_n(x^2)$.
+\end{proof}
+\end{lem}
+
+%TODO Projection maps and diagrams (use remark)
+
+We go on by classifying chain maps which will prove useful later in the course.
+
+\begin{definition}
+  A chain map $f_\bullet : C_{1\bullet} \lra C_{2\bullet}$ is called a \textbf{quasi-isomorphism} if $\mathcal{H}_n(f_\bullet)$ is an isomorphism for all $n \in \NN$.
+\end{definition}
+
+Note that the name "quasi-isomorphism" makes sense since the isomorphisms only identify the respective abelian groups and not the entire complex. While it gives us a tool to identify their \emph{homology groups} which will, in most cases, carry most of the important information, it does not tell us anything about the respective homomorphism sequences on the chain complexes. For some examples of chain complexes and their (quasi-)isomorphisms, which require far more work than the scope of this lecture allows, see \source{AlgebraicTopology}.
+
+\begin{definition}
+  A sequence of homomorphisms
+  $$ ... \lra A_{n+1} \overset{\alpha_{n+1}}{\lra} A_{n} \overset{\alpha_{n}}{\lra} A_{n-1} \lra ... $$
+  is said to be an \textbf{exact sequence} if $ \ker \alpha_n = \im \alpha_{n+1} \quad \forall n \in \NN $. An exact sequence of the form
+  $$ 0 \lra A \overset{i}{\lra} B \overset{j}{\lra} C \lra 0 $$
+  is called a \textbf{short exact sequence}. Note that for a short exact sequence $\ker(j) = \im(i)$ as well as
+  \begin{align*}
+    \im(j) &= \ker(0) \quad \quad \Rightarrow j \ \text{is surjective}\\
+    \im(0) &= \ker(i) \quad \quad \Rightarrow i \ \text{is injective}\\
+  \end{align*}
+\end{definition}
+
+We can use short exact sequences for many important proofs and definitions. Thus we provide some extra classification properties:
+
+\begin{definition}
+  A short exact sequence
+  $$ 0 \lra A \overset{i}{\lra} B \overset{j}{\lra} C \lra 0 $$
+  is said to \textbf{split} if it satisfies one of the following equivalent properties:
+  \begin{itemize}
+    \item[1.] There is a homomorphism
+    $$ p:B \lra A $$
+    such that $p\circ i = 1_A: A\lra A$
+    \item[2.] There is a homomorphism
+    $$ s:C \lra B $$
+    such that $j \circ s = 1_C: C\lra C$
+    \item[3.] There exists an isomorphism
+    $$ \psi:B \lra A\oplus C $$
+    making the following diagram commute:
+    \begin{center}
+      \begin{tikzcd}[column sep=large]
+        && B\ar[dr,"j"] &&\\
+
+        0 \ar[r] &A\ar[ur, "i"]\ar[dr, "i^\prime"  ']&& C \arrow[r]& 0\\
+
+        && A \oplus C\ar[ur, "j^\prime"  '] &&
+      \end{tikzcd}
+    \end{center}
+
+    where $i^\prime(a) = (a,0)$ and $j^\prime(a,c) = c$.
+  \end{itemize}
+\end{definition}
+
+\begin{lem}
+  The three properties above are indeed equivalent.
+
+\begin{proof}~
+\begin{itemize}
+  \item[$1\ra 3$]  We have $p:B \lra A$. Now define $\psi(b):= (p(b),j(b))$ which can be proven to be an isomorphism and makes the above diagram commute.
+
+  \item[$2\ra 3$] We use $s,i$ and $j$: Define
+  $$ \psi^{-1}(a,c) := i(a)+s(c) $$
+  which is an isomorphism and makes the above diagram commute. Note that $j(i(a)) + j(s(c)) = c$.
+
+  \item[$3\ra 1/2$] Here we use $\psi,i,j$. Define $p(b):= pr_1 \circ \psi(b)$ and $s(c):= \psi^{-1}\circ (j^\prime)^{-1}(c)$. Now note that $p \circ i = id_A$ due to
+  $$ p(i(a)) = pr_1(\psi(i(a))) = pr_1(i^\prime(a)) = a $$
+  We further have $j \circ s = id_C$ due to
+  $$ j \circ s(c) = j(\psi^{-1}(0,c)) = j^\prime(0,c) = c $$
+
+  \item[$2\ra 1$] The last thing we need to show uses $s,i,j$. We define $p(b) := i^{-1}(b - s\circ j(b))$. This
+\end{itemize}
+\end{proof}
+\end{lem}
+
+We now move to the important concept of cochain complexes, which form the dual concept to chain complexes. We will thus encounter \emph{cohomology groups} and the like:
+
+\begin{definition}
+  A \textbf{cochain complex} is a sequence of homomorphisms of abelian groups
+  $$ ... \lla D^{n+1} \overset{\delta^n}{\lla} D^n \overset{\delta^{n-1}}{\lla} D^{n-1} \lla ... $$
+  such that $\delta^n \circ \delta^{n-1} = 0$ for each $n\in \NN$, namely $\im (\delta^{n-1}) \subseteq \ker (\delta^n)$
+\end{definition}
+
+A namescheme very similar to that of chain complexes is given to that of cochain complexes:
+
+\begin{definition}
+  Elements of $D^n$ are called \textbf{cocycles} if they lie in $\ker(\delta^n)$ and \textbf{coboundaries} if they lie in $\im(\delta^{n-1})$.
+\end{definition}
+
+As promised this allows us to define the dual concept to homology groups:
+
+\begin{definition}
+\label{def:Cohomology}
+(Cohomology groups)\\
+Let $(D^\bullet, \delta^\bullet)$ be a cochain complex. We define the \textbf{n-th cohomology group} to be the quotient group
+$$ \mathcal{H}^n := \ker(\delta^n) / \im(\delta^{n-1}) $$
+Elements of $\mathcal{H}^n$ (thus cosets of $\ker(\delta^n)$) are called \textbf{cohomology classes}.
+\end{definition}
+
+Now we aim to further illuminate the claim that cochaincomplexes is indeed the dual concept to chain complexes. To this end, let $G$ be a group and $(C_\bullet, \partial_\bullet)$ be a chain complex. Now define its dual
+$$ D^{n+1} := (C_n)^* = \Hom(C_n, G) $$
+as the group of homomorphisms $C_n \lra G$. Now remember that a \textbf{dual homomorphism} is defined as follows: Take a group homomorphism $\alpha: A \lra B$. One defines the dual homomorphism (sometimes called "pullback") via
+\begin{align*}
+  \alpha^*: \Hom(A,B) &\lra \Hom(A,G),\\
+  \phi &\lmap \alpha^*(\phi) = \phi \circ \alpha
+\end{align*}
+We apply the same concept to our chain complex $\partial_n:C_n \lra C_{n-1}$ which lets us define
+$$\delta^n := \partial_n^* : \Hom(C_{n-1}, G) \lra \Hom(C_n, G)$$
+These maps automatically satisfy $\delta^n \circ \delta^{n-1} = 0$ due to the corresponding equation for $\partial_n$. Now there exists a theorem, which is out of the scope of this lecture, but can be found in \source{AlgebraicTopology}, that states that the cohomology groups of $C_\bullet$ under $G$ denoted by $\mathcal{H}^n(C;G)$ are fully determined by $G$ and the homology groups $\mathcal{H}_n(C_\bullet)$.
+
+\begin{rem}
+  Cochain maps and all of the other notions defined for chain complexes carry over to cochains. For example the analogous equation for cochain maps is
+  $$ f^n \circ \delta_1^{n-1} = \delta_2^{n-1} \circ f^{n-1} $$
+  for maps $f^n: D_1^n \lra D^n_2$. As an exercise, you can transport all of these results to the cochains.
+\end{rem}
+
+We conclude this subchapter by bringing the notion of substructures to (co-)chain complexes.
+
+\begin{definition}
+  A \textbf{subcomplex} $C_\bullet^\prime$ of a chain complex $(C_\bullet, \partial_\bullet)$ is a sequence of subgroups $C_n^\prime$ of $C_n$ for all $n\in \NN$ such that $\partial_n(C^\prime_n) \subseteq C_{n-1}^\prime$ for all $n\in \NN$.
+\end{definition}
+
+\begin{rem}
+  Note that a subcomplex is indeed itself a chain complex. In this case the inclusion map acts as a chain complex map.
+\end{rem}
 
 
 
