@@ -1,5 +1,160 @@
 \section{An Introduction to Classical Field Theories}
 \label{sec:Classical_FT}
+In this section, we will explore classical field theories  in order to give a solid foundation to their concepts, especially locality. While field theories come in many forms like thermodynamics, electrodynamics, general relativity, the standard model of physics and even string theory, we will mainly focus on classical Lagrangian field theories.\\
+
+In Lagrangian mechanics, as taught in undergrad physics, one uses the notion of the action functional, being a measure for the "excitednes" of a system, to find physically favoured and thus realized trajectories. A common action in this context would be
+$$ S(q) = \int_{\RR^+} \left( \frac{m}{2} \dot q^i(t) \dot q^i(t) - V(q(t)) \right) dt $$
+For $q\in \Ci(\RR^+, \RR^n)$ and $V:\Ci(\RR^+, \RR^n) \ra \RR$. Now the condition of vanishing variation $\delta S \equiv 0$ imposes two conditions
+\begin{align*}
+  &\Rightarrow \quad \quad \frac{m}{2} \ddot q^i(t) + \nabla^i V = 0 \quad \text{Euler-Lagrange-equations}\\
+  &\Rightarrow \quad \quad S q^i \Big|_{t=0} = 0 \quad \text{"Boundary conditions"}
+\end{align*}
+
+Now the \textbf{boundary term} $\frac{m}{2}\delta q^i(0) \dot q^i = \alpha$ can be thought of as a 1-form on $T^*\RR^n$ such that the boundary term, using $p^i(0) = \frac{m}{2} \dot q^i$, can be writen as $\omega = \delta q^i(0) \delta p^i(0)$ which is a symplectic form.\\
+
+This marks the starting point of a procedure called \textbf{canonical quantisation} of classical mechanics. As a Hilbert space we use $\mathcal{H} := l^2(\RR^n)$. Our main goal will be to generalize this procedure.\\
+
+\subsection{Spaces of fields and Locality}
+We will usually work on a fibre bundle $\pi: F \lra M$ over some smooth manifold $M$. For simplicity, we will assume that $M$ is closed and without boundary, furthermore we assume that $M$ is oriented and connected.
+
+\begin{definition}[Sections and local sections]
+  A \textbf{section} of $\pi:F \lra M$ is a smooth map $\phi: M \lra F$ such that $\pi \circ \phi = \id_M$. We call $\phi$ a \textbf{local section} if it is only defined on an open subset $U \subseteq M$ such that $\pi \circ \phi = \id_U$. We further denote the space of sections by $$\Gamma(M,F):= \{ \phi \in \Ci(M,F) | \pi \circ \phi = \id_M \} \equiv \mathcal{F}$$
+  We often refer to $\mathcal{F}$ as the \textbf{space of fields}. Note that if we work with a vector bundle, $\mathcal{F}$ inherits a linear structure.
+\end{definition}
+
+We are mainly interested in \textbf{locality}. Thus we work with equivalence classes of such sections that coincide in a neighbourhood of a point up to some arbitrary $k$-th derivative:
+
+\begin{definition}
+  If $p \in M$ we denote by $\Gamma(p)$ the space of local sections whose domain contains $p$.
+\end{definition}
+
+Using the thus defined local spaces allows us to define the utterly important notion of \emph{Jets of sections}:
+
+\begin{definition}[$k$-Jets of sections]
+\label{def:Jets_sections}
+Let $\pi:F\lra M$ be a fibre bundle and $k$ any integer. We say that two local sections of $\pi$ at $p \in M$ \textbf{have the same $k$-th jet at $p$} if their partial derivatives agree at $p$ up to $k$-th order in some chart around $p$. We denote by $J^k_p F$ the set of such equivalence classes and use
+$$ j^k_p \phi := [(\phi, p)]_k $$
+to denote such equivalence classes.
+\end{definition}
+
+\begin{rem}
+As a rather abstract but interesting exercise, you can show that the above definition does not depend on the choice of coordinate charts. \emph{Hint:} Introduce multiindices $I$ such that if $U^\alpha$ is a chart for $F$, we look at
+$$ \dell{^{|I|}}{x^I} (u^\alpha \circ \phi) \Big|_p $$
+As we will see later, this will also introduce coordinates on the objects $J^k_p F$
+\end{rem}
+
+\begin{definition}[Jet bundles]
+  Given a fibre bundle $\pi: F\lra M$ and an integer $k$ we denote
+  $$ J^k F := \{j^k_p \phi | p \in M, \phi \in \Gamma(p) \}$$
+  and $J^0 F \equiv F$ together with the maps
+  \begin{align*}
+    \pi_k : J^k F &\lra M, \quad \textbf{k-th Jet bundles}\\
+    j^k_p &\lmap p \\
+    \pi^l_k: J^kF &\lra J^l F, \quad 1 \leq l \leq k \\
+    j^k_p  \phi &\lmap j^l_p \phi
+  \end{align*}
+  such that $\pi_k = \pi \circ \pi^0_k$, $\pi^l_k = \pi^l_m \circ \pi^m_k$ for $0 \leq m \leq l$. Moreover if $\phi$ is a section of our fibre bundle local in some $U\subseteq M$, we define the \textbf{Jet Prolongations}
+  \begin{align*}
+    j^k: \mathfrak{F}_p U &\lra J^k F,\\
+    (\phi, p) &\lmap j^k(\phi)(p) := j^k_p(\phi)
+  \end{align*}
+  such that the following diagram commutes for $i \geq n \geq l$:
+  \begin{center}
+  \begin{tikzcd}
+    \mathcal{F}_pM \arrow[rrd] \arrow[r, "j^k"] & J^k F \arrow[rr, "\pi^l_k"] & & J^l F \arrow[r, "\pi_l"] & M\\
+    & & \arrow[ul, "\pi^k_i"'] J^i F \arrow[ur, "\pi^l_i"] \arrow[urr, "\pi_i"'] & &
+  \end{tikzcd}
+  \end{center}
+\end{definition}
+
+The next proposition will go without its proof which can be found in (Saunders, Ch6). %TODO reference
+
+\begin{prop}
+ There exists a sequence of smooth fibre bundles
+ $$ ... \lra J^kF \overset{\pi^{k-1}_k}{\lra} J^{k-1}F \lra ... \lra F \lra M $$
+ for every $k$. Furthermore that maps $\pi^{k-1}_k$ are \emph{surjective} with \emph{surjective tangent map} (sumbersions).
+\end{prop}
+
+Now if $(U, \mathcal{U})$ is an adapted coordinate system for $F$ such that $(x^i, u^\alpha) \equiv u$ and thus
+\begin{align*}
+  \Rightarrow \quad \quad \quad U^k &= \{j^k_p \phi : \phi(p) \in U\}\\
+  u^k &= (x^i, u^\alpha, u_I^\alpha)\\
+  u^\alpha_I(j^k_p \phi) &= \dell{^{|I|} (u^\alpha \circ \phi)}{x^I}\Big|_p
+\end{align*}
+
+Now to make precise the statement "for all $k$" in the above proposition, we need to introduce some extra structures:
+
+\begin{definition}[Inverse/Projective systems]
+  Define $Sys_x := (\{x_i\}, f_{ij} | i,j \in I \subset \NN)$ with
+  \begin{itemize}
+    \item $\{x_i\}$ a collection of spaces (generalizes to objects in a category)
+    \item $f_{ij}:x_i \lra x_j$ for all $i,j$ s.t. $i \leq j$ and
+    $$ f_{ik} = f_{ij} \circ f_{jk} $$
+  \end{itemize}
+  We call this construct an \textbf{inverse system} or \textbf{projective system}.
+\end{definition}
+
+Now we denote by $\underset{\longleftarrow}{\lim} \ x_i$ the subset of $\Pi_i x_i$ of elements $x\in \{ x_i\}$ such that $x_i = f_{ij}(x_j) \ \ \forall j \geq i$. We call $\underset{\longleftarrow}{\lim}$ the \textbf{projective/inverse} limit of the inverse system.
+
+\begin{definition}
+  The sequence $\{J^k F\}_{n\in\NN}$ together with $\pi^k_l: J^l F \lra J^k F$ defines an inverse system (of fibre bundles). We thus use the inverse limit to define $J^\infty F := \underset{\longleftarrow}{\lim}\ J^k F$.
+\end{definition}
+
+To be precise: $J^\infty F$ is the space of equivalence classes of sections $\phi:M \lra F$ such that two sections $s_1$ and $s_2$ are equivalent, if their partial derivatives agree at all orders. We denote these eqivalence classes by $j^\infty(\phi)$. As an exercise you can show that the germs of functions surject over $J^\infty \mathcal{R}$ where $\mathcal{R} = M \times \RR \lra R$. You can also find a counterexample for the opposite statement.\\
+
+Now the interesting question for our physical analysis will be if $J^\infty F$ can be given a smooth manifold structure. It will turn out to be very convenient to consider smooth functions on $J^\infty F$ first:
+
+\begin{definition}
+  Let $\pi: F \lra M$ be a fibre budle and let $J^kF$ denote the space of $k$-jets. Since we are dealing with regular finite dimensional manifolds, we can consider $\Ci(J^kF, P)$ for some manifold $P$. For every $l\geq k$ there are connecting maps
+  $$\widetilde \pi^l_k : \Ci(J^k(E), P) \lra \Ci(J^l(E), P)$$
+  which can be constructed using precomposition, thus $(\pi^k_l)^* f := \widetilde \pi^l_k (f)$. Thus we obtain a socalled \textbf{direct system}
+  $$ \Ci(F) \lra \Ci(J^1F) \lra \Ci(J^2F) \lra ... $$
+  with functions $f_{ij}:x_i \lra x_j$ for $i\leq j$. We further define the \textbf{direct limit}
+  $$\Ci(J^\infty F) := \underset{\lra}{\lim}\ \Ci(J^k F) = \Pi_k \Ci(J^k F) / \sim$$
+  where $g_i \sim g_l$ iff $\exists k \geq i, k \geq l$ s.t. $\widetilde \pi^k_i g_i = \widetilde \pi^k_l g_l$
+\end{definition}
+
+Note that by construction $f \in \Ci(J^\infty F)$ is fully represented by functions $\widehat f_k \in \Ci(J^k F)$ which only depend on a finite number of derivatives. This will be the essence of the notion of locality which we will unfold in the following pages. Thus if we consider $f \in \Ci(J^\infty F)$ represented by $\widehat f$ one some $k$-jet then on each coordinate neighbourhood $(\pi^\infty)^{-1}(U)$ and each point $\sigma = j^\infty(\phi)(p) \in (\pi^\infty)^{-1}(U)$ we have
+$$ f(\sigma) = \widehat f(x^i, u^\alpha, u^\alpha_{i_1}, u^\alpha_{i_1 i_2}, ..., u^\alpha_{i_1 ... i_k})  $$
+From now on, we will, in a slight abuse of notation, not distinguish between functions on $J^\infty F$ and their representatives.
+
+
+\subsection{Fréchet Manifolds}
+
+Since field theory inherently works with infinite dimensional manifolds, we have a real need for a respective mathematical theory. We saw that if we look at such infinite dimensional manifolds in a local setting, they are "tame" in that we can consider many of their concepts using finite dimensional structures. This will bring us to the notion of a \emph{Fréchet manifold}. While one can approach this concept from a very categorial direction, we will give a less abstract introduction. Note that this part will in no way be exhaustive and not even be enough to understand everything we will use it for later on. Its goal is rather to give a feeling for the formal background which is completely omitted in many introductions to the field due to its depth and level of abstraction.
+
+\begin{definition}[Seminorm]
+\label{def:Seminorm}
+  Let $V$ be a vector space. A \textbf{seminorm} is a map $|\cdot | : V \lra \RR$ that satisfies
+  \begin{itemize}
+    \item[1.] $|v| \geq 0 \quad \forall v\in V$
+    \item[2.] $|v+w| \leq |v| + |w| \quad \forall v,w \in V$
+    \item[3.] $|a\cdot v| = |a| \cdot |v| \quad \forall v\in V, a \in \RR$
+  \end{itemize}
+  A \textbf{family of seminorms} (for our purposes) is a set $\{|\cdot |_i\}_{i\in I}$ with $|\cdot|_i$ a seminorm for each $i \in I$.
+\end{definition}
+
+\begin{definition}[Locally convex topological vector spaces]
+\label{def:Locally_convex}
+  A \textbf{locally convex topological vector space} is a vector space $V$ together with a family of seminorms.
+\end{definition}
+
+These two notions bring us to the following interesting proposition:
+
+\begin{prop}
+  Given a locally convex topological vector space $(V, \{|\cdot |_i\}_i )$ we have
+  \begin{itemize}
+    \item $V$ is Hausdorff (separable) iff
+    $$ v = 0 \quad \Leftrightarrow \quad \left( |v|_i = 0 \quad \forall i \in I\right)$$
+    \item $V$ is \textbf{metrizable} iff the topology is generated by a countable subset of $I$. (Remember: $V$ is metrizable if every Cauchy sequence converges)
+  \end{itemize}
+\end{prop}
+
+\begin{definition}[Fréchet spaces]
+  A \textbf{Fréchet space} is a sequentially complete, Hausdorff, metrizable, locally convex vector space.
+\end{definition}
+
+One prototypical example of a Fréchet vector space is $\RR^\infty$.
 
 
 \newpage
