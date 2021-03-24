@@ -146,6 +146,16 @@
 
 % Definition of common mathematical environments
 \raggedbottom
+\newtheoremstyle{note}%hnamei
+{1.2em}              %   Space above
+{1.2em}              %   Space below
+{}                     %   Body font
+{}                     %   Indent amount
+{\scshape\bfseries}    %   Theorem head font
+{ }                    %   Punctuation after theorem head
+{.5em}                 %   Space after theorem head
+{}                     %   Theorem head spec (can be left empty, meaning `normal')
+\theoremstyle{note}
 \newtheorem{theo}{Theorem}[section]
 \newtheorem{definition}[theo]{Definition}
 \newtheorem{lem}[theo]{Lemma}
