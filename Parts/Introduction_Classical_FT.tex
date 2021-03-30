@@ -4,7 +4,7 @@ In this section, we will explore classical field theories  in order to give a so
 
 In Lagrangian mechanics, as taught in undergrad physics, one uses the notion of the action functional, being a measure for the "excitednes" of a system, to find physically favoured and thus realized trajectories. A common action in this context would be
 $$ S(q) = \int_{\RR^+} \left( \frac{m}{2} \dot q^i(t) \dot q^i(t) - V(q(t)) \right) dt $$
-For $q\in \Ci(\RR^+, \RR^n)$ and $V:\Ci(\RR^+, \RR^n) \ra \RR$. Now the condition of vanishing variation $\delta S \equiv 0$ imposes two conditions
+For $q\in \Ci(\RR^+, \RR^n)$ and $V\colon\Ci(\RR^+, \RR^n) \ra \RR$. Now the condition of vanishing variation $\delta S \equiv 0$ imposes two conditions
 \begin{align*}
   &\Rightarrow \quad \quad \frac{m}{2} \ddot q^i(t) + \nabla^i V = 0 \quad \text{Euler-Lagrange-equations}\\
   &\Rightarrow \quad \quad \delta q^i \Big|_{t=0} = 0 \quad \text{"Boundary conditions"}
@@ -12,13 +12,13 @@ For $q\in \Ci(\RR^+, \RR^n)$ and $V:\Ci(\RR^+, \RR^n) \ra \RR$. Now the conditio
 
 Now the \textbf{boundary term} $\frac{m}{2}\delta q^i(0) \dot q^i = \alpha$ can be thought of as a 1-form on $T^*\RR^n$ such that the boundary term, using $p^i(0) = \frac{m}{2} \dot q^i$, can be writen as $\omega := \delta \alpha = \delta q^i(0) \delta p^i(0)$ which is a symplectic form.\\
 
-This marks the starting point of a procedure called \textbf{canonical quantisation} of classical mechanics. As a Hilbert space we use $\mathcal{H} := l^2(\RR^n)$. Our main goal will be to generalize this procedure.\\
+This marks the starting point of a procedure called \textbf{canonical quantisation} of classical mechanics. As a Hilbert space we use $\mathcal{H} \colon= l^2(\RR^n)$. Our main goal will be to generalize this procedure.\\
 
 \subsection{Spaces of fields and Locality}
-We will usually work on a fibre bundle $\pi: F \lra M$ over some smooth manifold $M$. For simplicity, we will assume that $M$ is closed and without boundary, furthermore we assume that $M$ is oriented and connected.
+We will usually work on a fibre bundle $\pi\colon F \lra M$ over some smooth manifold $M$. For simplicity, we will assume that $M$ is closed and without boundary, furthermore we assume that $M$ is oriented and connected.
 
 \begin{definition}[Sections and local sections]
-  A \textbf{section} of $\pi:F \lra M$ is a smooth map $\phi: M \lra F$ such that $\pi \circ \phi = \id_M$. We call $\phi$ a \textbf{local section} if it is only defined on an open subset $U \subseteq M$ such that $\pi \circ \phi = \id_U$. We further denote the space of sections by $$\Gamma(M,F):= \{ \phi \in \Ci(M,F) | \pi \circ \phi = \id_M \} \equiv \mathcal{F}$$
+  A \textbf{section} of $\pi\colon F \lra M$ is a smooth map $\phi\colon  M \lra F$ such that $\pi \circ \phi = \id_M$. We call $\phi$ a \textbf{local section} if it is only defined on an open subset $U \subseteq M$ such that $\pi \circ \phi = \id_U$. We further denote the space of sections by $$\Gamma(M,F)\colon = \{ \phi \in \Ci(M,F) | \pi \circ \phi = \id_M \} \equiv \mathcal{F}$$
   We often refer to $\mathcal{F}$ as the \textbf{space of fields}. Note that if we work with a vector bundle, $\mathcal{F}$ inherits a linear structure.
 \end{definition}
 
@@ -32,8 +32,8 @@ Using the thus defined local spaces allows us to define the utterly important no
 
 \begin{definition}[$k$-Jets of sections]
 \label{def:Jets_sections}
-Let $\pi:F\lra M$ be a fibre bundle and $k$ any integer. We say that two local sections of $\pi$ at $p \in M$ \textbf{have the same $k$-th jet at $p$} if their partial derivatives agree at $p$ up to $k$-th order in some chart around $p$. We denote by $J^k_p F$ the set of such equivalence classes and use
-$$ j^k_p \phi := [(\phi, p)]_k $$
+Let $\pi\colon F\lra M$ be a fibre bundle and $k$ any integer. We say that two local sections of $\pi$ at $p \in M$ \textbf{have the same $k$-th jet at $p$} if their partial derivatives agree at $p$ up to $k$-th order in some chart around $p$. We denote by $J^k_p F$ the set of such equivalence classes and use
+$$ j^k_p \phi \colon = [(\phi, p)]_k $$
 to denote such equivalence classes.
 \end{definition}
 
@@ -44,13 +44,13 @@ As we will see later, this will also introduce coordinates on the objects $J^k_p
 \end{rem}
 
 \begin{definition}[Jet bundles]
-  Given a fibre bundle $\pi: F\lra M$ and an integer $k$ we denote
-  $$ J^k F := \{j^k_p \phi | p \in M, \phi \in \Gamma(p) \}$$
+  Given a fibre bundle $\pi\colon  F\lra M$ and an integer $k$ we denote
+  $$ J^k F \colon = \{j^k_p \phi | p \in M, \phi \in \Gamma(p) \}$$
   and $J^0 F \equiv F$ together with the maps
   \begin{align*}
-    \pi_k : J^k F &\lra M, \quad \textbf{k-th Jet bundles}\\
+    \pi_k \colon  J^k F &\lra M, \quad \textbf{k-th Jet bundles}\\
     j^k_p &\lmap p \\
-    \pi^l_k: J^kF &\lra J^l F, \quad 1 \leq l \leq k \\
+    \pi^l_k\colon  J^kF &\lra J^l F, \quad 1 \leq l \leq k \\
     j^k_p  \phi &\lmap j^l_p \phi
   \end{align*}
   such that $\pi_k = \pi \circ \pi^0_k$, $\pi^l_k = \pi^l_m \circ \pi^m_k$ for $0 \leq m \leq l$. Moreover if $\phi$ is a section of our fibre bundle local in some $U\subseteq M$, we define the \textbf{Jet Prolongations}
@@ -77,7 +77,7 @@ The next proposition will go without its proof which can be found in (Saunders, 
 
 Now if $(U, \mathcal{U})$ is an adapted coordinate system for $F$ such that $(x^i, u^\alpha) \equiv u$ and thus
 \begin{align*}
-  \Rightarrow \quad \quad \quad U^k &= \{j^k_p \phi : \phi(p) \in U\}\\
+  \Rightarrow \quad \quad \quad U^k &= \{j^k_p \phi \colon  \phi(p) \in U\}\\
   u^k &= (x^i, u^\alpha, u_I^\alpha)\\
   u^\alpha_I(j^k_p \phi) &= \dell{^{|I|} (u^\alpha \circ \phi)}{x^I}\Big|_p
 \end{align*}
@@ -86,7 +86,7 @@ Now to make precise the statement "for all $k$" in the above proposition, we nee
 
 \begin{definition}[Inverse/Projective systems]
 \label{def:inverse_system}
-  Define $Sys_x := (\{x_i\}, f_{ij} | i,j \in I \subset \NN)$ with
+  Define $Sys_x \colon = (\{x_i\}, f_{ij} | i,j \in I \subset \NN)$ with
   \begin{itemize}
     \item $\{x_i\}$ a collection of spaces (generalizes to objects in a category)
     \item $f_{ij}:x_i \lra x_j$ for all $i,j$ s.t. $i \leq j$ and
@@ -252,16 +252,16 @@ Furthermore, we can state the following:
 These two notions can be shown to be equivalent. Now in order to unambigously deal with vector fields and their relations to derivations of the respective algebra of functions, we still need to work a bit more. The following definitions can be carried over from the finite-dimensional setting:
 
 \begin{definition}[Complex of differential forms]
-Let $F\lra M$ be a smooth fibre bundle. We define the \textbf{complex of differential forms} $\Omega^\circ(J^\infty F)$ to be the direct limit of the sequence
-$$ \Omega^\circ(F) = \Omega^\circ(J^0F) \lra \Omega^\circ(J^1F)\lra ... $$
-together with the morphism $d:\Omega^\circ(J^\infty F)\lra \Omega^\circ(J^\infty F)$ given by the collection $\{ d^k: \Omega^\circ(J^k F) \lra \Omega^\circ(J^k F) \}$ such that $d\circ d = 0$.
+Let $F\lra M$ be a smooth fibre bundle. We define the \textbf{complex of differential forms} $\Omega^\bullet(J^\infty F)$ to be the direct limit of the sequence
+$$ \Omega^\bullet(F) = \Omega^\bullet(J^0F) \lra \Omega^\bullet(J^1F)\lra ... $$
+together with the morphism $d:\Omega^\bullet(J^\infty F)\lra \Omega^\bullet(J^\infty F)$ given by the collection $\{ d^k: \Omega^\bullet(J^k F) \lra \Omega^\bullet(J^k F) \}$ such that $d\circ d = 0$.
 \end{definition}
 
-We can now endow $\Omega^\circ(J^\infty F)$ with the morphism
+We can now endow $\Omega^\bullet(J^\infty F)$ with the morphism
 \begin{align*}
-  \wedge: \Omega^\circ(J^\infty F) \tens{} \Omega^\circ(J^\infty F) &\lra \Omega^\circ(J^\infty F)\\
+  \wedge: \Omega^\bullet(J^\infty F) \tens{} \Omega^\bullet(J^\infty F) &\lra \Omega^\bullet(J^\infty F)\\
   \intertext{given by the collection of morphisms}
-  \{ \wedge_{k,l}: \Omega^\circ(J^k F) \tens{} \Omega^\circ(J^l F) &\lra \Omega^\circ(J^{\max(k,l)} F) \}_{k,l}
+  \{ \wedge_{k,l}: \Omega^\bullet(J^k F) \tens{} \Omega^\bullet(J^l F) &\lra \Omega^\bullet(J^{\max(k,l)} F) \}_{k,l}
 \end{align*}
 This in turn makes the morphism $d$ into a graded derivation of the wedge product. In the following we use the derivation to split the complex of differential forms into two parts. To this end, we first define certain derived differentials using $d$:
 
@@ -289,7 +289,7 @@ We can also prove
   &d_H x^i = dx^i, \quad \quad d_H(u^\alpha_I) = u^\alpha_{I,i} dx^i
 \end{align*}
 
-We follow our successful splitting of the operator $d$ with a collection of useful definitions that will in turn lead us to a splitting of the complex $(\Omega^\circ(J^\infty F), d)$:
+We follow our successful splitting of the operator $d$ with a collection of useful definitions that will in turn lead us to a splitting of the complex $(\Omega^\bullet(J^\infty F), d)$:
 
 \begin{definition}[Vertical vector fields]
 Let $\pi_\infty: J^\infty F \lra M$ be the fibre bundle of infinite jets. We define the subbundle of \textbf{vertical vector fields} to be
@@ -318,7 +318,7 @@ For contact forms, we can attain a helpful extra property as well as a basis for
 \begin{theo}
   Contact forms generate a differential ideal denoted by $\mathcal{C}$. Its basis is given by $\theta^\alpha_I = du^\alpha_I - u^\alpha_{I,i} dx^i$.
 \begin{proof}
-  Let $\theta$ be a contact form, thus $(j^\infty \phi)^* \theta = 0$ for all $\phi \in \mathcal{F}$. Then for all $\alpha \in \Omega^\circ(J^\infty F)$ we have
+  Let $\theta$ be a contact form, thus $(j^\infty \phi)^* \theta = 0$ for all $\phi \in \mathcal{F}$. Then for all $\alpha \in \Omega^\bullet(J^\infty F)$ we have
   \begin{align*}
     (j^\infty \phi)^* (\theta \wedge \alpha) &= (j^\infty \phi)^* \theta \wedge (j^\infty \phi)^* \alpha = 0\\
     \Rightarrow \quad (j^\infty \phi)^* d(\theta \wedge \alpha) &= d(j^\infty \phi)^* (\theta \wedge \alpha) = 0
@@ -343,26 +343,229 @@ We can now use the ideal of contact forms to investigate local sections of the b
 \end{proof}
 \end{lem}
 
-Using the thus defined structures, we can approach the spliting of the complex $(\Omega^\circ(J^\infty F), d)$ by defining forms of bi-degree:
+Using the thus defined structures, we can approach the spliting of the complex $(\Omega^\bullet(J^\infty F), d)$ by defining forms of bi-degree:
 
 \begin{definition}[Forms of bi-degree]
   Let $F \lra M$ and $J^\infty F$ be as above. Define the space of \textbf{forms of bi-degree $(r,s)$} to be the intersection
   $$ \Omega^{r,s}(J^\infty F) := \Omega_V^{p,r}(J^\infty F) \cap \Omega_H^{s,s}(J^\infty F) $$
-  where $p:= r+s$. A form $\omega \in \Omega^\circ(J^\infty F)$ is of bi-degree $(r,s)$ iff it is of the form
+  where $p:= r+s$. A form $\omega \in \Omega^\bullet(J^\infty F)$ is of bi-degree $(r,s)$ iff it is of the form
   $$ \omega^{I_1 ... I_r}_{\alpha_1 ... \alpha_r ; i_1 ... i_s} \theta^{\alpha_1}_{I_1} \wedge ... \wedge \theta^{\alpha_r}_{I_r} \wedge dx^{i_1} \wedge ... \wedge dx^{i_s}$$
   where all the functions $\omega^{(\cdot)}_{(\cdot)}$ are smooth in $\Ci(J^\infty F)$.
 \end{definition}
 
-We are now in a position to "split" $(\Omega^\circ(J^\infty F), d)$. First we define
+We are now in a position to "split" $(\Omega^\bullet(J^\infty F), d)$. First we define
 $$ \Omega^p (J^\infty F) := \bigoplus_{r+s=p} \Omega^{r,s}(J^\infty F) $$
 Since $d(dx^i)=0$ we also have $d_H(dx^i) = 0$ and $d_V(dx^i) = 0$. Now we can also use $\theta^\alpha_I = du^\alpha_I - u^\alpha_{I,i} dx^j$ such that
 $$ d \theta^\alpha_I = -d u^\alpha_{I,i} \wedge dx^i = - \theta^\alpha_{I,j} \wedge dx^j $$
 and thus $d_V \theta^\alpha_I = 0$ and $d_H \theta^\alpha_I = - \theta^\alpha_{I,j} \wedge dx^j$. This brings us to the following theorem, which is the defining theorem for the \emph{variational bicomplex}:
 
 \begin{theo}[Variational bicomplex]
-  The complex of differential forms on the infinite jet bundle $(\Omega^\circ(J^\infty F), d)$ splits into the bicomplex $(\Omega^{\circ, \circ}(J^\infty F), d_H, d_V)$, i.e. $d^2_H = d_V^2 = 0$ and further $d_H \circ d_V = -d_V \circ d_H$. We call this complex the \textbf{variational bicomplex}.
+  The complex of differential forms on the infinite jet bundle $(\Omega^\bullet(J^\infty F), d)$ splits into the bicomplex $(\Omega^{\bullet, \bullet}(J^\infty F), d_H, d_V)$, i.e. $d^2_H = d_V^2 = 0$ and further $d_H \circ d_V = -d_V \circ d_H$. We call this complex the \textbf{variational bicomplex}.
 \end{theo}
 
+
+\newpage
+\subsection{Local Lagrangian Field Theory}
+
+So far, we have been working on the infinite jet bundle. Our goal is to work on $\mathcal{F}$ in a \emph{local} way. Thus we need to find some local calculus on $\mathcal{F}\times M$.\\
+
+To this end, denote by $VF:=\ker(d\pi)$ the vertical tangent bundle. Recall that if $\phi_t$ is a smooth curve in $\mathcal{F} = \Gamma(M, F)$, $\dot\phi\big|_{t=0}$ is vertical and
+$$0 = d\pi(\dot\phi\big|_{t=0}) = \dd{}{t}(\pi(\phi_t))\big|_{t=0}$$
+Thus we can think of $\dot \phi_0 : M \lra VF$ as a section covering $\phi_0 = pr_F \circ \dot \phi_0$. We can express this in the following diagram:\\
+\begin{center}
+\begin{tikzcd}
+  VF \arrow[r,"pr_\FF"] & F \arrow[dr,"\pi"] &  \\
+  M \arrow[u,"\dot\phi_0"] \arrow[r,"\id"] & M \arrow[u,"\phi_0"] \arrow[r,"\id"] & M
+\end{tikzcd}
+\end{center}
+
+Now we can think of sections $\Gamma(M, VF)_\phi = \Gamma(M, \phi^*VF)$. An elemet of $\Gamma(M, VF)_\phi$ is a map that associated to every $x\in M$ a vector $v_{\phi(x)} \in V_{\phi(x)}F$. We can think of $v_\phi \in \Gamma(M, \phi^*VF)$.
+
+\begin{definition}
+  We define the tangent bundles
+  \begin{align*}
+    T\FF &:= \Gamma(M, VF), \quad &\quad T(\FF\times M) &:= \Gamma(M, VF) \times TM,\\
+    pr_\mathcal{F} &\colon T\FF \lra \FF & pr_\FF \times pr_M &\colon T(\FF\times M) \lra \FF \times M
+  \end{align*}
+  An element of $T_\phi\FF$ is often called an \textbf{infinitesimal variation}.
+\end{definition}
+
+Now let $E \lra M$ and $F\lra M$ be two fibre bundles with projections $\pi_E$ and $\pi_F$ respectively. Note that the following diagram commutes and thus defines the \emph{product bundle}:
+$$ E\times F := \{ (e,f) \in E\times F \big| \pi_E(e)=\pi_F(f) \} $$
+such that the following diagram commutes:
+\begin{center}
+\begin{tikzcd}
+  E \times_M F \arrow[d,"pr_E"'] \arrow[r, "pr_F"] & F \arrow[d,"\pi_F"] \\
+  E \arrow[r, "\pi_E"] & M
+\end{tikzcd}
+\end{center}
+
+In general, this allows us to write $\Gamma(M, E \times_M F) \cong \EE \times \FF$ where we identify $\EE = \Gamma(M,E)$ and $\FF = \Gamma(M,F)$. We can also write
+$$T(\EE \times \FF) \cong \Gamma(M, V(E\times_M F)) \cong \Gamma(M, VE \times_M VF) \cong T\EE \times T\FF \cong (T\EE \times \FF) \times_{\EE\times\FF} (\EE\times T\FF) $$
+As an exercise, you can prove the above chain of isomorphisms. Since we can further write $T(\FF\times M) \cong (T\FF \times M) \times_{\FF\times M} (\FF \times TM)$ we can for the above statements take a pair $(\phi, x)$ and denote
+$$ T_{(\phi, x)}(\FF_x M) \cong T_\phi \FF \times T_x M $$
+We denote by $T_\phi \FF$ the \textbf{vertical tangent space} and by $T_x M$ the \textbf{horizontal tangent space}.\\
+
+Taking the $\infty$-prolongation $j^\infty$ and its tangent map we obtain the following commuting diagram:
+\begin{center}
+\begin{tikzcd}
+  T(\FF \times M) \arrow[d,"pr_\FF \times pr_M"'] \arrow[r, "Tj^\infty"] & T J^\infty F \arrow[d,"pr_{J^\infty F}"] \\
+  \FF \times M \arrow[r, "j^\infty"] & J^\infty F
+\end{tikzcd}
+\end{center}
+
+This leads us to the following interesting piece of information:
+
+\begin{prop}
+  The tangent map
+  $$ T_{(\phi,X)}j^k \colon T_\phi \FF \times T_x M \lra T_{j^k_x \phi} J^k F $$
+  is given by
+  $$ (T_{(\phi, x)} j^k)(\xi_\phi, v_x) := \sum_{|I|=0}^k \dot u^\alpha_I (j^k_x \xi_\phi) \dell{}{u^\alpha_I} + v^i \left( \dell{}{x^i} + \sum_{|I|=0}^k u^\alpha_{I,i} (j^{k+1}_x \phi) \dell{}{u^\alpha_I} \right) $$
+\begin{proof}
+  While the proof is left as an exercise to the reader, we give the following hint: To compute tangent maps in coordinates, compute the time derivative of a path $t \lmap (\phi_t, x(t))$. For example
+  $$ \dd{}{t}\left( u^\alpha_I (j^k(\phi_t, x(t))) \right)\Big|_{t=0} = \dd{}{t}\left( \dell{^{|I|}}{x^I} \phi^\alpha(t, x(t)) \right)\Bigg|_{t=0} $$
+  Now set $\xi_\phi = \dot \phi_0$ and $v_x = \dot x(0)$.
+\end{proof}
+\end{prop}
+
+\begin{rem}
+  The above proposition induces the following maps:
+  \begin{align*}
+    \tau_k \colon J^k(VF) &\lra TJ^k(F), & \sigma_k \colon J^{k+1}F \times TM &\lra TJ^k F,\\
+    j^k_x \dot\phi(0) &\lmap \dd{}{t}(j^k_x\phi_t)_{t=0} & (j^{k+1}_x \phi, \dot x(0)) &\lmap \dd{}{t}( j^k_{x(t)} \phi)_{t=0}
+  \end{align*}
+\end{rem}
+
+Now using our results for $TJ^kF$ we obtain a splitting for $TJ^\infty F$:
+
+\begin{theo}
+  There exists a splitting of $TJ^\infty F$ that takes the form of
+  \begin{center}
+  \begin{tikzcd}[sep = large]
+    (T\FF \times M) \times_{\FF\times M} (\FF \times TM) \arrow[r,"\cong"] \arrow[d,"j^\infty_{T\FF} \times (j^\infty_\FF \times \id)"'] & T(\FF \times M) \arrow[d, "Tj^\infty"]\\
+    J^\infty(VF) \times_{J^\infty F}(J^\infty F \times_M TM) \arrow[r,"\cong"] & TJ^\infty F
+  \end{tikzcd}
+  \end{center}
+  One can read this diagram as the splitting into
+  \begin{align*}
+    J^\infty(VF) & \lra TJ^\infty F \quad \textbf{vertical tangent bundle}\\
+    J^\infty F \times_M TM & \lra TJ^\infty F \quad \textbf{horizontal tangent bundle}
+  \end{align*}
+\end{theo}
+
+
+\begin{corollary}
+  The vector space of vector fields on $J^\infty F$ decomposes via $\VF(J^\infty F) = \VF_{vert} \oplus \VF_{hor}$ where
+  \begin{align*}
+    \VF_{vert} &\cong \Gamma(J^\infty F, J^\infty(VF))\\
+    \VF_{hor} &\cong \Hom(J^\infty F, TM)
+  \end{align*}
+  Thus we can split any $V \in \VF(J^\infty F)$ into
+  $$ V = V^i \dell{}{x^i} + \sum_{|I|=0}^\infty V^\alpha_I \dell{}{u^\alpha_I} $$
+  where both $V^i$ and $V^\alpha_I$ are in $\Ci(J^\infty F)$.
+\end{corollary}
+
+Now we can finally unambigously answer to the question \emph{"What is Locality?"}. Essentially, locality is the requirement that we work with $(j^\infty)^* \Omega^{\bullet, \bullet}(J^\infty F)$.
+
+\begin{rem}
+  Note that we always assume that our base manifold $M$ is orientable. There exist generalizations for non-orientable manifolds (see Deligne/Freed).
+  %TODO reference
+\end{rem}
+
+\begin{definition}[Local differential forms]
+  A differential form on $\FF_x M$ is called a \textbf{local differential form}, iff it is the pullback of a form on $J^\infty F$ by the $\infty$-jet prolongation $j^\infty\colon \FF_x M \lra J^\infty F$. We define the \textbf{bicomplex of local forms} as
+  $$ \left( \Omega^{\bullet, \bullet}_{loc} (\FF \times M) := (j^\infty )^* \Omega^{\bullet, \bullet} (J^\infty F), d, \delta \right) $$
+  such that
+  $$ \delta((j^\infty)^* \alpha) := (j^\infty)^* d_V \alpha, \quad \quad d((j^\infty)^* \alpha) := (j^\infty)^* d_H \alpha $$
+\end{definition}
+
+We can also extend this \emph{local} setting to vector fields:
+
+\begin{definition}[Local vector fields]
+  A \textbf{local vector field} $\chi$ on $\FF \times M$ is a section of the tangent bundle $T(\FF\times M)$ covered by a section $\chi^\infty\colon J^\infty F \lra TJ^\infty F$ and supported on $j^\infty(\FF \times M)$. In other words, the following diagram commutes:
+  \begin{center}
+  \begin{tikzcd}[sep = large]
+    T(\FF\times M) \arrow[d,"pr"] \arrow[r, "Tj^\infty_F"] & T J^\infty F \arrow[d,"pr"']\\
+    \FF \times M \arrow[u, bend left = 60, "\chi"] \arrow[r,"j^\infty_F"]& J^\infty M \arrow[u, bend right = 60, "\chi^\infty"']
+  \end{tikzcd}
+  \end{center}
+\end{definition}
+
+
+Practically speaking, a vector field is \textbf{local}, if for any $\phi$ there exists an integer $k$ sucht that the value of $\chi_\phi \in \Gamma(M, \phi^* VF)$ at $x\in M$ depends only on the $k$-th jet of $\phi$ at $x$. We denote the set of local vector fields by $\VF_{loc}(\FF \times M)$. A local vector field in $\VF(\FF)$ is called \textbf{evolutionary}.\\
+
+Notice that by definition, local functions $\Ci_{loc}(\FF \times M)$ are represented by a pair $(f, f^\infty)$ meaning that they factor through some infinite jet as:
+
+\begin{center}
+\begin{tikzcd}[sep=large]
+  f\colon \FF \times M \arrow[d,"j^\infty"'] \arrow[r] & \RR \\
+  J^\infty F \arrow[ur, "f^\infty"'] &
+\end{tikzcd}
+\end{center}
+
+We also port the idea of a derivation to our newly defined setting by defining them on $\Ci_{loc}(\FF \times M)$:
+
+\begin{definition}[Local derivations]
+  A derivation $D$ of $\Ci_{loc}(\FF \times M)$ is called a \textbf{local definition}, iff there exists a vector field $\chi^\infty \colon: J^\infty F \lra TJ^\infty F$ such that
+  $$ Df = (\chi^\infty f^\infty) \circ j^\infty $$
+  for every $(f, f^\infty)$. We denote a local derivation by $(D, \chi^\infty)$.
+\end{definition}
+
+A proposition coming directly from usual differential geometry is the correspondence between local vector fields and local derivations:
+
+\begin{prop}
+  Local vector fields are in $1:1$ correspondence with local derivations of $\Ci_{loc}(\FF \times M)$. Moreover they form a Lie subalgebra of $\Der(C^\infty_{loc})$.
+\begin{proof}
+  The proof is left to the reader as it is fairly similar to the case in classical differential geometry.
+\end{proof}
+\end{prop}
+
+We go on with a short remark on local coordinates: If we identify
+$$ (j^\infty)^* x^i \equiv x^i, \quad \quad \quad (j^\infty)^* u^\alpha_I \equiv u^\alpha_I $$
+we can interpret $dx^i \in \Omega^{0,1}_{loc}(\FF\times M)$ and $\delta u^\alpha_I \in \Omega^{1,0}_{loc}(\FF\times M)$ as a basis for $\Omega^{\bullet, \bullet}_{loc}(\FF\times M)$. This allows us to write a form $\omega \in \Omega^{p,q}_{loc}(\FF\times M)$ as
+$$ \omega = \omega^{I_1 ... I_p}_{\alpha_1 ... \alpha_p i_1 ... i_q} \delta u^{\alpha_1}_{I_1}\wedge ... \wedge \delta u^{\alpha_p}_{I_p} \wedge dx^{i_1} \wedge ... \wedge dx^{i_q}  $$
+for $\omega^{I_1 ... I_p}_{\alpha_1 ... \alpha_p i_1 ... i_q} \in \Ci_{loc}(\FF\times M)$, $df = D_i f dx^i$ and $\delta f = \partial^I_\alpha f \delta u^\alpha_I$. Thus if we take $X\in \VF_{loc}(\FF)$ and $\omega \in \Omega^{\bullet,\bullet}_{loc}(\FF\times M)$, we obtain a variational \emph{Cartan Calculus}
+$$ \lie{X} \omega = \imath_X \circ \delta \omega + \delta \circ \imath_X \omega $$
+This can be generalized to $\VF_{loc}(\FF\times M)$.
+
+
+\newpage
+\subsection{Classical Field Theory}
+
+\begin{definition}[Classical Lagrangian Field Theory]
+   A \textbf{Classical Lagrangian Field Theory} is a triple $(M, F, L)$ where $\pi:F\lra M$ is a smooth fibre bundle and $L \in \Omega^{0, top}_{loc}(\FF \times M)$. We call the integral
+   $$ S = \int_M L $$
+   the \textbf{action functional}.
+\end{definition}
+
+This means
+$$ L = (j^\infty)^* L^\infty \quad \text{for} \quad L^\infty \in \Omega^{0, top}_{loc}(J^\infty F) $$
+and thus
+$$ L^k \left(x^i, u^\alpha, u^\alpha_{i_1}, ..., u^\alpha_{i_1 ...i_n} \right) dx^1 ... dx^n$$
+If we evaluate $L$ at $\phi$, we obtain
+$$ L(\phi) = L\left(x^i, \phi^i, \dell{\phi^\alpha}{x^i}, ..., \dell{^k \phi^\alpha}{x^{i_1} ... \partial x^{i_n}}\right) $$
+
+\begin{definition}[Source forms]
+  Let $\alpha \in \Omega^{1,top}_{loc}(\FF \times M)$. $\alpha$ is called a \textbf{source form}, iff it only depends on the $dx^i$ and $\delta u^\alpha$, not the $\delta u^\alpha_I$.
+\end{definition}
+
+While this definition is more of a working version and does not really explain itself, the following theorem sheds some light onto the situation:
+
+\begin{theo}
+  Let $(M,F,L)$ be a Lagrangian field theory. Then there exists a source form $EL \in \Omega^{1,top}_{loc}(\FF \times M)$ and two "boundary" forms
+  $$ \alpha \in \Omega^{1,top-1}_{loc}(\FF \times M), \quad \quad \omega \in \Omega^{2,top-1}_{loc}(\FF \times M) $$
+  such that
+  \begin{itemize}
+    \item $\delta L = EL - d \alpha$
+    \item $\omega = \delta \alpha \quad \Rightarrow \quad \delta \omega = 0$
+    \item $d\omega = - \delta EL$
+  \end{itemize}
+\end{theo}
+
+This is the statement that by means of "integration by parts" we can write $\delta L$ as $EL = E_\alpha \delta u^\alpha \wedge dx^1 \wedge ... \wedge dx^n$ with $E_\alpha\colon J^k F \lra \RR$ which defines the \textbf{Euler-Lagrange-equations} as
+$$ E_\alpha  \left(x^i, \phi^\beta, \dell{\phi^\beta}{x^i}, ..., \dell{^k \phi^\beta}{x^{i_1} ... \partial x^{i_n}}\right) $$
+
+To prove the above statement, we would need to reformulate integration by parts in "cohomological terms", thus in terms of operators on local forms, which does not fit into the scope of this course. Doing this, allows us to define the "Euler Operator" $\mathbb{E}$ such that $\mathbb{E}(L) \equiv EL$.
 
 
 \newpage
