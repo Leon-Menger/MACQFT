@@ -7,10 +7,10 @@ $$ S(q) = \int_{\RR^+} \left( \frac{m}{2} \dot q^i(t) \dot q^i(t) - V(q(t)) \rig
 For $q\in \Ci(\RR^+, \RR^n)$ and $V\colon\Ci(\RR^+, \RR^n) \ra \RR$. Now the condition of vanishing variation $\delta S \equiv 0$ imposes two conditions
 \begin{align*}
   &\Rightarrow \quad \quad \frac{m}{2} \ddot q^i(t) + \nabla^i V = 0 \quad \text{Euler-Lagrange-equations}\\
-  &\Rightarrow \quad \quad S q^i \Big|_{t=0} = 0 \quad \text{"Boundary conditions"}
+  &\Rightarrow \quad \quad \delta q^i \Big|_{t=0} = 0 \quad \text{"Boundary conditions"}
 \end{align*}
 
-Now the \textbf{boundary term} $\frac{m}{2}\delta q^i(0) \dot q^i = \alpha$ can be thought of as a 1-form on $T^*\RR^n$ such that the boundary term, using $p^i(0) = \frac{m}{2} \dot q^i$, can be writen as $\omega = \delta q^i(0) \delta p^i(0)$ which is a symplectic form.\\
+Now the \textbf{boundary term} $\frac{m}{2}\delta q^i(0) \dot q^i = \alpha$ can be thought of as a 1-form on $T^*\RR^n$ such that the boundary term, using $p^i(0) = \frac{m}{2} \dot q^i$, can be writen as $\omega := \delta \alpha = \delta q^i(0) \delta p^i(0)$ which is a symplectic form.\\
 
 This marks the starting point of a procedure called \textbf{canonical quantisation} of classical mechanics. As a Hilbert space we use $\mathcal{H} \colon= l^2(\RR^n)$. Our main goal will be to generalize this procedure.\\
 
@@ -55,13 +55,13 @@ As we will see later, this will also introduce coordinates on the objects $J^k_p
   \end{align*}
   such that $\pi_k = \pi \circ \pi^0_k$, $\pi^l_k = \pi^l_m \circ \pi^m_k$ for $0 \leq m \leq l$. Moreover if $\phi$ is a section of our fibre bundle local in some $U\subseteq M$, we define the \textbf{Jet Prolongations}
   \begin{align*}
-    j^k\colon  \mathfrak{F}_p U &\lra J^k F,\\
-    (\phi, p) &\lmap j^k(\phi)(p) \colon = j^k_p(\phi)
+    j^k: \mathcal{F}_p U &\lra J^k F,\\
+    (\phi, p) &\lmap j^k(\phi)(p) := j^k_p(\phi)
   \end{align*}
-  such that the following diagram commutes for $i \geq n \geq l$:
+  such that the following diagram commutes for $i \geq k \geq l$:
   \begin{center}
   \begin{tikzcd}
-    \mathcal{F}_pM \arrow[rrd] \arrow[r, "j^k"] & J^k F \arrow[rr, "\pi^l_k"] & & J^l F \arrow[r, "\pi_l"] & M\\
+    \mathcal{F}_pM \arrow[drr, swap, "j^i"] \arrow[r, "j^k"] & J^k F \arrow[rr, "\pi^l_k"] & & J^l F \arrow[r, "\pi_l"] & M\\
     & & \arrow[ul, "\pi^k_i"'] J^i F \arrow[ur, "\pi^l_i"] \arrow[urr, "\pi_i"'] & &
   \end{tikzcd}
   \end{center}
@@ -108,7 +108,7 @@ Now the interesting question for our physical analysis will be if $J^\infty F$ c
 \begin{definition}
   Let $\pi: F \lra M$ be a fibre budle and let $J^kF$ denote the space of $k$-jets. Since we are dealing with regular finite dimensional manifolds, we can consider $\Ci(J^kF, P)$ for some manifold $P$. For every $l\geq k$ there are connecting maps
   $$\widetilde \pi^l_k : \Ci(J^k(E), P) \lra \Ci(J^l(E), P)$$
-  which can be constructed using precomposition, thus $(\pi^k_l)^* f := \widetilde \pi^l_k (f)$. Thus we obtain a socalled \textbf{direct system}
+  which can be constructed using precomposition, thus $(\pi^k_l)^* f := \widetilde \pi^l_k (f)$. Thus we obtain a so-called \textbf{direct system}
   $$ \Ci(F) \lra \Ci(J^1F) \lra \Ci(J^2F) \lra ... $$
   with functions $f_{ij}:x_i \lra x_j$ for $i\leq j$. We further define the \textbf{direct limit}
   $$\Ci(J^\infty F) := \underset{\lra}{\lim}\ \Ci(J^k F) = \Pi_k \Ci(J^k F) / \sim$$
@@ -137,10 +137,10 @@ Since field theory inherently works with infinite dimensional manifolds, we have
 
 \begin{definition}[Locally convex topological vector spaces]
 \label{def:Locally_convex}
-  A \textbf{locally convex topological vector space} is a vector space $V$ together with a family of seminorms $\Gamma$ We denote a locally convex topological vector space with such a family of seminorms by $(V, \Gamma)$.
+  A \textbf{locally convex topological vector space} is a vector space $V$ together with a family of seminorms $\Gamma$. We denote a locally convex topological vector space with such a family of seminorms by $(V, \Gamma)$.
 \end{definition}
 
-Using families of seminorms, we can assign a unique topolog to the vector space they live on:
+Using families of seminorms, we can assign a unique topology to the vector space they live on:
 
 \begin{definition}
   A family of seminorms $\Gamma$ on a vector space $V$ defines a \textbf{unique topology} $\mathcal{T}_\Gamma$ compatible with the vector space structure. The neighbourhood base of $\mathcal{T}_\Gamma$ is given by the family
@@ -148,7 +148,7 @@ Using families of seminorms, we can assign a unique topolog to the vector space 
   with $U^J_\epsilon := \{ v \in V \big| |v|_i < \epsilon \ \forall i \in J \}$
 \end{definition}
 
-Using the above notions, we arrive at a proposition that sheds further light onto
+Using the above notions, we arrive at a proposition that sheds further light onto such spaces.
 
 \begin{prop}
   Let $(V,\Gamma)$ be a locally convex topological vector space. Then the following statements hold:
@@ -158,7 +158,7 @@ Using the above notions, we arrive at a proposition that sheds further light ont
     \item $(V, \Gamma)$ is Hausdorff iff
     $$ v = 0 \quad \Leftrightarrow \quad \left( |v|_i = 0 \quad \forall i \in I\right)$$
 
-    \item If $(V, \Gamma)$ is Hausdorff then it is metrizable iff the family $\Gamma$ is countable (i.e. there exists a metrix $d:V\times V \lra \RR^+$ s.t. the topology induced by $d$ is $\mathcal{T}_\Gamma$).
+    \item If $(V, \Gamma)$ is Hausdorff then it is metrizable iff the family $\Gamma$ is countable (i.e. there exists a metric $d:V\times V \lra \RR^+$ s.t. the topology induced by $d$ is $\mathcal{T}_\Gamma$).
 
     \item Convergence of sequences is controlled by the seminorms, i.e.:
     $$ (v_n)_{n\in\NN} : v_n \lra v \quad \Leftrightarrow \quad |v_n - v|_i \lra 0 \ \ \forall i \in I $$
@@ -175,7 +175,7 @@ We give some popular examples to illuminate the above definition:
 
 \begin{example}~
 \begin{itemize}
-  \item Every Banach space is a Fréchet space
+  \item Every Banach space is a Fréchet space.
   \item $\RR^\infty = \Pi_{n\in \NN} \RR^n$ with either the cartesian topology or the corresponding family of seminorms $\{p_n(x_1,...,x_n) = |x_1| + ... + |x_n| \}$ together with the metric $d(x,y) := \sum_i \frac{|x_i - y_i|}{2^i (1+|x_i - y_i|)}$ is a Fréchet space.
   \item The space of smooth sections on a vector bundle $V \lra M$ where $(M,g)$ is a Riemannian manifold is Fréchet with $||f||_n = \sum_{i=0}^n \sup_x |\nabla^i f(x)|$ for $n\in \NN$ with $\nabla$ a covariant derivative.
 \end{itemize}
@@ -184,7 +184,7 @@ We give some popular examples to illuminate the above definition:
 Our next step is to generalize the notion of a derivative (differential) to infinite dimensional spaces. This will in turn enable us to define the idea of smoothness in this infinite dimensional setting.
 
 \begin{definition}[Gâteaux-differential]
-  Let $V,W$ be locally convec topological vector spaces, $U\subset V$ open and $F:V \lra W$ then $dF(u)(v)$, the \textbf{Gâteaux-differential} of $F$ at $u\in U$ along $v\in V$, is defined as
+  Let $V,W$ be locally convex topological vector spaces, $U\subset V$ open and $F:V \lra W$ then $dF(u)(v)$, the \textbf{Gâteaux-differential} of $F$ at $u\in U$ along $v\in V$, is defined as
   $$dF(u)(v) := \underset{\tau \ra 0}{\lim} \frac{F(u+\tau v) - F(u)}{\tau} = \dd{}{\tau} F(u+\tau v) \Big|_{\tau = 0}$$
   If the limit exists $\forall v \in V$, $F$ is \textbf{Gâteaux differentiable} at $u \in U$.
 \end{definition}
@@ -205,7 +205,7 @@ Applying the above concept of infinite dimensional manifolds onto \ref{def:inver
 \begin{proof}
   Consider the system $f^m_n: V_n \lra V_m$ with $(V_m, |\cdot |_n)$ a normed vector space $\forall n\in \NN$. The inverse limit of the system, denoted by $V$, is endowed with the linear maps $f^n_\infty: V  \lra V_n$. The norms $|\cdot|_n$ induce a family of seminorms on $V$ via $||\cdot ||_n := |\cdot |_n \circ f^n_\infty$, such that
   \begin{enumerate}
-    \item $||\cdot ||_n = |f^n_\infty(v)||_n \geq 0 \quad \forall v \in V$
+    \item $||v||_n = |f^n_\infty(v)|_n \geq 0 \quad \forall v \in V$
 
     \item $||v+w||_n = ... \leq |v|_n + |w|_n$
 
@@ -244,7 +244,7 @@ Furthermore, we can state the following:
 
   \item Observe that if $\phi_t$ is a smooth 1-parameter family of sections, we can define $\dot \phi_0: M \lra TF$. But $\phi$ is a section such that $d\pi(\dot \phi_0) = \dd{}{t}(\pi(\phi_t(x))) = 0_m$ and thus $\dot \phi_0 \in \ker(d\pi)$. Hence we can associate a tangent bundle to $J^\infty F$ in the context of Fréchet manifolds via
   $$ T(J^\infty F) := \Ci(\RR, J^\infty F) / \sim $$
-  where $c\sim c^\prime$ if $c(0) = c^\prime (0)$ and further
+  where $c\sim c^\prime$ iff $c(0) = c^\prime (0)$ and further
   $$ D(\phi\circ c) (0,1) = D(\phi \circ c^\prime) (0,1) $$
   with $\phi$ any chart around $c(0) \in J^\infty F$ and $D$ denoting the Gâteaux-derivative.
 \end{itemize}
@@ -289,7 +289,7 @@ We can also prove
   &d_H x^i = dx^i, \quad \quad d_H(u^\alpha_I) = u^\alpha_{I,i} dx^i
 \end{align*}
 
-We follow our successfull splitting of the operator $d$ with a collection of useful definitions that will in turn lead us to a splitting of the complex $(\Omega^\bullet(J^\infty F), d)$:
+We follow our successful splitting of the operator $d$ with a collection of useful definitions that will in turn lead us to a splitting of the complex $(\Omega^\bullet(J^\infty F), d)$:
 
 \begin{definition}[Vertical vector fields]
 Let $\pi_\infty: J^\infty F \lra M$ be the fibre bundle of infinite jets. We define the subbundle of \textbf{vertical vector fields} to be
@@ -321,12 +321,12 @@ For contact forms, we can attain a helpful extra property as well as a basis for
   Let $\theta$ be a contact form, thus $(j^\infty \phi)^* \theta = 0$ for all $\phi \in \mathcal{F}$. Then for all $\alpha \in \Omega^\bullet(J^\infty F)$ we have
   \begin{align*}
     (j^\infty \phi)^* (\theta \wedge \alpha) &= (j^\infty \phi)^* \theta \wedge (j^\infty \phi)^* \alpha = 0\\
-    \Rightarrow \quad (j^\infty \phi)^* (\theta \wedge \alpha) &= d(j^\infty \phi)^* (\theta \wedge \alpha) = 0
+    \Rightarrow \quad (j^\infty \phi)^* d(\theta \wedge \alpha) &= d(j^\infty \phi)^* (\theta \wedge \alpha) = 0
   \end{align*}
   Turning to the basis, we see that
   \begin{align*}
     (j^\infty \phi)^* d_V u^\alpha_I &= (j^\infty \phi)^*(du^\alpha_I - u^\alpha_{I,i} dx^i)\\
-    &= \dell{(u^\alpha_I \circ \phi)}{x^i} dx^i - (u^\alpha_{I,i} \circ \phi) dx^i = 0
+    &= \dell{(u^\alpha_I \circ \phi)}{x^i} dx^i - (u^\alpha_{I,i} \circ \phi) dx^i
   \end{align*}
   Thus we have a basis of the given form, since locally any form $\theta$ splits to $\theta = d_H f + d_V f$.
 \end{proof}
