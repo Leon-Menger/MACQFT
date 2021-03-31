@@ -533,7 +533,7 @@ This can be generalized to $\VF_{loc}(\FF\times M)$.
 \subsection{Classical Field Theory}
 
 \begin{definition}[Classical Lagrangian Field Theory]
-   A \textbf{Classical Lagrangian Field Theory} is a triple $(M, F, L)$ where $\pi:F\lra M$ is a smooth fibre bundle and $L \in \Omega^{0, top}_{loc}(\FF \times M)$. We call the integral
+   A \textbf{Classical Lagrangian Field Theory} is a triple $(M, F, L)$ where $\pi:F\lra M$ is a smooth fibre bundle and $L \in \Omega^{0, top}_{loc}(\FF \times M)$ called a \textbf{Lagrangian (density)}. We call the integral
    $$ S = \int_M L $$
    the \textbf{action functional}.
 \end{definition}
@@ -565,7 +565,183 @@ While this definition is more of a working version and does not really explain i
 This is the statement that by means of "integration by parts" we can write $\delta L$ as $EL = E_\alpha \delta u^\alpha \wedge dx^1 \wedge ... \wedge dx^n$ with $E_\alpha\colon J^k F \lra \RR$ which defines the \textbf{Euler-Lagrange-equations} as
 $$ E_\alpha  \left(x^i, \phi^\beta, \dell{\phi^\beta}{x^i}, ..., \dell{^k \phi^\beta}{x^{i_1} ... \partial x^{i_n}}\right) $$
 
-To prove the above statement, we would need to reformulate integration by parts in "cohomological terms", thus in terms of operators on local forms, which does not fit into the scope of this course. Doing this, allows us to define the "Euler Operator" $\mathbb{E}$ such that $\mathbb{E}(L) \equiv EL$.
+To prove the above statement, we would need to reformulate integration by parts in "cohomological terms", thus in terms of operators on local forms, which does not fit into the scope of this course. Doing this, allows us to define the "Euler Operator" $\mathbb{E}$ such that $\mathbb{E}(L) \equiv EL$.\\
+
+With the following statements, we introduce some notions necessary to make the concept \emph{evolutionary vector fields} more rigid and well-defined:
+
+\begin{definition}[Strictly vertical/horizontal vector fields]
+\label{def:strictly}
+  A vector field $v\in \VF(J^\infty F)$ is called \textbf{strictly vertical} or \textbf{strictly horizontal}, iff $[\imath_v, d_V] = 0$ or $[\imath_v, d_H] = 0$ respectively.
+\end{definition}
+
+We use this definition to formulate the following proposition:
+
+\begin{prop}
+  There are two commuting Cartan calculi: For $\xi, \xi^\prime$ strictly vertical and $X,X^\prime$ strictly horizontal we have:
+  \begin{align*}
+    [\imath_\xi, d_V] &= \lie{\xi}, \quad \quad [\lie{\xi}, \imath_{\xi^\prime}] = \imath_{[\xi, \xi^\prime]}, \quad \quad [\lie{\xi}, \lie{\xi^\prime}] = \lie{[\xi, \xi^\prime]}\\
+    [d_V,d_V] &= [\imath_\xi, \imath_{\xi^\prime}] = [\lie{\xi}, d_V] = 0
+  \end{align*}
+  The analogous equations for $X, X^\prime$ also hold.
+\begin{proof}
+  Follows directly from representing them on finite jets together with the bicomplex structure and the definition of strictly vertical/horizontal vector fields \ref{def:strictly}.
+\end{proof}
+\end{prop}
+
+\begin{lem}
+  A vector field $v\in \VF(J^\infty F)$ is strictly horizontal, iff $v = v^i D_i$ for $v^i \in \Ci(M)$.
+\begin{proof}
+  First note that $[\imath_v, d_V] = 0$ iff it annihilates functions and $1$-forms $\{d_H x^i, d_V u^\alpha_I \}$.
+  \begin{align*}
+    &\Rightarrow \quad [i_v, d_V] f = i_v \dell{f}{u^\alpha_I} d_V u^\alpha_I = \dell{f}{u^\alpha_I} (v^\alpha_I - u^\alpha_{I,i} v^i) = 0\\
+    &\Leftrightarrow \quad v^\alpha_I = u^\alpha_{I,i} v^i\\
+    &\Leftrightarrow \quad v = v^i \dell{}{x^i} + u^\alpha_{I,i} v^i \dell{}{u^\alpha_I}
+  \end{align*}
+  Thus we can conclude by checking what happens on $1$-forms.
+\end{proof}
+\end{lem}
+
+\begin{lem}
+  $v\in \VF(J^\infty F)$ is strictly vertical iff it is of the form $v = (D_I v^\alpha) \dell{}{u^\alpha_I}$ for some $v^\alpha \in \Ci(J^\infty F)$.
+\begin{proof}
+  The proof is left as an exercise to the reader. \emph{Hint:} Check on the generators $\{x^i, u^\alpha_I\}$ and $\{dx^i, d_V u^\alpha_I\}$.
+\end{proof}
+\end{lem}
+
+As mentioned above, the introduced terminology helps us better understand \emph{evolutionary vector fields}. Namely if $\xi \in \VF_{loc}(\FF \times M)$ it is called \textbf{evolutionary}, iff it covers a vector field $v\in \VF(J^\infty F)$ that is \emph{strictly vertical}. This in turn allows us to start talking about symmetries leading us to   Noethers first theorem:
+
+\begin{definition}[Local symmetries]
+  An evolutionary vector field $\xi \in \VF_{loc}(\FF \times M)$ is called a \textbf{local symmetry} of the Lagrangian field theory $(M,F,L)$ iff $\exists A_\xi \in \Omega^{0,top-1}_{loc}(\FF\times M)$ such that
+  $$ \lie{\xi} L = \imath_\xi \delta L = dA_\xi $$
+  We denote a \textbf{symmetry} by the pair $(\xi, A_\xi)$.
+\end{definition}
+
+Showing the power of the presented formalism, we can now prove \emph{Noether's first theorem}:
+
+\begin{theo}[Noether's first]
+\label{theo:Noether_first}
+  Let $(M,F,L)$ be a Lagrangian field theory such that $\delta L = EL - d \alpha$ and let $(\xi, A_\xi)$ be a local symmetry of the theory. Then
+  $$ j := A_\xi - \imath_\xi \alpha \ \in \Omega^{0,top-1}_{loc}(\FF\times M) $$
+  is called \textbf{on shell}, i.e.
+  $$d j = 0 \mod(EL)$$
+  Here, "on shell" means "on those configurations $\phi$ s.t. $EL_\phi = 0$ that satisfy the Euler-Lagrange-equations".
+\begin{proof}
+  To prove this, we can simply calculate:
+  \begin{align*}
+    d_j &= d(A_\xi - \imath_\xi \alpha) = \lie{\xi} L - d \imath_\xi \alpha = \lie{\xi} L + \imath_\xi d \alpha\\
+    &= \imath_\xi (\delta L + d \alpha) = \imath_\xi EL = 0 \mod(EL)
+  \end{align*}
+\end{proof}
+\end{theo}
+
+\emph{Some terminology:} $j$ is usually called a \textbf{Noether current}, thus \ref{theo:Noether_first} is a conservation statement. One can introduce \emph{Noether Charges} by integration of $j$ over codimension $1$ submanifolds (hypersurfaces).\\
+
+If we allow dependency of currents on a vector bundle $W\lra M$ together with a linear map
+\begin{align*}
+  \Gamma(M,W) &\lra \VF_{ev}(\FF\times M) \times \Omega^{0,top-1}_{loc}(\FF\times M)\\
+  w &\lmap (\xi_w, A_{\xi_w})
+\end{align*}
+such that
+$$\lie{\xi_w}L = dA_{\xi_w} \quad \Rightarrow j_w = A_{\xi_w} - \imath_{\xi_w} \alpha$$
+
+We move on to some examples of classical Lagrangian field theories:
+
+\begin{example}[\textbf{Classical Mechanics}]
+  Let $F= \RR \times M \lra \RR$ such that $\FF = \Gamma(\RR, F)$ and take
+  $$L = \left(\frac{m}{2} \dot q_i \dot q^i - V(q) \right)\frac{Vol_\RR}{dt}$$
+  as a Lagrangian density. Note that $L$ is defined on $J^1(M \times \RR) \simeq TM \times \RR$. We find the variation of $L$ to be
+  \begin{align*}
+    \delta L &= \dd{}{t} \left( \frac{m}{2} \delta q \cdot \dot q \right) - \delta q \left( \frac{m}{2} \ddot q + \nabla V \right)\\
+    &= d \left( \frac{m}{2} \delta q \cdot \dot q \right) - \left( \frac{m}{2} \ddot q + \nabla V \right) \delta q \wedge dt
+  \end{align*}
+  Thus we have $\alpha = m \dot q^i \delta q_i$ and $E_q = m \ddot q + \nabla V$. Now if we consider a time translation $t \lmap t + \epsilon$ we find the induced evolutionary vector field $\xi = - \dot q^i \dell{}{q^i} - \ddot q^i \dell{}{q^i} ...$\\
+  \textbf{Exercise:} Show that $j_\xi$ is an energy, i.e. $j = \frac{m}{2} \dot q \cdot \dot q + V(q)$.
+\end{example}
+
+\newpage
+\subsection{Scalar Field Theory and Yang-Mills-Theory}
+
+Consider a smooth, compact manifold $M$ equipped with a (pseudo-)Riemannian metric $g$. This metric defines a volume form on $M$ given by $\vol_g := \sqrt{|\det(g)|} dx^1 \wedge ... \wedge dx^n$.
+
+\begin{definition}[Hodge Duality]
+  The \textbf{Hodge-Duality map} (Hodge-$*$) is the $\Ci(M)$-linear map
+  $$ * \colon \Omega^k(M) \lra \Omega^{n-k}(M) $$
+  uniquely determined by the equation
+  $$ \alpha \wedge * \beta = \langle \alpha, \beta \rangle_g \vol_g $$
+\end{definition}
+
+The Hodge star acts on a local basis as
+$$ *(dx^1\wedge ... \wedge dx^n) = \frac{\sqrt{|\det(g)|}}{(n-k)!} g^{i_1 j_1} ... g^{i_k j_k} \epsilon_{j_1 ... j_k} dx^{j_k+1} ... dx^{j_n} $$
+Using the Hodge star we can define the
+
+\begin{definition}[Codifferential]
+  The \textbf{Codifferential} is the operator
+  $$ \delta_g := \Omega^k(M) \lra \Omega^{k-1}(M) $$
+  defined as
+  $$ \delta_g := (-1)^{n(k-1)+1} \sgn(g) * d * $$
+  Using the codifferential, one can define the \textbf{Laplace-deRham operator}
+  $$ \Delta_g := (d+\delta_g)^2 = d \delta_g + \delta_g d $$
+\end{definition}
+
+Using the above definition, one can directly show some interesting properties of the codifferential:
+
+\begin{lem}
+  The following properties hold true:
+  \begin{itemize}
+    \item $**\alpha = (-1)^{k(n-k)} \sgn(g)\alpha \quad \forall \alpha \in \Omega^k(M)$
+    \item $*^{-1}\colon \eta \lmap (-1)^{k(n-k)} \sgn(g) *\eta$
+    \item $(\delta_g)^2 = 0$
+  \end{itemize}
+\end{lem}
+
+
+\begin{definition}[Scalar Field Theory]
+  Let $(M,g)$ as above and $\FF= \Ci(M)$ seen as the sections of a trivial $\RR$-bundle. Then \textbf{Scalar field theory} on $\FF$ is defined with the Lagrangian
+  $$ L = \frac{1}{2} d \phi \wedge * d\phi \equiv  g^{\mu\nu} \partial_\mu \phi \partial_\nu \phi \sqrt{|\det(g)|} d^n x $$
+\end{definition}
+
+\begin{ex}
+  Show that $ \delta L = [\Delta_g \phi] \delta \phi \wedge \vol_g + d(\delta\phi \wedge * d\phi)$.
+\end{ex}
+
+The equations of motion for scalar field theory are
+$$ \Delta_g \phi = 0 $$
+
+\begin{rem}
+  One can add "potential terms" to the Lagrangian. A common example would be $V(\phi) = \frac{m^2}{2} \phi^2 + \frac{\beta}{4} \phi^4$. Note furter that our theory \emph{requires} a metric $g$ on $M$ and is thus a "Non-topological field theory".
+\end{rem}
+
+\begin{definition}[Pure, d-dimensional Yang-Mills-Theory]
+  Let $(M,g)$ be as above and $P \lra M$ a principal $G$-bundle where $G$ is a compact Lie group $(U(n))$. Denote by $A$ a connection $1$-form and let $F_A$ denote its curvature. In a local chart we can write it as
+  $$ F_A = dA + \frac{1}{2}[A,A] $$
+  Assume for simplicity that $P \lra M$ is a trivial bundle and $A \in \Omega^1(P,y)$ descends to a form on $M$. Then a \textbf{Pure Yang-Mills-Theory} is the Lagrangian field theory given by $\FF = \mathcal{A}$ (space of principal connections on the principal bundle) and the Lagrangian (density)
+  $$ L_{YM} = \frac{1}{2} \Tr[F_A \wedge * F_A] $$
+\end{definition}
+
+\begin{ex}
+  As an exercise, you can show that the variation of $L_{YM}$ is given by
+  $$ \delta L_{YM} = \Tr[d_A * F_A \wedge \delta A + d(\delta A * F_A)] $$
+  Remember that $d_A \phi = d\phi + A \phi$ for $\phi \in \Ci(M, R)$ and $R$ a representation of $y$. For any $\beta \in \Omega^1(M,y)$ one has $d_A \beta = d\beta + [A, \beta]$ where the latter term denotes the adjoint action/representation.
+\end{ex}
+
+\begin{definition}[Yang-Mills-Theory with scalar "matter"]
+  Working with the same setting as usual Yang-Mills-Theory, one takes the Lagrangian (density)
+  $$ L^{scalar}_{YM} = \Tr[F_A \wedge * F_A] + \langle d_A \phi, *d_A \phi \rangle_R $$
+  for $\phi \in \Ci(M, R)$ where $R$ is a representation that comes with an inner product $\langle \cdot , \cdot \rangle_R$. One can then add
+  $$ + \text{mass terms} \ \frac{m^2}{2} \langle \phi, \phi \rangle_R + \beta \phi^4$$
+  to form the "Higgs-mechanism" Lagrangian that appears in the \emph{Standard Modell of Particle Physics}. Here, $\phi$ plays the role of the "Higgs" field.
+\end{definition}
+
+Due to its convenience in upcoming applications in Yang-Mills-Theory, we reformulate some parts of our setting. This induces the \emph{First order formulation of YM-theory}. First note that
+$$ L_{YM} = \frac{1}{2} \Tr[F_A \wedge * F_A] $$
+The trick is to introduce a field $B := *F_A$ allowing for the following desription:
+\begin{align*}
+  \FF^{1st} &:= \mathcal{A}_P \times \Omega^{n-2}(M,y) \\
+  L^{1st}_{YM} &:= \Tr[B \wedge F_A - \frac{1}{2} B \wedge *B]
+\end{align*}
+This results in the following variation
+$$ \delta L^{1st}_{YM} = (F_A - *B) \delta B + d_A B \delta A + d(B \wedge \delta A) $$
+Further note that $F_A = *B$ together with $d_A B = 0$ is equivalent to $d_A * F_A = 0$. First and second order formulations are \textbf{classically equivalent}. This concludes our introduction to classical field theory.
 
 
 \newpage
