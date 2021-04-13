@@ -60,11 +60,10 @@ To illuminate this rather vague definition, we discuss a "toy example":
   Now setting $q = q_N, q^\prime = q_0$ and $q_j$ the $N-1$ intermediate variables, we arrive at the following form:
   \begin{align*}
     U(q, q^\prime, t^{\prime\prime}-t^\prime) &= \int_{-\infty}^\infty ... \int_{-\infty}^\infty \frac{dp_1 dq_1}{2\pi} ... \frac{dp_{N-1} dq_{N-1}}{2\pi} \frac{dp_N}{2\pi}\\
-    &\times e^{ip_{N}(q_{N}-q_{N-1}) + ... + ip_1(q_1-q_0)} \cdot e^{ip_{N}(q_{N}-q_{N-1}) + ... + ip_1(q_1-q_0)}
-    %TODO finish formulas
+    &\times e^{ip_{N}(q_{N}-q_{N-1}) + ... + ip_1(q_1-q_0)} \cdot e^{-ih\left(p_N, \frac{q_N + q_{N+1}}{2}\right) ... -ih\left( p_1, \frac{q_1 + q_0}{2} \right)}
   \end{align*}
 
-  Thus we take $N\lra \infty$ such that $q_j - q_{j-1}$ being proportional to $\frac{1}{N}$ goes against $0$. While we do not discuss convergence and well-definedness at this point, the reader is invited to start looking critically at these notions from now on! Now formally this gives us the following form of $U$ which indeed has many problems with convergence of integrals
+  Thus we take $N\lra \infty$ such that $q_j - q_{j-1}$ being proportional to $\frac{1}{N}$ goes against $0$. While we do not discuss convergence and well-definedness at this point, the reader is invited to start looking critically at these notions from now on! Formally this gives us the following form of $U$ which indeed has many problems with convergence of integrals
   \begin{align*}
     U(q,q^\prime, t^{\prime\prime}-t^\prime) = \int ... \int_{t^\prime}^{t^{\prime\prime}} \prod_i \frac{dp(t) dq(t)}{2\pi} \exp\Big[dt i ( p(t)\dot q(t) - h(p(t),q(t)))\Big]
   \end{align*}
@@ -73,11 +72,20 @@ To illuminate this rather vague definition, we discuss a "toy example":
   Note that this is only a one-dimensional "toy model" which already boasts some pretty severe convergence problems. Since we ultimately aim to define an infinite-dimensional generalization, the rest of the course will deal with the "taming" of these problems.
 \end{example}
 
-In the following we give a short introduction to \textbf{Feynman Path Integrals}.
-%TODO picture(?)
-Feynman's approach to Quantum Field Theory was the idea of a "sum over all possible histories" of a particle. In lecture $12$
-%TODO reference!
-we saw some ideas for scalar field theories where $\psi \in\Ci(M)$ was a scalar field. The physical phenomenon corresponding to the "sum over histories" is described by a superposition of all possible scalar theories, weighted by $e^{iS(\psi) / \hbar}$ for $S(\psi)$ the action of $\psi$.\\
+In the following we give a short introduction to \textbf{Feynman Path Integrals}, visually respresented in the following picture:
+\begin{center}
+\begin{tikzpicture}[]
+\draw[thick, black,rounded corners=15mm] (-2.,-2.) -- (-.75,.25) -- (2,2);
+
+\foreach \j in {1,...,15} {
+  \draw[gray,densely dotted, line width = .2mm] plot[smooth] coordinates {(-2.,-2.)(-.75+2*rand,.25+2*rand)(2,2)};
+}
+
+\fill [black] (2.,2.) circle (0.1) node[above]{$t^{\prime\prime}$};
+\fill [black] (-2.,-2.) circle (0.1) node[below]{$t^\prime$};
+\end{tikzpicture}
+\end{center}
+Feynman's approach to Quantum Field Theory was the idea of a "sum over all possible histories" of a particle. In \emph{chapter 2} \ref{subsec:Classical_field_theory} we already mentioned scalar field theories where $\psi \in\Ci(M)$ is a scalar field. The physical phenomenon corresponding to the "sum over histories" is described by a superposition of all possible scalar theories, weighted by $e^{iS(\psi) / \hbar}$ for $S(\psi)$ the action of $\psi$.\\
 
 This in turn has an interpretation coming from statistical mechanics: Here, $\psi$ would represent the state of a statistical system, $S(\psi)$ would be the systems energy. Given a temperature $T$, the system could be in any state $e^{-S(\psi)/ T}$. Thus we obtain the following correspondence:
 \begin{center}
