@@ -111,6 +111,130 @@ The main problem in this situation is that $\Ci(M)$ is an infinite-dimensional v
 \end{rem}
 
 
+\subsection{Renormalization group equation}
+\label{subsec:renorm_group_eq}
+
+In this section, we try to "tame" the previously exposed integrals over infinite-dimensional vector spaces. We were stuck with expressions of the form $\langle O_1, ..., O_n \rangle$ which indeed could not be calculated with the tools we previously used. One approach to expressions of this form are \emph{"Wilson low-energy theories"} which will make up the first part of this subchapter.\\
+
+The main idea of \emph{"Wilson low-energy theories"} is that observables can only measure phenomena with an energy below a fixed constant energy $\Lambda$. Thus let us fix a Riemannian manifold $M$, $I \subset [0,\infty)$ and denote by $\Ci(M)_I \subset \Ci(M)$ the set of functions $f$ that are sums of eigenfunctions of the \emph{Laplacian} \ref{def:codifferential} with eigenvalues in $I$.
+
+\begin{lem}
+  If $I$ is bounded, $\Ci(M)_I$ is a finite-dimensional vector space.
+\begin{proof}
+  The proof is left as an exercise to the reader.
+\end{proof}
+\end{lem}
+
+Now let $\Lambda \in I$ and define $J = [0,\Lambda)$. We thus define
+$$ \Ci(M)_J := \Ci(M)_{\leq \Lambda} \subseteq \Ci(M)_I $$
+and call it the \textbf{space of fields with energy at most $\Lambda$}. Observables in this framework, i.e. restricted to such fields, are functionals
+$$ O \colon \Ci(M)_{\leq \Lambda} \lra \RR\llbracket\hbar\rrbracket $$
+where $\RR\llbracket\hbar\rrbracket$ denotes formal power series in $\hbar$. We can extend each such operator $O$ to $\Ci(M)$ by composing it with the evident projection to $\Ci(M)_{\leq \Lambda}$. We define $Obs_{\leq \Lambda}$ to be the thus arising observables.\\
+
+Now we investigate $\langle O_1, ..., O_n \rangle$ where $O_i \in Obs_{\leq \Lambda}$. We define quantities of this form as
+$$ \langle O_1, ..., O_n \rangle := \int_{\phi \in \Ci(M)_{\leq \Lambda}} e^{S_{eff}[\Lambda](\phi) / \hbar} \ O_1 ... O_n \ D\phi$$
+Here, $D\phi$ is the Lebesgue measure on $\Ci(M)_{\leq \Lambda}$, $S_{eff}[\Lambda]$ is a function on $\Ci(M)_{\leq \Lambda}$ and thus a formal power series in $\hbar$. We call such an action a \textbf{low energy effective action}.
+
+\begin{rem}
+  The quadratic part of $S_{eff}[\Lambda]$ is negative-definite.
+\end{rem}
+
+\begin{definition}(Scalar Quantum Field Theory)
+\label{def:scalar_qft}
+  A \textbf{scalar (perturbative) quantum field theory} is a collection of effective actions
+  $$ S_{eff}[\Lambda]\colon \Ci(M)_{\leq \Lambda} \lra \RR\llbracket\hbar\rrbracket $$
+  for all $\Lambda \in [0,\infty)$ such that
+  \begin{enumerate}
+    \item $S_{eff}[\Lambda]$ is a formal power series in both the field $\phi \in \Ci(M)_{\leq \Lambda}$ and the variable $\hbar$.
+
+    \item Modulo $\hbar$, $S_{eff}[\Lambda]$ must be of the form
+    $$ S_{eff}[\Lambda] = - \frac{1}{2} \int \phi (D + m^2) \phi + \mathcal{O}(\phi^4) $$
+    where $D$ is the positive-definite Laplacian.
+
+    \item If $\Lambda^\prime \leq \Lambda$, $S_{eff}[\Lambda^\prime]$ is determined by $S_{eff}[\Lambda]$ by the renormalisation group equation.
+
+    \item The effective actions $S_{eff}[\Lambda]$, when translative in length scale terms, satisfy the asymptotic locality axiom.
+  \end{enumerate}
+  \emph{Note that the notions mentioned in points 3. and 4. have not been discussed yet. To fill in these gaps will be the function of this subchapter.}
+\end{definition}
+
+We will subsequently fix the notions mentioned in the previous definition. From point $2.$ we know that $S_{eff}[\Lambda]$ must be of the following form:
+$$S_{eff}[\Lambda](\phi) = - \frac{1}{2} \langle \phi, (D+m^2)\phi \rangle + I[\Lambda](\phi) $$
+Here, $\langle \cdot , \cdot \rangle$ denotes the $L^2$-inner product on $\Ci(M)$ defined via
+$$ \langle \phi , \psi \rangle := \int_M \phi(x) \psi(x) dx$$
+$D$ is the Laplacian and $m$ is a positive real parameter. Further, $I[\Lambda]$, the \textbf{effective interaction}, is understood as a formal power series in $\hbar$:
+$$ I[\Lambda](\phi) = I_0[\Lambda](\phi) + \hbar I_1[\Lambda](\phi) + ... $$
+Here, $I_0[\Lambda](\phi)$ is at least cubic in $\phi$ and all the $I_i$ are formal power series in $\phi$.\\
+
+Now our goal is to "translate" a system $S_{eff}[\Lambda], Obs_{\leq \Lambda}, \Ci(M)_{\leq \Lambda}$ into one with threshold $\Lambda^\prime \leq \Lambda$. There exists an evident inclusion $Obs_{\leq \Lambda^\prime} \hookrightarrow Obs_{\leq \Lambda}$. The correlation functions should not change if we compute them in $Obs_{\leq \Lambda^\prime}$ rather than in $Obs_{\leq \Lambda}$:
+
+\begin{align}
+\label{eq:connection_eq}
+  \int_{\phi \in \Ci(M)_{\leq \Lambda^\prime}} e^{S_{eff}[\Lambda^\prime] (\phi) / \hbar} \ O_1(\phi) ... O_n(\phi) \ D\phi^{\Lambda^\prime} = \int_{\phi \in \Ci(M)_{\leq \Lambda}} e^{S_{eff}[\Lambda] (\phi) / \hbar} \ O_1(\phi) ... O_n(\phi) \ D\phi^{\Lambda}
+\end{align}
+
+Further note that we can split
+$$ \Ci(M)_{\leq \Lambda} = \Ci(M)_{\leq \Lambda^\prime} \oplus \Ci(M)_{(\Lambda^\prime,\Lambda]} $$
+Using this splitting to separate \eqref{eq:connection_eq} allows us to formulate:
+
+\begin{align*}
+  RHS &= \int_{\phi_L \in \Ci(M)_{\leq \Lambda^\prime}}
+  \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}}
+  e^{S_{eff}[\Lambda^\prime] (\phi_L + \phi_H) / \hbar} \ O_1(\phi_L) ... O_n(\phi_L) \ D\phi^{\Lambda^\prime} \ D\phi^{\Lambda \Lambda^\prime} \\
+  &= \int_{\phi_L \in \Ci(M)_{\leq \Lambda^\prime}}
+  \left [\int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}}
+  e^{S_{eff}[\Lambda^\prime] (\phi_L + \phi_H) / \hbar} \ D\phi^{\Lambda \Lambda^\prime} \right] \ O_1(\phi_L) ... O_n(\phi_L) \ D\phi^{\Lambda^\prime} \\
+\end{align*}
+This in turn allows us to identify
+$$ e^{S_{eff}[\Lambda^\prime](\phi_L)/\hbar} = \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}}
+e^{S_{eff}[\Lambda^\prime] (\phi_L + \phi_H) / \hbar} \ D\phi^{\Lambda \Lambda^\prime} $$
+which ultimately leads to the \textbf{Renormalisation group equation (RGE)}
+\begin{align}
+\label{eq:RGE}
+  S_{eff}[\Lambda^\prime](\phi_L) = \hbar \log \left[ \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}}
+  e^{S_{eff}[\Lambda^\prime] (\phi_L + \phi_H) / \hbar} \ D\phi^{\Lambda \Lambda^\prime} \right]
+\end{align}
+
+Having a rather well-defined system of such effective actions we can ask ourselves, what their relation to the usual action $S$ is. This correspond to a "limit" of the form $S_{eff}[\infty]$ that is $\Lambda \lra \infty$. Note that the space of fields we used in the integral of \eqref{eq:RGE} is ill-defined for $\Lambda = \infty$, thus this discussion is not trivially dispatched.\\
+
+One approach is to describe $RGE$ \eqref{eq:RGE} in terms of effective interactions. Note that $\Ci(M)_{\Lambda^\prime}$ and $\Ci(M)_{\Lambda}$ are $D$-orthogonal, thus
+\begin{align*}
+  \langle \phi_L + \phi_H , D(\phi_L + \phi_H) \rangle &= \langle \phi_L , D\phi_L \rangle + \langle \phi_H , D\phi_H \rangle \\
+  \langle \phi_L + \phi_H , m^2(\phi_L + \phi_H) \rangle &= \langle \phi_L, m^2 \phi_L \rangle + \langle \phi_H, m^2 \phi_H \rangle
+\end{align*}
+
+Now if we define
+$$ F(\phi) = - \frac{1}{2} \pair{\phi}{(D+m^2)\phi}, \quad \quad s.t. \quad \quad F(\phi_L + \phi_H) = F(\phi_L) + F(\phi_H) $$
+we can rewrite our effective action as
+$$ S_{eff}[\Lambda](\phi) = F(\phi) + I[\Lambda](\phi), \quad \quad s.t. \quad \quad S_{eff}[\Lambda](\phi_L + \phi_H) = F(\phi_L) + F(\phi_H) + I[\Lambda](\phi_L + \phi_H)$$
+Combining this with \eqref{eq:RGE} brings us to
+\begin{align*}
+  F(\phi_L) + I[\Lambda^\prime](\phi_L +) &= \hbar \log \left[  \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}} \exp\left(\frac{F(\phi_H)}{\hbar} + \frac{F(\phi_L)}{\hbar} + \frac{I[\Lambda](\phi_H + \phi_L)}{\hbar} \right) \ D\phi^{\Lambda^\prime \Lambda} \right] \\
+  &= \hbar \log \left[ e^{\frac{F(\phi_L)}{\hbar}} \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}} \exp\left(\frac{F(\phi_H)}{\hbar} + \frac{I[\Lambda](\phi_H + \phi_L)}{\hbar} \right) \ D\phi^{\Lambda^\prime \Lambda} \right] \\
+  &= F(\phi_L) + \hbar \log \left[ \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}} \exp\left(\frac{F(\phi_H)}{\hbar} + \frac{I[\Lambda](\phi_H + \phi_L)}{\hbar} \right) \ D\phi^{\Lambda^\prime \Lambda} \right]
+\end{align*}
+
+Thus we arrive at the \textbf{Interaction form of the RGE}:
+\begin{align}
+\label{eq:RGE_interaction}
+  I[\Lambda^\prime](\phi_L) = \hbar \log \left[  \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}} \exp\left(\frac{F(\phi_H)}{\hbar} + \frac{I[\Lambda](\phi_H + \phi_L)}{\hbar} \right) \ D\phi^{\Lambda^\prime \Lambda} \right]
+\end{align}
+This form has two major advantages over \eqref{eq:RGE}:
+\begin{enumerate}
+  \item We are not integrating over $\phi \in \Ci(M)_{\leq \Lambda^\prime}$, the equation can be extended to any $\phi_L \in \Ci(M)$.
+
+  \item It is invertible by choosing $\Lambda^\prime > \Lambda$.
+\end{enumerate}
+
+While we have indeed explored the meaning and framework of \emph{point 3.} of \ref{def:scalar_qft}, we still have to settle the notion of \textbf{locality}. On a physical level, locality means that interactions between fundamental particles occur at a point of the manifold.
+
+\begin{definition}[Local action functional]
+  A functional $S\colon \Ci(M) \lra \RR \llbracket \hbar \rrbracket$ is a \textbf{local action functional} if it can be written as a sum
+  $$ S(\phi) = \sum_k S_k (\phi), \quad \text{where} \quad S_k(\phi) = \int_M (D_1 \phi) ... (D_k \phi) \ \vol_M \ ( \llbracket \hbar \rrbracket)$$
+  for some differential operators $D_i$ on $M$. This allows us to write $S$ as
+  $$ S(\phi) = \int_M \mathcal{L}(\phi)(x) \ dx $$
+  where $\mathcal{L}(\phi)$ is a \textbf{Lagrangian} and depends only on the expansion of $\phi$ at $x$.
+\end{definition}
 
 
 
