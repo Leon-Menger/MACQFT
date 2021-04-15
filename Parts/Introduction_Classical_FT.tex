@@ -373,13 +373,13 @@ To this end, denote by $VF:=\ker(d\pi)$ the vertical tangent bundle. Recall that
 $$0 = d\pi(\dot\phi\big|_{t=0}) = \dd{}{t}(\pi(\phi_t))\big|_{t=0}$$
 Thus we can think of $\dot \phi_0 : M \lra VF$ as a section covering $\phi_0 = pr_F \circ \dot \phi_0$. We can express this in the following diagram:\\
 \begin{center}
-\begin{tikzcd}
+\begin{tikzcd}[sep = large]
   VF \arrow[r,"pr_\FF"] & F \arrow[dr,"\pi"] &  \\
   M \arrow[u,"\dot\phi_0"] \arrow[r,"\id"] & M \arrow[u,"\phi_0"] \arrow[r,"\id"] & M
 \end{tikzcd}
 \end{center}
 
-Now we can think of sections $\Gamma(M, VF)_\phi = \Gamma(M, \phi^*VF)$. An elemet of $\Gamma(M, VF)_\phi$ is a map that associated to every $x\in M$ a vector $v_{\phi(x)} \in V_{\phi(x)}F$. We can think of $v_\phi \in \Gamma(M, \phi^*VF)$.
+Now we can think of sections $\Gamma(M, VF)_\phi = \Gamma(M, \phi^*VF)$. An element of $\Gamma(M, VF)_\phi$ is a map that associates to every $x\in M$ a vector $v_{\phi(x)} \in V_{\phi(x)}F$. We can think of $v_\phi \in \Gamma(M, \phi^*VF)$.
 
 \begin{definition}
   We define the tangent bundles
@@ -394,7 +394,7 @@ Now let $E \lra M$ and $F\lra M$ be two fibre bundles with projections $\pi_E$ a
 $$ E\times F := \{ (e,f) \in E\times F \big| \pi_E(e)=\pi_F(f) \} $$
 such that the following diagram commutes:
 \begin{center}
-\begin{tikzcd}
+\begin{tikzcd}[sep = large]
   E \times_M F \arrow[d,"pr_E"'] \arrow[r, "pr_F"] & F \arrow[d,"\pi_F"] \\
   E \arrow[r, "\pi_E"] & M
 \end{tikzcd}
@@ -408,8 +408,8 @@ We denote by $T_\phi \FF$ the \textbf{vertical tangent space} and by $T_x M$ the
 
 Taking the $\infty$-prolongation $j^\infty$ and its tangent map we obtain the following commuting diagram:
 \begin{center}
-\begin{tikzcd}
-  T(\FF \times M) \arrow[d,"pr_\FF \times pr_M"'] \arrow[r, "Tj^\infty"] & T J^\infty F \arrow[d,"pr_{J^\infty F}"] \\
+\begin{tikzcd}[sep = huge]
+  T(\FF \times M) \arrow[d,"pr_\FF \times pr_M"'] \arrow[r, "T j^\infty"] & T J^\infty F \arrow[d,"pr_{J^\infty F}"] \\
   \FF \times M \arrow[r, "j^\infty"] & J^\infty F
 \end{tikzcd}
 \end{center}
@@ -441,7 +441,7 @@ Now using our results for $TJ^kF$ we obtain a splitting for $TJ^\infty F$:
 \begin{theo}
   There exists a splitting of $TJ^\infty F$ that takes the form of
   \begin{center}
-  \begin{tikzcd}[sep = large]
+  \begin{tikzcd}[sep = huge]
     (T\FF \times M) \times_{\FF\times M} (\FF \times TM) \arrow[r,"\cong"] \arrow[d,"j^\infty_{T\FF} \times (j^\infty_\FF \times \id)"'] & T(\FF \times M) \arrow[d, "Tj^\infty"]\\
     J^\infty(VF) \times_{J^\infty F}(J^\infty F \times_M TM) \arrow[r,"\cong"] & TJ^\infty F
   \end{tikzcd}
@@ -474,7 +474,7 @@ Now we can finally unambigously answer to the question \emph{"What is Locality?"
 
 \begin{definition}[Local differential forms]
   A differential form on $\FF_x M$ is called a \textbf{local differential form}, iff it is the pullback of a form on $J^\infty F$ by the $\infty$-jet prolongation $j^\infty\colon \FF_x M \lra J^\infty F$. We define the \textbf{bicomplex of local forms} as
-  $$ \left( \Omega^{\bullet, \bullet}_{loc} (\FF \times M) := (j^\infty )^* \Omega^{\bullet, \bullet} (J^\infty F), d, \delta \right) $$
+  $$ \left( \Omega^{\bullet, \bullet}_{loc} (\FF \times M) := ((j^\infty )^* \Omega^{\bullet, \bullet} (J^\infty F), d, \delta \right) $$
   such that
   $$ \delta((j^\infty)^* \alpha) := (j^\infty)^* d_V \alpha, \quad \quad d((j^\infty)^* \alpha) := (j^\infty)^* d_H \alpha $$
 \end{definition}
@@ -484,7 +484,7 @@ We can also extend this \emph{local} setting to vector fields:
 \begin{definition}[Local vector fields]
   A \textbf{local vector field} $\chi$ on $\FF \times M$ is a section of the tangent bundle $T(\FF\times M)$ covered by a section $\chi^\infty\colon J^\infty F \lra TJ^\infty F$ and supported on $j^\infty(\FF \times M)$. In other words, the following diagram commutes:
   \begin{center}
-  \begin{tikzcd}[sep = large]
+  \begin{tikzcd}[sep = huge]
     T(\FF\times M) \arrow[d,"pr"] \arrow[r, "Tj^\infty_F"] & T J^\infty F \arrow[d,"pr"']\\
     \FF \times M \arrow[u, bend left = 60, "\chi"] \arrow[r,"j^\infty_F"]& J^\infty M \arrow[u, bend right = 60, "\chi^\infty"']
   \end{tikzcd}
@@ -492,7 +492,7 @@ We can also extend this \emph{local} setting to vector fields:
 \end{definition}
 
 
-Practically speaking, a vector field is \textbf{local}, if for any $\phi$ there exists an integer $k$ sucht that the value of $\chi_\phi \in \Gamma(M, \phi^* VF)$ at $x\in M$ depends only on the $k$-th jet of $\phi$ at $x$. We denote the set of local vector fields by $\VF_{loc}(\FF \times M)$. A local vector field in $\VF(\FF)$ is called \textbf{evolutionary}.\\
+Practically speaking, a vector field is \textbf{local}, if for any $\phi$ there exists an integer $k$ such that the value of $\chi_\phi \in \Gamma(M, \phi^* VF)$ at $x\in M$ depends only on the $k$-th jet of $\phi$ at $x$. We denote the set of local vector fields by $\VF_{loc}(\FF \times M)$. A local vector field in $\VF(\FF)$ is called \textbf{evolutionary}.\\
 
 Notice that by definition, local functions $\Ci_{loc}(\FF \times M)$ are represented by a pair $(f, f^\infty)$ meaning that they factor through some infinite jet as:
 
@@ -506,7 +506,7 @@ Notice that by definition, local functions $\Ci_{loc}(\FF \times M)$ are represe
 We also port the idea of a derivation to our newly defined setting by defining them on $\Ci_{loc}(\FF \times M)$:
 
 \begin{definition}[Local derivations]
-  A derivation $D$ of $\Ci_{loc}(\FF \times M)$ is called a \textbf{local definition}, iff there exists a vector field $\chi^\infty \colon: J^\infty F \lra TJ^\infty F$ such that
+  A derivation $D$ of $\Ci_{loc}(\FF \times M)$ is called a \textbf{local derivation}, iff there exists a vector field $\chi^\infty \colon J^\infty F \lra TJ^\infty F$ such that
   $$ Df = (\chi^\infty f^\infty) \circ j^\infty $$
   for every $(f, f^\infty)$. We denote a local derivation by $(D, \chi^\infty)$.
 \end{definition}
@@ -514,7 +514,7 @@ We also port the idea of a derivation to our newly defined setting by defining t
 A proposition coming directly from usual differential geometry is the correspondence between local vector fields and local derivations:
 
 \begin{prop}
-  Local vector fields are in $1:1$ correspondence with local derivations of $\Ci_{loc}(\FF \times M)$. Moreover they form a Lie subalgebra of $\Der(C^\infty_{loc})$.
+  Local vector fields are in 1:1 correspondence with local derivations of $\Ci_{loc}(\FF \times M)$. Moreover they form a Lie subalgebra of $\Der(C^\infty_{loc})$.
 \begin{proof}
   The proof is left to the reader as it is fairly similar to the case in classical differential geometry.
 \end{proof}
@@ -544,7 +544,7 @@ $$ L = (j^\infty)^* L^\infty \quad \text{for} \quad L^\infty \in \Omega^{0, top}
 and thus
 $$ L^k \left(x^i, u^\alpha, u^\alpha_{i_1}, ..., u^\alpha_{i_1 ...i_n} \right) dx^1 ... dx^n$$
 If we evaluate $L$ at $\phi$, we obtain
-$$ L(\phi) = L\left(x^i, \phi^i, \dell{\phi^\alpha}{x^i}, ..., \dell{^k \phi^\alpha}{x^{i_1} ... \partial x^{i_n}}\right) $$
+$$ L(\phi) = L\left(x^i, \phi^\alpha, \dell{\phi^\alpha}{x^i}, ..., \dell{^k \phi^\alpha}{x^{i_1} ... \partial x^{i_n}}\right) $$
 
 \begin{definition}[Source forms]
   Let $\alpha \in \Omega^{1,top}_{loc}(\FF \times M)$. $\alpha$ is called a \textbf{source form}, iff it only depends on the $dx^i$ and $\delta u^\alpha$, not the $\delta u^\alpha_I$.
@@ -563,7 +563,9 @@ While this definition is more of a working version and does not really explain i
   \end{itemize}
 \end{theo}
 
-This is the statement that by means of "integration by parts" we can write $\delta L$ as $EL = E_\alpha \delta u^\alpha \wedge dx^1 \wedge ... \wedge dx^n$ with $E_\alpha\colon J^k F \lra \RR$ which defines the \textbf{Euler-Lagrange-equations} as
+This is the statement that by means of "integration by parts" we can write $\delta L$ as
+$$EL = E_\alpha \delta u^\alpha \wedge dx^1 \wedge ... \wedge dx^n$$
+with $E_\alpha\colon J^k F \lra \RR$ which defines the \textbf{Euler-Lagrange-equations} as
 $$ E_\alpha  \left(x^i, \phi^\beta, \dell{\phi^\beta}{x^i}, ..., \dell{^k \phi^\beta}{x^{i_1} ... \partial x^{i_n}}\right) $$
 
 To prove the above statement, we would need to reformulate integration by parts in "cohomological terms", thus in terms of operators on local forms, which does not fit into the scope of this course. Doing this, allows us to define the "Euler Operator" $\mathbb{E}$ such that $\mathbb{E}(L) \equiv EL$.\\
@@ -605,7 +607,7 @@ We use this definition to formulate the following proposition:
 \begin{lem}
   $v\in \VF(J^\infty F)$ is strictly vertical iff it is of the form $v = (D_I v^\alpha) \dell{}{u^\alpha_I}$ for some $v^\alpha \in \Ci(J^\infty F)$.
 \begin{proof}
-  The proof is left as an exercise to the reader. \emph{Hint:} Check on the generators $\{x^i, u^\alpha_I\}$ and $\{dx^i, d_V u^\alpha_I\}$.
+  The proof is left as an exercise to the reader. \emph{Hint:} The proof can, as done in the previous proof, be concluded by checking the statement on the generators $\{x^i, u^\alpha_I\}$ and $\{dx^i, d_V u^\alpha_I\}$.
 \end{proof}
 \end{lem}
 
@@ -629,7 +631,7 @@ Showing the power of the presented formalism, we can now prove \emph{Noether's f
 \begin{proof}
   To prove this, we can simply calculate:
   \begin{align*}
-    d_j &= d(A_\xi - \imath_\xi \alpha) = \lie{\xi} L - d \imath_\xi \alpha = \lie{\xi} L + \imath_\xi d \alpha\\
+    d j &= d(A_\xi - \imath_\xi \alpha) = \lie{\xi} L - d \imath_\xi \alpha = \lie{\xi} L + \imath_\xi d \alpha\\
     &= \imath_\xi (\delta L + d \alpha) = \imath_\xi EL = 0 \mod(EL)
   \end{align*}
 \end{proof}
@@ -639,7 +641,7 @@ Showing the power of the presented formalism, we can now prove \emph{Noether's f
 
 If we allow dependency of currents on a vector bundle $W\lra M$ together with a linear map
 \begin{align*}
-  \Gamma(M,W) &\lra \VF_{ev}(\FF\times M) \times \Omega^{0,top-1}_{loc}(\FF\times M)\\
+  \Gamma(M,W) &\lra \VF_{W}(\FF\times M) \times \Omega^{0,top-1}_{loc}(\FF\times M)\\
   w &\lmap (\xi_w, A_{\xi_w})
 \end{align*}
 such that
@@ -649,14 +651,14 @@ We move on to some examples of classical Lagrangian field theories:
 
 \begin{example}[\textbf{Classical Mechanics}]
   Let $F= \RR \times M \lra \RR$ such that $\FF = \Gamma(\RR, F)$ and take
-  $$L = \left(\frac{m}{2} \dot q_i \dot q^i - V(q) \right)\frac{Vol_\RR}{dt}$$
+  $$L = \left(\frac{m}{2} \ \dot q_i \dot q^i - V(q) \right)\frac{\vol_\RR}{dt}$$
   as a Lagrangian density. Note that $L$ is defined on $J^1(M \times \RR) \simeq TM \times \RR$. We find the variation of $L$ to be
   \begin{align*}
-    \delta L &= \dd{}{t} \left( \frac{m}{2} \delta q \cdot \dot q \right) - \delta q \left( \frac{m}{2} \ddot q + \nabla V \right)\\
-    &= d \left( \frac{m}{2} \delta q \cdot \dot q \right) - \left( \frac{m}{2} \ddot q + \nabla V \right) \delta q \wedge dt
+    \delta L &= \dd{}{t} \left( \frac{m}{2} \ \delta q \cdot \dot q \right) - \delta q \left( \frac{m}{2} \ \ddot q + \nabla V \right)\\
+    &= d \left( \frac{m}{2} \ \delta q \cdot \dot q \right) - \left( \frac{m}{2} \ \ddot q + \nabla V \right) \delta q \wedge dt
   \end{align*}
   Thus we have $\alpha = m \dot q^i \delta q_i$ and $E_q = m \ddot q + \nabla V$. Now if we consider a time translation $t \lmap t + \epsilon$ we find the induced evolutionary vector field $\xi = - \dot q^i \dell{}{q^i} - \ddot q^i \dell{}{q^i} ...$\\
-  \textbf{Exercise:} Show that $j_\xi$ is an energy, i.e. $j = \frac{m}{2} \dot q \cdot \dot q + V(q)$.
+  \textbf{Exercise:} Show that $j_\xi$ is an energy, i.e. $j = \frac{m}{2} \ \dot q \cdot \dot q + V(q)$.
 \end{example}
 
 \newpage
