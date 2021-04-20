@@ -242,6 +242,106 @@ While we have indeed explored the meaning and framework of \emph{point 3.} of \r
 \end{definition}
 
 
+%TODO first 30 minutes of lecture 15
+
+\begin{definition}
+  Let $H(\gamma)$ and $V(\gamma)$ be two finite sets (half edges or vertices) and let
+  \begin{align*}
+    \sigma &\colon H(\gamma) \lra H(\gamma) \quad \quad \text{an involution}\\
+    \pi &\colon H(\gamma) \lra V(\gamma)\\
+    g &\colon V(\gamma) \lra \ZZ_{\geq 0} \quad \quad \text{(the germ map)}
+  \end{align*}
+  then a \textbf{graph} is the topological space
+  $$ V(\gamma) \sqcup (H(\gamma) \times [0, 0.5]) / \sim $$
+  where $(h,0) \sim \pi(h)$ and $(h,0.5) \sim (\sigma(h), 0.5)$. A graph is \textbf{stable} if every vertex $v \in V(\gamma)$ is such that if
+  \begin{align*}
+    g(v) &= 0 \quad \text{then} \quad \# \pi^{-1}(v) \geq 3\\
+    g(v) &= 1 \quad \text{then} \quad \# \pi^{-1}(v) \geq 1
+  \end{align*}
+\end{definition}
+
+\begin{definition}
+  An \textbf{automorphism} $F$ of a graph $\gamma$ is a pair of maps
+  \begin{align*}
+    H(F) &\colon H(\gamma) \lra H(\gamma)\\
+    V(F) &\colon V(\gamma) \lra V(\gamma)
+  \end{align*}
+  such that $H(F)$ commutes with $\sigma$ and such that the following diagram commutes:
+  \begin{center}
+  \begin{tikzcd}[sep=large]
+    H(\gamma) \arrow[d,"\pi"'] \arrow[r,"H(F)"] & H(\gamma) \arrow[d,"\pi"] \\
+    V(\gamma) \arrow[r,"V(F)"'] & V(\gamma)
+  \end{tikzcd}
+  \end{center}
+  The automorphisms form a finite group, the proof is left as an exercise.
+\end{definition}
+
+We denote by $T(\gamma)$ the set of fixed points of the involution $\sigma$ and by $E(\gamma)$ the set of two element orbits of $\sigma$. As such, $T(\gamma)$ stands for the tails or external edges and $E(\gamma)$ for the internal edges of the graph.\\
+
+Now we turn towards the data associated to \emph{Feynmann graphs} using the previously presented tools. Let us fix a finited graded vector space $U$ over a field $\mathds{k}$. Let further $\OO(U)$ be the (completed) symmetric algebra on the dual vector space $U^*$. This algebra coincides with $\OO(U)$ being the ring of formal power series in variables in $U$. Given a basis $\BB$ of $U$ there exists a canonical isomorphism
+$$ \OO(U) \longleftrightarrow \mathds{k}[\BB] $$
+
+\begin{definition}
+  Let $f \in \OO(U)$ be homogenous of degree $k$. Then we can define an $S_k$-invariant linear map
+  \begin{align*}
+    D^kf \colon U^{\otimes k} &\lra \mathds{k}\\
+    u_1 \otimes ... \otimes u_k &\lmap \left( \dell{}{u_1} ... \dell{}{u_k} f \right) (0)
+  \end{align*}
+  Note that $D^k f \in \Hom(U^{\otimes k}, \mathds{k})$ and it maps
+  $$ \OO(U) \lra \OO(U)\llbracket \hbar \rrbracket $$
+  thus to elements of the form $I = \sum_{i,k} \hbar^i I_{i,k}$ where $I_{i,k}$ is homogenous of degree $k$ in $U$.
+\end{definition}
+
+Our next goal is to assign some algebraic data to our graphs:
+
+\begin{definition}
+  Let us denote by $\OO^+(U) \llbracket \hbar \rrbracket \subset \OO(U) \llbracket \hbar \rrbracket$ the subset of functionals at least cubic modulo $\hbar$. Now fix an ordering of the set of tails of $\gamma$
+  $$ T(\gamma) \overset{\psi}{\longleftrightarrow} \{1, ..., n\}$$
+  Also fix an element $P \in \Sym^2(U) \subset U^{\otimes 2}$ and some $a_1, ..., a_n \in U$. Then we have
+  \begin{align*}
+    2 E(\gamma) + T(\gamma) &= H(\gamma) \\
+    U^{\otimes 2 E(\gamma)} \otimes U^{\otimes T(\gamma)} &\cong U^{\otimes H(\gamma)} \\
+    P \otimes ... \otimes P \otimes a_1 \otimes ... \otimes a_n &=: \mathds{P}
+  \end{align*}
+  Now fix $I \in \OO(U) \llbracket \hbar \rrbracket$ and pick a vertex $v$ with arbitrary valency $k$ and genus $i$. We associate to it
+  $$ D^k I_{i,k} \in \Hom(U^{\otimes k}, \mathds{k}) $$
+  Taking the tensor product of these elements yields
+  \begin{align*}
+    \mathds{I} &= \bigotimes_v D^k I_{i,k}\\
+    \mathds{I} &\in \Hom(U^{\otimes H(\sigma)}, \mathds{k})
+  \end{align*}
+  Now define
+  \begin{align*}
+    w_{\gamma, \psi} (P,I) (a_1, ..., a_n) \quad &:= \quad \mathds{I}(\mathds{P}) \in \mathds{k} \\
+    w_\gamma (P,I) (a) \quad &:= \quad w_{r,\psi} (P,I)(a, ..., a)
+  \end{align*}
+  $$  $$
+  which assigns a number to our graph.
+\end{definition}
+
+\begin{ex}
+Show the following statements:
+\begin{enumerate}
+  \item $w_\gamma(P,I) \in \OO(U)$
+
+  \item $w_\gamma(P,I)$ is homogenous of degree $n$ and has the property
+  $$ \dell{}{a_1} ... \dell{}{a_n} w_\gamma(P,I) = \sum_\psi w_{\gamma, \psi} (P,I) (a_1, ..., a_n) $$
+
+  \item If $v_{i,k}$ is the graph with one vertex of genus $i$ and valency $k$ and no internal edges, then $w_{v_{i,k}} = k! \ I_{i,k}$
+
+  \item $$ W(P,I) = \sum_\gamma \frac{1}{|\Aut(\gamma)|} \hbar^{g(\gamma)} w_\gamma (P,I) $$
+\end{enumerate}
+\end{ex}
+
+%TODO examples
+
+\begin{lem}
+  Setting $P$ to $0$ we obtain $W(0,I) = I$.
+\begin{proof}
+  As a \emph{hint}, note that only graphs with no edges can contribute.
+\end{proof}
+\end{lem}
+
 
 
 \newpage
