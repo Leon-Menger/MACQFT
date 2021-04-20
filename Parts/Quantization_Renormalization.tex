@@ -14,9 +14,9 @@ where $\theta$ denotes the step function, $f_A$ an observable and $d\mu_\omega$ 
 $$ \dd{f}{t} = \{H, f\} $$
 for some functions $H$ which turns out to be the \emph{Hamiltonian} of the system.\\
 
-In Quantum mechanics, observables are linear operators on some complex \emph{Hilbert spae} $\HH$. States are positive trace class operators with unit trace defined as $\Tr A = \sum_n \langle A e_n, e_n \rangle$. The propability distribution for a state is defined by
+In Quantum mechanics, observables are linear operators on some complex \emph{Hilbert spae} $\HH$. States are positive trace-class operators with unit trace defined as $\Tr A = \sum_n \langle A e_n, e_n \rangle$. The propability distribution for a state is defined by
 $$ \omega_A (\lambda) := \Tr(M P_A(\lambda)) $$
-where $M$ is a trace class (state) and $P_A(\lambda)$ is a projection (observable). Note that we are looking at the field from a mathematical perspective, thus the reader might encounter unfamiliar technical details in this and upcoming discussions.\\
+where $M$ is a trace-class (state) and $P_A(\lambda)$ is a projection (observable). Note that we are looking at the field from a mathematical perspective, thus the reader might encounter unfamiliar technical details in this and upcoming discussions.\\
 The commutator of two states $A,B$ is defined as
 $$ \{A,B\} = \frac{i}{\hbar} (AB-BA) $$
 such that the time evolution, given the Hamiltonian operator $H$, is defined as
@@ -46,7 +46,7 @@ To illuminate this rather vague definition, we discuss a "toy example":
   $$ A_f A_g (q, q^\prime) = \int_{-\infty}^\infty A_f(q, q^{\prime \prime}) A_f(q^{\prime \prime},q^\prime) dq^{\prime \prime} $$
   and then define
   $$ f *_\hbar g = fg + \frac{i\hbar}{2} \{f,g\} + \mathcal{O}(\hbar^2) \quad \Rightarrow \quad \frac{i}{\hbar} (f *_\hbar g - g *_\hbar f) = \{f,g\} + \mathcal{O}(\hbar^2)$$
-  We now define the dynamics via the time derivative using the Hamiltonian operator
+  We now encode the dynamics via the time derivative using the Hamiltonian operator
   $$ \dd{A(t)}{t} = \{H, A(t)\}_\hbar , \quad \quad A(0) = A $$
   where we define $A(t)$ as
   $$ A(t) = U^{-1}(t) A U(t), \quad \quad U(t) = e^{-i H t / \hbar} $$
@@ -106,12 +106,12 @@ The main problem in this situation is that $\Ci(M)$ is an infinite-dimensional v
 \begin{itemize}
   \item[(1)] One approach to resolve this is \emph{perturbative QFT} where we work in the limit $\hbar \lra 0$ such that we can take formal power series in $\hbar$. This provides us with a formal procedure to go from a quantum description to a classical one. Note that this endows $\hbar$ with the role of a formal parameter.
 
-  \item[(2)] In addition, we can drop the Lorentzian signature and stick to Riemannian ones since the mathematical background is better understood.
+  \item[(2)] In addition to a perturbative treatment, we can drop the Lorentzian signature and stick to Riemannian ones since the mathematical background is better understood.
 \end{itemize}
 \end{rem}
 
 
-\subsection{The Effctive Action}
+\subsection{The Effective Action}
 \label{subsec:effective_action}
 
 In this section, we try to "tame" the previously exposed integrals over infinite-dimensional vector spaces. We were stuck with expressions of the form $\langle O_1, ..., O_n \rangle$ which indeed could not be calculated with the tools we previously used. One approach to expressions of this form are \emph{"Wilson low-energy theories"} which will make up the first part of this subchapter.\\
