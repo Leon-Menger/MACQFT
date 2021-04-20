@@ -9,14 +9,14 @@ This section will treat \emph{scalar perturbative quantum field theory}. We will
 The main idea of Quantum mechanics is to define a deterministic evolution of a system as a superposition of possible evolutions where one weights them by how likely they are. Our ultimate goal is to describe Quantum mechanics and Classical mechanics in terms of the sets of objects, states and observables. The main idea is to take a state $\omega$ and an observable $A$ such that the state associates a propability distribution to the observable on the real line in the form of $\omega_A(\lambda)$. To illuminate the concepts and systems we aim to unify, we present a short overview of both:\\
 
 In Classical mechanics, states are nothing but normalized measures on the \emph{phase space} (mind: a symplectic manifold). Meanwhile observables are functions on the phase space given by $(p,q)$ such that $\omega = dp \wedge dq$. The propability distribution is then given by
-$$ \omega_A (\lambda) := \int_M \theta(\lambda - f_A (p,q)) d \mu \omega$$
-where $\theta$ denotes the step function, $f_A$ an observable and $d\mu\omega$ a measure corresponding to the state. The dynamics on the other hand are encoded in the \emph{Poisson-brackets} defined using the symplectic form $\omega$ as
+$$ \omega_A (\lambda) := \int_M \theta(\lambda - f_A (p,q)) d \mu_\omega$$
+where $\theta$ denotes the step function, $f_A$ an observable and $d\mu_\omega$ a measure corresponding to the state. The dynamics on the other hand are encoded in the \emph{Poisson brackets} defined using the symplectic form $\omega$ as
 $$ \dd{f}{t} = \{H, f\} $$
 for some functions $H$ which turns out to be the \emph{Hamiltonian} of the system.\\
 
-In Quantum mechanics, observables are linear operators on some complex \emph{Hilbert spae} $\HH$. States are positive trace-class operators with unit trace defined as $\Tr A = \sum_n \langle A e_n, e_n \rangle$. The propability distribution for a state is defined by
+In Quantum mechanics, observables are linear operators on some complex \emph{Hilbert spae} $\HH$. States are positive trace class operators with unit trace defined as $\Tr A = \sum_n \langle A e_n, e_n \rangle$. The propability distribution for a state is defined by
 $$ \omega_A (\lambda) := \Tr(M P_A(\lambda)) $$
-where $M$ is a trace-class (state) and $P_A(\lambda)$ is a projection (observable). Note that we are looking at the field from a mathematical perspective, thus the reader might encounter unfamiliar technical details in this and upcoming discussions.\\
+where $M$ is a trace class (state) and $P_A(\lambda)$ is a projection (observable). Note that we are looking at the field from a mathematical perspective, thus the reader might encounter unfamiliar technical details in this and upcoming discussions.\\
 The commutator of two states $A,B$ is defined as
 $$ \{A,B\} = \frac{i}{\hbar} (AB-BA) $$
 such that the time evolution, given the Hamiltonian operator $H$, is defined as
@@ -46,7 +46,7 @@ To illuminate this rather vague definition, we discuss a "toy example":
   $$ A_f A_g (q, q^\prime) = \int_{-\infty}^\infty A_f(q, q^{\prime \prime}) A_f(q^{\prime \prime},q^\prime) dq^{\prime \prime} $$
   and then define
   $$ f *_\hbar g = fg + \frac{i\hbar}{2} \{f,g\} + \mathcal{O}(\hbar^2) \quad \Rightarrow \quad \frac{i}{\hbar} (f *_\hbar g - g *_\hbar f) = \{f,g\} + \mathcal{O}(\hbar^2)$$
-  Thus we arrive at the following time derivative using the Hamiltonian operator
+  We now define the dynamics via the time derivative using the Hamiltonian operator
   $$ \dd{A(t)}{t} = \{H, A(t)\}_\hbar , \quad \quad A(0) = A $$
   where we define $A(t)$ as
   $$ A(t) = U^{-1}(t) A U(t), \quad \quad U(t) = e^{-i H t / \hbar} $$
@@ -54,7 +54,7 @@ To illuminate this rather vague definition, we discuss a "toy example":
   $$ U_\Delta := e^{-i H \Delta} \cong 1- i H \Delta $$
   Thus setting $t^{\prime \prime} - t^\prime = N \Delta$ we obtain $e^{-iH(t^{\prime \prime} - t^\prime)} = (U_\Delta)^N$. Now we calculate
   \begin{align*}
-    U_\Delta(p,q) &= \frac{1}{2\pi} \int_{-\infty}^\infty dp e^{ip(q-q^\prime)} \left( 1- i h\left(p, \frac{q+q^\prime}{2} \right) \Delta \right) \\
+    U_\Delta(q,q^\prime) &= \frac{1}{2\pi} \int_{-\infty}^\infty dp e^{ip(q-q^\prime)} \left( 1- i h\left(p, \frac{q+q^\prime}{2} \right) \Delta \right) \\
     &= \frac{1}{2\pi} \int_{-\infty}^\infty dp e^{ip(q-q^\prime) - i h\left(p, \frac{q+q^\prime}{2} \right) \Delta} + \mathcal{O}(\Delta^2)
   \end{align*}
   Now setting $q = q_N, q^\prime = q_0$ and $q_j$ the $N-1$ intermediate variables, we arrive at the following form:
@@ -93,7 +93,7 @@ This in turn has an interpretation coming from statistical mechanics: Here, $\ps
   T \arrow[r,leftrightarrow] & i \hbar
 \end{tikzcd}
 \end{center}
-This gives us a sufficient motivation to repeat the assesment of dynamics for statistical systems:\\
+This gives us a sufficient motivation to repeat the assessment of dynamics for statistical systems:\\
 
 In statistical mechanics, observables are maps $O: \Ci(M,\RR) \lra \CC$ and correlation functions between observables are defined as
 \begin{align*}
@@ -106,13 +106,13 @@ The main problem in this situation is that $\Ci(M)$ is an infinite-dimensional v
 \begin{itemize}
   \item[(1)] One approach to resolve this is \emph{perturbative QFT} where we work in the limit $\hbar \lra 0$ such that we can take formal power series in $\hbar$. This provides us with a formal procedure to go from a quantum description to a classical one. Note that this endows $\hbar$ with the role of a formal parameter.
 
-  \item[(2)] Another possibility is to drop the Lorentzian signature and stick to Riemannian ones since the mathematical background is better understood.
+  \item[(2)] In addition, we can drop the Lorentzian signature and stick to Riemannian ones since the mathematical background is better understood.
 \end{itemize}
 \end{rem}
 
 
-\subsection{Renormalization group equation}
-\label{subsec:renorm_group_eq}
+\subsection{The Effctive Action}
+\label{subsec:effective_action}
 
 In this section, we try to "tame" the previously exposed integrals over infinite-dimensional vector spaces. We were stuck with expressions of the form $\langle O_1, ..., O_n \rangle$ which indeed could not be calculated with the tools we previously used. One approach to expressions of this form are \emph{"Wilson low-energy theories"} which will make up the first part of this subchapter.\\
 
@@ -126,7 +126,7 @@ The main idea of \emph{"Wilson low-energy theories"} is that observables can onl
 \end{lem}
 
 Now let $\Lambda \in I$ and define $J = [0,\Lambda)$. We thus define
-$$ \Ci(M)_J := \Ci(M)_{\leq \Lambda} \subseteq \Ci(M)_I $$
+$$ \Ci(M)_J := \Ci(M)_{\leq \Lambda} \subseteq \Ci(M) $$
 and call it the \textbf{space of fields with energy at most $\Lambda$}. Observables in this framework, i.e. restricted to such fields, are functionals
 $$ O \colon \Ci(M)_{\leq \Lambda} \lra \RR\llbracket\hbar\rrbracket $$
 where $\RR\llbracket\hbar\rrbracket$ denotes formal power series in $\hbar$. We can extend each such operator $O$ to $\Ci(M)$ by composing it with the evident projection to $\Ci(M)_{\leq \Lambda}$. We define $Obs_{\leq \Lambda}$ to be the thus arising observables.\\
@@ -148,7 +148,7 @@ Here, $D\phi$ is the Lebesgue measure on $\Ci(M)_{\leq \Lambda}$, $S_{eff}[\Lamb
     \item $S_{eff}[\Lambda]$ is a formal power series in both the field $\phi \in \Ci(M)_{\leq \Lambda}$ and the variable $\hbar$.
 
     \item Modulo $\hbar$, $S_{eff}[\Lambda]$ must be of the form
-    $$ S_{eff}[\Lambda] = - \frac{1}{2} \int \phi (D + m^2) \phi + \mathcal{O}(\phi^4) $$
+    $$ S_{eff}[\Lambda] = - \frac{1}{2} \int \phi (D + m^2) \phi + \mathcal{O}(\phi^3) $$
     where $D$ is the positive-definite Laplacian.
 
     \item If $\Lambda^\prime \leq \Lambda$, $S_{eff}[\Lambda^\prime]$ is determined by $S_{eff}[\Lambda]$ by the renormalisation group equation.
@@ -166,6 +166,9 @@ $D$ is the Laplacian and $m$ is a positive real parameter. Further, $I[\Lambda]$
 $$ I[\Lambda](\phi) = I_0[\Lambda](\phi) + \hbar I_1[\Lambda](\phi) + ... $$
 Here, $I_0[\Lambda](\phi)$ is at least cubic in $\phi$ and all the $I_i$ are formal power series in $\phi$.\\
 
+\subsection{Renormalization group equation}
+\label{subsec:renorm_group_eq}
+
 Now our goal is to "translate" a system $S_{eff}[\Lambda], Obs_{\leq \Lambda}, \Ci(M)_{\leq \Lambda}$ into one with threshold $\Lambda^\prime \leq \Lambda$. There exists an evident inclusion $Obs_{\leq \Lambda^\prime} \hookrightarrow Obs_{\leq \Lambda}$. The correlation functions should not change if we compute them in $Obs_{\leq \Lambda^\prime}$ rather than in $Obs_{\leq \Lambda}$:
 
 \begin{align}
@@ -180,22 +183,24 @@ Using this splitting to separate \eqref{eq:connection_eq} allows us to formulate
 \begin{align*}
   RHS &= \int_{\phi_L \in \Ci(M)_{\leq \Lambda^\prime}}
   \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}}
-  e^{S_{eff}[\Lambda^\prime] (\phi_L + \phi_H) / \hbar} \ O_1(\phi_L) ... O_n(\phi_L) \ D\phi^{\Lambda^\prime} \ D\phi^{\Lambda \Lambda^\prime} \\
+  e^{S_{eff}[\Lambda] (\phi_L + \phi_H) / \hbar} \ O_1(\phi_L) ... O_n(\phi_L) \ D\phi^{\Lambda^\prime} \ D\phi^{\Lambda \Lambda^\prime} \\
   &= \int_{\phi_L \in \Ci(M)_{\leq \Lambda^\prime}}
   \left [\int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}}
-  e^{S_{eff}[\Lambda^\prime] (\phi_L + \phi_H) / \hbar} \ D\phi^{\Lambda \Lambda^\prime} \right] \ O_1(\phi_L) ... O_n(\phi_L) \ D\phi^{\Lambda^\prime} \\
+  e^{S_{eff}[\Lambda] (\phi_L + \phi_H) / \hbar} \ D\phi^{\Lambda \Lambda^\prime} \right] \ O_1(\phi_L) ... O_n(\phi_L) \ D\phi^{\Lambda^\prime} \\
 \end{align*}
 This in turn allows us to identify
-$$ e^{S_{eff}[\Lambda^\prime](\phi_L)/\hbar} = \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}}
-e^{S_{eff}[\Lambda^\prime] (\phi_L + \phi_H) / \hbar} \ D\phi^{\Lambda \Lambda^\prime} $$
+$$ e^{S_{eff}[\Lambda^\prime](\phi_L)/\hbar}
+= \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}}
+e^{S_{eff}[\Lambda] (\phi_L + \phi_H) / \hbar} \ D\phi^{\Lambda \Lambda^\prime} $$
 which ultimately leads to the \textbf{Renormalisation group equation (RGE)}
 \begin{align}
 \label{eq:RGE}
-  S_{eff}[\Lambda^\prime](\phi_L) = \hbar \log \left[ \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}}
-  e^{S_{eff}[\Lambda^\prime] (\phi_L + \phi_H) / \hbar} \ D\phi^{\Lambda \Lambda^\prime} \right]
+  S_{eff}[\Lambda^\prime](\phi_L)
+  = \hbar \log \left[ \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}}
+  e^{S_{eff}[\Lambda] (\phi_L + \phi_H) / \hbar} \ D\phi^{\Lambda \Lambda^\prime} \right]
 \end{align}
 
-Having a rather well-defined system of such effective actions we can ask ourselves, what their relation to the usual action $S$ is. This correspond to a "limit" of the form $S_{eff}[\infty]$ that is $\Lambda \lra \infty$. Note that the space of fields we used in the integral of \eqref{eq:RGE} is ill-defined for $\Lambda = \infty$, thus this discussion is not trivially dispatched.\\
+Having a rather well-defined system of such effective actions we may wonder, what their relation to the original classical action $S$ is. This correspond to a "limit" of the form $S_{eff}[\infty]$ that is $\Lambda \lra \infty$. Note that the space of fields we used in the integral of \eqref{eq:RGE} is ill-defined for $\Lambda = \infty$, thus this discussion is not trivially dispatched.\\
 
 One approach is to describe $RGE$ \eqref{eq:RGE} in terms of effective interactions. Note that $\Ci(M)_{\Lambda^\prime}$ and $\Ci(M)_{\Lambda}$ are $D$-orthogonal, thus
 \begin{align*}
@@ -209,7 +214,7 @@ we can rewrite our effective action as
 $$ S_{eff}[\Lambda](\phi) = F(\phi) + I[\Lambda](\phi), \quad \quad s.t. \quad \quad S_{eff}[\Lambda](\phi_L + \phi_H) = F(\phi_L) + F(\phi_H) + I[\Lambda](\phi_L + \phi_H)$$
 Combining this with \eqref{eq:RGE} brings us to
 \begin{align*}
-  F(\phi_L) + I[\Lambda^\prime](\phi_L +) &= \hbar \log \left[  \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}} \exp\left(\frac{F(\phi_H)}{\hbar} + \frac{F(\phi_L)}{\hbar} + \frac{I[\Lambda](\phi_H + \phi_L)}{\hbar} \right) \ D\phi^{\Lambda^\prime \Lambda} \right] \\
+  F(\phi_L) + I[\Lambda^\prime](\phi_L) &= \hbar \log \left[  \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}} \exp\left(\frac{F(\phi_H)}{\hbar} + \frac{F(\phi_L)}{\hbar} + \frac{I[\Lambda](\phi_H + \phi_L)}{\hbar} \right) \ D\phi^{\Lambda^\prime \Lambda} \right] \\
   &= \hbar \log \left[ e^{\frac{F(\phi_L)}{\hbar}} \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}} \exp\left(\frac{F(\phi_H)}{\hbar} + \frac{I[\Lambda](\phi_H + \phi_L)}{\hbar} \right) \ D\phi^{\Lambda^\prime \Lambda} \right] \\
   &= F(\phi_L) + \hbar \log \left[ \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}} \exp\left(\frac{F(\phi_H)}{\hbar} + \frac{I[\Lambda](\phi_H + \phi_L)}{\hbar} \right) \ D\phi^{\Lambda^\prime \Lambda} \right]
 \end{align*}
