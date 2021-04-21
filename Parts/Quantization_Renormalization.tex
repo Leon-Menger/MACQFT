@@ -238,18 +238,57 @@ While we have indeed explored the meaning and framework of \emph{point 3.} of \r
   $$ S(\phi) = \sum_k S_k (\phi), \quad \text{where} \quad S_k(\phi) = \int_M (D_1 \phi) ... (D_k \phi) \ \vol_M \ ( \llbracket \hbar \rrbracket)$$
   for some differential operators $D_i$ on $M$. This allows us to write $S$ as
   $$ S(\phi) = \int_M \mathcal{L}(\phi)(x) \ dx $$
-  where $\mathcal{L}(\phi)$ is a \textbf{Lagrangian} and depends only on the expansion of $\phi$ at $x$.
+  where $\mathcal{L}(\phi)$ is a \textbf{Lagrangian} and depends only on the Taylor expansion of $\phi$ at $x$.
 \end{definition}
 
-
-%TODO first 30 minutes of lecture 15
+In our current formulation this condition on $S$ does not really make sense yet which is why a definition using $S_{eff}[\Lambda]$ would be favourable. A tentative definition could be the following:
 
 \begin{definition}
+  A collection of low-energy effective actions $S_{eff}[\Lambda]$ satisfying the renormalisation group equation \ref{eq:RGE} is \textbf{asymptotically local} if there exists an asymptotic expansion for large $\Lambda$
+  $$ S_{eff}[\Lambda] (\phi) \cong \sum_i f_i (\Lambda) \ \Theta_i (\phi) $$
+  where the $\Theta_i (\phi)$ are local action functionals.
+\end{definition}
+
+While tentative, this definition certainly is not a good idea: Supposing $S_{eff}[\Lambda]$ is close to a local action functional, then using the \emph{RGE} \ref{eq:RGE} one obtains that $S_{eff}[\Lambda^\prime]$ is in fact entirely non local for $\Lambda^\prime < \Lambda$. The solution to this problem is to consider length scales instead of energy scales.\\
+
+The theory based on length scales takes as fundamental objects the propagator of a differential operator. In order to rewrite the \emph{RGE} \ref{eq:RGE} in terms of such propagators, we will need to introduce \emph{Feynmann graphs} as a way to compute integrals.
+
+\subsection{Feynmann graphs}
+\label{subsec:feynmann_graphs}
+
+The RGE contains an integral of the form
+$$ \int_{x \in U} \exp(\Phi(x)/\hbar + I(x+a)/\hbar) $$
+where $\Phi$ is a quadratic negative definite form on a vector space $U$. From now on we will assume as a convention that the measure on $U$ is the \emph{Lebesgue measure} normalized such that
+$$ \int_{x \in U} \exp(\Phi(x)/\hbar) = 1 $$
+Note that the measure does in fact depend on $\hbar$. Now this type of integral can be expressed as a sum over \emph{Feynman graphs} where we understand the integral as an asymptotic series in $\hbar$. To introduce \emph{Feynman graphs}, we start by givin two separate but equivalent definitions of \emph{stable graphs}:
+
+\begin{definition}[Stable Graphs - Graph Version]
+  A \textbf{stable graph} is a graph $\gamma$ possibly with external edges such that
+  \begin{enumerate}
+    \item to each vertex (node) $v \in V(\gamma)$ there is an associated number $g(\gamma) \in \ZZ_{\geq 0}$ (the genus of the vertex).
+
+    \item each vertex of genus $0$ is at least trivalent (that is of degree 3).
+
+    \item every vertex of genus $1$ is at least $1$-valent (that is of degree 1).
+  \end{enumerate}
+\end{definition}
+
+Using the genus of vertices in a graph we can define the genus of a stable graph in a canonical way by taking into account the topology of the graph:
+
+\begin{definition}[Genus of a Stable Graph]
+  Let $\gamma$ be a stable graph. Its \textbf{genus} $g(\gamma)$ is defined by
+  $$ g(\gamma) \ = \ b_1(\gamma) + \sum_{v\in V(\gamma)} g(v) $$
+  where $b_1(\gamma)$ is the first \emph{Betti number} of $\gamma$ defined by $b_1(\gamma) = |E| + |C| - |V|$ where $E$ is the set of edges, $C$ the set of connected components of $\gamma$ and $V$ the set of vertices (nodes).
+\end{definition}
+
+As promised we give the following alternative yet equivalent definition of a stable graph:
+
+\begin{definition}[Stable Graph - Formal Version]
   Let $H(\gamma)$ and $V(\gamma)$ be two finite sets (half edges or vertices) and let
   \begin{align*}
     \sigma &\colon H(\gamma) \lra H(\gamma) \quad \quad \text{an involution}\\
     \pi &\colon H(\gamma) \lra V(\gamma)\\
-    g &\colon V(\gamma) \lra \ZZ_{\geq 0} \quad \quad \text{(the germ map)}
+    g &\colon V(\gamma) \lra \ZZ_{\geq 0} \quad \quad \text{(the genus map)}
   \end{align*}
   then a \textbf{graph} is the topological space
   $$ V(\gamma) \sqcup (H(\gamma) \times [0, 0.5]) / \sim $$
@@ -316,7 +355,7 @@ Our next goal is to assign some algebraic data to our graphs:
     w_\gamma (P,I) (a) \quad &:= \quad w_{r,\psi} (P,I)(a, ..., a)
   \end{align*}
   $$  $$
-  which assigns a number to our graph.
+  which assigns, for chosen $\psi$, a number to our graph.
 \end{definition}
 
 \begin{ex}
@@ -328,12 +367,49 @@ Show the following statements:
   $$ \dell{}{a_1} ... \dell{}{a_n} w_\gamma(P,I) = \sum_\psi w_{\gamma, \psi} (P,I) (a_1, ..., a_n) $$
 
   \item If $v_{i,k}$ is the graph with one vertex of genus $i$ and valency $k$ and no internal edges, then $w_{v_{i,k}} = k! \ I_{i,k}$
-
-  \item $$ W(P,I) = \sum_\gamma \frac{1}{|\Aut(\gamma)|} \hbar^{g(\gamma)} w_\gamma (P,I) $$
 \end{enumerate}
 \end{ex}
 
-%TODO examples
+Using $w_\gamma (P,I) \in \OO(U)$ we define
+$$ W(P,I) = \sum_\gamma \frac{1}{|\Aut(\gamma)|} \hbar^{g(\gamma)} w_\gamma (P,I) \ \in \ \OO^+(U)\llbracket\hbar\rrbracket$$
+where we sum over all connected stable graphs. This is indeed a power series in $u \in U$ and in $\hbar$. We present some insightful examples:
+
+\begin{example}~
+   \begin{center}
+    \begin{tikzpicture}
+      \draw[thick, dashed] (-1.,-1.) -- (0,0);
+      \draw[thick, dashed] (-1.,1.) -- (0,0);
+      \draw[thick, dashed] (1.3,.5) -- (0,0);
+      \fill [black] (0,0) circle (0.1) node[below, xshift=.5cm]{$I_{0,3}$};
+      \fill [black] (-2.5,0) circle (0.0) node[]{$W_{0,3}(P,I) \ = $};
+
+
+      \draw[thick, dashed] (5.5,-1.) -- (6.5,0);
+      \draw[thick, dashed] (5.5,1) -- (6.5,0);
+      \draw[thick, dashed] (7.5,-1) -- (6.5,0);
+      \draw[thick, dashed] (7.5,1) -- (6.5,0);
+      \fill [black] (6.5,0) circle (0.1) node[below, xshift=.5cm, yshift=.3cm]{$I_{0,3}$};
+      \fill [black] (4,0) circle (0.0) node[]{$W_{0,4}(P,I) \ = $};
+      \fill [black] (8,0) circle (0.0) node[]{$ + $};
+      \fill [black] (9.5,0) circle (0.1) node[below, xshift=.25cm]{$I_{0,3}$};
+      \draw[thick, dashed] (8.5,-1.) -- (9.5,0);
+      \draw[thick, dashed] (8.5,1) -- (9.5,0);
+      \draw[thick] (9.5,0) -- (11.5,0) node[above, xshift=-1cm]{$P$};
+      \fill [black] (11.5,0) circle (0.1) node[below, xshift=-.25cm]{$I_{0,3}$};
+      \draw[thick, dashed] (12.5,-1) -- (11.5,0);
+      \draw[thick, dashed] (12.5,1) -- (11.5,0);
+
+
+      \fill [black] (0,-2.5) circle (0.0) node[]{$W_{1,1}(P,I) \ = $};
+      \fill [black] (4.5,-2.5) circle (0.0) node[]{$ + $};
+      \fill [black] (3.5,-2.5) circle (0.1) node[below, xshift=.25cm, yshift=-.15cm]{$I_{1,1}$};
+      \draw[thick, dashed] (1.8,-2.5) -- (3.5,-2.5);
+      \fill [black] (7.5,-2.5) circle (0.1) node[below, xshift=-.25cm, yshift=-.15cm]{$I_{0,3}$};
+      \draw[thick, dashed] (5.6,-2.5) -- (7.5,-2.5);
+      \draw (8.5,-2.5) circle (1cm) node[xshift=1.25cm]{$P$};
+    \end{tikzpicture}
+   \end{center}
+\end{example}
 
 \begin{lem}
   Setting $P$ to $0$ we obtain $W(0,I) = I$.
