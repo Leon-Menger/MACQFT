@@ -177,7 +177,7 @@ We give some popular examples to illuminate the above definition:
 \begin{itemize}
   \item Every Banach space is a Fréchet space.
   \item $\RR^\infty = \Pi_{n\in \NN} \RR^n$ with either the cartesian topology or the corresponding family of seminorms $\{p_n(x_1,...,x_n) = |x_1| + ... + |x_n| \}$ together with the metric $d(x,y) := \sum_i \frac{|x_i - y_i|}{2^i (1+|x_i - y_i|)}$ is a Fréchet space.
-  \item The space of smooth sections on a vector bundle $V \lra M$ where $(M,g)$ is a Riemannian manifold is Fréchet with $||f||_n = \sum_{i=0}^n \sup_x |\nabla^i f(x)|$ for $n\in \NN$ with $\nabla$ a covariant derivative.
+  \item The space of smooth sections on a vector bundle $V \lra M$ where $(M,g)$ is a Riemannian manifold is Fréchet with $||f||_n = \sum_{i=0}^n \sup_x |\nabla^i f(x)|$ for $n\in \NN$ with $\nabla$ a covariant derivative and $\nabla^i$ denoting its $i$-th iteration.
 \end{itemize}
 \end{example}
 
@@ -242,7 +242,7 @@ Furthermore, we can state the following:
   $$ pr_{J^\infty F}: T(J^\infty F) \lra J^\infty F $$
   is represented by $\{ pr_\infty^k = pr_{J^kF} \}$ where $pr_{J^kF}: T(J^kF) \lra J^kF$.
 
-  \item Observe that if $\phi_t$ is a smooth 1-parameter family of sections, we can define $\dot \phi_0: M \lra TF$. But $\phi$ is a section such that $d\pi(\dot \phi_0) = \dd{}{t}(\pi(\phi_t(x))) = 0_m$ and thus $\dot \phi_0 \in \ker(d\pi)$. Hence we can associate a tangent bundle to $J^\infty F$ in the context of Fréchet manifolds via
+  \item Observe that if $\phi_t$ is a smooth 1-parameter family of sections, we can define $\dot \phi_0: M \lra TF$. But $\phi$ is a section such that $d\pi(\dot \phi_0) = \dd{}{t} \big|_{t=0} (\pi(\phi_t(x))) = 0_m$ and thus $\dot \phi_0 \in \ker(d\pi)$. Hence we can associate a tangent bundle to $J^\infty F$ in the context of Fréchet manifolds via
   $$ T(J^\infty F) := \Ci(\RR, J^\infty F) / \sim $$
   where $c\sim c^\prime$ iff $c(0) = c^\prime (0)$ and further
   $$ D(\phi\circ c) (0,1) = D(\phi \circ c^\prime) (0,1) $$
@@ -631,7 +631,7 @@ Showing the power of the presented formalism, we can now prove \emph{Noether's f
 \begin{proof}
   To prove this, we can simply calculate:
   \begin{align*}
-    d j &= d(A_\xi - \imath_\xi \alpha) = \lie{\xi} L - d \imath_\xi \alpha = \lie{\xi} L + \imath_\xi d \alpha\\
+    d j &= d(A_\xi - \imath_\xi \alpha) = \lie{\xi} L - d \circ \imath_\xi \alpha = \lie{\xi} L + \imath_\xi \circ d \alpha\\
     &= \imath_\xi (\delta L + d \alpha) = \imath_\xi EL = 0 \mod(EL)
   \end{align*}
 \end{proof}
@@ -651,11 +651,12 @@ We move on to some examples of classical Lagrangian field theories:
 
 \begin{example}[\textbf{Classical Mechanics}]
   Let $F= \RR \times M \lra \RR$ such that $\FF = \Gamma(\RR, F)$ and take
-  $$L = \left(\frac{m}{2} \ \dot q_i \dot q^i - V(q) \right)\frac{\vol_\RR}{dt}$$
+  $$L = \left(\frac{m}{2} \ \dot q_i \dot q^i - V(q) \right) dt$$
   as a Lagrangian density. Note that $L$ is defined on $J^1(M \times \RR) \simeq TM \times \RR$. We find the variation of $L$ to be
   \begin{align*}
-    \delta L &= \dd{}{t} \left( \frac{m}{2} \ \delta q \cdot \dot q \right) - \delta q \left( \frac{m}{2} \ \ddot q + \nabla V \right)\\
-    &= d \left( \frac{m}{2} \ \delta q \cdot \dot q \right) - \left( \frac{m}{2} \ \ddot q + \nabla V \right) \delta q \wedge dt
+    \delta L &= \left( m \ \delta \dot q \ \dot q - \delta q \nabla V \right) \wedge dt \\
+    &= \dd{}{t} \left( m \ \delta q \cdot \dot q \right) \wedge dt - \delta q \left( m \ddot q + \nabla V \right) \wedge dt\\
+    &= d \left( m \ \delta q \cdot \dot q \right) - \left( m \ddot q + \nabla V \right) \delta q \wedge dt
   \end{align*}
   Thus we have $\alpha = m \dot q^i \delta q_i$ and $E_q = m \ddot q + \nabla V$. Now if we consider a time translation $t \lmap t + \epsilon$ we find the induced evolutionary vector field $\xi = - \dot q^i \dell{}{q^i} - \ddot q^i \dell{}{q^i} ...$\\
   \textbf{Exercise:} Show that $j_\xi$ is an energy, i.e. $j = \frac{m}{2} \ \dot q \cdot \dot q + V(q)$.
@@ -706,6 +707,18 @@ Using the above definition, one can directly show some interesting properties of
 
 \begin{ex}
   Show that $ \delta L = [\Delta_g \phi] \delta \phi \wedge \vol_g + d(\delta\phi \wedge * d\phi)$.
+\begin{proof}
+  \begin{align*}
+    \delta L &= \delta \left( \frac{1}{2} d \phi \wedge * d\phi \right) = \frac{1}{2} \left[ \delta d \phi \wedge *d\phi + d\phi\wedge \delta * d \phi \right] \\
+    &= \frac{1}{2} \left[ -d \delta \phi \wedge *d\phi - d\phi\wedge * d \delta \phi \right] = -\frac{1}{2} \left[ d( \delta \phi \wedge *d\phi) - \delta \phi \wedge d*d\phi + d\phi\wedge * d \delta \phi \right] \\
+    &= -\frac{1}{2} \left[ d( \delta \phi \wedge *d\phi) - \delta \phi \wedge *\delta_g d\phi + d\phi\wedge * d \delta \phi \right]\\
+    &= -\frac{1}{2} \left[ d( \delta \phi \wedge *d\phi) - \delta \phi \wedge *\delta_g d\phi + d \delta \phi\wedge * d\phi \right]\\
+    &= -\frac{1}{2} \left[ d( \delta \phi \wedge *d\phi) - \delta \phi \wedge *\delta_g d\phi + d(\delta \phi \wedge *d\phi) - \delta \phi \wedge d*d\phi \right] \\
+    &= -\frac{1}{2} \left[ d( \delta \phi \wedge *d\phi) - \delta \phi \wedge *\delta_g d\phi + d(\delta \phi \wedge *d\phi) - \delta \phi \wedge *\delta_g d \phi \right] \\
+    &= - d( \delta \phi \wedge *d\phi) + \delta \phi \wedge *\delta_g d\phi = - d( \delta \phi \wedge *d\phi) + \delta \phi \wedge (\Delta_g \phi \cdot \vol_g)
+  \end{align*}
+  The last equation holds since $\delta_g \phi = 0$ and thus $\delta_g d \phi = (\delta_g d + d \delta_g) \phi$.
+\end{proof}
 \end{ex}
 
 The equations of motion for scalar field theory are

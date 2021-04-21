@@ -33,7 +33,7 @@ To illuminate this rather vague definition, we discuss a "toy example":
   This quantisation treats a mechanical system with one degree of freedom. The classical system has $\RR^2$ as its phase space with coordinates $(p,q)$. The dynamics are given by the Poisson-brackets with the Hamiltonian function. Now we want to transition to a quantum description:\\
 
   We take the Hilbert-space $\HH$ defined as
-  $$ \HH = L^2(\RR) := \{ \psi(q) \in C(\RR) \ | \ \int_{-\infty}^\infty |\psi(q)|^2 dq < \infty  \} $$
+  $$ \HH = L^2(\RR) := \left\{ \psi(q) \in C(\RR) \ \Big| \ \int_{-\infty}^\infty |\psi(q)|^2 dq < \infty  \right\} $$
   Observables are now operators on $\HH$. We define the two operators
   $$ (P\psi)(q) = \frac{\hbar}{i} \dd{}{q} \psi(q), \quad \quad (Q\psi)(q) = q \psi(q) $$
   Now we can define products
@@ -43,14 +43,14 @@ To illuminate this rather vague definition, we discuss a "toy example":
   where the $f$ are functions that represent $A$ in classical mechanics. As an exercise you can show that with these definitions you obtain the previously defined operators $P,Q$ if you set $f=p$ and $f=q$ respectively.\\
 
   Next we need to define a product. Since generally $A_{fg} \neq A_f A_g$ we investigate
-  $$ A_f A_g (q, q^\prime) = \int_{-\infty}^\infty A_f(q, q^{\prime \prime}) A_f(q^{\prime \prime},q^\prime) dq^{\prime \prime} $$
+  $$ A_f A_g (q, q^\prime) = \int_{-\infty}^\infty A_f(q, q^{\prime \prime}) A_g(q^{\prime \prime},q^\prime) dq^{\prime \prime} $$
   and then define
   $$ f *_\hbar g = fg + \frac{i\hbar}{2} \{f,g\} + \mathcal{O}(\hbar^2) \quad \Rightarrow \quad \frac{i}{\hbar} (f *_\hbar g - g *_\hbar f) = \{f,g\} + \mathcal{O}(\hbar^2)$$
   We now encode the dynamics via the time derivative using the Hamiltonian operator
   $$ \dd{A(t)}{t} = \{H, A(t)\}_\hbar , \quad \quad A(0) = A $$
   where we define $A(t)$ as
   $$ A(t) = U^{-1}(t) A U(t), \quad \quad U(t) = e^{-i H t / \hbar} $$
-  As an exercise you can prove this in a formal setting. Note that we do not yet have a concrete way to define the exponential of an operator such as $H$. Thus, setting $\hbar = 1$ for simplicity, we investigate the integral kernel of $U = e^{-iH(t^{\prime \prime} - t^\prime)}$ in terms of $h(p,q)$. To this end let $\Delta << 1$ such that
+  As an exercise you can prove this in a formal setting. Note that we do not yet have a concrete way to define the exponential of an operator such as $H$. Thus, setting $\hbar = 1$ for simplicity, we investigate the integral kernel of $U = e^{-iH(t^{\prime \prime} - t^\prime)}$ in terms of $h(p,q)$. To this end let $\Delta \ll 1$ such that
   $$ U_\Delta := e^{-i H \Delta} \cong 1- i H \Delta $$
   Thus setting $t^{\prime \prime} - t^\prime = N \Delta$ we obtain $e^{-iH(t^{\prime \prime} - t^\prime)} = (U_\Delta)^N$. Now we calculate
   \begin{align*}
@@ -65,7 +65,7 @@ To illuminate this rather vague definition, we discuss a "toy example":
 
   Thus we take $N\lra \infty$ such that $q_j - q_{j-1}$ being proportional to $\frac{1}{N}$ goes against $0$. While we do not discuss convergence and well-definedness at this point, the reader is invited to start looking critically at these notions from now on! Formally this gives us the following form of $U$ which indeed has many problems with convergence of integrals
   \begin{align*}
-    U(q,q^\prime, t^{\prime\prime}-t^\prime) = \int ... \int_{t^\prime}^{t^{\prime\prime}} \prod_i \frac{dp(t) dq(t)}{2\pi} \exp\Big[dt i ( p(t)\dot q(t) - h(p(t),q(t)))\Big]
+    U(q,q^\prime, t^{\prime\prime}-t^\prime) = \int ... \int_{t^\prime}^{t^{\prime\prime}}  \exp\left[i\int_{t^\prime}^{\prime \prime}( p(t)\dot q(t) - h(p(t),q(t)))\ dt \right] \prod_i \frac{dp(t) dq(t)}{2\pi}
   \end{align*}
   Where the first fraction defines our measure on the space of paths from $[t^\prime, t^{\prime\prime}]$ called the \textbf{Liouville-measure} and the term in the exponential is called the \textbf{Action functional}.\\
 
@@ -147,7 +147,7 @@ Here, $D\phi$ is the Lebesgue measure on $\Ci(M)_{\leq \Lambda}$, $S_{eff}[\Lamb
   \begin{enumerate}
     \item $S_{eff}[\Lambda]$ is a formal power series in both the field $\phi \in \Ci(M)_{\leq \Lambda}$ and the variable $\hbar$.
 
-    \item Modulo $\hbar$, $S_{eff}[\Lambda]$ must be of the form
+    \item When setting $\hbar = 1$, $S_{eff}[\Lambda]$ must be of the form
     $$ S_{eff}[\Lambda] = - \frac{1}{2} \int \phi (D + m^2) \phi + \mathcal{O}(\phi^3) $$
     where $D$ is the positive-definite Laplacian.
 
@@ -194,7 +194,7 @@ $$ e^{S_{eff}[\Lambda^\prime](\phi_L)/\hbar}
 e^{S_{eff}[\Lambda] (\phi_L + \phi_H) / \hbar} \ D\phi^{\Lambda \Lambda^\prime} $$
 which ultimately leads to the \textbf{Renormalisation group equation (RGE)}
 \begin{align}
-\label{eq:RGE}
+\label{eq:RGE}\tag{RGE}
   S_{eff}[\Lambda^\prime](\phi_L)
   = \hbar \log \left[ \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}}
   e^{S_{eff}[\Lambda] (\phi_L + \phi_H) / \hbar} \ D\phi^{\Lambda \Lambda^\prime} \right]
@@ -202,7 +202,7 @@ which ultimately leads to the \textbf{Renormalisation group equation (RGE)}
 
 Having a rather well-defined system of such effective actions we may wonder, what their relation to the original classical action $S$ is. This correspond to a "limit" of the form $S_{eff}[\infty]$ that is $\Lambda \lra \infty$. Note that the space of fields we used in the integral of \eqref{eq:RGE} is ill-defined for $\Lambda = \infty$, thus this discussion is not trivially dispatched.\\
 
-One approach is to describe $RGE$ \eqref{eq:RGE} in terms of effective interactions. Note that $\Ci(M)_{\Lambda^\prime}$ and $\Ci(M)_{\Lambda}$ are $D$-orthogonal, thus
+One approach is to describe \eqref{eq:RGE} in terms of effective interactions. Note that $\Ci(M)_{\Lambda^\prime}$ and $\Ci(M)_{\Lambda}$ are $D$-orthogonal, thus
 \begin{align*}
   \langle \phi_L + \phi_H , D(\phi_L + \phi_H) \rangle &= \langle \phi_L , D\phi_L \rangle + \langle \phi_H , D\phi_H \rangle \\
   \langle \phi_L + \phi_H , m^2(\phi_L + \phi_H) \rangle &= \langle \phi_L, m^2 \phi_L \rangle + \langle \phi_H, m^2 \phi_H \rangle
@@ -221,21 +221,21 @@ Combining this with \eqref{eq:RGE} brings us to
 
 Thus we arrive at the \textbf{Interaction form of the RGE}:
 \begin{align}
-\label{eq:RGE_interaction}
-  I[\Lambda^\prime](\phi_L) = \hbar \log \left[  \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}} \exp\left(\frac{F(\phi_H)}{\hbar} + \frac{I[\Lambda](\phi_H + \phi_L)}{\hbar} \right) \ D\phi^{\Lambda^\prime \Lambda} \right]
+\label{eq:RGE_interaction}\tag{RGE I}
+  I[\Lambda^\prime](a) = \hbar \log \left[  \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}} \exp\left(\frac{F(\phi_H)}{\hbar} + \frac{I[\Lambda](\phi_H + a)}{\hbar} \right) \ D\phi^{\Lambda^\prime \Lambda} \right]
 \end{align}
 This form has two major advantages over \eqref{eq:RGE}:
 \begin{enumerate}
-  \item We are not integrating over $\phi \in \Ci(M)_{\leq \Lambda^\prime}$, the equation can be extended to any $\phi_L \in \Ci(M)$.
+  \item We are not integrating over $a \in \Ci(M)_{\leq \Lambda^\prime}$, the equation can be extended to any $\phi_L \in \Ci(M)$.
 
-  \item It is invertible by choosing $\Lambda^\prime > \Lambda$.
+  \item It is invertible. It remains valid when choosing $\Lambda^\prime > \Lambda$.
 \end{enumerate}
 
 While we have indeed explored the meaning and framework of \emph{point 3.} of \ref{def:scalar_qft}, we still have to settle the notion of \textbf{locality}. On a physical level, locality means that interactions between fundamental particles occur at a point of the manifold.
 
 \begin{definition}[Local action functional]
   A functional $S\colon \Ci(M) \lra \RR \llbracket \hbar \rrbracket$ is a \textbf{local action functional} if it can be written as a sum
-  $$ S(\phi) = \sum_k S_k (\phi), \quad \text{where} \quad S_k(\phi) = \int_M (D_1 \phi) ... (D_k \phi) \ \vol_M \ ( \llbracket \hbar \rrbracket)$$
+  $$ S(\phi) = \sum_k S_k (\phi), \quad \text{where} \quad S_k(\phi) = \int_M (D_1 \phi) ... (D_k \phi) \ \vol_M$$
   for some differential operators $D_i$ on $M$. This allows us to write $S$ as
   $$ S(\phi) = \int_M \mathcal{L}(\phi)(x) \ dx $$
   where $\mathcal{L}(\phi)$ is a \textbf{Lagrangian} and depends only on the Taylor expansion of $\phi$ at $x$.
@@ -249,9 +249,9 @@ In our current formulation this condition on $S$ does not really make sense yet 
   where the $\Theta_i (\phi)$ are local action functionals.
 \end{definition}
 
-While tentative, this definition certainly is not a good idea: Supposing $S_{eff}[\Lambda]$ is close to a local action functional, then using the \emph{RGE} \ref{eq:RGE} one obtains that $S_{eff}[\Lambda^\prime]$ is in fact entirely non local for $\Lambda^\prime < \Lambda$. The solution to this problem is to consider length scales instead of energy scales.\\
+While tentative, this definition certainly is not a good idea: Supposing $S_{eff}[\Lambda]$ is close to a local action functional, then using the \ref{eq:RGE} one obtains that $S_{eff}[\Lambda^\prime]$ is in fact entirely non local for $\Lambda^\prime < \Lambda$. The solution to this problem is to consider length scales instead of energy scales.\\
 
-The theory based on length scales takes as fundamental objects the propagator of a differential operator. In order to rewrite the \emph{RGE} \ref{eq:RGE} in terms of such propagators, we will need to introduce \emph{Feynmann graphs} as a way to compute integrals.
+The theory based on length scales takes as fundamental objects the propagator of a differential operator. In order to rewrite the \ref{eq:RGE} in terms of such propagators, we will need to introduce \emph{Feynmann graphs} as a way to compute integrals.
 
 \subsection{Feynmann graphs}
 \label{subsec:feynmann_graphs}
