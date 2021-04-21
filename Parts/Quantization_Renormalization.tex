@@ -263,9 +263,9 @@ $$ \int_{x \in U} \exp(\Phi(x)/\hbar) = 1 $$
 Note that the measure does in fact depend on $\hbar$. Now this type of integral can be expressed as a sum over \emph{Feynman graphs} where we understand the integral as an asymptotic series in $\hbar$. To introduce \emph{Feynman graphs}, we start by givin two separate but equivalent definitions of \emph{stable graphs}:
 
 \begin{definition}[Stable Graphs - Graph Version]
-  A \textbf{stable graph} is a graph $\gamma$ possibly with external edges such that
+  A \textbf{stable graph} is a graph $\gamma$ possibly with external edges (edges that only connect to one vertex/node) such that
   \begin{enumerate}
-    \item to each vertex (node) $v \in V(\gamma)$ there is an associated number $g(\gamma) \in \ZZ_{\geq 0}$ (the genus of the vertex).
+    \item to each vertex (node) $v \in V(\gamma)$ there is an associated number $g(\gamma) \in \ZZ_{\geq 0}$ called the genus of the vertex.
 
     \item each vertex of genus $0$ is at least trivalent (that is of degree 3).
 
@@ -388,7 +388,7 @@ where we sum over all connected stable graphs. This is indeed a power series in 
       \draw[thick, dashed] (5.5,1) -- (6.5,0);
       \draw[thick, dashed] (7.5,-1) -- (6.5,0);
       \draw[thick, dashed] (7.5,1) -- (6.5,0);
-      \fill [black] (6.5,0) circle (0.1) node[below, xshift=.5cm, yshift=.3cm]{$I_{0,3}$};
+      \fill [black] (6.5,0) circle (0.1) node[below, xshift=.5cm, yshift=.3cm]{$I_{0,4}$};
       \fill [black] (4,0) circle (0.0) node[]{$W_{0,4}(P,I) \ = $};
       \fill [black] (8,0) circle (0.0) node[]{$ + $};
       \fill [black] (9.5,0) circle (0.1) node[below, xshift=.25cm]{$I_{0,3}$};
@@ -412,11 +412,136 @@ where we sum over all connected stable graphs. This is indeed a power series in 
 \end{example}
 
 \begin{lem}
+\label{lemma:P_zero}
   Setting $P$ to $0$ we obtain $W(0,I) = I$.
 \begin{proof}
   As a \emph{hint}, note that only graphs with no edges can contribute.
 \end{proof}
 \end{lem}
+
+
+\begin{lem}
+  For $a_1, ..., a_k \in U$ we get
+  $$ \left( \dell{}{a_1} ... \dell{}{a_n} W(P,I) \right)(0) = \sum_{\gamma, \psi} \frac{\hbar^{g(\gamma)}}{|\Aut(\sigma, \psi)|} w_{\gamma,\psi}(P,I)(a_1, ..., a_k) $$
+\begin{proof}
+  The proof is left as an exercise to the reader.
+\end{proof}
+\end{lem}
+
+Now we define some helpful notation to formulate our next result: Let $P \in \Sym^2(U)$. We define $\partial_P \colon \OO(U) \lra \OO(U)$ using the decomposition $P = \sum_i P_i^\prime \otimes P^{\prime\prime}_i$ as
+$$ \partial_P := \frac{1}{2} \sum_i \dell{}{P_i^\prime} \dell{}{P^{\prime\prime}_i} $$
+This leads us to the following lemma:
+
+\begin{lem}
+\label{lemma:WPI}
+  $$ W(P,I)(a) = \hbar \ \log\{ \exp(\hbar \partial_P) \ \exp(I/\hbar) \} (a) \quad \in \OO^+(U)\llbracket\hbar\rrbracket $$
+\begin{proof}
+  The case of $P=0$ is treated in \ref{lemma:P_zero}. Thus assume $P \neq 0$ such that
+  \begin{equation}
+  \label{eq:exp} \tag{$\diamond$}
+    \exp( \hbar^{-1} W(P,I)) = \exp(\hbar \partial_P) \exp(I/\hbar)
+  \end{equation}
+  Now let $\epsilon > 0$ small such that we can neglect terms of order $\epsilon^2$ and let $P^\prime \in \Sym^2(U)$. Thus we arrive at
+  \begin{equation}
+  \label{eq:exp2} \tag{$\diamond \diamond$}
+    (\diamond) \ \Leftrightarrow \ \exp( \hbar^{-1} W(P+ \epsilon P^\prime,I)) = (1+ \hbar \epsilon \partial_{P^\prime}) \exp( \hbar^{-1} W(P,I))
+  \end{equation}
+  Thus we get $(1+\hbar \epsilon \partial_{P^\prime}) \approx \exp(\hbar \epsilon \partial_{P^\prime})$. Now if we assume in \eqref{eq:exp} that $P \lra P + \epsilon P^\prime$ we get:
+  %TODO equations
+
+  So we want to prove \eqref{eq:exp2}
+  $$ \dd{}{\epsilon} \left( \exp(\hbar^{-1} W(P+ \epsilon P^\prime,I)) \right) = \hbar \partial_{P^\prime} \exp(W(P,I)/ \hbar) $$
+  which is equivalent to \eqref{eq:exp2}. Thus we have already done it and can integrate it. The arising constant can be computed using $\epsilon = 0$.
+  \begin{align*}
+    \left( \dell{}{a_1} ... \dell{}{a_n} W(P,I)  \right)(0) &= \sum_{\gamma, \psi} \frac{\hbar^{g(\gamma)}}{|\Aut(\sigma, \psi)|} w_{\gamma,\psi}(P,I)(a_1, ..., a_k) \\
+    \dell{}{a_1} ... \dell{}{a_n} \exp(\hbar W(P,I))(0) &= \sum_{\gamma, \psi} \frac{\hbar^{g(\gamma)}}{|\Aut(\sigma, \psi)|} w_{\gamma,\psi}(P,I)(a_1, ..., a_k)
+  \end{align*}
+  This formula will be used for $P+ \epsilon P^\prime$. Consider
+  $$ w_{\gamma,\psi}(P+ \epsilon P^\prime, I) (a_1, ..., a_k) $$
+  and recall $\epsilon^2 \approx 0$. Now note that
+  $$P+ \epsilon P^\prime = P \otimes ... \otimes \epsilon P^\prime \otimes a_1 ... a_k + P \otimes ... \otimes \epsilon P \otimes a_1 ... a_k$$
+  where $P^\prime$ is at edge $e$. We thus inspect the derivative
+  \begin{align*}
+    \dd{}{\epsilon} \left( \dell{}{a_1} ... \dell{}{a_k} \exp(\hbar W(P+ \epsilon P^\prime,I)) \right)(0) &= \sum_{\gamma, e, \psi} \frac{\hbar^{g(\gamma)}}{|\Aut(\sigma, e, \psi)|} w_{\gamma,e,\psi}(P,I)(a_1, ..., a_k) \\
+    &= \frac{1}{2} \sum_{\gamma, \psi} \frac{\hbar^{g(\gamma)}}{|\Aut(\sigma, \psi)|} w_{\gamma,\psi}(P,I)(a_1, ..., a_k, U^\prime, U^{\prime \prime})
+    \intertext{where we used $P^\prime = \sum u^\prime \otimes u^{\prime \prime}$. Now this brings us to}
+    &= \frac{1}{2} \dell{}{a_1} ... \dell{}{a_k} \dell{}{u^\prime} \dell{}{u^{\prime \prime}} \exp(\hbar^{-1}W(P,I))(0)
+  \end{align*}
+\end{proof}
+\end{lem}
+
+Let us now connect Feynman diagrams to integrals. Let $U$ now have the base field $\RR$ and let $\Phi$ be a non-degenerate quadratic form on it. Further let $P = \sum_i e_i \otimes e_i$ where $\{e_i\}$ forms an orthonormal basis for $-\Phi$.
+
+\begin{prop}
+  $$ W(P,I)(a) = \hbar \ \log \int_{x \in U} \exp\left( \frac{1}{2\hbar} \Phi(x,x) + \frac{1}{\hbar} I(x+a) \right) \quad \forall a \in U $$
+\begin{proof}
+  Note that this is but a sketch of the proof, you can fill in the details as an exercise. First note
+  $$ \int_{x \in U} \exp\left( \frac{1}{2\hbar} \Phi(x,x) \right) f(x+a) = (\exp(\hbar \partial_P) f) (a) \quad \forall f \in \OO(U) $$
+  where we identified the exponential of $I(x+a)$ with $f(x+a)$. Note that the integral of only the first exponential in above equation amounts to $1$. Thus for $f = 1$ the equation holds. Thus let us fix $l \in U^*$ thus $lf \in \OO(U)$. Note that
+  \begin{align*}
+    \Phi \colon U &\lra U^* \quad \text{isomorphism}\\
+    a &\lmap \Phi(a, \cdot) := a^*
+  \end{align*}
+  Using the dual idea we take for $l \in U^*$ the corresponding $l^* \in U$ such that $l = \Phi(l^*, \cdot)$. The following three statements are given as an exercise:
+  \begin{enumerate}
+    \item $[\partial_P, l] = - \dell{}{l^*}$
+    \item $e^{\hbar \partial_P}(lf) - l e^{\hbar \partial_P} (f) = \hbar [\partial_P, l] e^{\hbar \partial_P}(f)$
+    \item $\dell{}{l^*} e^{\Phi(x,x)/2\hbar} = \hbar^{-1} l(x) e^{\Phi(x,x)/\hbar}$
+  \end{enumerate}
+  Now using these statements we have:
+  \begin{align*}
+    \int_{x \in U} \exp\left( \frac{1}{2\hbar} \Phi(x,x) \right) l(x) f(x+a) &= \hbar \int_{x \in U} \left( \dell{}{l^*} e^{\Phi(x,x)/2\hbar} \right) f(x+a) \\
+    &= - \hbar \int_{x \in U} e^{\Phi(x,x)/2\hbar} \ l(x) \dell{}{l_a^*} f(x+a) \\
+    &= - \hbar \dell{}{l_a^*} \int_{x \in U} e^{\Phi(x,x)/2\hbar} f(x+a)
+  \end{align*}
+  This, together with the three previous results, can be used to prove the main claim.
+\end{proof}
+\end{prop}
+
+If $U$ should not be finite-dimensional we can still define $W(P,I)$ and $\partial_P$. We also still have
+$$ W(P,I) = \hbar \log\{ \exp(\hbar \partial_P) \exp(I/\hbar) \} $$
+This concludes our discussion of Feynman graphs which will now be used to make a transition from energy scales to length scales. We start by introducing some common concepts used in the arising theory:
+
+\begin{definition}[Integral Kernels]
+  Given $F\colon \Ci(M) \lra \Ci(M)$ an \textbf{integral kernel} of $F$ is a map $K \colon M \times M \lra \RR$ such that
+  $$ F(f)(y) = \int_{x \in M} f(y) K(x,y) $$
+\end{definition}
+
+A certain type of integral kernels will be of particular importance:
+
+\begin{definition}[Propagators]
+  Given a scalar field theory, we define its \textbf{propagator} to be the integral kernel of the operator $(D+m^2)^{-1}$ where $m \in \RR_+$ and $D$ is the \emph{Laplacian} \ref{def:codifferential}.
+\end{definition}
+
+Now we fix a basis $\{e_i\}$ of $\Ci(M)$ of orthonormal eigenvectors of $D$ with eigenvalues $\lambda_i \in \RR_{\geq 0}$. Then
+$$ P = \sum_i \frac{1}{\lambda_i^2 + m^2} e_i \otimes e_i $$
+In the spirit of cutting our action into many effective actions, we define a cut-off operator by considering the following quantity for $U \subseteq \RR_{\geq 0}$
+$$ P_U := \sum_{i|\lambda_i \in U} \frac{1}{\lambda_i^2 + m^2} e_i \otimes e_i $$
+Note that $P_U$ is smooth as long as $U$ is a bounded subset of $\RR_{\geq 0}$. Now we consider
+$$ W(P,I)(a) = \hbar \log \int_{\phi \in \Ci(M)} \exp\left( - \frac{1}{2\hbar} \langle \phi, (D+m^2) \phi \rangle + \frac{1}{\hbar} I(\phi +a) \right) $$
+Clearly this is not well-defined, thus we utilize the bounded subsets to define
+$$ W(P_U,I)(a) = \hbar \log \int_{\phi \in \Ci(M)_U} \exp\left( - \frac{1}{2\hbar} \langle \phi, (D+m^2) \phi \rangle + \frac{1}{\hbar} I(\phi +a) \right) $$
+which is indeed well-defined. This leads us to rewrite
+$$ I[\Lambda^\prime](a) = \hbar \log \int_{\phi_H \in \Ci(M)_{[\Lambda^\prime, \Lambda)}} \exp(F(\phi_H) + I[\Lambda](\phi_H + a)/\hbar) $$
+into the \textbf{rephrased RGE}:
+\begin{equation}
+\label{eq:RGE_2}\tag{RGE}
+I[\Lambda^\prime] = W \left( P_{[\Lambda^\prime, \Lambda)}, I[\Lambda] \right)
+\end{equation}
+
+Now Feynman proved the following:
+$$ P(x,y) = \int_{\tau = 0}^{\infty} e^{- \tau m^2} \kappa_\tau (x,y) \ d\tau $$
+where $\kappa_\tau (x,y)$ is the \textbf{heat kernel} i.e. the integral kernel of $e^{\tau D}$ where $D$ is the Laplacian. We will try to work towards understanding this result.\\
+
+To this end let $l \in \RR_{\geq 0}$ and $\kappa^0_l$ the heat kernel of $lD$. For all $\phi \in \Ci(M)$ this gives us
+$$ \left( e^{-lD}\phi \right) (x) = \int_{y \in M} \kappa^0_l (x,y) \phi(y) dy $$
+Using the basis above we get
+$$ \kappa^0_l = \sum_i e^{-l \lambda_i} e_i \otimes e_i $$
+Now define
+$$ \kappa_l := e^{-l m^2} \kappa^0_l \quad \text{kernel of the operator} \quad e^{-l (D+m^2)} $$
+All of this construction lets us denote
+$$ P = \int_{l=0}^\infty \kappa_l \ dl $$
+
 
 
 
