@@ -538,9 +538,179 @@ $$ \left( e^{-lD}\phi \right) (x) = \int_{y \in M} \kappa^0_l (x,y) \phi(y) dy $
 Using the basis above we get
 $$ \kappa^0_l = \sum_i e^{-l \lambda_i} e_i \otimes e_i $$
 Now define
-$$ \kappa_l := e^{-l m^2} \kappa^0_l \quad \text{kernel of the operator} \quad e^{-l (D+m^2)} $$
-All of this construction lets us denote
+$$ \kappa_l := e^{-l m^2} \kappa^0_l \quad \text{which is the kernel of the operator} \quad e^{-l (D+m^2)} $$
+All of this construction lets us denote the propagator (integral kernel of $(D+m^2)^{-1}$) as
 $$ P = \int_{l=0}^\infty \kappa_l \ dl $$
+Before this, we had the following form in the energy scale:
+$$ P = \sum_i \frac{1}{x_i^2 + m^2} e_i \otimes e_i $$
+where the $e_i$ denoted the eigenfunctions to eigenvalues $\lambda_i$. We then defined a cut-off via
+$$ P_U = \sum_{i|\lambda_i \in U} \sum_i \frac{1}{x_i^2 + m^2} e_i \otimes e_i$$
+In an analogy we define the cut-off propagator as
+$$ P(\epsilon, L) = \int_\epsilon^L \kappa_l dl  $$
+for $\epsilon, L \in (0,\infty)$ and $\epsilon < L$. Using coordinates, one can write this propagator as
+$$ P(\epsilon, L) = \frac{e^{-\epsilon \lambda_i} - e^{-l \lambda_i}}{\lambda_i^2 + m^2} e_i \otimes e_i $$
+As an \textbf{exercise} you can prove this claim.\\
+
+Now we know how to express the \eqref{eq:RGE_2} in terms of length sclaes:
+
+\begin{equation}
+\label{eq:RGE_length}\tag{L-RGE}
+  I[L] = W(P(\epsilon, L), I(\epsilon))
+\end{equation}
+
+We can indeed give a pictorial explanation for some examples of the \eqref{eq:RGE_length} in form of Feynman diagrams:
+
+\begin{center}
+ \begin{tikzpicture}
+   \draw[thick, dashed] (-1.,-1.) -- (0,0);
+   \draw[thick, dashed] (-1.,1.) -- (0,0);
+   \draw[thick, dashed] (1.3,.5) -- (0,0);
+   \fill [black] (0,0) circle (0.1) node[below, xshift=.5cm]{$I_{0,3}[\epsilon]$};
+   \fill [black] (-1.3,0) circle (0.0) node[]{$=$};
+   \draw[thick, dashed] (-1.-3.,-1.) -- (-3.,0);
+   \draw[thick, dashed] (-1.-3.,1.) -- (-3.,0);
+   \draw[thick, dashed] (1.3-3.,.5) -- (-3.,0);
+   \fill [black] (-3.,0) circle (0.1) node[below, xshift=.5cm]{$I_{0,3}[L]$};
+
+
+   \draw[thick, dashed] (5.5-3.,-1.) -- (6.5-3.,0);
+   \draw[thick, dashed] (5.5-3.,1) -- (6.5-3.,0);
+   \draw[thick, dashed] (7.5-3.,-1) -- (6.5-3.,0);
+   \draw[thick, dashed] (7.5-3.,1) -- (6.5-3.,0);
+   \fill [black] (6.5-3.,0) circle (0.1) node[below, xshift=.0cm, yshift=-.4cm]{$I_{0,4}[L]$};
+
+   \draw[thick, dashed] (5.5,-1.) -- (6.5,0);
+   \draw[thick, dashed] (5.5,1) -- (6.5,0);
+   \draw[thick, dashed] (7.5,-1) -- (6.5,0);
+   \draw[thick, dashed] (7.5,1) -- (6.5,0);
+   \fill [black] (6.5,0) circle (0.1) node[below, xshift=.0cm, yshift=-.4cm]{$I_{0,4}[\epsilon]$};
+
+   \fill [black] (5.,0) circle (0.0) node[]{$=$};
+   \fill [black] (8,0) circle (0.0) node[]{$ + $};
+   \fill [black] (9.5,0) circle (0.1) node[below, xshift=.25cm, yshift=-.1cm]{$I_{0,3}[\epsilon]$};
+   \draw[thick, dashed] (8.5,-1.) -- (9.5,0);
+   \draw[thick, dashed] (8.5,1) -- (9.5,0);
+   \draw[thick] (9.5,0) -- (11.5,0) node[above, xshift=-1cm]{$P(\epsilon,L)$};
+   \fill [black] (11.5,0) circle (0.1) node[below, xshift=-.25cm, yshift=-.1cm]{$I_{0,3}[\epsilon]$};
+   \draw[thick, dashed] (12.5,-1) -- (11.5,0);
+   \draw[thick, dashed] (12.5,1) -- (11.5,0);
+
+ \end{tikzpicture}
+\end{center}
+
+The following ideas on taking limits of the above construction for $\epsilon \lra 0$ will be presented as a sketch rather than a more strict formulation. Note that this is due to time restrictions and the respectable overhead a strict treatment demands.
+
+\begin{sketch}
+  We consider $W(P(\epsilon,L), I(\epsilon))$ and $I(\phi) = \frac{1}{3!} \int_M \phi^3$. In particular we consider two graphs:
+
+  \begin{center}
+   \begin{tikzpicture}
+     \fill [black] (-1.3,0) circle (0.0) node[]{$\gamma_1 =$};
+     \draw[thick, dashed] (-1.,-1.) -- (0,0);
+     \draw[thick, dashed] (-1.,1.) -- (0,0);
+     \draw (1.,0) circle (1cm) node[xshift=1.75cm]{$P(\epsilon,L)$};
+     \fill [black] (0,0) circle (0.1) node[right, xshift=.0cm]{$I_{0,3}[L]$};
+
+     \fill [black] (8-2.5,0) circle (0.0) node[]{$ \gamma_2 = $};
+     \fill [black] (9.5-2.5,0) circle (0.1) node[below, xshift=.25cm, yshift=-.1cm]{$I_{0,3}[\epsilon]$};
+     \draw[thick, dashed] (8.5-2.5,-1.) -- (9.5-2.5,0);
+     \draw[thick, dashed] (8.5-2.5,1) -- (9.5-2.5,0);
+     \draw[thick] (9.5-2.5,0) -- (11.5-2.5,0) node[above, xshift=-1cm]{$P(\epsilon,L)$};
+     \fill [black] (11.5-2.5,0) circle (0.1) node[below, xshift=-.25cm, yshift=-.1cm]{$I_{0,3}[\epsilon]$};
+     \draw[thick, dashed] (12.5-2.5,-1) -- (11.5-2.5,0);
+     \draw[thick, dashed] (12.5-2.5,1) -- (11.5-2.5,0);
+
+   \end{tikzpicture}
+  \end{center}
+
+  Now note that
+  $$ w_{\gamma_1} (P(\epsilon,L), I(\epsilon))(a) = \int_{l\in[\epsilon,L]} \int_{x\in M} a^2(x) \ \kappa_l(x,x) \ d\vol_M dl$$
+  Now if we take the limit $\epsilon \lra 0$ we obtain
+  $$ \kappa_l(x,x) \simeq l^{-(\dim M)/2} + h.o.t. $$
+  The problem is, that the integral over this term does not converge and thus
+  $$ \lim_{e\lra 0} w_{\gamma_1} (P(\epsilon,L), I(\epsilon))(a) $$
+  does not exist. Now for $\gamma_2$ we note that
+  \begin{align*}
+    w_{\gamma_2} (P(\epsilon,L), I(\epsilon))(a) &= \int_{l\in[\epsilon,L]} \int_{x,y\in M} a^2(x) \ \kappa_l(x,y) \ a^2(y) \ dx dy dl \\
+    &= \left\langle a^2, \int_\epsilon^L e^{lD} a^2 \ dl \right\rangle
+  \end{align*}
+  Now the limit of $\lim_{\epsilon \lra 0} w_{\gamma_2}$ does indeed exist!
+\end{sketch}
+
+Now this rough sketch can indeed be linked to a more general result:
+
+\begin{fact}~
+\begin{itemize}
+  \item \textbf{graphs with loops do not have a limit} $\epsilon \lra 0$
+  \item \textbf{graphs without loops (tree-level graphs) do have a limit} $\epsilon \lra 0$
+\end{itemize}
+\end{fact}
+
+We will see in the subsequent material that and how we need to react to the infinities that arise when working with graphs that do contain loops.
+
+
+\subsubsection{Intepretation of Feynman diagrams}
+\label{subsubsec:feynman_intepretation}
+
+The heat kernel can be interpreted as a form of transition propability such that we arrive at the following propability for a transition from $x$ to $y$:
+
+$$ P(x,y) = \int_{l=0}^\infty e^{-lm^2} \int_{f\in X}  \exp\left( - \int_0^l ||df||^2 \right)$$
+where $X = \{f \colon [0,l] \lra M | f(0) = x, f(l) = y \}$ is the space of paths from $x$ to $y$. Remember that we defined the energy of such a path as
+$$ E(f) := - \int_0^l \langle df, df \rangle $$
+Now we can collect this as
+$$ P(x,y) = \int_0^\infty \kappa_l(x,y) \ dl $$
+To make this integral well-defined, we also need the \emph{Wiener} measure, which we won't go into detail about:
+$$ \kappa_f (x,y) = \int_X D_{Wiener} f $$
+To consider a particular interaction and think about why it physically corresponds to Feynman graphs, we take
+
+$$ S(\phi) = \int_M - \frac{1}{2} \phi D\phi + \frac{1}{3!} \phi^3 $$
+
+note that this consideration is not necessarily well-defined and does contain quite some problems. Thus this discussion is more of a sketch. For $n$ particles we consider the expectation value
+
+$$ \mathds{E}(x_1, x_2, ..., x_n) = \int_{\phi \in \Ci(M)} e^{S(\phi)/\hbar} \phi(x_1) ... \phi(x_n) $$
+
+Now we associate to $n$ particles $n$ external edges:
+
+$$ \mathds{E}(x_1, ..., x_n) = \sum_\gamma \frac{1}{|\Aut(\gamma)|} \hbar^{-\sigma(\gamma)} \int_{g \in Met \gamma} \int_x e^{-E(\gamma)} $$
+where $Met \gamma$ stands for the metric on the space of curves $\gamma$. Also consider the inverse assignment
+$$ f \colon \gamma \lra M, \quad \quad E(\gamma) \lmap (x_1,...,x_n) $$
+
+\begin{definition}[Local action functional]
+  A functional $I \in \OO(\Ci(M))$ that can be written as $I = \sum_k I_k$ where $I_k$ is homogenous of degree $k$ in the variable $a \in \Ci(M)$, that is
+  $$ I_k(\lambda a) = \lambda^k I_k(a) $$
+  and such that the $I_k$ can be written as
+  $$ I_k (a) = \sum_{j=1}^{S} \int_M D_{1,j} (a) ... D_{k,j} (a) $$
+  where $D_{i,j}$ are differential operators on $M$ is called a \textbf{local action functional}.
+\end{definition}
+
+We will subsequently denote by $\OO_{loc}(\Ci(M))$ the \textbf{subspace of local action functionals}. This definition extends to the formal power series in $\hbar$ that is $I \in \OO(\Ci(M))\llbracket \hbar \rrbracket$ as follows:
+$$ I = \sum_{i,k} \hbar^i I_{i,k} $$
+where the $I_{i,k}$ need to be in $\OO_{loc}(\Ci(M))$. We further define
+$$ \OO^+_{loc}(\Ci(M))\llbracket \hbar \rrbracket \subset \OO_{loc}(\Ci(M))\llbracket \hbar \rrbracket $$
+the subspae of local functionals which are at least cubic modulo $\hbar$. Finally we are prepared to define scalar QFTs:
+
+\begin{definition}[Perturbative scalar quantum field theories]
+\label{def:PSQFTs}
+  A \textbf{perturbative scalar quantum field theory} is given by a set of effective interactions
+  $$ I[L] \in \OO^+_{loc}(\Ci(M))\llbracket \hbar \rrbracket \quad \forall L \in [0, \infty] $$
+  (plus a kinetic action $- \frac{1}{2} \langle \phi, (D + m^2) \phi \rangle$ for $\phi \in \Ci(M)$) such that
+  \begin{enumerate}
+    \item $I[L] = W(P(\epsilon, L), I[\epsilon]) \quad \forall \epsilon,L \in (0,\infty)$
+
+    \item Let
+    $$ I[L] = \sum_{i,k} \hbar^i I_{i,k}[L] $$
+    For each $i,k$ we require a small $L$ asymptotic expansion
+    $$ I_{i,k}[L] \simeq \sum_{r \in \ZZ} g_r(L) \Phi_r $$
+    where $g_r(L) \in \Ci((0,\infty)_L)$ and $\Phi_r \in \OO_{loc}(\Ci(M))$. Small $L$ asymptotic expansion means that there exists a non-decreasing sequence
+    $$ d_R \in \ZZ, \quad d_R \lra \infty, \quad R\lra \infty $$
+    such that for all $R$
+    $$ \lim_{L \lra 0} L^{-d_R} \left( I_{i,k}[L](a) - \sum_{r=0}^R g_r(L) \Phi_r(a) \right) = 0 $$
+    for all $a \in \Ci(M)$.
+  \end{enumerate}
+  We will denote by $\mathcal{Z}^{(a)}$ the set of perturbative quantum field theories and by $\mathcal{Z}^{(n)}$ the set of such theories defined modulo $\hbar^{n+1}$. Note that
+  $$ \mathcal{Z}^{(\infty)} = \lim_{\longleftarrow} \mathcal{Z}^{(n)} $$
+\end{definition}
+
 
 
 
