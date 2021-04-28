@@ -707,9 +707,120 @@ the subspae of local functionals which are at least cubic modulo $\hbar$. Finall
     $$ \lim_{L \lra 0} L^{-d_R} \left( I_{i,k}[L](a) - \sum_{r=0}^R g_r(L) \Phi_r(a) \right) = 0 $$
     for all $a \in \Ci(M)$.
   \end{enumerate}
-  We will denote by $\mathcal{Z}^{(a)}$ the set of perturbative quantum field theories and by $\mathcal{Z}^{(n)}$ the set of such theories defined modulo $\hbar^{n+1}$. Note that
+  We will denote by $\mathcal{Z}^{(a)}$ the set of perturbative quantum field theories and by $\mathcal{Z}^{(n)}$ the set of such theories defined modulo $\hbar^{n+1}$. Further we denote
   $$ \mathcal{Z}^{(\infty)} = \lim_{\longleftarrow} \mathcal{Z}^{(n)} $$
 \end{definition}
+
+\begin{theo}
+  $\mathcal{Z}^{(n+1)}$ is a principal bundle over $\mathcal{Z}^{(n)}$ with structure group the abelian group $\OO_{loc}(\Ci(M))$ (local action functionals on $M$). In particular, $\mathcal{Z}^{(0)}$ is canonically isomorphic to the space $\OO^+_{loc}(\Ci(M))$
+\end{theo}
+
+\begin{theo}
+  If we fix a \emph{normalisation scheme} (which we will define and explain later), we can find a section for each torsor $\mathcal{Z}^{(n+1)} \lra \mathcal{Z}^{(n)}$ and consequently a bijection between the set of perturbative quantum fields theories and the set of local action functionals $I \in \OO^+_{loc}(\Ci(M))\llbracket \hbar \rrbracket$.
+\end{theo}
+
+While we might not find the time to discuss the proofs of the two above theorems, their statements are the most important points. The first one provides convenient and interesting structure, mainly telling us that once we restrict to the classical setting, we recover a classical action functional, hence providing a canonical transition from quantum to classical. The second theorem provides a direct link between local action functionals and perturbative QFTs, thus enabling the transition shown in the first.\\
+
+We now discuss a \textit{strategy} to work with both of these statements: First fix $I \in \OO^+_{loc}(\Ci(M))\llbracket \hbar \rrbracket$. We want to build the effective action $I[L]$ satisfying the properties of its definition. So first of all we want to construct counterterms $I^{CT}(\epsilon)$ such that
+$$ \lim_{\epsilon \lra 0} W(P(\epsilon,L), I-I^{CT}(\epsilon))$$
+exists and in particular defines $I[L]$. Conversely given $\{I[L]\}$ we construct $I$ as a renormalized limit, subtracting the suitable counterterms. To this end, we define some new helpful notions:
+
+\begin{definition}[Periods]
+  Into the classical sequence $\NN \subset \ZZ \subset \QQ \subset \RR$ we want to insert $\QQ \subset \PP \subset \RR$ where $\PP$ forms a ring contained in transcendental numbers. A \textbf{period} is a complex number whose real and imaginary part are values of absolutely converging integrals of rational functions with rational coefficients over domains in $\RR^n$ given by polynomial inequalities with rational coefficients.
+  %TODO graph?
+\end{definition}
+
+\begin{example}
+  Two numbers included in $\PP$ and clearly not included in $\QQ$ are:
+  \begin{align*}
+    \sqrt{2} &= \int_{2x^2 \leq 1} dx \\
+    \pi &= \iint_{x^2+y^2\leq 1} dx dy = 2 \int_{-1}^{+1} \sqrt{1-x^2} dx
+  \end{align*}
+\end{example}
+
+Now let $t \in (0, \infty)$ be a real parameter. Formally we might write a "period depending smoothly on $t$" as
+$$ \alpha(t) = \int_{\gamma(t)} \omega(t) $$
+where we allow $\gamma(t)$ and $\omega(t)$ to depend smoothly on $t$. But of course we further need to require that $\alpha(t)$ is a period, thus $\in \PP$, for every rational number $t \in \QQ \cap (0,\infty)$. Collecting these requirements leads us to a definition from \emph{algebraic geometry}:
+
+\begin{definition}[Periods in Algebraic Geometry]
+  We call \textbf{rational periods} those functions in $\Ci((0,\infty))$ which are of this form and denote by $P_\QQ((0,\infty))$ the set of rational periods.
+\end{definition}
+
+\begin{definition}
+  We define $\mathcal{P}((0,\infty))$ to be the real vector space spanned by the space of rational periods:
+  $$ \mathcal{P}((0,\infty)) = P_\QQ((0,\infty)) \otimes \RR \subset \Ci((0,\infty)) $$
+  By an abuse of notation, we call elements of $\mathcal{P}((0,\infty))$ \textbf{periods}.
+\end{definition}
+
+Now we still investigate $w_\gamma(P(\epsilon,L), I(\epsilon))(a)$ in the limit $\epsilon \lra 0$. Now we interpret $w_\gamma$ as a function of $\epsilon,L,a$, thus in
+$$ \OO(\Ci(M), \Ci((0,\infty)_\epsilon)) \otimes \Ci((0,\infty)_L) $$
+In particular, if we fix $\epsilon$, we have
+$$ w_\gamma \in \OO(\Ci(M), \Ci((0,\infty)_L)) $$
+This leads us to the following theorem:
+
+\begin{theo}
+  Let $I \in \OO_{loc}(\Ci(M))\llbracket \hbar \rrbracket$ be a local action functional and let $\gamma$ be a connected stable graph. Then there exists a small-$\epsilon$ asymptotic expansion
+  $$ w_\gamma (P(\epsilon,L), I[\epsilon]) \simeq \sum_{i=0}^{\infty} g_i(\epsilon) \psi_i $$
+  where $g_i \in \mathcal{P}((0,\infty)_\epsilon)$ are periods and $\psi_i \in \OO(\Ci(M), \Ci((0,\infty)_L))$ such that
+  \begin{enumerate}
+    \item $$ \lim_{\epsilon\lra 0} L^{-d_R} \left(w_\gamma - \sum_{r=0}^R g_r(\epsilon) \psi_r \right) = 0 \quad \forall a \in \Ci(M) $$
+
+    \item the $g_i(\epsilon)$ have finite order poles at $0$, i.e. for $\forall i \ \exists k$ such that
+    $$ \lim_{\epsilon\lra 0} \epsilon^k g_i(\epsilon) = 0 $$
+
+    \item the $\psi_i$ have a small-$L$ asymptotic expansion of the form
+    $$ \psi_i \simeq \sum_{j=0}^{\infty} f_{i,j} (L) \psi_{i,j} $$
+    where $\psi_{i,j} \in \OO_{loc}(\Ci(M))$ and $f_{i,j} \in \Ci((0,\infty)_L)$.
+  \end{enumerate}
+\end{theo}
+
+Sadly we won't have the time to prove the above theorem since it is rather lengthy and technical. Thus we go on with the following definition:
+
+\begin{definition}
+  Define $\mathcal{P}((0,\infty))_{\geq 0} \subseteq \mathcal{P}((0,\infty))$ to be the subspace of functions of $\epsilon$ that are periods and which admit a limit as $\epsilon \lra 0$.
+\end{definition}
+
+Using this definition we can finally expand upon the previously mentioned \emph{renormalisation schemes}:
+
+\begin{definition}{Renormalisation Schemes}
+  A choice of a subspace
+  $$ \mathcal{P}((0,\infty))_{< 0} \subset \mathcal{P}((0,\infty))  $$
+  complementary to $\mathcal{P}((0,\infty))_{\geq 0}$ is called a \textbf{renormalisation scheme}. Hence a renormalisation scheme provides a direct sum decomposition
+  $$ \mathcal{P}((0,\infty))_{\geq 0}((0,\infty)) = \mathcal{P}((0,\infty))_{\geq 0}((0,\infty))_{\geq 0} \oplus \mathcal{P}((0,\infty))_{< 0} $$
+\end{definition}
+
+Introducing further notation using the decomposition at hand we define
+
+\begin{definition}[Singular Parts]
+  Given a period $f \in \mathcal{P}((0,\infty))$ define its \textbf{singular part} to be the projection $\sing(f)$ of $f$ onto $\mathcal{P}((0,\infty))_{< 0}$.
+\end{definition}
+
+\textbf{From now on, we fix a renormalisation scheme.} From the previous theorem, take
+$$ w_\gamma (P(\epsilon,L), I[\epsilon]) \simeq \sum_{i=0}^{\infty} g_i(\epsilon) \psi_i $$
+Now there exists an $N$ such that $\forall n > N$ the $g_n(\epsilon)$ admits a limit $\epsilon \lra 0$. As an \textbf{exercise} you can prove this claim. Now define
+$$ \psi_N := \sum_{i=0}^N g_i(\epsilon) \psi_i $$
+and note that
+$$ \sing_\epsilon (w_\gamma(P(\epsilon,L), I[\epsilon])) := \sing( \psi_N(\epsilon)) = \sum_{i=0}^N \sing_\epsilon(g_i(\epsilon)) \psi_i $$
+We can collect these results and definitions into a theorem:
+
+\begin{theo}
+  Let $I \in \OO_{loc}(\Ci(M)) \llbracket \hbar \rrbracket$ be a local action functional and let $\gamma$ be a connected stable graph. Then
+  $$ \sing_\epsilon(w_\gamma(P(\epsilon,L), I[\epsilon])) = \sum_i f_i(\epsilon) \psi_i  $$
+  where $f_i(\epsilon) \in \mathcal{P}((0,\infty))_{\geq 0}$ are singular periods (periods equivalent to their singular part) and the $\psi_i$ have a small-$L$ asymptotic expansions of the form
+  $$ \phi_i \simeq \sum_{i = 0}^\infty f_{i,j} \psi_{i,j} $$
+  where $\psi_{i,j} \in \OO_{loc}(\Ci(M))$ and $f_{i,j} \in \Ci((0,\infty)_L)$. Furthermore the limit
+  $$ \lim_{\epsilon \lra 0} \left( w_\gamma (P(\epsilon,L), I[\epsilon]) - \sing_\epsilon(w_\gamma (P(\epsilon,L), I[\epsilon])) \right) $$
+  exists in $\OO_{loc}(\Ci(M), \Ci((0,\infty)_L))$.
+\end{theo}
+
+\begin{theo}
+  There exists a unique series of local counterterms
+  $$ I_{i,k}^{CT}(\epsilon) \in \OO_{loc}(\Ci(M)) \otimes \mathcal{P}((0,\infty))_{<0} $$
+  for any $i,k$ with $I_{i,k}^{CT}$ homogenous of degree $k$ as a function of $a \in \Ci(M)$ and such that for all $L \in (0,\infty)$ the limit
+  $$ \lim_{\epsilon \lra 0} W(P(\epsilon, L), I - \sum_{i,k} \hbar^i I_{i,k}^{CT}(\epsilon)) $$
+  exists.
+\end{theo}
+
 
 
 
