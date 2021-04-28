@@ -251,18 +251,18 @@ In our current formulation this condition on $S$ does not really make sense yet 
 
 While tentative, this definition certainly is not a good idea: Supposing $S_{eff}[\Lambda]$ is close to a local action functional, then using the \ref{eq:RGE} one obtains that $S_{eff}[\Lambda^\prime]$ is in fact entirely non local for $\Lambda^\prime < \Lambda$. The solution to this problem is to consider length scales instead of energy scales.\\
 
-The theory based on length scales takes as fundamental objects the propagator of a differential operator. In order to rewrite the \ref{eq:RGE} in terms of such propagators, we will need to introduce \emph{Feynmann graphs} as a way to compute integrals.
+The theory based on length scales takes as fundamental objects the propagator of a differential operator. In order to rewrite the \ref{eq:RGE} in terms of such propagators, we will need to introduce \emph{Feynman graphs} as a way to compute integrals.
 
-\subsection{Feynmann graphs}
+\subsection{Feynman graphs}
 \label{subsec:feynmann_graphs}
 
 The RGE contains an integral of the form
 $$ \int_{x \in U} \exp(\Phi(x)/\hbar + I(x+a)/\hbar) $$
 where $\Phi$ is a quadratic negative definite form on a vector space $U$. From now on we will assume as a convention that the measure on $U$ is the \emph{Lebesgue measure} normalized such that
 $$ \int_{x \in U} \exp(\Phi(x)/\hbar) = 1 $$
-Note that the measure does in fact depend on $\hbar$. Now this type of integral can be expressed as a sum over \emph{Feynman graphs} where we understand the integral as an asymptotic series in $\hbar$. To introduce \emph{Feynman graphs}, we start by givin two separate but equivalent definitions of \emph{stable graphs}:
+Note that the measure does in fact depend on $\hbar$. Now this type of integral can be expressed as a sum over \emph{Feynman graphs} where we understand the integral as an asymptotic series in $\hbar$. To introduce \emph{Feynman graphs}, we start by giving two separate but equivalent definitions of \emph{stable graphs}:
 
-\begin{definition}[Stable Graphs - Graph Version]
+\begin{definition}[Stable Graphs -- Graph Version]
   A \textbf{stable graph} is a graph $\gamma$ possibly with external edges (edges that only connect to one vertex/node) such that
   \begin{enumerate}
     \item to each vertex (node) $v \in V(\gamma)$ there is an associated number $g(\gamma) \in \ZZ_{\geq 0}$ called the genus of the vertex.
@@ -317,8 +317,8 @@ As promised we give the following alternative yet equivalent definition of a sta
 
 We denote by $T(\gamma)$ the set of fixed points of the involution $\sigma$ and by $E(\gamma)$ the set of two element orbits of $\sigma$. As such, $T(\gamma)$ stands for the tails or external edges and $E(\gamma)$ for the internal edges of the graph.\\
 
-Now we turn towards the data associated to \emph{Feynmann graphs} using the previously presented tools. Let us fix a finited graded vector space $U$ over a field $\mathds{k}$. Let further $\OO(U)$ be the (completed) symmetric algebra on the dual vector space $U^*$. This algebra coincides with $\OO(U)$ being the ring of formal power series in variables in $U$. Given a basis $\BB$ of $U$ there exists a canonical isomorphism
-$$ \OO(U) \longleftrightarrow \mathds{k}[\BB] $$
+Now we turn towards the data associated to \emph{Feynman graphs} using the previously presented tools. Let us fix a finite graded vector space $U$ over a field $\mathds{k}$. Let further $\OO(U)$ be the (completed) symmetric algebra on the dual vector space $U^*$. This algebra coincides with $\OO(U)$ being the ring of formal power series in variables in $U$. Thus given a basis $\BB$ of $U$ there exists a canonical isomorphism
+$$ \OO(U) \longleftrightarrow \mathds{k}\llbracket\BB\rrbracket $$
 
 \begin{definition}
   Let $f \in \OO(U)$ be homogenous of degree $k$. Then we can define an $S_k$-invariant linear map
@@ -326,15 +326,12 @@ $$ \OO(U) \longleftrightarrow \mathds{k}[\BB] $$
     D^kf \colon U^{\otimes k} &\lra \mathds{k}\\
     u_1 \otimes ... \otimes u_k &\lmap \left( \dell{}{u_1} ... \dell{}{u_k} f \right) (0)
   \end{align*}
-  Note that $D^k f \in \Hom(U^{\otimes k}, \mathds{k})$ and it maps
-  $$ \OO(U) \lra \OO(U)\llbracket \hbar \rrbracket $$
-  thus to elements of the form $I = \sum_{i,k} \hbar^i I_{i,k}$ where $I_{i,k}$ is homogenous of degree $k$ in $U$.
 \end{definition}
 
 Our next goal is to assign some algebraic data to our graphs:
 
 \begin{definition}
-  Let us denote by $\OO^+(U) \llbracket \hbar \rrbracket \subset \OO(U) \llbracket \hbar \rrbracket$ the subset of functionals at least cubic modulo $\hbar$. Now fix an ordering of the set of tails of $\gamma$
+  Let us denote by $\OO^+(U) \llbracket \hbar \rrbracket \subset \OO(U) \llbracket \hbar \rrbracket$ the subset of functionals at least cubic modulo $\hbar$. An element $I \in \OO(U) \llbracket \hbar \rrbracket$ can be decomposed as $I = \sum_{i,k} \hbar^i I_{i,k}$ where $I_{i,k}$ is homogenous of degree $k$ in $U$. Now fix an ordering of the set of tails of $\gamma$
   $$ T(\gamma) \overset{\psi}{\longleftrightarrow} \{1, ..., n\}$$
   Also fix an element $P \in \Sym^2(U) \subset U^{\otimes 2}$ and some $a_1, ..., a_n \in U$. Then we have
   \begin{align*}
@@ -352,9 +349,8 @@ Our next goal is to assign some algebraic data to our graphs:
   Now define
   \begin{align*}
     w_{\gamma, \psi} (P,I) (a_1, ..., a_n) \quad &:= \quad \mathds{I}(\mathds{P}) \in \mathds{k} \\
-    w_\gamma (P,I) (a) \quad &:= \quad w_{r,\psi} (P,I)(a, ..., a)
+    w_\gamma (P,I) (a) \quad &:= \quad w_{\gamma,\psi} (P,I)(a, ..., a)
   \end{align*}
-  $$  $$
   which assigns, for chosen $\psi$, a number to our graph.
 \end{definition}
 
@@ -415,7 +411,7 @@ where we sum over all connected stable graphs. This is indeed a power series in 
 \label{lemma:P_zero}
   Setting $P$ to $0$ we obtain $W(0,I) = I$.
 \begin{proof}
-  As a \emph{hint}, note that only graphs with no edges can contribute.
+  As a \emph{hint}, note that only graphs with no (internal) edges, i.e. with only tails, can contribute.
 \end{proof}
 \end{lem}
 
@@ -439,12 +435,12 @@ This leads us to the following lemma:
   The case of $P=0$ is treated in \ref{lemma:P_zero}. Thus assume $P \neq 0$ such that
   \begin{equation}
   \label{eq:exp} \tag{$\diamond$}
-    \exp( \hbar^{-1} W(P,I)) = \exp(\hbar \partial_P) \exp(I/\hbar)
+    \exp( \hbar^{-1} W(P,I)) = \exp(\hbar \partial_P) \exp(I/\hbar) \quad \forall P
   \end{equation}
   Now let $\epsilon > 0$ small such that we can neglect terms of order $\epsilon^2$ and let $P^\prime \in \Sym^2(U)$. Thus we arrive at
   \begin{equation}
   \label{eq:exp2} \tag{$\diamond \diamond$}
-    (\diamond) \ \Leftrightarrow \ \exp( \hbar^{-1} W(P+ \epsilon P^\prime,I)) = (1+ \hbar \epsilon \partial_{P^\prime}) \exp( \hbar^{-1} W(P,I))
+    (\diamond) \ \Leftrightarrow \ \exp( \hbar^{-1} W(P+ \epsilon P^\prime,I)) = (1+ \hbar \epsilon \partial_{P^\prime}) \exp( \hbar^{-1} W(P,I)) \quad \forall P,P^\prime
   \end{equation}
   Thus we get $(1+\hbar \epsilon \partial_{P^\prime}) \approx \exp(\hbar \epsilon \partial_{P^\prime})$. Now if we assume in \eqref{eq:exp} that $P \lra P + \epsilon P^\prime$ we get:
   %TODO equations
@@ -470,7 +466,7 @@ This leads us to the following lemma:
 \end{proof}
 \end{lem}
 
-Let us now connect Feynman diagrams to integrals. Let $U$ now have the base field $\RR$ and let $\Phi$ be a non-degenerate quadratic form on it. Further let $P = \sum_i e_i \otimes e_i$ where $\{e_i\}$ forms an orthonormal basis for $-\Phi$.
+Let us now connect Feynman diagrams to integrals. Let $U$ now have the base field $\RR$ and let $\Phi$ be a non-degenerate quadratic form on it. Further let $P = \sum_i e_i \otimes e_i$ where $\{e_i\}$ forms an orthonormal basis for $- \Phi$.
 
 \begin{prop}
   $$ W(P,I)(a) = \hbar \ \log \int_{x \in U} \exp\left( \frac{1}{2\hbar} \Phi(x,x) + \frac{1}{\hbar} I(x+a) \right) \quad \forall a \in U $$
@@ -500,7 +496,11 @@ Let us now connect Feynman diagrams to integrals. Let $U$ now have the base fiel
 
 If $U$ should not be finite-dimensional we can still define $W(P,I)$ and $\partial_P$. We also still have
 $$ W(P,I) = \hbar \log\{ \exp(\hbar \partial_P) \exp(I/\hbar) \} $$
-This concludes our discussion of Feynman graphs which will now be used to make a transition from energy scales to length scales. We start by introducing some common concepts used in the arising theory:
+This concludes our discussion of Feynman graphs which will now be used to make a transition from energy scales to length scales.
+
+\subsubsection{Towards a definition of perturbative QFTs}
+
+We start by introducing some common concepts used in the arising theory:
 
 \begin{definition}[Integral Kernels]
   Given $F\colon \Ci(M) \lra \Ci(M)$ an \textbf{integral kernel} of $F$ is a map $K \colon M \times M \lra \RR$ such that
@@ -649,7 +649,7 @@ Now this rough sketch can indeed be linked to a more general result:
 We will see in the subsequent material that and how we need to react to the infinities that arise when working with graphs that do contain loops.
 
 
-\subsubsection{Intepretation of Feynman diagrams}
+\subsubsection{Interpretation of Feynman diagrams}
 \label{subsubsec:feynman_intepretation}
 
 The heat kernel can be interpreted as a form of transition propability such that we arrive at the following propability for a transition from $x$ to $y$:
