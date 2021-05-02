@@ -278,7 +278,7 @@ Using the genus of vertices in a graph we can define the genus of a stable graph
 \begin{definition}[Genus of a Stable Graph]
   Let $\gamma$ be a stable graph. Its \textbf{genus} $g(\gamma)$ is defined by
   $$ g(\gamma) \ = \ b_1(\gamma) + \sum_{v\in V(\gamma)} g(v) $$
-  where $b_1(\gamma)$ is the first \emph{Betti number} of $\gamma$ defined by $b_1(\gamma) = |E| + |C| - |V|$ where $E$ is the set of edges, $C$ the set of connected components of $\gamma$ and $V$ the set of vertices (nodes).
+  where $b_1(\gamma)$ is the first \emph{Betti number} of $\gamma$ defined by $b_1(\gamma) = |E| + |C| - |V|$ where $E$ is the set of \emph{external} edges, $C$ the set of connected components of $\gamma$ and $V$ the set of vertices (nodes).
 \end{definition}
 
 As promised we give the following alternative yet equivalent definition of a stable graph:
@@ -498,13 +498,13 @@ If $U$ should not be finite-dimensional we can still define $W(P,I)$ and $\parti
 $$ W(P,I) = \hbar \log\{ \exp(\hbar \partial_P) \exp(I/\hbar) \} $$
 This concludes our discussion of Feynman graphs which will now be used to make a transition from energy scales to length scales.
 
-\subsubsection{Towards a definition of perturbative QFTs}
+\subsection{Towards a definition of perturbative QFTs}
 
 We start by introducing some common concepts used in the arising theory:
 
 \begin{definition}[Integral Kernels]
   Given $F\colon \Ci(M) \lra \Ci(M)$ an \textbf{integral kernel} of $F$ is a map $K \colon M \times M \lra \RR$ such that
-  $$ F(f)(y) = \int_{x \in M} f(y) K(x,y) $$
+  $$ F(f)(y) = \int_{x \in M} f(x) K(x,y) $$
 \end{definition}
 
 A certain type of integral kernels will be of particular importance:
@@ -522,7 +522,7 @@ $$ W(P,I)(a) = \hbar \log \int_{\phi \in \Ci(M)} \exp\left( - \frac{1}{2\hbar} \
 Clearly this is not well-defined, thus we utilize the bounded subsets to define
 $$ W(P_U,I)(a) = \hbar \log \int_{\phi \in \Ci(M)_U} \exp\left( - \frac{1}{2\hbar} \langle \phi, (D+m^2) \phi \rangle + \frac{1}{\hbar} I(\phi +a) \right) $$
 which is indeed well-defined. This leads us to rewrite
-$$ I[\Lambda^\prime](a) = \hbar \log \int_{\phi_H \in \Ci(M)_{[\Lambda^\prime, \Lambda)}} \exp(F(\phi_H) + I[\Lambda](\phi_H + a)/\hbar) $$
+$$ I[\Lambda^\prime](a) = \hbar \log \int_{\phi_H \in \Ci(M)_{[\Lambda^\prime, \Lambda)}} \exp(F(\phi_H) / \hbar + I[\Lambda](\phi_H + a)/\hbar) $$
 into the \textbf{rephrased RGE}:
 \begin{equation}
 \label{eq:RGE_2}\tag{RGE}
@@ -531,7 +531,7 @@ I[\Lambda^\prime] = W \left( P_{[\Lambda^\prime, \Lambda)}, I[\Lambda] \right)
 
 Now Feynman proved the following:
 $$ P(x,y) = \int_{\tau = 0}^{\infty} e^{- \tau m^2} \kappa_\tau (x,y) \ d\tau $$
-where $\kappa_\tau (x,y)$ is the \textbf{heat kernel} i.e. the integral kernel of $e^{\tau D}$ where $D$ is the Laplacian. We will try to work towards understanding this result.\\
+where $\kappa_\tau (x,y)$ is the \textbf{heat kernel} of the Laplacian i.e. the integral kernel of $e^{\tau D}$ where $D$ is the Laplacian. We will try to work towards understanding this result.\\
 
 To this end let $l \in \RR_{\geq 0}$ and $\kappa^0_l$ the heat kernel of $lD$. For all $\phi \in \Ci(M)$ this gives us
 $$ \left( e^{-lD}\phi \right) (x) = \int_{y \in M} \kappa^0_l (x,y) \phi(y) dy $$
@@ -544,12 +544,12 @@ $$ P = \int_{l=0}^\infty \kappa_l \ dl $$
 Before this, we had the following form in the energy scale:
 $$ P = \sum_i \frac{1}{x_i^2 + m^2} e_i \otimes e_i $$
 where the $e_i$ denoted the eigenfunctions to eigenvalues $\lambda_i$. We then defined a cut-off via
-$$ P_U = \sum_{i|\lambda_i \in U} \sum_i \frac{1}{x_i^2 + m^2} e_i \otimes e_i$$
-In an analogy we define the cut-off propagator as
-$$ P(\epsilon, L) = \int_\epsilon^L \kappa_l dl  $$
-for $\epsilon, L \in (0,\infty)$ and $\epsilon < L$. Using coordinates, one can write this propagator as
-$$ P(\epsilon, L) = \frac{e^{-\epsilon \lambda_i} - e^{-l \lambda_i}}{\lambda_i^2 + m^2} e_i \otimes e_i $$
-As an \textbf{exercise} you can prove this claim.\\
+$$ P_U = \sum_{i|\lambda_i \in U} \frac{1}{\lambda_i^2 + m^2} e_i \otimes e_i$$
+In an analogy we define the cut-off propagator in length scales as
+$$ P(\epsilon, L) = \int_\epsilon^L \kappa_l dl $$
+for $\epsilon, L \in (0,\infty)$ and $\epsilon < L$. This corresponds to a propagator with an infrared cutoff at $L$ and an ultraviolet cutoff at $\epsilon$ where both are length scales instead of energy scales instead of energy scales. Note that length scales behave inverse to energy scales. Using coordinates, one can write this propagator as
+$$ P(\epsilon, L) = \frac{e^{-\epsilon \lambda_i} - e^{-L  \lambda_i}}{\lambda_i^2 + m^2} e_i \otimes e_i $$
+Thus the coefficients decay for large $\lambda_i$. As an \textbf{exercise} you can prove this claim.\\
 
 Now we know how to express the \eqref{eq:RGE_2} in terms of length sclaes:
 
@@ -625,16 +625,16 @@ The following ideas on taking limits of the above construction for $\epsilon \lr
 
   Now note that
   $$ w_{\gamma_1} (P(\epsilon,L), I(\epsilon))(a) = \int_{l\in[\epsilon,L]} \int_{x\in M} a^2(x) \ \kappa_l(x,x) \ d\vol_M dl$$
-  Now if we take the limit $\epsilon \lra 0$ we obtain
+  Now if we take the limit $l \lra 0$ we obtain
   $$ \kappa_l(x,x) \simeq l^{-(\dim M)/2} + h.o.t. $$
   The problem is, that the integral over this term does not converge and thus
-  $$ \lim_{e\lra 0} w_{\gamma_1} (P(\epsilon,L), I(\epsilon))(a) $$
-  does not exist. Now for $\gamma_2$ we note that
+  $$ \lim_{\epsilon \lra 0} w_{\gamma_1} (P(\epsilon,L), I(\epsilon))(a) $$
+  does not exist. For $\gamma_2$ we note that
   \begin{align*}
     w_{\gamma_2} (P(\epsilon,L), I(\epsilon))(a) &= \int_{l\in[\epsilon,L]} \int_{x,y\in M} a^2(x) \ \kappa_l(x,y) \ a^2(y) \ dx dy dl \\
-    &= \left\langle a^2, \int_\epsilon^L e^{lD} a^2 \ dl \right\rangle
+    &= \left\langle a^2, \int_\epsilon^L e^{-lD} a^2 \ dl \right\rangle
   \end{align*}
-  Now the limit of $\lim_{\epsilon \lra 0} w_{\gamma_2}$ does indeed exist!
+  In this case the limit $\lim_{\epsilon \lra 0} w_{\gamma_2}$ does indeed exist!
 \end{sketch}
 
 Now this rough sketch can indeed be linked to a more general result:
@@ -671,8 +671,8 @@ $$ \mathds{E}(x_1, x_2, ..., x_n) = \int_{\phi \in \Ci(M)} e^{S(\phi)/\hbar} \ph
 
 Now we associate to $n$ particles $n$ external edges:
 
-$$ \mathds{E}(x_1, ..., x_n) = \sum_\gamma \frac{1}{|\Aut(\gamma)|} \hbar^{-\sigma(\gamma)} \int_{g \in Met \gamma} \int_x e^{-E(\gamma)} $$
-where $Met \gamma$ stands for the metric on the space of curves $\gamma$. Also consider the inverse assignment
+$$ \mathds{E}(x_1, ..., x_n) = \sum_\gamma \frac{1}{|\Aut(\gamma)|} \hbar^{-\sigma(\gamma)} \int_{g \in Met_\gamma} \int_{f: \gamma \ra M} e^{-E(f)} $$
+where $Met_\gamma$ stands for the space of metrics on the space of curves $\gamma$ and $f$ are those maps $\gamma \lra M$ that take the endpoints of the $n$ external edges of $\gamma$ to $x_1,...,x_n$. Also consider the inverse assignment
 $$ f \colon \gamma \lra M, \quad \quad E(\gamma) \lmap (x_1,...,x_n) $$
 
 \begin{definition}[Local action functional]
@@ -699,17 +699,21 @@ the subspae of local functionals which are at least cubic modulo $\hbar$. Finall
 
     \item Let
     $$ I[L] = \sum_{i,k} \hbar^i I_{i,k}[L] $$
-    For each $i,k$ we require a small $L$ asymptotic expansion
+    For each $i,k$ we require a small-$L$ asymptotic expansion
     $$ I_{i,k}[L] \simeq \sum_{r \in \ZZ} g_r(L) \Phi_r $$
-    where $g_r(L) \in \Ci((0,\infty)_L)$ and $\Phi_r \in \OO_{loc}(\Ci(M))$. Small $L$ asymptotic expansion means that there exists a non-decreasing sequence
+    where $g_r(L) \in \Ci((0,\infty)_L)$ and $\Phi_r \in \OO_{loc}(\Ci(M))$. Small-$L$ asymptotic expansion means that there exists a non-decreasing sequence
     $$ d_R \in \ZZ, \quad d_R \lra \infty, \quad R\lra \infty $$
     such that for all $R$
     $$ \lim_{L \lra 0} L^{-d_R} \left( I_{i,k}[L](a) - \sum_{r=0}^R g_r(L) \Phi_r(a) \right) = 0 $$
     for all $a \in \Ci(M)$.
   \end{enumerate}
-  We will denote by $\mathcal{Z}^{(a)}$ the set of perturbative quantum field theories and by $\mathcal{Z}^{(n)}$ the set of such theories defined modulo $\hbar^{n+1}$. Further we denote
+  We will denote by $\mathcal{Z}^{(a)}$ the set of perturbative quantum field theories and by $\mathcal{Z}^{(n)}$ the set of such theories defined modulo $\hbar^{n+1}$, that is ignoring terms in $\hbar$ of order higher than $n$. Further we denote
   $$ \mathcal{Z}^{(\infty)} = \lim_{\longleftarrow} \mathcal{Z}^{(n)} $$
 \end{definition}
+
+\subsection{The structure of scalar perturbative QFTs}
+
+We now have a definition of quantum field theory and we might ask how we can connect it to a classical definition of quantum field theory without any effective interactions. This connection can be formulated in the following theorem:
 
 \begin{theo}
   $\mathcal{Z}^{(n+1)}$ is a principal bundle over $\mathcal{Z}^{(n)}$ with structure group the abelian group $\OO_{loc}(\Ci(M))$ (local action functionals on $M$). In particular, $\mathcal{Z}^{(0)}$ is canonically isomorphic to the space $\OO^+_{loc}(\Ci(M))$
@@ -721,12 +725,12 @@ the subspae of local functionals which are at least cubic modulo $\hbar$. Finall
 
 While we might not find the time to discuss the proofs of the two above theorems, their statements are the most important points. The first one provides convenient and interesting structure, mainly telling us that once we restrict to the classical setting, we recover a classical action functional, hence providing a canonical transition from quantum to classical. The second theorem provides a direct link between local action functionals and perturbative QFTs, thus enabling the transition shown in the first.\\
 
-We now discuss a \textit{strategy} to work with both of these statements: First fix $I \in \OO^+_{loc}(\Ci(M))\llbracket \hbar \rrbracket$. We want to build the effective action $I[L]$ satisfying the properties of its definition. So first of all we want to construct counterterms $I^{CT}(\epsilon)$ such that
-$$ \lim_{\epsilon \lra 0} W(P(\epsilon,L), I-I^{CT}(\epsilon))$$
+We now discuss a \textit{strategy} to work with both of these statements: First fix $I \in \OO^+_{loc}(\Ci(M))\llbracket \hbar \rrbracket$. We want to build the effective interaction $I[L]$ satisfying the properties of its definition. So first of all we want to construct counterterms $I^{CT}(\epsilon)$ such that
+$$ \lim_{\epsilon \lra 0} W\left(P(\epsilon,L), I-I^{CT}(\epsilon)\right)$$
 exists and in particular defines $I[L]$. Conversely given $\{I[L]\}$ we construct $I$ as a renormalized limit, subtracting the suitable counterterms. To this end, we define some new helpful notions:
 
 \begin{definition}[Periods]
-  Into the classical sequence $\NN \subset \ZZ \subset \QQ \subset \RR$ we want to insert $\QQ \subset \PP \subset \RR$ where $\PP$ forms a ring contained in transcendental numbers. A \textbf{period} is a complex number whose real and imaginary part are values of absolutely converging integrals of rational functions with rational coefficients over domains in $\RR^n$ given by polynomial inequalities with rational coefficients.
+  Into the classical sequence $\NN \subset \ZZ \subset \QQ \subset \ABF \subset \RR$ we want to insert $\ABF \subset \PP \subset \RR$ where $\PP$ forms a ring contained in transcendental and algebraic numbers. A \textbf{period} is a complex number whose real and imaginary part are values of absolutely converging integrals of rational functions with rational coefficients over domains in $\RR^n$ given by polynomial inequalities with rational coefficients.
   %TODO graph?
 \end{definition}
 
@@ -752,7 +756,7 @@ where we allow $\gamma(t)$ and $\omega(t)$ to depend smoothly on $t$. But of cou
   By an abuse of notation, we call elements of $\mathcal{P}((0,\infty))$ \textbf{periods}.
 \end{definition}
 
-Now we still investigate $w_\gamma(P(\epsilon,L), I(\epsilon))(a)$ in the limit $\epsilon \lra 0$. Now we interpret $w_\gamma$ as a function of $\epsilon,L,a$, thus in
+Now we still investigate $w_\gamma(P(\epsilon,L), I(\epsilon))(a)$ in the limit $\epsilon \lra 0$. We interpret $w_\gamma$ as a function of $\epsilon,L,a$, thus in
 $$ \OO(\Ci(M), \Ci((0,\infty)_\epsilon)) \otimes \Ci((0,\infty)_L) $$
 In particular, if we fix $\epsilon$, we have
 $$ w_\gamma \in \OO(\Ci(M), \Ci((0,\infty)_L)) $$
