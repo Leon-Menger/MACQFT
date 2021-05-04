@@ -823,9 +823,130 @@ We can collect these results and definitions into a theorem:
   for any $i,k$ with $I_{i,k}^{CT}$ homogenous of degree $k$ as a function of $a \in \Ci(M)$ and such that for all $L \in (0,\infty)$ the limit
   $$ \lim_{\epsilon \lra 0} W(P(\epsilon, L), I - \sum_{i,k} \hbar^i I_{i,k}^{CT}(\epsilon)) $$
   exists.
+\begin{proof}
+  First note that
+  \begin{align*}
+    W(P,I) &= \sum_{i,k} \hbar^i W_{i,k}(P,I) \\
+    W_{i,k}(P,I) &= \sum_{\gamma \in \Gamma_{i,k}} w_\gamma (P(\epsilon, L), I[\epsilon])
+  \end{align*}
+  where $\Gamma_{i,k}$ is the set of all stable graphs of genus $i$ with $k$ external edges. Now for $i = 0$ the term
+  $$ \lim_{\epsilon \lra 0} w_\gamma (P(\epsilon, L), I[\epsilon])$$
+  converges. Now for $i\neq 0$ we denote
+  $$ (i,j) < (k,l) \quad \Leftrightarrow \quad i<k \ or \ (i=k \ and \ j<l) $$
+  Thus define
+  $$ I_{1,1}^{CT}(\epsilon, L) = \sing_\epsilon(W_{1,1}(P(\epsilon, L), I[\epsilon])) $$
+  To show that this is indeed a fitting counterterm, we calculate
+  \begin{align*}
+    W_{1,1}(P(\epsilon,L), I[\epsilon] - \hbar I_{1,1}^{CT}(\epsilon,L)) &= W_{1,1}(P(\epsilon,L), I[\epsilon]) - I_{1,1}^{CT}(\epsilon,L)\\
+    \Rightarrow \quad W_{1,1}(P(\epsilon,L), \hbar I_{1,1}^{CT}(\epsilon,L)) &= I_{1,1}^{CT}
+  \end{align*}
+  Thus taking the limit we obtain
+  \begin{align*}
+    &\lim_{\epsilon \lra 0} W_{1,1}(P(\epsilon,L), I[\epsilon] - \hbar I_{1,1}^{CT}(\epsilon,L)) \\
+    = &\lim_{\epsilon \lra 0} \left( \Reg_\epsilon(W_{1,1}(P(\epsilon,L))) + \sing_\epsilon(W_{1,1}(P(\epsilon,L))) - \sing_\epsilon(W_{1,1}(P(\epsilon,L))) \right)
+  \end{align*}
+  and thus the limit exists. Now we want to show that $I_{1,1}^{CT}$ is local. To this end note that
+  \begin{align*}
+    \dd{}{L} W_{1,1}(P(\epsilon,L))
+    %TODO graphs?
+  \end{align*}
+  Since $K_L$ is smooth the singular point of the derivative is zero. Further the singular point of $W_{1,1}$ does not depend on $L$ which implies
+  $$ I_{1,1}^{CT}(\epsilon, L) = I_{1,1}^{CT}(\epsilon) $$
+  Now recall that
+  $$ \sing_\epsilon w_\gamma = \sum_i f_i(\epsilon) \phi_i $$
+  where the $\phi_i$ have a small-$L$ asymptotic expansion. Thus $\sing_\epsilon w_\gamma$ is local. Having established the base case, we now use induction to conclude the proof:\\
+  Suppose we have constructed $I_{j,l}^{CT}(\epsilon)$ for all $(j,l)<(i,k)$ such that they satisfy our theorem. For convenience we define
+  \begin{align*}
+    W_{<(i,k)} (P,I) &= \sum_{(j,l)<(i,k)} \hbar^j W_{j,l}(P,I)\\
+    &= \sum_{\gamma \in \Gamma_{<(i,k)}} \frac{\hbar^{g(\gamma)}}{|\Aut(\gamma)|} w_\gamma (P,I)
+  \end{align*}
+  Now we define the counterterms as
+  $$ I_{i,k}^{CT}(\epsilon, L) = \sing_\epsilon W_{i,k}\left(P(\epsilon,L), I - \sum_{(j,l)<(i,k)}\hbar^j I_{j,l}^{CT}(\epsilon)\right) $$
+  Thus we again investigate the limit of
+  \begin{align*}
+    &W_{i,k}\left( P(\epsilon,L), I - \sum_{(j,l)<(i,k)}\hbar^j I_{j,l}^{CT}(\epsilon) - \hbar^i I_{i,k}^{CT}(\epsilon, L) \right)\\
+    = \quad &W_{i,k}\left( P(\epsilon,L), I - \sum_{(j,l)<(i,k)}\hbar^j I_{j,l}^{CT}(\epsilon) \right) - I_{i,k}^{CT}(\epsilon, L)
+  \end{align*}
+  We see that the limit for $\epsilon \lra 0$ exists. Now all we need to show is that $I_{i,k}^{CT}(\epsilon,L)$ is local which is done as before by showing that it is independent on $L$.
+\end{proof}
 \end{theo}
 
+Now let $I \in \OO^+(\Ci(M))\llbracket\hbar\rrbracket$ be a local action functional. We define
+$$ I[L] := \lim_{\epsilon \lra 0} \left( W(P(\epsilon,L), I - I^{CT}(\epsilon)) \right) =: W^R(P(0,L), I) $$
+where $I \simeq I(\epsilon \ra 0) $.
 
+\begin{ex}
+  Prove that $I[L]$ satisfies the \eqref{eq:RGE_length} and the small-$L$ asymptotic expansion of the definition of a scalar PQFT.
+\end{ex}
+
+Conversely, let $\{I[L]\}$ be a collection of effective actions defining a theory. Now for
+$$ I = \sum_{i,k} \hbar^i I_{i,k} $$
+we want to construct the terms $I_{i,k}$. For $I_{0,0}$ just take the limit $\lim_{\epsilon \ra 0} W(P(\epsilon,L), I[L])$. Now let us suppose we have constructed $I_{r,s}$ for $(r,s)<(i,k)$ such that
+$$ W^R_{a,b}\left(P(0,L), \sum_{(r,s)<(i,k)} \hbar^k I_{r,s}\right) = I_{a,b}(L)$$
+for all $(a,b) < (i,k)$. Now
+$$I_{i,k} = I_{i,k}[L] - W^R_{i,k}\left(P(0,L), \sum_{(r,s)<(i,k)} \hbar^r I_{r,s} \right)$$
+Thus recall
+$$ W^R(P(0,L), I) = \sum_{i,k} \hbar^i W_{i,k}^R (P(0,L), I) $$
+
+\begin{ex}
+  Show that this quantity does not depend on $L$ (use \eqref{eq:RGE_length}) and is local (use the locality of $\{I[L]\}$).
+\end{ex}
+
+Thus we have established a bijection between theories and local power series in $\hbar$
+\begin{align}
+  \ZZ^{(\infty)} &\underset{RS}{\longleftrightarrow} \OO^+_{loc}(\Ci(M))\llbracket \hbar \rrbracket \\
+  \ZZ^{(n)} &\underset{RS}{\longleftrightarrow} \OO^+_{loc}(\Ci(M))\llbracket \hbar \rrbracket / \hbar^{n+1}
+\end{align}
+
+
+\subsection{Principal Bundle}
+\subsection{Renormalizability}
+
+\textbf{Problem:} The space of theories is an infinite-dimensional manifold. Physically, to specify a particular theory we would need an infinite number of experiments.\\
+
+Thus we want to consider a finite subset of these theories, namely renormalizable theories. \textbf{Classically} a theory is renormalizable, if it has a finite number of counterterms. But we saw that the number of counterterms depends on the choice of renormalisation scheme.
+
+\begin{axiom}
+  A theory $\{S^{eff}[\Lambda]$ is renormalizable if $S^{eff}[\Lambda]$ does not grow too fast when $\Lambda \lra \infty$, measured in the "right" units appropriate to the energy scale.
+\end{axiom}
+
+
+\textbf{Aside:} If $M = \RR^n$, it is not compact, but we can define a scalar PQFT in (more or less) the same way and get similar results. Define
+$$ R_l \colon \Ci(\RR^n) \lra \Ci(\RR^n), \quad \quad \phi(x) \lmap l^{1-n/2} \phi(l^{-1} x) $$
+and additionally the map
+$$ RG_l (S^{eff}[\Lambda]) (\phi) = S^{eff}[l^{-2} \Lambda](R_l(\phi)) $$
+This leads us to the following result:
+
+\begin{lem}
+  $RG_l$ is a flow on the space of theories. If $ \{S^{eff}[\Lambda]\}$ satisfies the \eqref{eq:RGE}, then so does $\{RG_l(S^{eff}[\Lambda])\}$. We call $RG_l$ the \textbf{local renormalization group flow}.
+\end{lem}
+
+
+\begin{definition}
+  A theory is \textbf{renormalizable} if $RG_l(S^{eff}[\Lambda])$ grows, in terms of $\Lambda$, at most logarithmically as $l \lra 0$. Suppose that $S$ is translation invariant. We say that $S$ is of dimension $k$ if
+  $$ S(R_l(\phi)) = l^k S(\phi) $$
+\end{definition}
+
+\begin{example}~
+  \begin{itemize}
+    \item $\int_{\RR^4} \phi D \phi, \ \int \phi^4$ are of $\dim 0$.
+    \item $\int_{\RR^4} \phi^2$ is of $\dim 2$.
+  \end{itemize}
+\end{example}
+
+\begin{theo}
+  Let $\mathfrak{R}^{(k)}(\RR^n)$ be the space of renormalizable scalar field theories of $\RR^n$ invariant under translation defined modulo $\hbar^{n+1}$. Then
+  $$  \mathfrak{R}^{(k+1)}(\RR^n) \lra \mathfrak{R}^{(k)}(\RR^n)$$
+  is a torsor for the vector space of local action functionals $S(\phi)$ which are a sum of terms of non-negative dimensions. Furthermore $\mathfrak{R}^{(0)}(\RR^n)$ is canonically isomorphic to the space of local action functionals of the form
+  $$ S(\phi) = \frac{1}{2} \int_{\RR^n} \phi D \phi + I $$
+  where the $I$ are cubic or higher terms of non-negative dimensions.
+\end{theo}
+
+\begin{corollary}
+  On $\RR^4$ renormalizable scalar field theories invariant under $SO(4) \times RR^4$ and $\phi \lmap -\phi$ are in bijection with Lagrangians of the form
+  $$ \LL (\phi) = a \phi D \phi + b \phi^4 + c \phi^2 $$
+  for $a,b,c \in \RR\llbracket\hbar \rrbracket$ and such that $a = - \frac{1}{2}$ modulo $\hbar$ and $c = 0$ modulo $\hbar$.
+\end{corollary}
 
 
 
