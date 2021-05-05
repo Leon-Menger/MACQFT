@@ -1,7 +1,7 @@
-\section{Quantisation and Normalization Group Flow}
-\label{sec:Renormalization}
+\section{Quantisation and Normalisation Group Flow}
+\label{sec:Renormalisation}
 
-This section will treat \emph{scalar perturbative quantum field theory}. We will start by giving a general introduction to the matter and then talk about the \emph{Renormalization group equation}. After introducting \emph{Feynman graphs}, we will finally arrive at the first full definition of a \emph{QFT} and discuss some immediate results. Finally we will discuss the \emph{renormalization of QFT}.
+This section will treat \emph{scalar perturbative quantum field theory}. We will start by giving a general introduction to the matter and then talk about the \emph{Renormalisation group equation}. After introducting \emph{Feynman graphs}, we will finally arrive at the first full definition of a \emph{QFT} and discuss some immediate results. Finally we will discuss the \emph{renormalisation of QFT}.
 
 \subsection{Introduction}
 \label{subsec:quantisation_intro}
@@ -69,7 +69,7 @@ To illuminate this rather vague definition, we discuss a "toy example":
   \end{align*}
   Where the first fraction defines our measure on the space of paths from $[t^\prime, t^{\prime\prime}]$ called the \textbf{Liouville-measure} and the term in the exponential is called the \textbf{Action functional}.\\
 
-  Note that this is only a one-dimensional "toy model" which already boasts some pretty severe convergence problems. Since we ultimately aim to define an infinite-dimensional generalization, the rest of the course will deal with the "taming" of these problems.
+  Note that this is only a one-dimensional "toy model" which already boasts some pretty severe convergence problems. Since we ultimately aim to define an infinite-dimensional generalisation, the rest of the course will deal with the "taming" of these problems.
 \end{example}
 
 In the following we give a short introduction to \textbf{Feynman Path Integrals}, visually respresented in the following picture:
@@ -166,7 +166,7 @@ $D$ is the Laplacian and $m$ is a positive real parameter. Further, $I[\Lambda]$
 $$ I[\Lambda](\phi) = I_0[\Lambda](\phi) + \hbar I_1[\Lambda](\phi) + ... $$
 Here, $I_0[\Lambda](\phi)$ is at least cubic in $\phi$ and all the $I_i$ are formal power series in $\phi$.\\
 
-\subsection{Renormalization group equation}
+\subsection{Renormalisation group equation}
 \label{subsec:renorm_group_eq}
 
 Now our goal is to "translate" a system $S_{eff}[\Lambda], Obs_{\leq \Lambda}, \Ci(M)_{\leq \Lambda}$ into one with threshold $\Lambda^\prime \leq \Lambda$. There exists an evident inclusion $Obs_{\leq \Lambda^\prime} \hookrightarrow Obs_{\leq \Lambda}$. The correlation functions should not change if we compute them in $Obs_{\leq \Lambda^\prime}$ rather than in $Obs_{\leq \Lambda}$:
@@ -727,7 +727,7 @@ While we might not find the time to discuss the proofs of the two above theorems
 
 We now discuss a \textit{strategy} to work with both of these statements: First fix $I \in \OO^+_{loc}(\Ci(M))\llbracket \hbar \rrbracket$. We want to build the effective interaction $I[L]$ satisfying the properties of its definition. So first of all we want to construct counterterms $I^{CT}(\epsilon)$ such that
 $$ \lim_{\epsilon \lra 0} W\left(P(\epsilon,L), I-I^{CT}(\epsilon)\right)$$
-exists and in particular defines $I[L]$. Conversely given $\{I[L]\}$ we construct $I$ as a renormalized limit, subtracting the suitable counterterms. To this end, we define some new helpful notions:
+exists and in particular defines $I[L]$. Conversely given $\{I[L]\}$ we construct $I$ as a renormalised limit, subtracting the suitable counterterms. To this end, we define some new helpful notions:
 
 \begin{definition}[Periods]
   Into the classical sequence $\NN \subset \ZZ \subset \QQ \subset \ABF \subset \RR$ we want to insert $\ABF \subset \PP \subset \RR$ where $\PP$ forms a ring contained in transcendental and algebraic numbers. A \textbf{period} is a complex number whose real and imaginary part are values of absolutely converging integrals of rational functions with rational coefficients over domains in $\RR^n$ given by polynomial inequalities with rational coefficients.
@@ -900,14 +900,14 @@ Thus we have established a bijection between theories and local power series in 
 
 
 \subsection{Principal Bundle}
-\subsection{Renormalizability}
+\subsection{Renormalisability}
 
 \textbf{Problem:} The space of theories is an infinite-dimensional manifold. Physically, to specify a particular theory we would need an infinite number of experiments.\\
 
-Thus we want to consider a finite subset of these theories, namely renormalizable theories. \textbf{Classically} a theory is renormalizable, if it has a finite number of counterterms. But we saw that the number of counterterms depends on the choice of renormalisation scheme.
+Thus we want to consider a finite subset of these theories, namely renormalisable theories. \textbf{Classically} a theory is renormalisable, if it has a finite number of counterterms. But we saw that the number of counterterms depends on the choice of renormalisation scheme.
 
 \begin{axiom}
-  A theory $\{S^{eff}[\Lambda]$ is renormalizable if $S^{eff}[\Lambda]$ does not grow too fast when $\Lambda \lra \infty$, measured in the "right" units appropriate to the energy scale.
+  A theory $\{S^{eff}[\Lambda]$ is renormalisable if $S^{eff}[\Lambda]$ does not grow too fast when $\Lambda \lra \infty$, measured in the "right" units appropriate to the energy scale.
 \end{axiom}
 
 
@@ -918,12 +918,12 @@ $$ RG_l (S^{eff}[\Lambda]) (\phi) = S^{eff}[l^{-2} \Lambda](R_l(\phi)) $$
 This leads us to the following result:
 
 \begin{lem}
-  $RG_l$ is a flow on the space of theories. If $ \{S^{eff}[\Lambda]\}$ satisfies the \eqref{eq:RGE}, then so does $\{RG_l(S^{eff}[\Lambda])\}$. We call $RG_l$ the \textbf{local renormalization group flow}.
+  $RG_l$ is a flow on the space of theories. If $ \{S^{eff}[\Lambda]\}$ satisfies the \eqref{eq:RGE}, then so does $\{RG_l(S^{eff}[\Lambda])\}$. We call $RG_l$ the \textbf{local renormalisation group flow}.
 \end{lem}
 
 
 \begin{definition}
-  A theory is \textbf{renormalizable} if $RG_l(S^{eff}[\Lambda])$ grows, in terms of $\Lambda$, at most logarithmically as $l \lra 0$. Suppose that $S$ is translation invariant. We say that $S$ is of dimension $k$ if
+  A theory is \textbf{renormalisable} if $RG_l(S^{eff}[\Lambda])$ grows, in terms of $\Lambda$, at most logarithmically as $l \lra 0$. Suppose that $S$ is translation invariant. We say that $S$ is of dimension $k$ if
   $$ S(R_l(\phi)) = l^k S(\phi) $$
 \end{definition}
 
@@ -935,7 +935,7 @@ This leads us to the following result:
 \end{example}
 
 \begin{theo}
-  Let $\mathfrak{R}^{(k)}(\RR^n)$ be the space of renormalizable scalar field theories of $\RR^n$ invariant under translation defined modulo $\hbar^{n+1}$. Then
+  Let $\mathfrak{R}^{(k)}(\RR^n)$ be the space of renormalisable scalar field theories of $\RR^n$ invariant under translation defined modulo $\hbar^{n+1}$. Then
   $$  \mathfrak{R}^{(k+1)}(\RR^n) \lra \mathfrak{R}^{(k)}(\RR^n)$$
   is a torsor for the vector space of local action functionals $S(\phi)$ which are a sum of terms of non-negative dimensions. Furthermore $\mathfrak{R}^{(0)}(\RR^n)$ is canonically isomorphic to the space of local action functionals of the form
   $$ S(\phi) = \frac{1}{2} \int_{\RR^n} \phi D \phi + I $$
@@ -943,7 +943,7 @@ This leads us to the following result:
 \end{theo}
 
 \begin{corollary}
-  On $\RR^4$ renormalizable scalar field theories invariant under $SO(4) \times RR^4$ and $\phi \lmap -\phi$ are in bijection with Lagrangians of the form
+  On $\RR^4$ renormalisable scalar field theories invariant under $SO(4) \times RR^4$ and $\phi \lmap -\phi$ are in bijection with Lagrangians of the form
   $$ \LL (\phi) = a \phi D \phi + b \phi^4 + c \phi^2 $$
   for $a,b,c \in \RR\llbracket\hbar \rrbracket$ and such that $a = - \frac{1}{2}$ modulo $\hbar$ and $c = 0$ modulo $\hbar$.
 \end{corollary}

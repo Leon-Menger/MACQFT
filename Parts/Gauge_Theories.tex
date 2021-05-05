@@ -1,5 +1,173 @@
 \section{Gauge Theories}
 \label{sec:Gauge_Theories}
 
+\subsection{Quantisation in the Presence of Local Symmetries}
+
+Recall that our chosen approach to the quantisation of (local) Lagrangian field theories deals with expressions of the form
+$$ \langle O_1 ... O_n \rangle := \frac{1}{Z} \int_\FF e^{i/\hbar S(\phi)} O_1(\phi) ... O_n(\phi) D\phi $$
+where $S = \int_M L$, the Lagrangian $L$ is a local $(0,top)$-form and $\FF = \Gamma(M, F)$. Further the $O_i$ are local action functionals on $\FF$ and we define
+$$ \ZZ := \int_\FF e^{i/\hbar S(\phi)} D\phi $$
+where $D\phi$ is supposed to be "a measure" on $\FF$ which \textbf{does not exists in general}. Now for \textbf{finite dimensions}, given a measure $\mu$ on $X$ we have the \textbf{Stationary Phase Formula}
+\begin{align*}\label{eq:StatPhase}\tag{SPF}
+  \ZZ := \int_X \mu e^{i/\hbar S_0} \ \underset{\hbar \lra 0}{\sim} \ &\left[ \sum_{x_0 \in Crit(S_0)} e^{i/\hbar S(x_0)} \big|\det\HH[S](x_0)\big|^{-1/2} \exp\left(i \frac{\pi}{4} \sgn(S(x_0))\right) \right]\\
+   &\cdot (2\pi \hbar)^{\dim(X)/2} \sum_{\gamma \ graph} \frac{\hbar^{-g(\gamma)}}{|\Aut(\gamma)|} \Phi_\gamma
+\end{align*}
+Where $\gamma$ are "Feynman graphs", $g(\gamma)$ is the genus of $\gamma$ and $\Phi(\gamma)$ is the weight of a graph. Note that here we have an \emph{implicit assumption}, namely that $\HH[S](x_0)$ is non-degenerate. In field theory, we use the stationary phase formula as a \emph{definition} of the "path integral".\\
+
+Now we can ask ourselves, if the possible degeneracy of $\HH[S](x_0)$ really is an issue. The answer is: \textbf{Yes!} Consider $\FF = \Gamma(M, F)$ with $M$ closed without boundary. Let further $S = \int_M L$. Now assume we are given a collection $\{V_\alpha\}^M$ of local symmetries \ref{def:LocalSymmetry} such that
+$$ \lie{V_\alpha} S = V_\alpha^{(i)} \frac{\delta S}{\delta \phi^{(i)}} = 0 $$
+Namely we obtain the \emph{Noether Identities}. Now consider
+\begin{align*}
+  0 = \frac{\delta}{\delta \phi^{(j)}} \left( V_\alpha^{(i)} \frac{\delta S}{\delta \phi^{(i)}} \right) = \HH[S]_{(ij)} V^{(i)}_\alpha + \frac{\delta S}{\delta \phi^{(i)}} \frac{\delta V_\alpha^i}{\delta \phi^{(j)}}
+\end{align*}
+Thus we restrict to $x_0 \in Crit(S) = \{x \in \FF \ s.t. \ \delta S|_x = 0\}$ such that
+$$ \HH[S]_{(ij)}(x_0) V^{(i)}_\alpha = 0 \quad \Leftrightarrow \quad V_\alpha \ \text{is a local symmetry} $$
+
+\begin{ex}
+  Show that $\{V_\alpha \in \VF_{evol}(\FF)\}$ which are local symmetries of $S$ forms a Lie subalgebra of $\VF_{evol}(\FF)$. We further denote it by $\widetilde{\mathfrak{J}}$.
+\end{ex}
+
+Note that not all symmetries are "interesting" and thus not all symmetries are created equal. Consider a bivectorfield $\mu \in \Gamma(\bigwedge^2 (T\FF))$ and look at the vector field
+$$ \omega := \mu(\delta S), \quad \mu = \mu^{ij} \frac{\delta}{\delta \phi^{(i)}} \wedge \frac{\delta}{\delta \phi^{(j)}}, \quad \omega = \mu^{ij} \frac{\delta S}{\delta \phi^{(i)}} \frac{\delta S}{\delta \phi^{(j)}}, \quad \mu^{ij} = - \mu^{ji} $$
+Now we claim that $\omega$ is a local symmetry $\forall \mu$:
+
+\begin{proof}
+  $\lie{\omega} S = \frac{\delta S}{\delta \phi^{(i)}} \omega^i = \frac{\delta S}{\delta \phi^{(i)}} \frac{\delta S}{\delta \phi^{(j)}} \mu^{ij} \equiv 0$
+\end{proof}
+
+This leads us to the following definition:
+
+\begin{definition}[Trivial Symmetries]
+  A local symmetry of the type $\omega = \mu(\delta S)$ is called a \textbf{trivial symmetry}. We denote the space of such trivial symmetries by $\mathfrak{T}$.
+\end{definition}
+
+\begin{lem}
+  $\mathfrak{T}$ is an ideal in $\widetilde{\mathfrak{J}}$, thus $[\widetilde{\mathfrak{J}}, \mathfrak{T}] \subset \mathfrak{T}$.
+\begin{proof}
+  The proof is left as an exercise to the reader.
+\end{proof}
+\end{lem}
+
+\begin{rem}
+  Note that if $\omega$ is trivial, $\lie{\omega}S = 0$ does \textbf{not} impose nontrivial conditions, thus no Noether Identities. They are not associated to nontrivial conservation laws, currents, charges etc. In particular they vanish on $Crit(S)$.
+\end{rem}
+
+No when treating theories with symmetries, we effectively want to work with a kind of quotient
+$$ \mathfrak{J} := \widetilde{\mathfrak{J}}/\mathfrak{T}$$
+Notice that $\mathfrak{J}$ is not necessarily a Lie subalgebra. However if
+$$ [\mathfrak{T}, \mathfrak{J}] \subset \mathfrak{T}, \quad \quad [\JJ, \JJ] = \mathfrak{T} + \JJ $$
+and thus $\TT$ vanishes "on shell" (on $Crit(S)$), then \textbf{$\JJ$ is a subalgebra on $Crit(S)$}. There are two main approaches to this:
+
+\begin{itemize}
+  \item Dealing with $\JJ$'s that are closed everywhere (Lie subalgebras). This treatment is due to Beach, Rovet, Stara, Tyutin \textbf{(BRST)}
+  \item More generally searching a formalism that can treat both scenarios. This leads to the Batalin-Vilkovisky formalism \textbf{(BV)}.
+\end{itemize}
+
+Most cases of physical interest are such that $\JJ$ is a Lie subalgebra but the conceptual generalisation of $BV$ will allow for
+\begin{itemize}
+  \item more general \textbf{gauge-fixing conditions}.
+  \item a treatment of boundary data.
+  \item observables in $BV$ that are more general than those in $BRST$.
+\end{itemize}
+
+Thus for the rest of the script assume that $\JJ$ is a subalgebra.
+
+
+
+\subsection{Lie algebra actions \& Lie algebra cohomology}
+
+\begin{definition}[Lie group/algebra actions]
+  Let $G$ be a Lie group with lie algebra $\gf$ and let $M$ be a smooth manifold.
+  \begin{itemize}
+    \item A  \textbf{Lie group action} is a smooth map $R\colon G \times M \lra M$ such that for all $g \in G$ the map $R_g \colon M \lra M$ is a diffeomorphism. This is equivalent to $\widetilde{R} \colon G \lra Diff(M)$ being a group homomorphism.
+
+    \item A \textbf{Lie algebra action} on $M$ is a Lie algebra morphism
+    $$ \rho \colon \gf \lra \VF(M) $$
+
+    \item If $\{t_a\}$ is a basis of $\gf$, the image $\{V_a = \rho(t_a)\}$ is abasis of \textbf{fundamental vector fields}.
+  \end{itemize}
+\end{definition}
+
+\begin{example}
+  Given $\widetilde{R}$ a Lie group action we obtain a Lie algebra action by
+  $$ d \widetilde{R} |_{id} \colon \gf \lra \VF(M) $$
+\end{example}
+
+\begin{definition}[Tangent Distributions]
+  Let $M$ be a smooth manifold. A \textbf{smooth (tangent) distribution} $\Delta$ of rank $k$ on $M$ is a subset $\Delta \subset TM$ such that $\forall p \in M$ the set $\Delta_p \subset T_p M$ is a $k$-dimensional subspace and such that there exists a neighbourhood $N_p$ over which there are $k$ linearly independent smooth vector fields with $\Delta_y = Span(X_1(y), ..., X_k(y))$ for $y \in N_p$. A smooth (tangent) distribution is \textbf{involutive} if $\Gamma(\Delta)$ forms a Lie subalgebra of $\VF(M)$.
+\end{definition}
+
+\begin{ex}
+  Show that a Lie algebra action on $M$ induces an involutive distribution on $TM$.
+\end{ex}
+
+\begin{rem}
+  Unsurprisingly, in infinite dimensions one need to be very careful. Say that $\delta \subset TM$ is a (smooth) subbundle. In order to keep the notion of a "finite rank" $k$ one can say that $\Delta_y$ is finitely generated as a $\Ci(M)$-span.\\
+  Notice that in finite dimensions \textbf{Frobenius' Theorem} states that an involutive smooth distribution is tangent to an integral submanifold $N \subset M$ s.t. $TN \simeq \Delta$. Unfortunately this does not generally hold true in infinite dimensions. It does when the manifolds are Banach, however for Fréchet manifolds it does not necessarily. \textbf{Warning:} The Inverse Function Theorem can also fail in Fréchet manifolds.
+\end{rem}
+
+Now consider a Lie algebra action $\rho \colon \gf \lra \VF(M)$ and recall that $\VF(M) \simeq \Der(\Ci(M))$.
+
+\begin{definition}
+  The space of $\Ci(M)$-valed $k$-forms on $\gf$ is defined to be
+  $$ C^k_{CE}(\gf ; \Ci(M)) := \Hom\left(\bigwedge^k \gf^*, \Ci(M)\right) $$
+  This is called the \textbf{Chevally-Eilenberg} complex for the Lie algebra action $rho \colon \gf \lra \Der(\Ci(M))$. Now define the map
+  $$ d_{CE} \colon C^k_{CE}(\gf ; \Ci(M)) \lra C^{k+1}_{CE}(\gf ; \Ci(M)) $$
+  as
+  \begin{enumerate}
+    \item $\forall f\in \Ci(M)$ we have $df(X)= \rho(X)(f) \ \forall X \in \gf$
+    \item $\forall \alpha \in \gf^*$ we have $d_{CE}\alpha(X,Y) := - \alpha([X,Y]) \ \forall X,Y \in \gf$
+    \item We extend to $\bigwedge^\bullet \gf^*$ using the Leibniz rule
+    $$ d_{CE} (\alpha \wedge \beta) = d_{CE}\alpha \wedge \beta + (-1)^{|\alpha|} \wedge d_{CE} \beta $$
+    where $|\alpha| = k$ if $\alpha \in \bigwedge^k\gf^*$
+    \item We extend to $\bigwedge^\bullet \gf \otimes \Ci(M)$ by
+    $$ d_{CE}(\omega \otimes f) = d_{CE} \omega \otimes f + (-1)^{|\omega|} \omega \otimes d_{CE} f$$
+  \end{enumerate}
+\end{definition}
+
+\begin{prop}
+  $d_{CE}^2 = 0$ and hence $(C_{CE}^\bullet(\gf ; \Ci(M))$ is a cochain complex.
+\end{prop}
+
+If $\{t_a\}$ is a basis of $\gf$ and $V_a = \rho(t_a)$, denote by $C^a \in \gf^*$ the coordinates in $\gf$, $\chi= C^a(X) t_a$, and structure constants $f_{ab}^c$ for the Lie algebra we obtain
+$$ d_{CE} = C^a V_a - \frac{1}{2} f^d_{ab} C^a C^b \dell{}{C^d} $$
+Now it is immediate to prove the above proposition.\\
+
+The cohomology of the thus arising cochain complex is
+$$ H^k(C_{CE}^\bullet; \Ci(M)) := \frac{\ker(d_{CE}|_{C^k})}{\ker(d_{CE}|_{C^k-1})} $$
+
+\begin{rem}
+  The set $H^\circ (C_{CE}^\bullet; \Ci(M))$ is the set of $f \in \Ci(M)$ such that
+  $$ d_{CE} f = 0 \quad \Leftrightarrow \quad d_{CE} f(X) = 0 \quad \forall X\in \gf $$
+  which means $\rho(X)(f) = 0$ and thus $f$ is \textbf{invariant}. Thus we obtain
+  $$ H^\circ (C_{CE}^\bullet; \Ci(M)) \simeq \Ci(M)^\gf $$
+  where $\Ci(M)^\gf$ are $\gf$ invariant smooth functions on $M$.
+\end{rem}
+
+On $\bigwedge^\bullet \gf^*$ there are the following natural operations:
+\begin{align*}
+  \forall \alpha \in \gf^* \quad \mathcal{E}(\alpha) \colon \Lambda^k \gf^* &\lra \bigwedge^{k+1} \gf^*, \\
+  \omega &\lmap \alpha \wedge \omega \\
+  \forall X \in \gf \quad \imath(X) \colon \Lambda^k \gf^* &\lra \bigwedge^{k-1} \gf^*, \\
+  \omega &\lmap \imath_X (\omega)
+\end{align*}
+
+Now we extend $\imath_X$ by odd-Leibniz rule
+$$ \imath_X(\alpha \wedge \beta) = (\imath_X \alpha) \wedge \beta + (-1)^{|\alpha|} \alpha \wedge (\imath_X \beta) $$
+Now if $\{t_a\}$ and $\{\alpha_a\}$ are basis for $\gf$ and $\gf^*$ respectively, then
+$$ d_{CE} = \mathcal{E}(\alpha^a) \rho(t_a) - \frac{1}{2} \mathcal{E}(\alpha^a) \mathcal{\alpha^b} \imath_{[t_a, t_b]} $$
+where we sum over repeated indices. This coincides with the formula above by defining $C^a \equiv \mathcal{E}(\alpha^a)$ and $\dell{}{C^a} \equiv \imath_{t_a}$. Thus we obtain
+$$ C^a C^b = \mathcal{E}(\alpha^a) \mathcal{\alpha^b} = - \mathcal{E}(\alpha^b) \mathcal{\alpha^a} = - C^b C^a $$
+such that
+$$ d_{CE} = C^a V_a - \frac{1}{2} f_{ab}^d C^a C^b \dell{}{C^d} $$
+Now we need to consider the collection $\{C^a\}$ as \textbf{odd coordinates}. This corresponds to the notion of \textbf{Ghost Variables} or \textbf{Ghost Fields} in physics. Thus we can formulate
+$$ \Ci(M \times \gf[1]) \simeq \bigwedge^\bullet \gf^* \otimes \Ci(M) \cong \Hom(\bigwedge^\bullet \gf^*, \Ci(M)) $$
+where $\gf[1]$ is a graded vector space, concentrated in degree $-1$. This leads us to
+$$ C_{CE}^\bullet (\gf ; \Ci(M)) \simeq \Ci(M \times \gf[1]) $$
+which allows us to think of $d_{CE}$ as a vector field of degree $1$ whic squares to zero. Thus we can also think of it as a \textbf{cohomological vector field} on $M_{min}:=M \times \gf[1]$ such that
+$$ \frac{1}{2} [d_{CE}, d_{CE}]_{\VF(M_{min})} = d_{CE}^2 = 0 $$
+
+
+
 
 \newpage
