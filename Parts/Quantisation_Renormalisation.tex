@@ -53,20 +53,20 @@ To illuminate this rather vague definition, we discuss a "toy example":
   As an exercise you can prove this in a formal setting. Note that we do not yet have a concrete way to define the exponential of an operator such as $H$. Thus, setting $\hbar = 1$ for simplicity, we investigate the integral kernel of $U = e^{-iH(t^{\prime \prime} - t^\prime)}$ in terms of $h(p,q)$. To this end let $\Delta \ll 1$ such that
   $$ U_\Delta := e^{-i H \Delta} \cong 1- i H \Delta $$
   Thus setting $t^{\prime \prime} - t^\prime = N \Delta$ we obtain $e^{-iH(t^{\prime \prime} - t^\prime)} = (U_\Delta)^N$. Now we calculate
-  \begin{align*}
+  \begin{align}
     U_\Delta(q,q^\prime) &= \frac{1}{2\pi} \int_{-\infty}^\infty dp e^{ip(q-q^\prime)} \left( 1- i h\left(p, \frac{q+q^\prime}{2} \right) \Delta \right) \\
     &= \frac{1}{2\pi} \int_{-\infty}^\infty dp e^{ip(q-q^\prime) - i h\left(p, \frac{q+q^\prime}{2} \right) \Delta} + \mathcal{O}(\Delta^2)
-  \end{align*}
+  \end{align}
   Now setting $q = q_N, q^\prime = q_0$ and $q_j$ the $N-1$ intermediate variables, we arrive at the following form:
-  \begin{align*}
+  \begin{align}
     U(q, q^\prime, t^{\prime\prime}-t^\prime) &= \int_{-\infty}^\infty ... \int_{-\infty}^\infty \frac{dp_1 dq_1}{2\pi} ... \frac{dp_{N-1} dq_{N-1}}{2\pi} \frac{dp_N}{2\pi}\\
     &\times e^{ip_{N}(q_{N}-q_{N-1}) + ... + ip_1(q_1-q_0)} \cdot e^{-ih\left(p_N, \frac{q_N + q_{N+1}}{2}\right) ... -ih\left( p_1, \frac{q_1 + q_0}{2} \right)}
-  \end{align*}
+  \end{align}
 
   Thus we take $N\lra \infty$ such that $q_j - q_{j-1}$ being proportional to $\frac{1}{N}$ goes against $0$. While we do not discuss convergence and well-definedness at this point, the reader is invited to start looking critically at these notions from now on! Formally this gives us the following form of $U$ which indeed has many problems with convergence of integrals
-  \begin{align*}
+  \begin{align}
     U(q,q^\prime, t^{\prime\prime}-t^\prime) = \int ... \int_{t^\prime}^{t^{\prime\prime}}  \exp\left[i\int_{t^\prime}^{\prime \prime}( p(t)\dot q(t) - h(p(t),q(t)))\ dt \right] \prod_i \frac{dp(t) dq(t)}{2\pi}
-  \end{align*}
+  \end{align}
   Where the first fraction defines our measure on the space of paths from $[t^\prime, t^{\prime\prime}]$ called the \textbf{Liouville-measure} and the term in the exponential is called the \textbf{Action functional}.\\
 
   Note that this is only a one-dimensional "toy model" which already boasts some pretty severe convergence problems. Since we ultimately aim to define an infinite-dimensional generalisation, the rest of the course will deal with the "taming" of these problems.
@@ -96,10 +96,10 @@ This in turn has an interpretation coming from statistical mechanics: Here, $\ps
 This gives us a sufficient motivation to repeat the assessment of dynamics for statistical systems:\\
 
 In statistical mechanics, observables are maps $O: \Ci(M,\RR) \lra \CC$ and correlation functions between observables are defined as
-\begin{align*}
+\begin{align}
   \langle O_1, ..., O_n \rangle &= \int_\psi e^{-S(\psi)/T} O_1(\psi) ... O_n(\psi) D\psi\\
   \Longrightarrow \quad \quad \langle O_1, ..., O_n \rangle &= \int_{\psi \in \Ci(M)} e^{i S(\psi)/\hbar} O_1(\psi) ... O_n(\psi) D\psi
-\end{align*}
+\end{align}
 The main problem in this situation is that $\Ci(M)$ is an infinite-dimensional vector space.
 
 \begin{rem}~
@@ -180,14 +180,14 @@ Further note that we can split
 $$ \Ci(M)_{\leq \Lambda} = \Ci(M)_{\leq \Lambda^\prime} \oplus \Ci(M)_{(\Lambda^\prime,\Lambda]} $$
 Using this splitting to separate \eqref{eq:connection_eq} allows us to formulate:
 
-\begin{align*}
+\begin{align}
   RHS &= \int_{\phi_L \in \Ci(M)_{\leq \Lambda^\prime}}
   \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}}
   e^{S_{eff}[\Lambda] (\phi_L + \phi_H) / \hbar} \ O_1(\phi_L) ... O_n(\phi_L) \ D\phi^{\Lambda^\prime} \ D\phi^{\Lambda \Lambda^\prime} \\
   &= \int_{\phi_L \in \Ci(M)_{\leq \Lambda^\prime}}
   \left [\int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}}
   e^{S_{eff}[\Lambda] (\phi_L + \phi_H) / \hbar} \ D\phi^{\Lambda \Lambda^\prime} \right] \ O_1(\phi_L) ... O_n(\phi_L) \ D\phi^{\Lambda^\prime} \\
-\end{align*}
+\end{align}
 This in turn allows us to identify
 $$ e^{S_{eff}[\Lambda^\prime](\phi_L)/\hbar}
 = \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}}
@@ -203,21 +203,21 @@ which ultimately leads to the \textbf{Renormalisation group equation (RGE)}
 Having a rather well-defined system of such effective actions we may wonder, what their relation to the original classical action $S$ is. This correspond to a "limit" of the form $S_{eff}[\infty]$ that is $\Lambda \lra \infty$. Note that the space of fields we used in the integral of \eqref{eq:RGE} is ill-defined for $\Lambda = \infty$, thus this discussion is not trivially dispatched.\\
 
 One approach is to describe \eqref{eq:RGE} in terms of effective interactions. Note that $\Ci(M)_{\Lambda^\prime}$ and $\Ci(M)_{\Lambda}$ are $D$-orthogonal, thus
-\begin{align*}
+\begin{align}
   \langle \phi_L + \phi_H , D(\phi_L + \phi_H) \rangle &= \langle \phi_L , D\phi_L \rangle + \langle \phi_H , D\phi_H \rangle \\
   \langle \phi_L + \phi_H , m^2(\phi_L + \phi_H) \rangle &= \langle \phi_L, m^2 \phi_L \rangle + \langle \phi_H, m^2 \phi_H \rangle
-\end{align*}
+\end{align}
 
 Now if we define
 $$ F(\phi) = - \frac{1}{2} \pair{\phi}{(D+m^2)\phi}, \quad \quad s.t. \quad \quad F(\phi_L + \phi_H) = F(\phi_L) + F(\phi_H) $$
 we can rewrite our effective action as
 $$ S_{eff}[\Lambda](\phi) = F(\phi) + I[\Lambda](\phi), \quad \quad s.t. \quad \quad S_{eff}[\Lambda](\phi_L + \phi_H) = F(\phi_L) + F(\phi_H) + I[\Lambda](\phi_L + \phi_H)$$
 Combining this with \eqref{eq:RGE} brings us to
-\begin{align*}
+\begin{align}
   F(\phi_L) + I[\Lambda^\prime](\phi_L) &= \hbar \log \left[  \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}} \exp\left(\frac{F(\phi_H)}{\hbar} + \frac{F(\phi_L)}{\hbar} + \frac{I[\Lambda](\phi_H + \phi_L)}{\hbar} \right) \ D\phi^{\Lambda^\prime \Lambda} \right] \\
   &= \hbar \log \left[ e^{\frac{F(\phi_L)}{\hbar}} \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}} \exp\left(\frac{F(\phi_H)}{\hbar} + \frac{I[\Lambda](\phi_H + \phi_L)}{\hbar} \right) \ D\phi^{\Lambda^\prime \Lambda} \right] \\
   &= F(\phi_L) + \hbar \log \left[ \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}} \exp\left(\frac{F(\phi_H)}{\hbar} + \frac{I[\Lambda](\phi_H + \phi_L)}{\hbar} \right) \ D\phi^{\Lambda^\prime \Lambda} \right]
-\end{align*}
+\end{align}
 
 Thus we arrive at the \textbf{Interaction form of the RGE}:
 \begin{align}
@@ -285,26 +285,26 @@ As promised we give the following alternative yet equivalent definition of a sta
 
 \begin{definition}[Stable Graph - Formal Version]
   Let $H(\gamma)$ and $V(\gamma)$ be two finite sets (half edges or vertices) and let
-  \begin{align*}
+  \begin{align}
     \sigma &\colon H(\gamma) \lra H(\gamma) \quad \quad \text{an involution}\\
     \pi &\colon H(\gamma) \lra V(\gamma)\\
     g &\colon V(\gamma) \lra \ZZ_{\geq 0} \quad \quad \text{(the genus map)}
-  \end{align*}
+  \end{align}
   then a \textbf{graph} is the topological space
   $$ V(\gamma) \sqcup (H(\gamma) \times [0, 0.5]) / \sim $$
   where $(h,0) \sim \pi(h)$ and $(h,0.5) \sim (\sigma(h), 0.5)$. A graph is \textbf{stable} if every vertex $v \in V(\gamma)$ is such that if
-  \begin{align*}
+  \begin{align}
     g(v) &= 0 \quad \text{then} \quad \# \pi^{-1}(v) \geq 3\\
     g(v) &= 1 \quad \text{then} \quad \# \pi^{-1}(v) \geq 1
-  \end{align*}
+  \end{align}
 \end{definition}
 
 \begin{definition}
   An \textbf{automorphism} $F$ of a graph $\gamma$ is a pair of maps
-  \begin{align*}
+  \begin{align}
     H(F) &\colon H(\gamma) \lra H(\gamma)\\
     V(F) &\colon V(\gamma) \lra V(\gamma)
-  \end{align*}
+  \end{align}
   such that $H(F)$ commutes with $\sigma$ and such that the following diagram commutes:
   \begin{center}
   \begin{tikzcd}[sep=large]
@@ -322,10 +322,10 @@ $$ \OO(U) \longleftrightarrow \mathds{k}\llbracket\BB\rrbracket $$
 
 \begin{definition}
   Let $f \in \OO(U)$ be homogenous of degree $k$. Then we can define an $S_k$-invariant linear map
-  \begin{align*}
+  \begin{align}
     D^kf \colon U^{\otimes k} &\lra \mathds{k}\\
     u_1 \otimes ... \otimes u_k &\lmap \left( \dell{}{u_1} ... \dell{}{u_k} f \right) (0)
-  \end{align*}
+  \end{align}
 \end{definition}
 
 Our next goal is to assign some algebraic data to our graphs:
@@ -334,23 +334,23 @@ Our next goal is to assign some algebraic data to our graphs:
   Let us denote by $\OO^+(U) \llbracket \hbar \rrbracket \subset \OO(U) \llbracket \hbar \rrbracket$ the subset of functionals at least cubic modulo $\hbar$. An element $I \in \OO(U) \llbracket \hbar \rrbracket$ can be decomposed as $I = \sum_{i,k} \hbar^i I_{i,k}$ where $I_{i,k}$ is homogenous of degree $k$ in $U$. Now fix an ordering of the set of tails of $\gamma$
   $$ T(\gamma) \overset{\psi}{\longleftrightarrow} \{1, ..., n\}$$
   Also fix an element $P \in \Sym^2(U) \subset U^{\otimes 2}$ and some $a_1, ..., a_n \in U$. Then we have
-  \begin{align*}
+  \begin{align}
     2 E(\gamma) + T(\gamma) &= H(\gamma) \\
     U^{\otimes 2 E(\gamma)} \otimes U^{\otimes T(\gamma)} &\cong U^{\otimes H(\gamma)} \\
     P \otimes ... \otimes P \otimes a_1 \otimes ... \otimes a_n &=: \mathds{P}
-  \end{align*}
+  \end{align}
   Now fix $I \in \OO(U) \llbracket \hbar \rrbracket$ and pick a vertex $v$ with arbitrary valency $k$ and genus $i$. We associate to it
   $$ D^k I_{i,k} \in \Hom(U^{\otimes k}, \mathds{k}) $$
   Taking the tensor product of these elements yields
-  \begin{align*}
+  \begin{align}
     \mathds{I} &= \bigotimes_v D^k I_{i,k}\\
     \mathds{I} &\in \Hom(U^{\otimes H(\sigma)}, \mathds{k})
-  \end{align*}
+  \end{align}
   Now define
-  \begin{align*}
+  \begin{align}
     w_{\gamma, \psi} (P,I) (a_1, ..., a_n) \quad &:= \quad \mathds{I}(\mathds{P}) \in \mathds{k} \\
     w_\gamma (P,I) (a) \quad &:= \quad w_{\gamma,\psi} (P,I)(a, ..., a)
-  \end{align*}
+  \end{align}
   which assigns, for chosen $\psi$, a number to our graph.
 \end{definition}
 
@@ -448,21 +448,21 @@ This leads us to the following lemma:
   So we want to prove \eqref{eq:exp2}
   $$ \dd{}{\epsilon} \left( \exp(\hbar^{-1} W(P+ \epsilon P^\prime,I)) \right) = \hbar \partial_{P^\prime} \exp(W(P,I)/ \hbar) $$
   which is equivalent to \eqref{eq:exp2}. Thus we have already done it and can integrate it. The arising constant can be computed using $\epsilon = 0$.
-  \begin{align*}
+  \begin{align}
     \left( \dell{}{a_1} ... \dell{}{a_n} W(P,I)  \right)(0) &= \sum_{\gamma, \psi} \frac{\hbar^{g(\gamma)}}{|\Aut(\sigma, \psi)|} w_{\gamma,\psi}(P,I)(a_1, ..., a_k) \\
     \dell{}{a_1} ... \dell{}{a_n} \exp(\hbar W(P,I))(0) &= \sum_{\gamma, \psi} \frac{\hbar^{g(\gamma)}}{|\Aut(\sigma, \psi)|} w_{\gamma,\psi}(P,I)(a_1, ..., a_k)
-  \end{align*}
+  \end{align}
   This formula will be used for $P+ \epsilon P^\prime$. Consider
   $$ w_{\gamma,\psi}(P+ \epsilon P^\prime, I) (a_1, ..., a_k) $$
   and recall $\epsilon^2 \approx 0$. Now note that
   $$P+ \epsilon P^\prime = P \otimes ... \otimes \epsilon P^\prime \otimes a_1 ... a_k + P \otimes ... \otimes \epsilon P \otimes a_1 ... a_k$$
   where $P^\prime$ is at edge $e$. We thus inspect the derivative
-  \begin{align*}
+  \begin{align}
     \dd{}{\epsilon} \left( \dell{}{a_1} ... \dell{}{a_k} \exp(\hbar W(P+ \epsilon P^\prime,I)) \right)(0) &= \sum_{\gamma, e, \psi} \frac{\hbar^{g(\gamma)}}{|\Aut(\sigma, e, \psi)|} w_{\gamma,e,\psi}(P,I)(a_1, ..., a_k) \\
     &= \frac{1}{2} \sum_{\gamma, \psi} \frac{\hbar^{g(\gamma)}}{|\Aut(\sigma, \psi)|} w_{\gamma,\psi}(P,I)(a_1, ..., a_k, U^\prime, U^{\prime \prime})
     \intertext{where we used $P^\prime = \sum u^\prime \otimes u^{\prime \prime}$. Now this brings us to}
     &= \frac{1}{2} \dell{}{a_1} ... \dell{}{a_k} \dell{}{u^\prime} \dell{}{u^{\prime \prime}} \exp(\hbar^{-1}W(P,I))(0)
-  \end{align*}
+  \end{align}
 \end{proof}
 \end{lem}
 
@@ -474,10 +474,10 @@ Let us now connect Feynman diagrams to integrals. Let $U$ now have the base fiel
   Note that this is but a sketch of the proof, you can fill in the details as an exercise. First note
   $$ \int_{x \in U} \exp\left( \frac{1}{2\hbar} \Phi(x,x) \right) f(x+a) = (\exp(\hbar \partial_P) f) (a) \quad \forall f \in \OO(U) $$
   where we identified the exponential of $I(x+a)$ with $f(x+a)$. Note that the integral of only the first exponential in above equation amounts to $1$. Thus for $f = 1$ the equation holds. Thus let us fix $l \in U^*$ thus $lf \in \OO(U)$. Note that
-  \begin{align*}
+  \begin{align}
     \Phi \colon U &\lra U^* \quad \text{isomorphism}\\
     a &\lmap \Phi(a, \cdot) := a^*
-  \end{align*}
+  \end{align}
   Using the dual idea we take for $l \in U^*$ the corresponding $l^* \in U$ such that $l = \Phi(l^*, \cdot)$. The following three statements are given as an exercise:
   \begin{enumerate}
     \item $[\partial_P, l] = - \dell{}{l^*}$
@@ -485,11 +485,11 @@ Let us now connect Feynman diagrams to integrals. Let $U$ now have the base fiel
     \item $\dell{}{l^*} e^{\Phi(x,x)/2\hbar} = \hbar^{-1} l(x) e^{\Phi(x,x)/\hbar}$
   \end{enumerate}
   Now using these statements we have:
-  \begin{align*}
+  \begin{align}
     \int_{x \in U} \exp\left( \frac{1}{2\hbar} \Phi(x,x) \right) l(x) f(x+a) &= \hbar \int_{x \in U} \left( \dell{}{l^*} e^{\Phi(x,x)/2\hbar} \right) f(x+a) \\
     &= - \hbar \int_{x \in U} e^{\Phi(x,x)/2\hbar} \ l(x) \dell{}{l_a^*} f(x+a) \\
     &= - \hbar \dell{}{l_a^*} \int_{x \in U} e^{\Phi(x,x)/2\hbar} f(x+a)
-  \end{align*}
+  \end{align}
   This, together with the three previous results, can be used to prove the main claim.
 \end{proof}
 \end{prop}
@@ -630,10 +630,10 @@ The following ideas on taking limits of the above construction for $\epsilon \lr
   The problem is, that the integral over this term does not converge and thus
   $$ \lim_{\epsilon \lra 0} w_{\gamma_1} (P(\epsilon,L), I(\epsilon))(a) $$
   does not exist. For $\gamma_2$ we note that
-  \begin{align*}
+  \begin{align}
     w_{\gamma_2} (P(\epsilon,L), I(\epsilon))(a) &= \int_{l\in[\epsilon,L]} \int_{x,y\in M} a^2(x) \ \kappa_l(x,y) \ a^2(y) \ dx dy dl \\
     &= \left\langle a^2, \int_\epsilon^L e^{-lD} a^2 \ dl \right\rangle
-  \end{align*}
+  \end{align}
   In this case the limit $\lim_{\epsilon \lra 0} w_{\gamma_2}$ does indeed exist!
 \end{sketch}
 
@@ -736,10 +736,10 @@ exists and in particular defines $I[L]$. Conversely given $\{I[L]\}$ we construc
 
 \begin{example}
   Two numbers included in $\PP$ and clearly not included in $\QQ$ are:
-  \begin{align*}
+  \begin{align}
     \sqrt{2} &= \int_{2x^2 \leq 1} dx \\
     \pi &= \iint_{x^2+y^2\leq 1} dx dy = 2 \int_{-1}^{+1} \sqrt{1-x^2} dx
-  \end{align*}
+  \end{align}
 \end{example}
 
 Now let $t \in (0, \infty)$ be a real parameter. Formally we might write a "period depending smoothly on $t$" as
@@ -760,7 +760,8 @@ Now we still investigate $w_\gamma(P(\epsilon,L), I(\epsilon))(a)$ in the limit 
 $$ \OO(\Ci(M), \Ci((0,\infty)_\epsilon)) \otimes \Ci((0,\infty)_L) $$
 In particular, if we fix $\epsilon$, we have
 $$ w_\gamma \in \OO(\Ci(M), \Ci((0,\infty)_L)) $$
-This leads us to the following theorem:
+
+This leads us to the following theorem which allows us to extract the singular terms in the finite-dimensional integrals $w_\gamma$ in order to extract singular points in our Feynman graphs:
 
 \begin{theo}
   Let $I \in \OO_{loc}(\Ci(M))\llbracket \hbar \rrbracket$ be a local action functional and let $\gamma$ be a connected stable graph. Then there exists a small-$\epsilon$ asymptotic expansion
@@ -786,11 +787,12 @@ Sadly we won't have the time to prove the above theorem since it is rather lengt
 
 Using this definition we can finally expand upon the previously mentioned \emph{renormalisation schemes}:
 
-\begin{definition}{Renormalisation Schemes}
+\begin{definition}[Renormalisation Schemes]
   A choice of a subspace
   $$ \mathcal{P}((0,\infty))_{< 0} \subset \mathcal{P}((0,\infty))  $$
   complementary to $\mathcal{P}((0,\infty))_{\geq 0}$ is called a \textbf{renormalisation scheme}. Hence a renormalisation scheme provides a direct sum decomposition
-  $$ \mathcal{P}((0,\infty))_{\geq 0}((0,\infty)) = \mathcal{P}((0,\infty))_{\geq 0}((0,\infty))_{\geq 0} \oplus \mathcal{P}((0,\infty))_{< 0} $$
+  $$ \mathcal{P}((0,\infty)) = \mathcal{P}((0,\infty))_{\geq 0} \oplus \mathcal{P}((0,\infty))_{< 0} $$
+  Note that this decomposition is not unique, hence fixing a normalisation scheme is a \textbf{real choice}, since $\mathcal{P}((0,\infty))$ has the structure of a vector space.
 \end{definition}
 
 Introducing further notation using the decomposition at hand we define
@@ -821,52 +823,52 @@ We can collect these results and definitions into a theorem:
   There exists a unique series of local counterterms
   $$ I_{i,k}^{CT}(\epsilon) \in \OO_{loc}(\Ci(M)) \otimes \mathcal{P}((0,\infty))_{<0} $$
   for any $i,k$ with $I_{i,k}^{CT}$ homogenous of degree $k$ as a function of $a \in \Ci(M)$ and such that for all $L \in (0,\infty)$ the limit
-  $$ \lim_{\epsilon \lra 0} W(P(\epsilon, L), I - \sum_{i,k} \hbar^i I_{i,k}^{CT}(\epsilon)) $$
+  $$ \lim_{\epsilon \lra 0} W\left(P(\epsilon, L), I - \sum_{i,k} \hbar^i I_{i,k}^{CT}(\epsilon)\right) $$
   exists.
 \begin{proof}
   First note that
-  \begin{align*}
+  \begin{align}
     W(P,I) &= \sum_{i,k} \hbar^i W_{i,k}(P,I) \\
     W_{i,k}(P,I) &= \sum_{\gamma \in \Gamma_{i,k}} w_\gamma (P(\epsilon, L), I[\epsilon])
-  \end{align*}
+  \end{align}
   where $\Gamma_{i,k}$ is the set of all stable graphs of genus $i$ with $k$ external edges. Now for $i = 0$ the term
   $$ \lim_{\epsilon \lra 0} w_\gamma (P(\epsilon, L), I[\epsilon])$$
   converges. Now for $i\neq 0$ we denote
-  $$ (i,j) < (k,l) \quad \Leftrightarrow \quad i<k \ or \ (i=k \ and \ j<l) $$
-  Thus define
+  $$ (i,j) < (k,l) \quad \Leftrightarrow \quad i<k \ or \ (i=k \ \text{and} \ j<l) $$
+  To investigate the base case we define
   $$ I_{1,1}^{CT}(\epsilon, L) = \sing_\epsilon(W_{1,1}(P(\epsilon, L), I[\epsilon])) $$
   To show that this is indeed a fitting counterterm, we calculate
-  \begin{align*}
+  \begin{align}
     W_{1,1}(P(\epsilon,L), I[\epsilon] - \hbar I_{1,1}^{CT}(\epsilon,L)) &= W_{1,1}(P(\epsilon,L), I[\epsilon]) - I_{1,1}^{CT}(\epsilon,L)\\
     \Rightarrow \quad W_{1,1}(P(\epsilon,L), \hbar I_{1,1}^{CT}(\epsilon,L)) &= I_{1,1}^{CT}
-  \end{align*}
+  \end{align}
   Thus taking the limit we obtain
-  \begin{align*}
+  \begin{align}
     &\lim_{\epsilon \lra 0} W_{1,1}(P(\epsilon,L), I[\epsilon] - \hbar I_{1,1}^{CT}(\epsilon,L)) \\
-    = &\lim_{\epsilon \lra 0} \left( \Reg_\epsilon(W_{1,1}(P(\epsilon,L))) + \sing_\epsilon(W_{1,1}(P(\epsilon,L))) - \sing_\epsilon(W_{1,1}(P(\epsilon,L))) \right)
-  \end{align*}
+    = &\lim_{\epsilon \lra 0} \left( \reg_\epsilon(W_{1,1}(P(\epsilon,L))) + \sing_\epsilon(W_{1,1}(P(\epsilon,L))) - \sing_\epsilon(W_{1,1}(P(\epsilon,L))) \right)
+  \end{align}
   and thus the limit exists. Now we want to show that $I_{1,1}^{CT}$ is local. To this end note that
-  \begin{align*}
+  \begin{align}
     \dd{}{L} W_{1,1}(P(\epsilon,L))
     %TODO graphs?
-  \end{align*}
+  \end{align}
   Since $K_L$ is smooth the singular point of the derivative is zero. Further the singular point of $W_{1,1}$ does not depend on $L$ which implies
   $$ I_{1,1}^{CT}(\epsilon, L) = I_{1,1}^{CT}(\epsilon) $$
   Now recall that
   $$ \sing_\epsilon w_\gamma = \sum_i f_i(\epsilon) \phi_i $$
   where the $\phi_i$ have a small-$L$ asymptotic expansion. Thus $\sing_\epsilon w_\gamma$ is local. Having established the base case, we now use induction to conclude the proof:\\
   Suppose we have constructed $I_{j,l}^{CT}(\epsilon)$ for all $(j,l)<(i,k)$ such that they satisfy our theorem. For convenience we define
-  \begin{align*}
+  \begin{align}
     W_{<(i,k)} (P,I) &= \sum_{(j,l)<(i,k)} \hbar^j W_{j,l}(P,I)\\
     &= \sum_{\gamma \in \Gamma_{<(i,k)}} \frac{\hbar^{g(\gamma)}}{|\Aut(\gamma)|} w_\gamma (P,I)
-  \end{align*}
+  \end{align}
   Now we define the counterterms as
   $$ I_{i,k}^{CT}(\epsilon, L) = \sing_\epsilon W_{i,k}\left(P(\epsilon,L), I - \sum_{(j,l)<(i,k)}\hbar^j I_{j,l}^{CT}(\epsilon)\right) $$
   Thus we again investigate the limit of
-  \begin{align*}
+  \begin{align}
     &W_{i,k}\left( P(\epsilon,L), I - \sum_{(j,l)<(i,k)}\hbar^j I_{j,l}^{CT}(\epsilon) - \hbar^i I_{i,k}^{CT}(\epsilon, L) \right)\\
     = \quad &W_{i,k}\left( P(\epsilon,L), I - \sum_{(j,l)<(i,k)}\hbar^j I_{j,l}^{CT}(\epsilon) \right) - I_{i,k}^{CT}(\epsilon, L)
-  \end{align*}
+  \end{align}
   We see that the limit for $\epsilon \lra 0$ exists. Now all we need to show is that $I_{i,k}^{CT}(\epsilon,L)$ is local which is done as before by showing that it is independent on $L$.
 \end{proof}
 \end{theo}
@@ -894,27 +896,26 @@ $$ W^R(P(0,L), I) = \sum_{i,k} \hbar^i W_{i,k}^R (P(0,L), I) $$
 
 Thus we have established a bijection between theories and local power series in $\hbar$
 \begin{align}
-  \ZZ^{(\infty)} &\underset{RS}{\longleftrightarrow} \OO^+_{loc}(\Ci(M))\llbracket \hbar \rrbracket \\
-  \ZZ^{(n)} &\underset{RS}{\longleftrightarrow} \OO^+_{loc}(\Ci(M))\llbracket \hbar \rrbracket / \hbar^{n+1}
+  \ZF^{(\infty)} &\underset{RS}{\longleftrightarrow} \OO^+_{loc}(\Ci(M))\llbracket \hbar \rrbracket \\
+  \ZF^{(n)} &\underset{RS}{\longleftrightarrow} \OO^+_{loc}(\Ci(M))\llbracket \hbar \rrbracket / \hbar^{n+1}
 \end{align}
 
 
-\subsection{Principal Bundle}
 \subsection{Renormalisability}
 
 \textbf{Problem:} The space of theories is an infinite-dimensional manifold. Physically, to specify a particular theory we would need an infinite number of experiments.\\
 
 Thus we want to consider a finite subset of these theories, namely renormalisable theories. \textbf{Classically} a theory is renormalisable, if it has a finite number of counterterms. But we saw that the number of counterterms depends on the choice of renormalisation scheme.
 
-\begin{axiom}
-  A theory $\{S^{eff}[\Lambda]$ is renormalisable if $S^{eff}[\Lambda]$ does not grow too fast when $\Lambda \lra \infty$, measured in the "right" units appropriate to the energy scale.
-\end{axiom}
+\begin{principle}
+  A theory $\{S^{eff}[\Lambda]\}$ is renormalisable if $S^{eff}[\Lambda]$ does not grow too fast when $\Lambda \lra \infty$, measured in the "right" units appropriate to the energy scale.
+\end{principle}
 
 
 \textbf{Aside:} If $M = \RR^n$, it is not compact, but we can define a scalar PQFT in (more or less) the same way and get similar results. Define
 $$ R_l \colon \Ci(\RR^n) \lra \Ci(\RR^n), \quad \quad \phi(x) \lmap l^{1-n/2} \phi(l^{-1} x) $$
 and additionally the map
-$$ RG_l (S^{eff}[\Lambda]) (\phi) = S^{eff}[l^{-2} \Lambda](R_l(\phi)) $$
+$$ RG_l (S^{eff}[\Lambda]) (\phi) := S^{eff}[l^{-2} \Lambda](R_l(\phi)) $$
 This leads us to the following result:
 
 \begin{lem}
@@ -943,7 +944,7 @@ This leads us to the following result:
 \end{theo}
 
 \begin{corollary}
-  On $\RR^4$ renormalisable scalar field theories invariant under $SO(4) \times RR^4$ and $\phi \lmap -\phi$ are in bijection with Lagrangians of the form
+  On $\RR^4$ renormalisable scalar field theories invariant under $SO(4) \times \RR^4$ and $\phi \lmap -\phi$ are in bijection with Lagrangians of the form
   $$ \LL (\phi) = a \phi D \phi + b \phi^4 + c \phi^2 $$
   for $a,b,c \in \RR\llbracket\hbar \rrbracket$ and such that $a = - \frac{1}{2}$ modulo $\hbar$ and $c = 0$ modulo $\hbar$.
 \end{corollary}

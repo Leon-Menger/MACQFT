@@ -31,17 +31,17 @@ Given a graded vector space $V^\bullet$ we call an element $v\in V^k$ an homogen
     \item For the space of differential forms on a smooth manifold $M$ given by $\Omega^\bullet(M)$ we can define a  graded morphism of degree $1$ given by the \emph{de Rham differential} $d\colon \Omega^k(M) \ra \Omega^{k+1}(M)$.
 
     \item The \emph{contraction} of a differential form by a vector field defines another graded morphism on the space of differential forms $\Omega^\bullet(M)$. For $X \in \VF(M)$ we define
-     \begin{align*}
+     \begin{align}
        \imath_X : \Omega^k(M)\quad &\ra \quad\Omega^{k-1}(M),\\
        \omega\quad  &\mapsto \quad \imath_X\omega = \omega (X, \cdot, \dots, \cdot).
-     \end{align*}
+     \end{align}
     The contraction is a graded morphism of degree $-1$.
 
     \item Given $X \in \VF(M)$ the \emph{Lie Derivative} $\lie{X}$ defines a graded morphism of degree $0$ by
-      \begin{align*}
+      \begin{align}
         \lie{X} : \Omega^k(M)\quad &\ra \quad\Omega^{k}(M),\\
         \omega\quad  &\mapsto \quad \lie{X}\omega := \imath_X \circ d\omega + d \circ \imath_X\omega
-      \end{align*}
+      \end{align}
 
     \item Given two graded vector spaces $V^\bullet, W^\bullet$ we obtain another graded vector space through the set of graded morphisms
     $$ \Hom^\bullet(V^\bullet, W^\bullet) := \bigoplus_{k\in\ZZ} \Hom^k(V^\bullet, W^\bullet) $$
@@ -219,23 +219,23 @@ Now we use the previous lemma, to constitute a way of calculating the de Rham di
 
 \begin{prop}
   Let again  $X_0,...,X_{k} \in \VF(M)$ and $\omega \in \Omega^k(M)$. Then
-  \begin{align*}
+  \begin{align}
     d\omega(X_0, ..., X_k) =& \sum_{i=0}^{k} (-1)^i \ X_i(\omega(X_0, ..., \widehat{X_i}, ..., X_k))\\
     &+ \sum_{0 \leq i,j \leq k} (-1)^{i+j} \omega([X_i,X_j], X_0, ..., \widehat{X_i}, ..., \widehat{X_j}, ..., X_k)
-  \end{align*}
+  \end{align}
   \begin{proof}
     We again use induction on $k$. For $k=0$ we already know the formular holds. Now given for some $k-1$, we want to show that it also holds for $k$. To this end, note that
-    \begin{align*}
+    \begin{align}
       (d\imath_{X_0}\omega)(X_1, ..., X_k) &= \sum_{i=1}^{k} (-1)^{i+1} \ X_i(\imath_{X_0} \omega(X_1, ..., \widehat{X_i}, ..., X_k))\\
       &+  \sum_{1 \leq i,j \leq k} (-1)^{i+j} \imath_{X_0} \omega([X_i,X_j], X_1, ..., \widehat{X_i}, ..., \widehat{X_j}, ..., X_k)\\
       &= \sum_{i=1}^{k} (-1)^{i+1} \ X_i( \omega(X_0, X_1, ..., \widehat{X_i}, ..., X_k))\\
       &+  \sum_{1 \leq i,j \leq k} (-1)^{i+j} \omega([X_i,X_j],X_0,  X_1, ..., \widehat{X_i}, ..., \widehat{X_j}, ..., X_k)
-    \end{align*}
+    \end{align}
     Now we further note
-    \begin{align*}
+    \begin{align}
       d\circ \imath_{X_0}\ \omega(X_1, ..., X_k) &= \imath_{X_k} ... \imath_{X_1} \circ d\circ \imath_{X_0} \omega\\
       &= -d\omega(X_k, X_0) + \sum_{i=1}^k (-1)^{i+1} \ \imath_{X_k} ... \widetilde{\imath_{X_i}} ... \imath_{X_1} \imath_{[X_i, X_0]} - X_0 (\omega(X_1, ..., X_k))
-    \end{align*}
+    \end{align}
     Putting those two together proves the Proposition.
   \end{proof}
 \end{prop}
@@ -449,10 +449,10 @@ Now we further investigate the graded Euler vector field and its remarkable prop
   For any graded vector field $X$ we have
   $$ [E,X] = deg(X) \ X $$
 \begin{proof}
-  \begin{align*}
+  \begin{align}
     [E,X](f) &= E(X(f)) - X(E(f)) = |X(f)| X(f) - X(|f| f)\\
     &= (|X(f)| - |f|) X(f) = deg(X) \ X(f)
-  \end{align*}
+  \end{align}
 \end{proof}
 \end{prop}
 
@@ -504,10 +504,10 @@ Locally, we reconstruct the algebra of differential forms on $M$ by adding a new
 Now our next goal is to extend the Cartan Calculus to this setting. The main point is thus to define the respective operators. First note that $ \imath_{\dell{}{x^i}} $ has degree $(|x^i|-1)$ and $ \imath_{\dell{}{x^i}} dx^j = \delta^j_i $. Note further that
 $$ \lie{X}\omega := \imath_X \circ d\omega + (-1)^{|X|} d \circ \imath_X \omega $$
 Now it would be convenient to pinpoint the degree of a differential form. To no surprise, the graded Euler vector field can be used to do just that:
-\begin{align*}
+\begin{align}
   \lie{E} x^i &= E(x^i) = |x^i| x^i\\
   \lie{E} dx^i &= d \circ \lie{E}(x^i) = |x^i| dx^i
-\end{align*}
+\end{align}
 Thus we can unambigously define the degree of a differential form:
 
 \begin{definition}
@@ -523,10 +523,10 @@ With this definition at hand, we are ready to introduce the symplectic setting.
     \item[1.] $\omega$ is homogenous of degree $k$
     \item[2.] $\omega$ is closed wrt. the de Rham operator
     \item[3.] $\omega$ is non-degenerate, i.e. the induced musical morphism
-    \begin{align*}
+    \begin{align}
       \omega^i : TM &\ra T^*[k]M,\\
       X &\mapsto \omega(X, \cdot)
-    \end{align*}
+    \end{align}
     is an isomorphism.
   \end{itemize}
 \end{definition}
@@ -565,15 +565,15 @@ We extend the notion of a symplectic form to vector fields:
 
 \begin{proof}
   First, we note that
-  \begin{align*}
+  \begin{align}
     [E,X] = lX, \quad \quad \lie{X}\omega = d \circ \imath_X \omega = 0, \quad \quad \lie{E}\omega = k\omega
-  \end{align*}
+  \end{align}
   Now we can define $H:=\imath_E\imath_X \omega$ to obtain
-  \begin{align*}
+  \begin{align}
     dH &= d \circ \imath_E\imath_X \omega = \lie{E}\imath_X\omega - \imath_E \circ d\imath_X\omega\\
     &= \lie{E}\imath_X \omega = \imath_{[E,X]} \omega + \imath_X \lie{E}\omega = l \imath_X\omega + \imath_X(k\omega)\\
     &= l \imath_X\omega + k \imath_X \omega = (l+k) \imath_X \omega
-  \end{align*}
+  \end{align}
   and thus
   $$ \imath_X\omega = \frac{dH}{k+l} $$
   which proves the claim.
@@ -587,10 +587,10 @@ We go on to extend dg-manifolds to the symplectic setting.
 \end{definition}
 
 Using the previous lemma we directly see that, given $\degr(\omega) \neq -1$, the cohomological vector field $Q$ is necessarily hamiltonian. As an interesting analogy, we can define a structure similar to that of the well-known \emph{Poisson-bracket} using the symplectic form of a differential graded symplectic manifold. To this end, define
-\begin{align*}
+\begin{align}
   \{\cdot, \cdot \} : \Ci(M) \times \Ci(M) \quad &\ra \quad \Ci(M),\\
   (f,g) \quad &\mapsto \quad \{f,g\} := (-1)^{|f|+1} \ X_f(g)
-\end{align*}
+\end{align}
 where we denote by $X_f$ the unique hamiltonian graded vector field corresponding to $f$, thus satisfying
 $$ \imath_{X_f}\omega = df $$
 As an exercise you can show that the thus defined bracket satisfies relations strikingly similar to those of the Poisson-bracket.\\
@@ -646,10 +646,10 @@ Having defined a new set of objects, we again define the morphisms between them 
 
 \begin{definition} (Principal Bundle Morphisms)\\
   Let $(P,\pi_1,M)$ be a principal $G$-bundle and $(Q,\pi_2, N)$ be a principal $H$-bundle. A \textbf{principal bundle map} is a triple $(u, \phi, \Lambda)$ such that $u: P \ra Q$ and $\phi: M \ra N$ are smooth maps and $\Lambda: G \ra H$ is a group homomorphism and such that
-  \begin{align*}
+  \begin{align}
     \pi_2 \circ u &= \phi \circ \pi_1\\
     u(pg) &= u(p) \Lambda(g) \quad \forall p \in P, \ g\in G
-  \end{align*}
+  \end{align}
   Namely the following two diagrams should commute:
   %TODO commutative diagrams!!
 \end{definition}
@@ -680,20 +680,20 @@ An important property to classify trivial bundles is the existence of smooth glo
   Now $\chi_\sigma : P \ra G$ is uniquely defined since $G$ acts freely on $P$. Furthermore we have
   $$ \chi_\sigma (pg) = \chi_\sigma(p) g $$
   and thus
-  \begin{align*}
+  \begin{align}
     \sigma(\pi(pg)) \chi_\sigma(pg) &= pg \\
     \Rightarrow \quad \sigma(\pi(p)) \chi_\sigma(p) g &= \sigma(\pi(p)) \chi_\sigma(pg)
-  \end{align*}
+  \end{align}
   Thus we can define a map
-  \begin{align*}
+  \begin{align}
     u_\sigma : P &\longrightarrow M\times G,\\
     p &\longmapsto u_\sigma(p) := (\pi(p), \chi_\sigma(p))
-  \end{align*}
+  \end{align}
   Now note that $pr_1 \circ u_\sigma = \pi$ and further $u_\sigma(pg) = u_\sigma(p)g$. Thus $u_\sigma$ is a principal bundle map and conversely we can define $h: M\times G \longrightarrow P$ as a principal bundle map via
-  \begin{align*}
+  \begin{align}
     \sigma_u : M &\longrightarrow P,\\
     x &\longmapsto h(x, e_G)
-  \end{align*}
+  \end{align}
   This proves the theorem. %TODO
 \end{proof}
 \end{theo}
@@ -708,10 +708,10 @@ We take a step back and investigate a natural product defined on $G$-spaces. Thi
 
 \begin{definition} (Associated Bundles)\\
   Let $\xi = (P, \pi, M)$ be a principal $G$-bundle an let $F$ be a left $G$-space. Define
-  \begin{align*}
+  \begin{align}
     P_F \ &:= \ P \times_G F\\
     (p,v)g \ &:= \ (pg, g^{-1}v)
-  \end{align*}
+  \end{align}
   and further $\pi_F: P_F \ra M$ via $\pi_F([p,v]) = \pi(p)$. Then $\xi[F]:= (P_F, \pi_F, M)$ is a fibre bundle on $M$ with fibre $F$. We call this bundle the \textbf{associated bundle} to the principal bundle $\xi$.
 \end{definition}
 
@@ -764,10 +764,10 @@ The main point is that, given a connection on a principal bundle, we can take an
 Now in order to avoid working with spaces, we aim to give an equivalent notion using Lie algebras and some geometry. First recall that, given a Lie group $G$, we can identify the Lie algebra $\gf \simeq T_eG$. Now for $A \in \gf$ and a principal $G$-bundle $P$, we can define a vector field on $TP$ for $f:P\ra \RR$ via
 $$ X^A_p(f) := \dd{}{t}\Big|_{t=0} f(p \exp(tA)) $$
 where $t\in \RR$. We denoted by $\exp$ the well-known exponential map
-\begin{align*}
+\begin{align}
   \exp: \gf &\longrightarrow G\\
   x &\longmapsto \gamma(1)
-\end{align*}
+\end{align}
 where $\gamma:\RR\longrightarrow G$ is the unique $1$-parameter subgroup with tangent vector $x$ at the identity.
 %TODO Figure Lie algebra surface (?)
 
@@ -775,10 +775,10 @@ The exponential map is particularly important because it allows us to prove the 
 
 \begin{theo}
   Let $P$ be a manifold on which $G$ has a right action. Then the map
-  \begin{align*}
+  \begin{align}
     \psi : \gf &\longrightarrow \VF(P)\\
     A &\longmapsto X^A
-  \end{align*}
+  \end{align}
   is a homomorphism of $\gf$ into the infinite dimensional Lie algebra of all vector fields on $P$, i.e.
   $$ [X^A, X^B] = X^{[A,B]} \quad \forall A,B \in \gf $$
 \begin{proof}
@@ -805,22 +805,22 @@ mapping the vertical space at $p$ to the Lie algebra. Using the isomorphism at h
     \item[2.] $\delta_g (p) = pg$ \quad \quad $(\delta_g)_* \omega = Ad_{g^{-1}} \omega \quad \forall g \in G$
   \end{itemize}
   where we denote by $Ad$ the adjoint map defined as
-  \begin{align*}
+  \begin{align}
     Ad: G &\longrightarrow Aut(G)\\
     g &\longmapsto \psi_g [h \in G \longmapsto ghg^{-1}]
-  \end{align*}
+  \end{align}
   Note that we can also interpret $Ad$ as a map to the automorphisms of $\gf$ since
-  \begin{align*}
+  \begin{align}
     Ad_g = (d\psi_g)_e : T_eG &\longrightarrow T_eG\\
     \Rightarrow \quad Ad: G &\longrightarrow Aut(\gf)
-  \end{align*}
+  \end{align}
 \end{definition}
 
 Now take a smooth map $\phi:M \ra N$ and look at the corresponding pullback map
-\begin{align*}
+\begin{align}
   \phi^*: \Omega^k(N) &\longrightarrow \Omega^k(M)\\
   \alpha &\longrightarrow \phi^*\alpha
-\end{align*}
+\end{align}
 Now if we take $\phi = \delta_g : P \longrightarrow P$ that maps $p \mapsto pg$, we obtain a pullback map $\Omega^1(P) \longrightarrow \Omega^1(P)$. Using a connection form $\omega$ we see that $\delta_g^* \omega = Ad_{g^{-1}}\omega$ amounts to the claim
 $$\omega_{pg}(D\delta_g(\tau)) = Ad_{g^{-1}}(\omega_p(\tau))$$
 This leads us to the following theorem:
@@ -884,14 +884,14 @@ Keep in mind that this notion will be particularly useful in Yang-Mills-Theory. 
 Above we used an arbitrary set $X$. If we take $G$ to be a Lie group and $X$ a manifold, we need the action to be smooth to define a torsor of $G$ on $X$. Note that the definition of a torsor can vary depending on the context and is thus given in a rather general form above.\\
 
 Unpacking the definition, we first note that we have an action
-\begin{align*}
+\begin{align}
   X \times G & \longrightarrow X \quad s.t.\\
   x \cdot e \quad &= \quad x \quad \quad \quad \ \ \ \forall x \in X\\
   x(gh) \quad &= \quad (xg)h \quad \forall g,h \in G\\
   \intertext{and such that the following map is an isomorphism of $X$}
   X\times G & \longrightarrow X \times X\\
   (x,g) & \longrightarrow (x, xg)
-\end{align*}
+\end{align}
 Thus $X$ and $G$ are isomorphic as sets or manifolds depending on the context. We present some insightful examples of a torsor:
 
 \begin{example}~
@@ -962,10 +962,10 @@ We use the above diagram to arrive at an interesting intuitive lemma connecting 
   We begin by fixing $n\in \NN$. Note that $f_n(\mathcal{Z}_n(C_{1\bullet})) \subseteq \mathcal{Z}_n(C_{2\bullet}) $ and let $z_n \in \mathcal{Z}_n(C_{1\bullet})$ which means $\partial_{1n}z_n = 0$. Now we calculate
   $$ \partial_{2n}(f_n(z_n)) = f_{n-1}(\partial_{1n}(z_n)) = 0 $$
   which shows that $f_\bullet$ maps cycles to cycles. For boundaries, we note $f_n(\mathcal{B}_n)(C_{1\bullet}) \subseteq \mathcal{B}_n(C_{2\bullet})$. Now choose $b\in \mathcal{B}_n(C_{1\bullet})$ i.e. $b = \partial_{1 \ n+1}(a)$ for some $a \in C_{1 \ n+1}$. Now we calculate
-  \begin{align*}
+  \begin{align}
     f_n(b) &= f_n(\partial_{1 \ n+1}(a)) = \partial_{2 \ n+1}(f_{n+1}(a))\\
     &\Rightarrow f_n(b) \in \im \partial_{2 \ n+1}
-  \end{align*}
+  \end{align}
   Thus $f_n$ is constant on equivalence classes. Let now $[z^1_n]$ be an equivalence class and let $x^1, x^2$ be two representatives. Thus
   $$ x^1, x^2 \in \mathcal{Z}_n \quad \quad and \quad \quad x^1-x^2 = b  \in \mathcal{B}_n$$
   Which proves that the equivalence class of $f_n(x^1)$ is the same as that of $f_n(x^2)$.
@@ -988,10 +988,10 @@ Note that the name "quasi-isomorphism" makes sense since the isomorphisms only i
   is said to be an \textbf{exact sequence} if $ \ker \alpha_n = \im \alpha_{n+1} \quad \forall n \in \NN $. An exact sequence of the form
   $$ 0 \lra A \overset{i}{\lra} B \overset{j}{\lra} C \lra 0 $$
   is called a \textbf{short exact sequence}. Note that for a short exact sequence $\ker(j) = \im(i)$ as well as
-  \begin{align*}
+  \begin{align}
     \im(j) &= \ker(0) \quad \quad \Rightarrow j \ \text{is surjective}\\
     \im(0) &= \ker(i) \quad \quad \Rightarrow i \ \text{is injective}\\
-  \end{align*}
+  \end{align}
 \end{definition}
 
 We can use short exact sequences for many important proofs and definitions. Thus we provide some extra classification properties:
@@ -1072,10 +1072,10 @@ Elements of $\mathcal{H}^n$ (thus cosets of $\ker(\delta^n)$) are called \textbf
 Now we aim to further illuminate the claim that cochaincomplexes is indeed the dual concept to chain complexes. To this end, let $G$ be a group and $(C_\bullet, \partial_\bullet)$ be a chain complex. Now define its dual
 $$ D^{n+1} := (C_n)^* = \Hom(C_n, G) $$
 as the group of homomorphisms $C_n \lra G$. Now remember that a \textbf{dual homomorphism} is defined as follows: Take a group homomorphism $\alpha: A \lra B$. One defines the dual homomorphism (sometimes called "pullback") via
-\begin{align*}
+\begin{align}
   \alpha^*: \Hom(A,B) &\lra \Hom(A,G),\\
   \phi &\lmap \alpha^*(\phi) = \phi \circ \alpha
-\end{align*}
+\end{align}
 We apply the same concept to our chain complex $\partial_n:C_n \lra C_{n-1}$ which lets us define
 $$\delta^n := \partial_n^* : \Hom(C_{n-1}, G) \lra \Hom(C_n, G)$$
 These maps automatically satisfy $\delta^n \circ \delta^{n-1} = 0$ due to the corresponding equation for $\partial_n$. Now there exists a theorem, which is out of the scope of this lecture, but can be found in \source{AlgebraicTopology}, that states that the cohomology groups of $C_\bullet$ under $G$ denoted by $\mathcal{H}^n(C;G)$ are fully determined by $G$ and the homology groups $\mathcal{H}_n(C_\bullet)$.

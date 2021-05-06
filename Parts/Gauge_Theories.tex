@@ -6,25 +6,25 @@
 Recall that our chosen approach to the quantisation of (local) Lagrangian field theories deals with expressions of the form
 $$ \langle O_1 ... O_n \rangle := \frac{1}{Z} \int_\FF e^{i/\hbar S(\phi)} O_1(\phi) ... O_n(\phi) D\phi $$
 where $S = \int_M L$, the Lagrangian $L$ is a local $(0,top)$-form and $\FF = \Gamma(M, F)$. Further the $O_i$ are local action functionals on $\FF$ and we define
-$$ \ZZ := \int_\FF e^{i/\hbar S(\phi)} D\phi $$
+$$ \ZF := \int_\FF e^{i/\hbar S(\phi)} D\phi $$
 where $D\phi$ is supposed to be "a measure" on $\FF$ which \textbf{does not exists in general}. Now for \textbf{finite dimensions}, given a measure $\mu$ on $X$ we have the \textbf{Stationary Phase Formula}
-\begin{align*}\label{eq:StatPhase}\tag{SPF}
-  \ZZ := \int_X \mu e^{i/\hbar S_0} \ \underset{\hbar \lra 0}{\sim} \ &\left[ \sum_{x_0 \in Crit(S_0)} e^{i/\hbar S(x_0)} \big|\det\HH[S](x_0)\big|^{-1/2} \exp\left(i \frac{\pi}{4} \sgn(S(x_0))\right) \right]\\
+\begin{align}\label{eq:StatPhase}\tag{SPF}
+  \ZF := \int_X \mu e^{i/\hbar S_0} \ \underset{\hbar \lra 0}{\sim} \ &\left[ \sum_{x_0 \in Crit(S_0)} e^{i/\hbar S(x_0)} \left|\det\HH[S](x_0)\right|^{-1/2} \exp\left(i \frac{\pi}{4} \sgn(S(x_0))\right) \right]\\
    &\cdot (2\pi \hbar)^{\dim(X)/2} \sum_{\gamma \ graph} \frac{\hbar^{-g(\gamma)}}{|\Aut(\gamma)|} \Phi_\gamma
-\end{align*}
-Where $\gamma$ are "Feynman graphs", $g(\gamma)$ is the genus of $\gamma$ and $\Phi(\gamma)$ is the weight of a graph. Note that here we have an \emph{implicit assumption}, namely that $\HH[S](x_0)$ is non-degenerate. In field theory, we use the stationary phase formula as a \emph{definition} of the "path integral".\\
+\end{align}
+Where $\gamma$ are \emph{Feynman graphs}, $g(\gamma)$ is the genus of $\gamma$ and $\Phi(\gamma)$ is the weight of a graph. Note that here we have an \emph{implicit assumption}, namely that $\HH[S](x_0)$ is non-degenerate. In field theory, we use the stationary phase formula as a \emph{definition} of the "path integral".\\
 
 Now we can ask ourselves, if the possible degeneracy of $\HH[S](x_0)$ really is an issue. The answer is: \textbf{Yes!} Consider $\FF = \Gamma(M, F)$ with $M$ closed without boundary. Let further $S = \int_M L$. Now assume we are given a collection $\{V_\alpha\}^M$ of local symmetries \ref{def:LocalSymmetry} such that
 $$ \lie{V_\alpha} S = V_\alpha^{(i)} \frac{\delta S}{\delta \phi^{(i)}} = 0 $$
 Namely we obtain the \emph{Noether Identities}. Now consider
-\begin{align*}
+\begin{align}
   0 = \frac{\delta}{\delta \phi^{(j)}} \left( V_\alpha^{(i)} \frac{\delta S}{\delta \phi^{(i)}} \right) = \HH[S]_{(ij)} V^{(i)}_\alpha + \frac{\delta S}{\delta \phi^{(i)}} \frac{\delta V_\alpha^i}{\delta \phi^{(j)}}
-\end{align*}
+\end{align}
 Thus we restrict to $x_0 \in Crit(S) = \{x \in \FF \ s.t. \ \delta S|_x = 0\}$ such that
 $$ \HH[S]_{(ij)}(x_0) V^{(i)}_\alpha = 0 \quad \Leftrightarrow \quad V_\alpha \ \text{is a local symmetry} $$
 
 \begin{ex}
-  Show that $\{V_\alpha \in \VF_{evol}(\FF)\}$ which are local symmetries of $S$ forms a Lie subalgebra of $\VF_{evol}(\FF)$. We further denote it by $\widetilde{\mathfrak{J}}$.
+  Show that $\{V_\alpha \in \VF_{evol}(\FF)\}$ which are local symmetries of $S$ forms a Lie subalgebra of $\VF_{evol}(\FF)$. We further denote it by $\widetilde{\gf}$.
 \end{ex}
 
 Note that not all symmetries are "interesting" and thus not all symmetries are created equal. Consider a bivectorfield $\mu \in \Gamma(\bigwedge^2 (T\FF))$ and look at the vector field
@@ -38,11 +38,11 @@ Now we claim that $\omega$ is a local symmetry $\forall \mu$:
 This leads us to the following definition:
 
 \begin{definition}[Trivial Symmetries]
-  A local symmetry of the type $\omega = \mu(\delta S)$ is called a \textbf{trivial symmetry}. We denote the space of such trivial symmetries by $\mathfrak{T}$.
+  A local symmetry of the type $\omega = \mu(\delta S)$ is called a \textbf{trivial symmetry}. We denote the space of such trivial symmetries by $\tf$.
 \end{definition}
 
 \begin{lem}
-  $\mathfrak{T}$ is an ideal in $\widetilde{\mathfrak{J}}$, thus $[\widetilde{\mathfrak{J}}, \mathfrak{T}] \subset \mathfrak{T}$.
+  $\tf$ is an ideal in $\widetilde{\gf}$, thus $[\widetilde{\gf}, \tf] \subset \tf$.
 \begin{proof}
   The proof is left as an exercise to the reader.
 \end{proof}
@@ -53,25 +53,24 @@ This leads us to the following definition:
 \end{rem}
 
 No when treating theories with symmetries, we effectively want to work with a kind of quotient
-$$ \mathfrak{J} := \widetilde{\mathfrak{J}}/\mathfrak{T}$$
+$$ \gf := \widetilde{\gf}/\tf$$
 Notice that $\mathfrak{J}$ is not necessarily a Lie subalgebra. However if
-$$ [\mathfrak{T}, \mathfrak{J}] \subset \mathfrak{T}, \quad \quad [\JJ, \JJ] = \mathfrak{T} + \JJ $$
-and thus $\TT$ vanishes "on shell" (on $Crit(S)$), then \textbf{$\JJ$ is a subalgebra on $Crit(S)$}. There are two main approaches to this:
+$$ [\tf, \gf] \subset \tf, \quad \quad [\gf, \gf] = \tf + \gf $$
+and thus $\tf$ vanishes "on shell" (on $Crit(S)$), then \textbf{$\gf$ is a subalgebra on $Crit(S)$}. There are two main approaches to this:
 
 \begin{itemize}
-  \item Dealing with $\JJ$'s that are closed everywhere (Lie subalgebras). This treatment is due to Beach, Rovet, Stara, Tyutin \textbf{(BRST)}
+  \item Dealing with $\gf$'s that are closed everywhere (Lie subalgebras). This treatment is due to Beach, Rovet, Stara, Tyutin \textbf{(BRST)}
   \item More generally searching a formalism that can treat both scenarios. This leads to the Batalin-Vilkovisky formalism \textbf{(BV)}.
 \end{itemize}
 
-Most cases of physical interest are such that $\JJ$ is a Lie subalgebra but the conceptual generalisation of $BV$ will allow for
+Most cases of physical interest are such that $\gf$ is a Lie subalgebra but the conceptual generalisation of $BV$ will allow for
 \begin{itemize}
   \item more general \textbf{gauge-fixing conditions}.
   \item a treatment of boundary data.
   \item observables in $BV$ that are more general than those in $BRST$.
 \end{itemize}
 
-Thus for the rest of the script assume that $\JJ$ is a subalgebra.
-
+Thus for the rest of the script assume that $\gf$ is a subalgebra.
 
 
 \subsection{Lie algebra actions \& Lie algebra cohomology}
@@ -84,7 +83,7 @@ Thus for the rest of the script assume that $\JJ$ is a subalgebra.
     \item A \textbf{Lie algebra action} on $M$ is a Lie algebra morphism
     $$ \rho \colon \gf \lra \VF(M) $$
 
-    \item If $\{t_a\}$ is a basis of $\gf$, the image $\{V_a = \rho(t_a)\}$ is abasis of \textbf{fundamental vector fields}.
+    \item If $\{t_a\}$ is a basis of $\gf$, the image $\{V_a = \rho(t_a)\}$ is a basis of \textbf{fundamental vector fields}.
   \end{itemize}
 \end{definition}
 
@@ -111,7 +110,7 @@ Now consider a Lie algebra action $\rho \colon \gf \lra \VF(M)$ and recall that 
 \begin{definition}
   The space of $\Ci(M)$-valed $k$-forms on $\gf$ is defined to be
   $$ C^k_{CE}(\gf ; \Ci(M)) := \Hom\left(\bigwedge^k \gf^*, \Ci(M)\right) $$
-  This is called the \textbf{Chevally-Eilenberg} complex for the Lie algebra action $rho \colon \gf \lra \Der(\Ci(M))$. Now define the map
+  This is called the \textbf{Chevally-Eilenberg} complex for the Lie algebra action $\rho \colon \gf \lra \Der(\Ci(M))$. Now define the map
   $$ d_{CE} \colon C^k_{CE}(\gf ; \Ci(M)) \lra C^{k+1}_{CE}(\gf ; \Ci(M)) $$
   as
   \begin{enumerate}
@@ -134,7 +133,7 @@ $$ d_{CE} = C^a V_a - \frac{1}{2} f^d_{ab} C^a C^b \dell{}{C^d} $$
 Now it is immediate to prove the above proposition.\\
 
 The cohomology of the thus arising cochain complex is
-$$ H^k(C_{CE}^\bullet; \Ci(M)) := \frac{\ker(d_{CE}|_{C^k})}{\ker(d_{CE}|_{C^k-1})} $$
+$$ H^k(C_{CE}^\bullet; \Ci(M)) := \frac{\ker(d_{CE}|_{C^k})}{\ker(d_{CE}|_{C^{k-1}})} $$
 
 \begin{rem}
   The set $H^\circ (C_{CE}^\bullet; \Ci(M))$ is the set of $f \in \Ci(M)$ such that
@@ -145,12 +144,12 @@ $$ H^k(C_{CE}^\bullet; \Ci(M)) := \frac{\ker(d_{CE}|_{C^k})}{\ker(d_{CE}|_{C^k-1
 \end{rem}
 
 On $\bigwedge^\bullet \gf^*$ there are the following natural operations:
-\begin{align*}
+\begin{align}
   \forall \alpha \in \gf^* \quad \mathcal{E}(\alpha) \colon \Lambda^k \gf^* &\lra \bigwedge^{k+1} \gf^*, \\
   \omega &\lmap \alpha \wedge \omega \\
   \forall X \in \gf \quad \imath(X) \colon \Lambda^k \gf^* &\lra \bigwedge^{k-1} \gf^*, \\
   \omega &\lmap \imath_X (\omega)
-\end{align*}
+\end{align}
 
 Now we extend $\imath_X$ by odd-Leibniz rule
 $$ \imath_X(\alpha \wedge \beta) = (\imath_X \alpha) \wedge \beta + (-1)^{|\alpha|} \alpha \wedge (\imath_X \beta) $$
