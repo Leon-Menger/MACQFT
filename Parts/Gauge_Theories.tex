@@ -166,6 +166,176 @@ $$ C_{CE}^\bullet (\gf ; \Ci(M)) \simeq \Ci(M \times \gf[1]) $$
 which allows us to think of $d_{CE}$ as a vector field of degree $1$ whic squares to zero. Thus we can also think of it as a \textbf{cohomological vector field} on $M_{min}:=M \times \gf[1]$ such that
 $$ \frac{1}{2} [d_{CE}, d_{CE}]_{\VF(M_{min})} = d_{CE}^2 = 0 $$
 
+\subsection{BRST Formalism}
+
+This subsection is dedicated to a consise formulation of the \textbf{Becchi-Rouet-Stora-Tyutin} (short BRST) formalism. Let $F$ be a smooth manifold endowed with a Lie-algebra action
+\begin{equation}
+  \rho \colon \gf \lra \VF(F) \simeq \Der(\Ci(M))
+\end{equation}
+
+We associate to it the Chevally-Eilenberg complex
+\begin{equation}
+  C_{CE}^\bullet (\gf, \Ci(F)) \simeq \bigwedge^\bullet \gf^* \otimes \Ci(F) \simeq \Ci(F \times \gf[1]) = \Ci(F_{min})
+\end{equation}
+
+Now consider the product $F_{Aux} := \gf^* \times \gf^*[-1]$. We want to extend $d_{CE}$ to a cohomological vectorfield on
+$$ F_{BRST} := F_{min} \times F_{Aux} $$
+Luckily on $F_{Aux}$ there is a natura cohomological vector field:
+
+\begin{lem}
+  On $F_{Aux}$ consider the "vectorfield" $d_{Aux} \overline{c}_a = \lambda_a$ such that $d_{Aux} \lambda_a = 0$ where we are given a basis $\{e^a\}$ of $\gf^*$, the $\overline{c}_a$ are coordinates in $\gf^*[-1]$ and the $\lambda$ are coordinates in $\gf^*$. Then $d^2_{Aux} = 0$ and thus it is cohomological.
+\end{lem}
+
+Note that our conventions make $\overline{c}_a$ coordinates of degree $-1$ and $\lambda$ of degree $0$.
+
+\begin{ex}
+  Show that $\left( \Ci(F_{Aux}, d_{Aux}) \right) \simeq \left( \Omega^\bullet(\gf^*[-1], d_{dR}) \right)$. In particular, the cohomology of $\Ci(F_{Aux})$ vanishes.
+\end{ex}
+
+We do not want to change the cohomology of $F_{min}$, which we know represents invariant functions. Thus we aim for a prescription of the form
+$$ F_{min} \lra F_{BRST} = F_{min} \times F_{Aux} $$
+such that we only "add" fields that do not contribute. This allows for the following splitting:
+$$ \Ci(F_{BRST}) \simeq \Ci(F) \otimes \bigwedge^\bullet \gf^* \otimes \bigwedge^\bullet \gf \otimes S^\bullet \gf \simeq C_{CE}^\bullet (\gf, \Ci(F)) \otimes \Omega^\bullet_{dR}(\gf^*[-1]) $$
+which in turn allows us to define
+\begin{equation}
+  d_{BRST} := d_{CE} + d_{Aux}
+\end{equation}
+Note that the auxilary variables (fields) are often called \textbf{Nakanishi-Lautrup fields}.\\
+
+Now let $S \in \Ci(F)$ such that $d_{CE} S = 0$ (namely $S$ is lifted to $F_{min}$). Then $S \in H^\circ (C^\bullet_{CE})$ and thus it is an invariant function. Now think of $S \in \Ci(F_{BRST})$ such that $S \in H^\circ(C^\bullet_{BRST}, d_{BRST})$. Thus applying gauge fixing we get for a gauge field $\psi_{gf}$ with $|\psi_gf| = 1$:
+\begin{equation}
+  S_{gf} = S + d_{BRST} \psi_{gf} \quad \quad \Longrightarrow \quad \quad  [S_{gf}]_{BRST} = [S]_{BRST}
+\end{equation}
+A valid question is, why this should be relevant. To understand this, recall that if $S \in C(F)^\gf$ this means that $\HH[S](x_0)$ is degenerate. How about if we choose a different representative $S_{gf} = S + d_{BRST} \psi_{gf}$ such that $\HH[S_{gf}](x_0)$ is non-degenerate? We will pick up this thought after a short digression:
+
+\begin{rem}
+  \textbf{Integration on Super/Graded manifolds}\\
+  Note that everything formulated for super manifolds also applies to $\ZZ$-graded manifolds by sending a degree to the parity. Let $E \lra M$ be a rank $m$ vector bundle over $M$ where $\dim(M) = n$. Denote by $\Pi E=: \MM$ the (super) vector bundle obtained by shifting the parity of the fibre vector spaces
+
+  \begin{definition}[Berezin line bundle]
+    The (real) line bundle over $M$ defined by
+    $$ Ber(\MM) := \bigwedge^{top} T^*M \otimes \bigwedge^m E $$
+    is called the \textbf{Berezin line bundle} over $\MM$. A \textbf{Berezinian} is a smooth section of $Ber(\MM)$ denoted by $\mu \in \Gamma(M, Ber(\MM))$.
+  \end{definition}
+
+  \begin{definition}[Berezin Integral]
+    Given a section $\mu \in \Gamma(M, Ber(\MM))$ define the integration map
+    $$ \int_{\MM} \cdot \mu \colon \Ci_c(\MM) \lra \RR $$
+    defined as
+    $$ \int_\MM f \mu = \int_M \langle \mu, (f)_m \rangle $$
+    where $(f)_m$ is the component in $\Gamma_c(M, \bigwedge^m E)$ and $\langle \cdot, \cdot \rangle \colon \bigwedge^m E \otimes \bigwedge^m E^* \lra \RR$ is the fibrewise parity in $M$.
+  \end{definition}
+
+  Now consider a vector space $V$ and its parity-shifted version $\Pi V$. Now on $\Pi V$ let there be a function given as $f = f_0 + f_1 \theta$ with $f_0, f_1 \in \RR$ and $\theta$ an \emph{odd} coordinate such that
+  $$ \int d\theta = 0 \quad  \quad \int d\theta \theta = 1 $$
+  In $m$ dimensions we have
+  $$ \int d^m \theta := \int d\theta^m \int ... \int d\theta^1 $$
+  such that $\int d^m \theta \ \theta^1 ... \theta^m = 1$ and zero otherwise. Now $V^\bullet = V_n^\circ \oplus V^1_m$ such that we can decompose
+  $$ f = f^0 + f^1_i \theta^i + f^2_{ij} \theta^i \theta^j + ... $$
+  where $f^k \in \Ci(V^\circ)$. Now
+  $$ \int_V f d^nx \ d^m \theta = \int_{V^\circ} f^{top} \ d^n x $$
+  Thus changing coordinates in the form $\widetilde{\theta}^i = A^i_j \theta^j$ amounts to
+  $$ \widetilde{\theta}^1 ... \widetilde{\theta}^m = \det(A) \theta^1 ... \theta^m $$
+  Now we enforce
+  $$ \int d^m \widetilde{\theta} \widetilde{\theta}^1 ... \widetilde{\theta}^m = 1 $$
+  such that $d^m \widetilde{\theta} = (\det(A))^{-1} d^m \theta$. In general by pure construction
+  $$ \langle \mu, (f)_{top} \rangle \in \Gamma(M, \bigwedge^n T^* M) $$
+  is a top-form and can be integrated. One can generalize this entire construction by looking at
+  \begin{equation}
+    \widetilde{Ber}(\MM) := Ber(\MM) \otimes \bigwedge^\bullet E^* \simeq \bigwedge^n T^*M \otimes \bigwedge^m E \otimes \bigwedge^\bullet E^*
+  \end{equation}
+  which lets us define
+  \begin{equation}
+    BER(\MM) = \Gamma(\MM, \widetilde{Ber}(\MM))
+  \end{equation}
+  by letting $\mu \in BER(\MM)$ be non-constant along the fibres of $\rho \colon \MM \lra M$. Alternatively one can define $BER(\MM)= \Gamma(\MM, \rho^*Ber(\MM))$ as a $\Ci(\MM)$-module.
+
+  \begin{example}
+    Consider the shifted tangent bundle $\MM := \Pi TM$ and recall that $\Ci(\Pi TM) \simeq \Omega^\bullet(M)$. Now let us denote by $\tilde{f} \in \Omega^\bullet(M)$ the differential form associated to $f \in \Ci(\Pi TM)$. Define $\mu_{\Pi TM}$ as the Berezinian
+    $$ \int_\MM \mu_{\Pi TM} f = \int_M \tilde{f} $$
+    where we work in local coordinates $\{x^i, \theta_i\}$ and $\mu_{\Pi TM} = dx^i D\theta_i$.
+  \end{example}
+
+  Now to define the generalized version of the change of variables, consider the super vector space $\RR^{n|m} = \RC$, recall that $\RR^{n|m} = \RR^n \oplus \Pi \RR^m$ and take an endomorphism of $\RC$. Now parametrise the endomorphism, namely look at $J \in \End(\RC) \otimes \Ci(S)$ where $S$ denoted the parameter space.
+
+  \begin{align*}
+  J &=
+  \begin{pmatrix}
+    A & B \\
+    C & D
+  \end{pmatrix} \\
+  A &\in (\End(\RR^n) \otimes \Ci(S))_{even} \\
+  B &\in (\End(\RR^m) \otimes \Ci(S))_{even} \\
+  C &\in (\Hom(\RR^m, \RR^n) \otimes \Ci(S))_{odd} \\
+  D &\in (\Hom(\RR^n, \RR^m) \otimes \Ci(S))_{odd}
+  \end{align*}
+
+  \begin{definition}[Super determinant]
+    The \textbf{super determinant} of $J$ is the $\Ci(S)$-function
+    $$ \sdet(J) = \det(D)^{-1} \cdot \det(A-BD^{-1} C) $$
+  \end{definition}
+
+  \begin{lem}
+    The super determinant is
+    \begin{itemize}
+      \item Multiplicative: $\sdet(JK) = \sdet(J) \sdet(K)$
+      \item $\sdet(1 + \epsilon J) = 1 + \epsilon \str(J)+ \OO(\epsilon^2)$ where $\str(J) := \tr(A) - \tr(D)$
+    \end{itemize}
+  \end{lem}
+
+  \begin{corollary}
+    $\sdet(\exp(J)) = \exp(\str(J))$
+  \end{corollary}
+
+  \begin{theo}
+    Let $\RR^{n|m}_1$ and $\RR^{n|m}_2$ be two copies of an $(n|m)$ super space with coordinates $\{x^i, \theta_a\}_k$ for $k = 1,2$. Consider the integral w.r.t the "coordinate" Berezinian
+    $$ \mu_1 = \prod_{i,a} dx^i d\theta_a, \quad \quad \mu_2 = \prod_{j,b} dy^j d\psi_b$$
+    Now let $\phi \colon \RR^{n|m}_1 \lra \RR^{n|m}_2$ be a smooth map of supermanifolds and let $f \in \Ci_c(\RR^{n|m}_2)$ such that
+    $$ \int_{\RR^{n|m}_2} \mu_2 f = \int \mu_2 \sgn(\det(J_f^{nn})) \cdot \sdet(J_f) \phi^* f $$
+    where
+    \begin{align*}
+    J_f =
+    \begin{pmatrix}
+      J_f^{(nn)} & J_f^{(mn)} \\
+      J_f^{(nm)} & J_f^{(mm)}
+    \end{pmatrix} =
+    \begin{pmatrix}
+      \dell{y}{x} & \dell{y}{\theta} \\
+      \dell{\psi}{x} & \dell{\psi}{\theta}
+    \end{pmatrix}
+    \end{align*}
+    Where we think of $J_f$ as a function in $\End(\RR^{n|m}) \otimes \Ci(\RR^{n|m})$.
+  \end{theo}
+
+  \begin{definition}
+    Let $V \in \VF(\MM)$ for a super/graded manifold $\MM$ and let $\mu \in BER(\MM)$. The \textbf{divergence} of $V$ is the $\Ci(\MM)$ function $\diver_\mu(V) \in \Ci(\MM)$ such that
+    $$ \forall f \in \Ci_c(\MM), \quad \int_\MM \mu V(f) = - \int_\MM \mu \diver_\mu(V) f$$
+  \end{definition}
+
+  \begin{lem}
+    Let $\mu_0, \mu_1 \in BER(\MM)$ with
+    $$ \mu_1 = \rho \mu_0 \quad \quad  \rho \in \Ci(\MM) $$
+    then $V \in \VF(M)$, $\diver_{\mu_1}(V) = \diver_{\mu_0}(V) + V(\log(\rho))$
+  \begin{proof}~
+    \begin{align}
+      \int \diver_{\mu_1}(V) f\mu_1 &= -\int \mu_1 V(F) = - \int \rho \mu_0 V(f)\\
+      &= - \int \mu_0 V(\rho f) \mu_0 + \int V(\rho) f \mu_0 \frac{\rho}{\rho} \\
+      &= \int \diver_{\mu_0} (V) (\rho f) \mu_0 + V(\log(\rho)) f \mu_0 \rho
+    \end{align}
+  \end{proof}
+  \end{lem}
+
+  \begin{lem}
+    Let $\{x^i, \theta_a\}$ denote coordinates on the super manifold $\RR^{n|m}$ such that
+    $$ \mu_{cord} = d^n x^i \prod_a D\theta_a $$
+    Thus we write a vectorfield locally as
+    $$ v = v^i \dell{}{x^i} + v^a \dell{}{\theta_a} $$
+    its divergence reads
+    $$ \diver_{\mu_{coord}} v = \partial_{x^i} v^i - (-1)^{|v|} \partial_{\theta_a} v^a $$
+  \end{lem}
+\end{rem}
+
+
 
 
 
