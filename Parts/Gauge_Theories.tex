@@ -168,7 +168,7 @@ $$ \frac{1}{2} [d_{CE}, d_{CE}]_{\VF(M_{min})} = d_{CE}^2 = 0 $$
 
 \subsection{BRST Formalism}
 
-This subsection is dedicated to a consise formulation of the \textbf{Becchi-Rouet-Stora-Tyutin} (short BRST) formalism. Let $F$ be a smooth manifold endowed with a Lie-algebra action
+This subsection is dedicated to a consise formulation of the \textbf{Becchi-Rouet-Stora-Tyutin} (short BRST) formalism. Let $F$ be a smooth manifold endowed with a Lie algebra action
 \begin{equation}
   \rho \colon \gf \lra \VF(F) \simeq \Der(\Ci(M))
 \end{equation}
@@ -257,18 +257,20 @@ A valid question is, why this should be relevant. To understand this, recall tha
   \end{example}
 
   Now to define the generalized version of the change of variables, consider the super vector space $\RR^{n|m} = \RC$, recall that $\RR^{n|m} = \RR^n \oplus \Pi \RR^m$ and take an endomorphism of $\RC$. Now parametrise the endomorphism, namely look at $J \in \End(\RC) \otimes \Ci(S)$ where $S$ denoted the parameter space.
-
-  \begin{align*}
-  J &=
-  \begin{pmatrix}
-    A & B \\
-    C & D
-  \end{pmatrix} \\
-  A &\in (\End(\RR^n) \otimes \Ci(S))_{even} \\
-  B &\in (\End(\RR^m) \otimes \Ci(S))_{even} \\
-  C &\in (\Hom(\RR^m, \RR^n) \otimes \Ci(S))_{odd} \\
-  D &\in (\Hom(\RR^n, \RR^m) \otimes \Ci(S))_{odd}
-  \end{align*}
+  \begingroup
+    \allowdisplaybreaks
+    \begin{align*}
+    J &=
+    \begin{pmatrix}
+      A & B \\
+      C & D
+    \end{pmatrix} \\
+    A &\in (\End(\RR^n) \otimes \Ci(S))_{even} \\
+    B &\in (\End(\RR^m) \otimes \Ci(S))_{even} \\
+    C &\in (\Hom(\RR^m, \RR^n) \otimes \Ci(S))_{odd} \\
+    D &\in (\Hom(\RR^n, \RR^m) \otimes \Ci(S))_{odd}
+    \end{align*}
+  \endgroup
 
   \begin{definition}[Super determinant]
     The \textbf{super determinant} of $J$ is the $\Ci(S)$-function
@@ -289,7 +291,9 @@ A valid question is, why this should be relevant. To understand this, recall tha
 
   \begin{theo}
     Let $\RR^{n|m}_1$ and $\RR^{n|m}_2$ be two copies of an $(n|m)$ super space with coordinates $\{x^i, \theta_a\}_k$ for $k = 1,2$. Consider the integral w.r.t the "coordinate" Berezinian
-    $$ \mu_1 = \prod_{i,a} dx^i d\theta_a, \quad \quad \mu_2 = \prod_{j,b} dy^j d\psi_b$$
+    \begin{equation}
+      \mu_1 = \prod_{i,a} dx^i d\theta_a, \quad \quad \mu_2 = \prod_{j,b} dy^j d\psi_b
+    \end{equation}
     Now let $\phi \colon \RR^{n|m}_1 \lra \RR^{n|m}_2$ be a smooth map of supermanifolds and let $f \in \Ci_c(\RR^{n|m}_2)$ such that
     $$ \int_{\RR^{n|m}_2} \mu_2 f = \int \mu_2 \sgn(\det(J_f^{nn})) \cdot \sdet(J_f) \phi^* f $$
     where
@@ -327,16 +331,161 @@ A valid question is, why this should be relevant. To understand this, recall tha
 
   \begin{lem}
     Let $\{x^i, \theta_a\}$ denote coordinates on the super manifold $\RR^{n|m}$ such that
-    $$ \mu_{cord} = d^n x^i \prod_a D\theta_a $$
+    \begin{equation}
+      \mu_{cord} = d^n x^i \prod_a D\theta_a
+    \end{equation}
     Thus we write a vectorfield locally as
-    $$ v = v^i \dell{}{x^i} + v^a \dell{}{\theta_a} $$
+    \begin{equation}
+      v = v^i \dell{}{x^i} + v^a \dell{}{\theta_a}
+    \end{equation}
     its divergence reads
-    $$ \diver_{\mu_{coord}} v = \partial_{x^i} v^i - (-1)^{|v|} \partial_{\theta_a} v^a $$
+    \begin{equation}
+      \diver_{\mu_{coord}} v = \partial_{x^i} v^i - (-1)^{|v|} \partial_{\theta_a} v^a
+    \end{equation}
   \end{lem}
 \end{rem}
 
+\begin{lem}
+  \begin{align*}
+    \diver_{\mu_{coord}} (d_{Aux}) &= 0 \\
+    \diver_{\mu_{coord}} (d_{BRST}) &= \diver_{\mu_{coord}} (d_{CE}) = \sum_a c^a \left( \sum_b f^b_{ba} + \diver_F v_a \right)
+  \end{align*}
+  where $v_a = \rho(t_a)$ for $\{t_a\}$ a basis of $\gf$.
+\begin{proof}
+  First note that
+  $$ \diver_{\mu_{coord}} (d_{Aux}) = - \dell{}{\overline{c}_a} \lambda_a \equiv 0 $$
+  which leads us to
+  $$ \diver_{\mu_{coord}} (d_{CE}) = \dell{}{x^i} (c^a v_a^i) - \dell{}{c^d} \left(- \frac{1}{2} f^d_{ab}c^a c^b\right) = c^a \diver_F (v_a) + f^d_{db}c^b $$
+\end{proof}
+\end{lem}
+
+This lemma lets us formulate and prove the main theorem of BRST:
+
+\begin{theo}[BRST]
+  Let $\rho \colon \gf \lra \VF(F)$ be a Lie algebra action on $F$ and let $\tilde{\mu}$ be a Berezinian on $F_{BRST}$ such that $\diver_{\tilde{\mu}}(d_{BRST}) = 0$. Define
+  $$ \lrangle{h}_\psi = \frac{\int_{F_{BRST}} \exp(i/\hbar S_{gf})h \tilde{\mu}}{\int_{F_{BRST}} \exp(i/\hbar S_{gf})\tilde{\mu}} $$
+  such that
+  \begin{enumerate}
+    \item $S_{gf} = S + d_{BRST} \psi, \ \ \psi \in \Ci(F_{BRST})^{(-1)}$
+    \item $d_{BRST} S = 0, \ \ d_{BRST} h = 0$
+  \end{enumerate}
+  Then the following statements hold true:
+  \begin{itemize}
+    \item[a.] $\lrangle{h}_\psi$ is locally constant in $\psi$
+    \item[b.] If $g = d_{BRST} f \ \Rightarrow \ \lrangle{g}_\psi = 0 \ \forall \psi$
+  \end{itemize}
+\begin{proof}
+  Let $\psi_t$ be a smooth family of "gauge fixing functions". Define
+  $$I_{\psi_t} = \int_{F_{BRST}} \exp(i/\hbar (S+ d_{BRST} \psi_t)) h \tilde{\mu}$$
+  such that we can denote
+  \begin{align*}
+    \dd{}{t} I_{\psi_t} &= \frac{i}{\hbar} \int_{F_{BRST}} d_{BRST}(\dd{}{t}\psi_t) \exp(i/\hbar (S_{gf}(t))) h \tilde{\mu} \\
+    &= \frac{i}{\hbar} \int_{F_{BRST}} d_{BRST} \left( \dd{}{t}\psi_t \exp(i/\hbar (S_{gf}(t))) h \right) \tilde{\mu} \\
+    &= - \frac{i}{\hbar} \int_{F_{BRST}} (...) \diver(d_{BRST}) \tilde{\mu} = 0
+  \end{align*}
+  Now for the second part note that
+  \begin{align*}
+    \int_{F_{BRST}} \exp(i/\hbar S) d_{BRST} f \tilde{\mu} = \int_{F_{BRST}} d_{BRST} (...) \tilde{\mu} = - \int_{F_{BRST}} \diver(d_{BRST}) \tilde{\mu} = 0
+  \end{align*}
+  which proves our theorem.
+\end{proof}
+\end{theo}
+
+Now given a Berezinian $\tilde{\mu}$ we always have $\diver_{\tilde{\mu}}(d_{BRST}) = 0$. Thus BRST integrals descend to the BRST cohomology. Namely the value of the integrals do not change if you change the representative of a cohomology class.
+\begin{equation}
+  \int_{F_{BRST}} \tilde{\mu} \colon H^\circ_{BRST} (\Ci(F_{BRST})) \lra \RR
+\end{equation}
+If $S$ has a degenerate Hessian, we make our transition to $S_{gf} = S + d_{BRST} \psi$. The divergence-free condition is strong. In general we are interested in $d_{BRST}$-closed quantities like $\exp(i/ \hbar S_{gf}) h$ but not in $d_{BRST}$-exact quantities.\\
+
+When $\gf$ is unimodular then $\sum f^b_{ba} = 0$ and we can find a $\gf$-invariant measure on $F$, then $\diver(v_a) \equiv 0$ and thus in particular $\diver(d_{BRST}) = 0$.\\
+
+\textbf{Interpretation:} For an action $\rho$ of $\gf$ on $F$, $S$ invariant and $\mu_F$ and invariant measure, the action of $\gf$ traces out orbits on $F$.
+%TODO Interpretation (pictures too?)
+
+But the quotient can be "badly behaved" so finding an appropriate $\tilde{S}$ might not be easy. Thus we might want to find a section $J$
+$$ F \atob{\rho} F/G \atob{J} F \quad \im(J) $$
+that "cuts" the $G$-orbits. Practically one looks for a function
+$$ \phi \colon F \lra \gf $$
+such that
+\begin{enumerate}
+  \item $0 \in \gf$ is a regular value for $\phi$
+  \item $\Sigma := \phi^{-1}(0)$ intersects the $G$-orbits $N$ times, transversally (locally, for $U$ a neighbourhood of an intersection point $T_p U = \gf \oplus T_p \Sigma$ for any $p \in \Sigma$)
+\end{enumerate}
+
+\begin{sketch}[Faddeev-Popov trick]
+  This trick lets us write
+  \begin{align*}
+    I = \frac{\vol(G)}{N} \int_\Sigma \left. \imath_{v_1} ... \imath_{v_m} \mu e^{i/\hbar S} \right|_\Sigma = \frac{\vol(G)}{N} \int_F \delta^{(m)}(\phi) \imath_{v_1} ... \imath_{v_m} \mu e^{i/\hbar S}
+  \end{align*}
+  where $\delta^{(m)}(\phi) := \delta(\phi) \cdot \bigwedge_a d\phi^a$ is a distributional $m$-form.
+\end{sketch}
+
+\begin{lem}
+  $\bigwedge d\phi^a \imath_{v_1} ... \imath_{v_m} \mu = \det(FP(x)) \cdot \mu$ where
+  $$FP(x) = d_x \phi \circ d_{(1,x)} \rho \colon \gf \lra \gf$$
+  In components
+  $$ [FP(x)]^b_a = \pair{d_x\phi^b(x)}{v_a(x)} = v_a (\phi^b)|_x $$
+\begin{proof}
+  $FP(x)$ is non-degenerate iff the intersection of $\phi^{-1}(\phi(x))$ with a $G$-orbit is transversal. In fact we have $\pair{d\phi}{v}_x = 0$ iff $v \in \ker(d\phi_x)$ which is equivalent to $v$ being tangent to $\phi^{-1}(\phi(x))$. Now assume transversality, i.e. non-degeneracy, and consider $V_x = Span\{v_a^{(x)}\} \subset T_x F$. Now if we write the orbit as
+  $$ \OO_x := \{x \in F | \gf = \rho(g,x) \ g \in G \} $$
+  we observe $V_x \in T_x \OO$. Moreover if $\{\alpha_1, ..., \alpha_{n-m}\}$ is a basis, we can define
+  $$ Ann(V_x) := \{ \alpha \in T_x F | \pair{\alpha}{v} = 0 \ \forall v \in V \} \subset T^*_x F$$
+  Now a basis for $T^*_x F$ is $\{d\phi^1(x), ..., d\phi^m(x), \alpha_1, ..., \alpha_{n-m} \}$. Thus we define
+  $$ \mu = \bigwedge_{a=1}^m d\phi^a  \wedge \alpha_1 \wedge ... \wedge \alpha_{n-m}$$
+  with a little care we now observe
+  \begin{align*}
+    \imath_{v_1} ... \imath_{v_m} \mu &= \left( \sum_{\sigma \in S_m} (-1)^S \prod_{a = 1}^m \pair{d\phi^a(x)}{v_{S(a)}(x)} \right) \alpha_1, ..., \alpha_{n-m}\\
+    &= \det(FP(x)) \cdot \alpha_1 \wedge ... \wedge \alpha_{n-m}
+  \end{align*}
+  Now conclude the proof by "wedging" with $\bigwedge d\phi^a$ to arrive at the statement of the lemma.
+\end{proof}
+\end{lem}
+
+We will need to keep this lemma in mind when going forward. Another helpful lemma is the following.
+
+\begin{lem}
+  Denote by $Dc D\overline{c}$ the coordinate Berezinians on $\gf[1] \oplus \gf^*[-1]$. Then
+  $$ \det(FP(x)) = \frac{\hbar}{i} \int_{\gf[1] \oplus \gf^*[-1]} DcD\overline{c} \exp(i/\hbar \pair{\overline{c}}{FP \cdot c})$$
+  The splitting $\gf[1] \oplus \gf^*[-1]$ was the original interpretation of \emph{ghosts/antighosts}. Moreover we now have an integral representation of the delta function in the form of
+  $$ \delta(\phi(x)) = \frac{1}{(2\pi\hbar)^m} \int_{\gf^*} d^m \lambda e^{i/\hbar \pair{\lambda}{\phi(x)}} $$
+\end{lem}
+
+\begin{theo}[Faddeev-Popov]
+\label{theorem:FP}
+  \begin{align}
+    I &= \int_F \exp(i/\hbar S) = \frac{\vol(F)}{N} \int_F \mu \delta(\phi) \det(FP) e^{i/\hbar S} \\
+    &= \frac{\vol(F)}{N} \int_{F \times \gf[1] \times \gf^*[-1] \times \gf^*} \mu DcD\overline{c} d^m \lambda \exp\left( \frac{i}{\hbar} \left( S + \pair{\lambda}{\phi(x)} + \pair{\overline{c}}{FP(x) c} \right)\right)
+  \end{align}
+\end{theo}
+
+\begin{theo}[FP withing BRST]
+\label{theorem:FP_BRST}
+  Choose $\psi = \pair{\overline{c}}{\phi} \in \Ci(F_{BRST})^{(-1)}$ such that $S_{gf} = S + d_{BRST} \psi = S_{FP}$.
+\begin{proof}
+  Note that
+  \begin{align*}
+    d_{BRST} \psi = \pair{d_{BRST} \overline{c}}{\phi} + \pair{\overline{c}}{d_{BRST} \phi}
+  \end{align*}
+  such that we can write
+  \begin{align*}
+    d_{BRST} \phi = c^a v_a (\phi) = - \pair{d\phi}{v_a} c^a
+  \end{align*}
+\end{proof}
+\end{theo}
+
+\begin{rem}
+  FP \ref{theorem:FP} is quite restrictive if you formulate it in a mathematically precise way. Nevertheless we \emph{can} intepret it as a cohomological procedure which works with fewer assumptions. However this is not fully satisfying for the following reasons:
+  \begin{enumerate}
+    \item Cumbersome minimal/nonminimal extension is \textbf{needed} to introduce $\psi$.
+    \item BRST is inherently limited to Lie algebra actions. Thus $\widetilde{\gf} = \tf \oplus \gf$ where $\gf$ is a subalgebra.
+    \item The space of invariant functions, in physical terminology called \textbf{"The Observables"} are quantities that, in principle, can be measured. In BRST they do \textbf{not} "know" anything about $S$.
+  \end{enumerate}
+
+  Solving all of those problems we will look at functions that are invariant on $Crit(S)$, not globally. To incorporate this idea from the start will lead us to the \textbf{BV formalism}.
+\end{rem}
 
 
+\subsection{BV Formalism}
 
 
 \newpage
