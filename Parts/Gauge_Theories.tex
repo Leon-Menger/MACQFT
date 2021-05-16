@@ -108,7 +108,7 @@ Thus for the rest of the script assume that $\gf$ is a subalgebra.
 Now consider a Lie algebra action $\rho \colon \gf \lra \VF(M)$ and recall that $\VF(M) \simeq \Der(\Ci(M))$.
 
 \begin{definition}
-  The space of $\Ci(M)$-valed $k$-forms on $\gf$ is defined to be
+  The space of $\Ci(M)$-valued $k$-forms on $\gf$ is defined to be
   $$ C^k_{CE}(\gf ; \Ci(M)) := \Hom\left(\bigwedge^k \gf^*, \Ci(M)\right) $$
   This is called the \textbf{Chevally-Eilenberg} complex for the Lie algebra action $\rho \colon \gf \lra \Der(\Ci(M))$. Now define the map
   $$ d_{CE} \colon C^k_{CE}(\gf ; \Ci(M)) \lra C^{k+1}_{CE}(\gf ; \Ci(M)) $$
@@ -140,7 +140,7 @@ $$ H^k(C_{CE}^\bullet; \Ci(M)) := \frac{\ker(d_{CE}|_{C^k})}{\ker(d_{CE}|_{C^{k-
   $$ d_{CE} f = 0 \quad \Leftrightarrow \quad d_{CE} f(X) = 0 \quad \forall X\in \gf $$
   which means $\rho(X)(f) = 0$ and thus $f$ is \textbf{invariant}. Thus we obtain
   $$ H^\circ (C_{CE}^\bullet; \Ci(M)) \simeq \Ci(M)^\gf $$
-  where $\Ci(M)^\gf$ are $\gf$ invariant smooth functions on $M$.
+  where $\Ci(M)^\gf$ are $\gf$-invariant smooth functions on $M$.
 \end{rem}
 
 On $\bigwedge^\bullet \gf^*$ there are the following natural operations:
@@ -153,17 +153,17 @@ On $\bigwedge^\bullet \gf^*$ there are the following natural operations:
 
 Now we extend $\imath_X$ by odd-Leibniz rule
 $$ \imath_X(\alpha \wedge \beta) = (\imath_X \alpha) \wedge \beta + (-1)^{|\alpha|} \alpha \wedge (\imath_X \beta) $$
-Now if $\{t_a\}$ and $\{\alpha_a\}$ are basis for $\gf$ and $\gf^*$ respectively, then
-$$ d_{CE} = \mathcal{E}(\alpha^a) \rho(t_a) - \frac{1}{2} \mathcal{E}(\alpha^a) \mathcal{\alpha^b} \imath_{[t_a, t_b]} $$
+Now if $\{t_a\}$ and $\{\alpha^a\}$ are basis for $\gf$ and $\gf^*$ respectively, then
+$$ d_{CE} = \mathcal{E}(\alpha^a) \rho(t_a) - \frac{1}{2} \mathcal{E}(\alpha^a) \mathcal{E}(\alpha^b) \imath_{[t_a, t_b]} $$
 where we sum over repeated indices. This coincides with the formula above by defining $C^a \equiv \mathcal{E}(\alpha^a)$ and $\dell{}{C^a} \equiv \imath_{t_a}$. Thus we obtain
-$$ C^a C^b = \mathcal{E}(\alpha^a) \mathcal{\alpha^b} = - \mathcal{E}(\alpha^b) \mathcal{\alpha^a} = - C^b C^a $$
+$$ C^a C^b = \mathcal{E}(\alpha^a) \alpha^b = - \mathcal{E}(\alpha^b) \alpha^a = - C^b C^a $$
 such that
 $$ d_{CE} = C^a V_a - \frac{1}{2} f_{ab}^d C^a C^b \dell{}{C^d} $$
 Now we need to consider the collection $\{C^a\}$ as \textbf{odd coordinates}. This corresponds to the notion of \textbf{Ghost Variables} or \textbf{Ghost Fields} in physics. Thus we can formulate
 $$ \Ci(M \times \gf[1]) \simeq \bigwedge^\bullet \gf^* \otimes \Ci(M) \cong \Hom(\bigwedge^\bullet \gf^*, \Ci(M)) $$
 where $\gf[1]$ is a graded vector space, concentrated in degree $-1$. This leads us to
 $$ C_{CE}^\bullet (\gf ; \Ci(M)) \simeq \Ci(M \times \gf[1]) $$
-which allows us to think of $d_{CE}$ as a vector field of degree $1$ whic squares to zero. Thus we can also think of it as a \textbf{cohomological vector field} on $M_{min}:=M \times \gf[1]$ such that
+which allows us to think of $d_{CE}$ as a vector field of degree $1$ which squares to zero. Thus we can also think of it as a \textbf{cohomological vector field} on $M_{min}:=M \times \gf[1]$ such that
 $$ \frac{1}{2} [d_{CE}, d_{CE}]_{\VF(M_{min})} = d_{CE}^2 = 0 $$
 
 \subsection{BRST Formalism}
@@ -180,7 +180,7 @@ We associate to it the Chevally-Eilenberg complex
 
 Now consider the product $F_{Aux} := \gf^* \times \gf^*[-1]$. We want to extend $d_{CE}$ to a cohomological vectorfield on
 $$ F_{BRST} := F_{min} \times F_{Aux} $$
-Luckily on $F_{Aux}$ there is a natura cohomological vector field:
+Luckily on $F_{Aux}$ there is a natural cohomological vector field:
 
 \begin{lem}
   On $F_{Aux}$ consider the "vectorfield" $d_{Aux} \overline{c}_a = \lambda_a$ such that $d_{Aux} \lambda_a = 0$ where we are given a basis $\{e^a\}$ of $\gf^*$, the $\overline{c}_a$ are coordinates in $\gf^*[-1]$ and the $\lambda$ are coordinates in $\gf^*$. Then $d^2_{Aux} = 0$ and thus it is cohomological.
@@ -200,9 +200,9 @@ which in turn allows us to define
 \begin{equation}
   d_{BRST} := d_{CE} + d_{Aux}
 \end{equation}
-Note that the auxilary variables (fields) are often called \textbf{Nakanishi-Lautrup fields}.\\
+Note that the auxilary variables (fields) are often called \textbf{Nakanishi-Lautrup fields}.
 
-Now let $S \in \Ci(F)$ such that $d_{CE} S = 0$ (namely $S$ is lifted to $F_{min}$). Then $S \in H^\circ (C^\bullet_{CE})$ and thus it is an invariant function. Now think of $S \in \Ci(F_{BRST})$ such that $S \in H^\circ(C^\bullet_{BRST}, d_{BRST})$. Thus applying gauge fixing we get for a gauge field $\psi_{gf}$ with $|\psi_gf| = 1$:
+Now let $S \in \Ci(F)$ such that $d_{CE} S = 0$ (namely $S$ is lifted to $F_{min}$). Then $S \in H^\circ (C^\bullet_{CE})$ and thus it is an invariant function. Now think of $S \in \Ci(F_{BRST})$ such that $S \in H^\circ(C^\bullet_{BRST}, d_{BRST})$. Thus applying gauge fixing we get for a gauge field $\psi_{gf}$ with $|\psi_{gf}| = 1$:
 \begin{equation}
   S_{gf} = S + d_{BRST} \psi_{gf} \quad \quad \Longrightarrow \quad \quad  [S_{gf}]_{BRST} = [S]_{BRST}
 \end{equation}
@@ -230,10 +230,10 @@ A valid question is, why this should be relevant. To understand this, recall tha
   $$ \int d\theta = 0 \quad  \quad \int d\theta \theta = 1 $$
   In $m$ dimensions we have
   $$ \int d^m \theta := \int d\theta^m \int ... \int d\theta^1 $$
-  such that $\int d^m \theta \ \theta^1 ... \theta^m = 1$ and zero otherwise. Now $V^\bullet = V_n^\circ \oplus V^1_m$ such that we can decompose
+  such that $\int d^m \theta \ \theta^1 ... \theta^m = 1$ and zero otherwise. Now $V^0 = V_m^\circ \oplus V^1_m$ such that we can decompose
   $$ f = f^0 + f^1_i \theta^i + f^2_{ij} \theta^i \theta^j + ... $$
-  where $f^k \in \Ci(V^\circ)$. Now
-  $$ \int_V f d^nx \ d^m \theta = \int_{V^\circ} f^{top} \ d^n x $$
+  where $f^k \in \Ci(V^0)$. Now
+  $$ \int_V f d^mx \ d^m \theta = \int_{V^\circ} f^{top} \ d^n x $$
   Thus changing coordinates in the form $\widetilde{\theta}^i = A^i_j \theta^j$ amounts to
   $$ \widetilde{\theta}^1 ... \widetilde{\theta}^m = \det(A) \theta^1 ... \theta^m $$
   Now we enforce
@@ -379,7 +379,7 @@ This lemma lets us formulate and prove the main theorem of BRST:
   $$I_{\psi_t} = \int_{F_{BRST}} \exp(i/\hbar (S+ d_{BRST} \psi_t)) h \tilde{\mu}$$
   such that we can denote
   \begin{align*}
-    \dd{}{t} I_{\psi_t} &= \frac{i}{\hbar} \int_{F_{BRST}} d_{BRST}(\dd{}{t}\psi_t) \exp(i/\hbar (S_{gf}(t))) h \tilde{\mu} \\
+    \dd{}{t} I_{\psi_t} &= \frac{i}{\hbar} \int_{F_{BRST}} d_{BRST}\left(\dd{}{t}\psi_t\right) \exp(i/\hbar (S_{gf}(t))) h \tilde{\mu} \\
     &= \frac{i}{\hbar} \int_{F_{BRST}} d_{BRST} \left( \dd{}{t}\psi_t \exp(i/\hbar (S_{gf}(t))) h \right) \tilde{\mu} \\
     &= - \frac{i}{\hbar} \int_{F_{BRST}} (...) \diver(d_{BRST}) \tilde{\mu} = 0
   \end{align*}
