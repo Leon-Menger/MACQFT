@@ -20,13 +20,15 @@ To extend the notion of a graded vector space to a full category, we now investi
 
 \begin{definition} (Graded Morphisms)\\
  Let $V^\bullet, W^\bullet$ be graded vector spaces.  A \textbf{graded morphism} $\phi: V^\bullet \ra W^\bullet$ is  a collection of linear maps $\phi^k: V^k \ra W^k$ \ $\forall k \in \ZZ$. We extend this notion to that of a graded morphism of \textbf{degree $r$} by requiring that $\phi^k: V^k \ra W^{k+r}\ \forall k \in \ZZ$. In the case $V^\bullet = W^\bullet$ we call $\phi$ a \textbf{graded endomorphism} (of degree $r$, respectively).
+ 
+ The category $\mathsf{gVect}$ of graded vector spaces has objects graded vector spaces and morphisms graded morphisms. 
 \end{definition}
 
-Given a graded vector space $V^\bullet$ we call an element $v\in V^k$ an homogenous element of degree $k=|v|$.
+Given a graded vector space $V^\bullet$ we call an element $v\in V^k$ an homogeneous element of degree $|v|\coloneqq k$.
 
 \begin{example}~
   \begin{itemize}
-    \item The most common examples of graded vector spaces emerge from the tensor product. The $k$-fold tensor product of a vector space $V$ denoted by $V^{\otimes k}$, the $k$-fold exterior algebra of $V$ denoted by $\bigwedge^k V$ and the space of differential $k$-forms on a smooth manifold $M$ denoted by $\Omega^k(M)$ each generate a graded vector space denoted by $T^\bullet(V)$, $\bigwedge^\bullet V$ and $\Omega^\bullet(M)$ respectively.
+    \item The most common examples of graded vector spaces emerge from the tensor product. The $k$-fold tensor product of a vector space $V$ denoted by $V^{\otimes k}$, the $k$-fold exterior algebra of $V$ denoted by $\bigwedge^k V$ and the space of differential $k$-forms on a smooth manifold $M$ denoted by $\Omega^k(M)$ each generate a graded vector space, graded by polynomial degree, denoted by $T^\bullet(V)$, $\bigwedge^\bullet V$ and $\Omega^\bullet(M)$ respectively.
 
     \item For the space of differential forms on a smooth manifold $M$ given by $\Omega^\bullet(M)$ we can define a  graded morphism of degree $1$ given by the \emph{de Rham differential} $d\colon \Omega^k(M) \ra \Omega^{k+1}(M)$.
 
@@ -37,14 +39,15 @@ Given a graded vector space $V^\bullet$ we call an element $v\in V^k$ an homogen
      \end{align}
     The contraction is a graded morphism of degree $-1$.
 
-    \item Given $X \in \VF(M)$ the \emph{Lie Derivative} $\lie{X}$ defines a graded morphism of degree $0$ by
+    \item Given $X \in \VF(M)$ the \emph{Lie Derivative} $\lie{X}$ defines, by Cartan's magic formula, a graded morphism of degree $0$ by
       \begin{align}
         \lie{X} : \Omega^k(M)\quad &\ra \quad\Omega^{k}(M),\\
         \omega\quad  &\mapsto \quad \lie{X}\omega := \imath_X \circ d\omega + d \circ \imath_X\omega
       \end{align}
 
     \item Given two graded vector spaces $V^\bullet, W^\bullet$ we obtain another graded vector space through the set of graded morphisms
-    $$ \Hom^\bullet(V^\bullet, W^\bullet) := \bigoplus_{k\in\ZZ} \Hom^k(V^\bullet, W^\bullet) $$
+    $$ \Hom^\bullet(V^\bullet, W^\bullet) := \bigoplus_{k\in\ZZ} \Hom^k(V^\bullet, W^\bullet), $$
+    where $\Hom^k$ denotes degree-$k$ maps.
 
      \item Given a graded vector space $V^\bullet$ we define the dual graded vector space $(V^*)^\bullet$ via the collection $(V^*)_i=(V_{-i})^*$.\footnote{Note that in the case where $V^\bullet=T^\bullet(W)$ where $W$ is a classical vector space, $(V^*)_i$  becomes trivally zero for positive indices.}
   \end{itemize}
@@ -53,7 +56,7 @@ Given a graded vector space $V^\bullet$ we call an element $v\in V^k$ an homogen
 Due to their importance for the forthcoming discussion, we classify certain special cases of graded endomorphisms.
 
 \begin{definition}
-  Let $\phi$ be a graded endomorphism such that $\phi \circ \phi = 0$. We call $\phi$ a \textbf{boundary operator}, if $\phi$ is of degree $-1$. If $\phi$ is of degree $+1$, we call it a \textbf{coboundary operator}. A graded vector space $V^\bullet$ together with a coboundary operator is called a \textbf{complex}. If it is equipped with a boundary operator, we call it a \textbf{cocomplex}.
+  Let $\phi$ be a graded endomorphism such that $\phi \circ \phi = 0$. We call $\phi$ a \textbf{boundary operator}, if $\phi$ is of degree $-1$. If $\phi$ is of degree $+1$, we call it a \textbf{coboundary operator}. A graded vector space $V^\bullet$ together with a coboundary operator is called a \textbf{complex}, or \textbf{cochain complex}. If it is equipped with a boundary operator, we call it a \textbf{cocomplex}, or \textbf{chain complex}.
 \end{definition}
 
 Note that a very important example for a complex is $\Omega^\bullet(M)$ equipped with the \emph{de Rham differential}, well known from \emph{de Rham cohomology}. To define further structure on graded vector spaces, we turn to algebraic relations defined on its realisation.
@@ -77,7 +80,7 @@ Note that a very important example for a complex is $\Omega^\bullet(M)$ equipped
 \begin{itemize}
   \item The tensor algebra $T^\bullet(V)$ of a graded vector space $V^\bullet$ is a graded algebra with its product given by the tensor product $\tens{}$. Note that this makes $T^\bullet(V)$ an associative graded algebra.
 
-  \item The two spaces $(\bigwedge^\bullet V, \wedge)$ and $(\Omega^\bullet(M), \wedge)$ are associative commutative graded algebras as can be readily deduced from the definition of the wedge-product.
+  \item The two spaces $(\bigwedge^\bullet V, \wedge)$ and $(\Omega^\bullet(M), \wedge)$ are associative commutative graded algebras as can be readily deduced from the definition of the wedge-product. \begin{mdframed}One should introduce shifts (and symmetric powers) to even say what $\bigwedge^\bullet V$ is, if $V$ is graded.\end{mdframed}
 
   \item Given a graded vector space $V^\bullet$ we can take the graded vector space of endomorphisms $\End^\bullet(V^\bullet)$  and elevate it to an associative graded algebra. To this end, we define the product of two endomorphisms $\phi \in \End^r(V^\bullet)$ and $\psi \in \End^s(V^\bullet)$ as the graded endomorphism given by the collection of linear maps
   $$ \phi \psi : \phi^{k+s}\psi^k: V^k \ra V^{k+r+s}\quad \forall k\in \ZZ $$
@@ -91,7 +94,7 @@ Note that a very important example for a complex is $\Omega^\bullet(M)$ equipped
 \end{itemize}
 \end{example}
 
-Extending the notion of vector subspaces and closed subspaces of algebras, so called subalgebras, we go on to define the respective notions in the graded context:
+Extending the notion of vector subspaces and closed subspaces of algebras, so-called subalgebras, we go on to define the respective notions in the graded context:
 
 \begin{definition}
   A \textbf{graded subspace} $W^\bullet \subset V^\bullet$ of a graded vector space $V^\bullet$ is a collection of subspaces $\{ W^k \}_{k\in\ZZ}$ such that $W^k \subset V^k \quad \forall k \in \ZZ$.\\
@@ -103,7 +106,7 @@ We go on to further classify certain graded morphisms by restricting to those sa
 \begin{definition} (Graded Derivations)\\
   Let $V^\bullet$ be a graded algebra. A \textbf{graded derivation} of degree $n$ is a graded endomorphism $\DD$ of degree $n$ that satisfies the \textbf{graded Leibniz rule}
   $$ \DD (ab) = \DD(a) \ b + (-1)^{rn} \ a \ \DD(b) \quad \quad \forall a \in V^r, \ b \in V^s $$
-  Notice that thus $\DD(ab) \in V^{n+r+s}$.
+  %Notice that thus $\DD(ab) \in V^{n+r+s}$. \begin{mdframed}This is not applied by the Leibniz formula, but we say from the start that $\DD$ is degree $n$.\end{mdframed}
 \end{definition}
 
 To no surprise we encounter some regular customers that fit the definition of a graded derivation perfectly and historically inspired this more general definition:
@@ -116,7 +119,11 @@ To no surprise we encounter some regular customers that fit the definition of a 
   \end{itemize}
 \end{example}
 
-Now as promised, we note that on a graded algebra $A^\bullet$ the set of graded derivations $\Der^\bullet(A^\bullet)$ which turns out to be a natural subspace of $\End^\bullet(A^\bullet)$ in the sense that $\Der^k(A^\bullet) \subset \End^k(A^\bullet)$, turns out to be a subalgebra of $\End^\bullet$. The proof is again left as an exercise to the reader.\\
+Now as promised, we note that on a graded algebra $A^\bullet$ the set of graded derivations $\Der^\bullet(A^\bullet)$ which turns out to be a natural subspace of $\End^\bullet(A^\bullet)$ in the sense that $\Der^k(A^\bullet) \subset \End^k(A^\bullet)$, \sout{turns out to be a subalgebra of $\End^\bullet$. The proof is again left as an exercise to the reader.}
+
+\begin{rem}
+  Note that derivations \emph{do not} make up a subalgebra of endomorphisms, although they will turn out to make up a graded Lie subalgebra. This is analogous to the fact that if $X$ and $Y$ are vector fields on a manifold, $XY$ or $YX$ (their compositions as derivations on the algebra of functions) are \emph{not} vector fields, but one can show that $[X,Y]=XY-YX$ \emph{is} a vector field.
+\end{rem}
 
 Combining the different classifications for graded endomorphisms, we go on to define yet another utterly important subspecies:
 
@@ -124,10 +131,15 @@ Combining the different classifications for graded endomorphisms, we go on to de
   A \textbf{differential} is a coboundary operator that is also a graded derivation.
 \end{definition}
 
+\begin{mdframed}I find this a terrible deviation from standard terminology. Normally, one would define a differential to be simply a degree-$1$ endomorphism that squares to zero. No reference to any algebra structure. Although most differentials on graded algebras in practice do happen to be derivations... \end{mdframed}
+
 Yet again, we find that the \emph{de Rham differential} lives up to its name by qualifying as a \emph{differential} in the sense of the above definition. We go on to define the notion of a graded \emph{Lie Algebra}. The definition is easily anticipated from that of a Lie algebra
 
 \begin{definition} (Graded Lie Algebra)\\
-  A \textbf{graded Lie algebra} is a graded algebra $g^\bullet$ whose product is skew-commutative and satisfies the Jacobi-Identity.
+  For simplicity, let us assume that the base field has characteristic zero. A \textbf{graded Lie algebra} is a graded algebra $\mathfrak{g}^\bullet$ whose product, $[-,-]\colon \mathfrak{g}^\bullet\times\mathfrak{g}^\bullet\rightarrow\mathfrak{g}^\bullet$ is graded skew-commutative and satisfies the graded Jacobi-Identity, i.e.
+  $$
+  (-1)^{|a||c|}[a,[b,c]]+(-1)^{|a||b|}[b,[a,c]]+(-1)^{|b||c|}[c,[a,b]]=0.
+  $$
 \end{definition}
 
 As usual we provide some insightful examples to support the understanding of the above definition:
@@ -137,7 +149,7 @@ As usual we provide some insightful examples to support the understanding of the
   \item Take $(A^\bullet, [\cdot , \cdot ])$ such that $A^\bullet$ is a graded associative algebra. We define for $a \in A^k,b \in A^l$:
   $$ [a,b] := ab-(-1)^{kl} \ ba$$ This constitutes a graded Lie algebra as can be checked through tedious calculation.
 
-  \item The set $(\End^\bullet(V^\bullet), [\cdot,\cdot])$ with the bracket defined as in the previous example is a graded Lie algebra seeing $\End^\bullet(V^\bullet)$ as a graded associative algebra with composition as its product.
+  \item The set $(\End^\bullet(V^\bullet), [\cdot,\cdot])$ with the bracket defined as in the previous example is a graded Lie algebra seeing $\End^\bullet(V^\bullet)$ as a graded associative algebra with composition as its product. 
 \end{itemize}
 \end{example}
 
@@ -165,8 +177,12 @@ An example for a graded Lie subalgebra would be the space of Derivations as a su
   \end{itemize}
   So far we did everything on $\ZZ$. Taking $\ZZ / 2\ZZ$ as the underlying set, we obtain the notion of \emph{super-linear algebra}. To prove the above claims is an insightful and interesting exercise!
 \end{rem}
-
-After this small detour, we continue to define further structure in our graded setting. Next, we introduce the notion of a $\ZZ$-grading and discuss the so-called \emph{Cartan Calculus} using $d$ and $\imath$.
+\begin{mdframed}
+I see no point in mentioning general $G$-gradings if we only want to talk about $\ZZ/2$ as the second case...
+\end{mdframed}
+After this small detour, we continue to define further structure in our graded setting. Next, we introduce the notion of a $\ZZ$-grading \begin{mdframed}
+???
+\end{mdframed} and discuss the so-called \emph{Cartan Calculus} using $d$ and $\imath$.
 
 \begin{prop}
   The span over $\RR$ of the set
