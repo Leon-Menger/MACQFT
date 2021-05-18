@@ -486,6 +486,179 @@ We will need to keep this lemma in mind when going forward. Another helpful lemm
 
 
 \subsection{BV Formalism}
+\label{subsec:BVFormalism}
+
+The main idea of the BV formalism is to look at the space of functions invariant on $Crit(S)$ and not necessarily global. This less restrictive setting will eliminate many of the problems the BRST formulation inherently attains form its rather restrictive formulation.
+
+\subsubsection{Symplectic Preliminaries}
+First let us recall some background on graded symplectic geometry:\\
+If $\MM$ is a graded/super manifold, we define $\Omega^\bullet(\MM)$ as $\Ci(T[1]\MM)$. So if $\{x^i, \theta_a\}$ are coordinates on $\MM$, we can introduce $\{dx^i, d\theta_a\}$ as coordinates on the shifted fibres. Generally in $\ZZ$-grading there are two relevant degrees:
+\begin{itemize}
+  \item The de Rham "form degree" denoted by $\deg_{dR}$
+  \item The internal degree (grade) that comes from the $\ZZ$-grading denoted by
+  $$ \gr(x^i) = \gr(dx^i), \quad \quad \gr(\theta_a) = \gr(d\theta_a) $$
+\end{itemize}
+This is useful to decide the signs in the explicit calculations by defining the \textbf{total degree}:
+\begin{equation}
+  \td = \deg_{dR} + \gr
+\end{equation}
+Now recall that a graded $k$-symplectic manifold is a $\ZZ$-graded manifold $\MM$ together with a closed nondegenerate $2$-form $\omega$ of grade $\gr(\omega) = k$.
+\begin{equation}
+  \omega^\# \colon T\MM \atob{\sim} T^* \MM
+\end{equation}
+Now in infinite dimensions, one speaks of \emph{weak symplectic} forms, if $d \omega = 0$, such that $\omega^\#$ is \emph{injective}. For special cases we can use the following result due to Schwarz
+
+\begin{theo}[Schwarz]
+  Let $(\MM, \omega)$ be a $(-1)$-symplectic graded manifold with body manifold $M$. Then
+  \begin{enumerate}
+    \item In the neighbourhood of any point of $M$, there are local coordinates on $\MM$ denoted by $\{x^i, \xi_i\}$ such that $\omega = \sum_i dx^i \wedge d\xi_i$.
+
+    \item There exists a global (non-canonical) symplectomorphism
+    \begin{equation}
+      \phi \colon (\MM, \omega) \lra (T^*[-1]\MM, \omega_{can}), \quad \quad \omega_{can} = \sum_i dx^i \wedge d\xi_i
+    \end{equation}
+  \end{enumerate}
+\end{theo}
+
+Note that the first statement of this theorem corresponds to a generalized variant of the \emph{Darboux Theorem} from usual symplectic geometry.
+
+\begin{definition}[Lagrangian Submanifolds]
+  A submanifold $\LL \subset \MM$ for $k$-symplectic $\MM$ is a \textbf{Lagrangian submanifold} in $\MM$ iff it is maximally isotropic, i.e. $\LL$ is isotropic ($\omega|_\LL = 0$) and it is not properly contained in any other isotropic submanifold.
+\end{definition}
+
+In finite dimensions one can prove that $\LL$ being Lagrangian is equivalent to it being isotropic and coisotropic. This means that $\LL$ is isotropic and its symplectic complement $\LL^\omega$ is too. Thus we also have $\dim(\LL) = \frac{1}{2} \dim(\MM)$.
+
+\begin{definition}[Conormal Bundle]
+  Let $C$ be a submanifold of $M$. We can look at $ N^* C \subset (T^*M)|_C $ as the bundle over $C$ with fibre
+  $$ N_x^* C := \left \{ \alpha \in T_x^*M \big| \pair{\alpha}{v} = 0 \ \forall v \in T_x C \right\} $$
+  We call $N^* C$ the \textbf{conormal bundle} of $C \subset M$.
+\end{definition}
+
+\begin{example}[Conormal Lagrangian]
+  Let $C \subset M$ be a smooth submanifold. The shifted conormal bundle
+  $$ N^*[-1]C \subset T^*[-1]M $$
+  is a Lagrangian submanifold. The proof is left as an interesting exercise to the reader.
+\end{example}
+
+Another important theorem, which will be given without proof due to the lack of time in this course, is the following results from symplectic geometry:
+
+\begin{theo}[Weinstein Tubular nbdh Theorem in $(-1)$-symplectic context]
+  Let $\LL \subset \MM$ be Lagrangian in $\MM$ where $\MM$ is $(-1)$-symplectic. Then there exist
+  \begin{enumerate}
+    \item a tubular neighbourhood $U \subseteq \MM$ of $\LL$, i.e. a vector bundle $p \colon E \lra \LL$ together with a smooth map $K \colon E \lra \MM$ such that
+    $$ J \circ 0_E = i, \quad \quad i \colon \LL \lra \MM $$
+    and there exists $V \subseteq E$ with $0_E(\LL) \subset V$ such that $J|_V \atob{\sim} U$ is a diffeomorphism.
+
+    \item a tubular neighbourhood $U_0 \subset T^*[-1] \LL$ (with projection $p_0$) of the zero section $\LL_0 \equiv \LL$.
+
+    \item a symplectomorphism $\phi \colon U \atob{\sim} U_0$ such that $\phi(\LL) = \LL_0$ and $p_0 \circ \phi = \phi|_\LL \circ p$.
+  \end{enumerate}
+\end{theo}
+
+Thus in a neighbourhood of a Lagrangian submanifold, the ambient $(-1)$-symplectic manifold is locally symplectomorphic to $T^*[-1]\LL$.
+
+\begin{example}[BRST Graph Lagrangian]
+  Consider $F_{BRST}$ as we defined it in the previous section ($F_{BRST} = F \times \gf[1] \times \gf^*[-1] \times \gf^*$) and let $\psi \in \Ci(F_{BRST})^{(-1)}$. Then
+  \begin{equation}
+    \NC_\psi := \graph(d \psi) \subset T^*[-1]F_{BRST}
+  \end{equation}
+  is a Lagrangian submanifold. Denote by $\{\phi^a\}$ coordinates in $F_{BRST}$ and by $\{\phi^t_a\}$ coordinated in the fibre. Then
+  \begin{equation}
+    \graph(d \psi) = \left\{ (\phi^a, \phi^t_a) \Bigg| \phi^t_a = \dell{}{\phi_a} \psi \right\}
+  \end{equation}
+  We also define
+  \begin{align}
+    \omega |_{\NC_\psi} :&= \pair{d\phi^t}{d\phi} |_{\NC_\psi} = d \phi^t_a d\phi^a |_{\NC_\psi} \\
+    &= d\phi^b \partial_b \partial_a d\phi^a = 0
+  \end{align}
+  As an exercise check that $\dim(\graph(d \psi)) = \frac{1}{2} \dim(T^*[-1]F_{BRST})$. For $\psi = 0$ we get $\NC_0$ equal the zero section, thus $\NC_\psi$ is a kind of \emph{deformation} of the zero section.
+\end{example}
+
+\subsubsection{Classification of Lagrangians}
+
+Let $\MM$ be a graded $(-1)$-symplectic manifold. Then
+\begin{enumerate}
+  \item for $\LL \subset \MM$ a Lagrangian submanifold, there exists a submanifold $C \subset M$ and a symplectomorphism $\phi \colon \MM \atob{\sim} T^*[-1]M$ such that $\phi(\LL) = \LL_C \equiv \NC^*[-1] C \subset T^*[-1]M$.
+
+  \item for $\LL \subset \MM$ a Lagrangian submanifold obtained from $\LL_C = \NC^*[-1] C$w where $C \subset M$ as a graph of $d\psi$ for some $\psi \in \Ci(\LL_C)^{(-1)}$ we can use the tubular neighbourhood theorem to identify the neighbourhood of $\LL_C$ with $T^*[-1]\LL_C$.
+\end{enumerate}
+
+We say that $\LL \sim \LL^\prime$ homotopic as Lagrangian submanifolds, iff there exists a family of Lagrangian submanifolds $\LL_t$ smoothly varying over  such that $L_0 = \LL$ and $\LL_1 = \LL^\prime$ for $t \in [0,1]$.
+
+\begin{definition}
+  Let $(\MM, \omega)$ be a $?$-dimensional $(-1)$-symplectic graded manifold. A Berezinian $\mu$ on $\MM$ is called \textbf{compatible with} $\omega$, if there exists an atlas of Darboux charts $\{ x^i, \xi_i\}$ such that $\mu = d^nx D^n \xi$ in every chart. We also say that the triple $(\MM, \omega, \mu)$ is compatible.
+\end{definition}
+
+Now for $(\MM, \omega, \mu)$ compatible we introduce with
+\begin{equation}
+  \Delta_{BV} \colon \Ci(\MM) \lra \Ci(\MM)
+\end{equation}
+the "Batalin-Vilkovisky" Laplacian defined locally in any Darboux chart as the degree $+1$ second-order operator
+\begin{equation}
+  \Delta_{BV} = \sum_i \dell{}{x^i} \dell{}{\xi_i}
+\end{equation}
+
+\begin{lem}
+  $\Delta_{BV}$ is well defined and $\Delta_{BV}^2 = 0$.
+\begin{proof}
+  Compatibility of $\omega$ and $\mu$ implies that the transition functions are unimodular i.e.
+  $$ \sdet\left( \dell{(x, \xi)}{(y, \theta)} \right) = 1 $$
+  Now the fact that the BV-Laplacian squares to $0$ can be seen by looking at
+  \begin{equation}
+    \Delta_{BV}^2 = \sum_{i,j} \dell{}{x^i} \dell{}{x^j} \dell{}{\xi_i} \dell{}{\xi_j}
+  \end{equation}
+  and then mapping $(j,i) \ra (j,i)$. Using antisymmetry we obtain the statement.
+\end{proof}
+\end{lem}
+
+\begin{definition}
+  Let $(\MM, \omega)$ be a $(-1)$-symplectic graded manifold with Berezinian $\mu$. Define the $\mu$-Laplacian
+  \begin{equation}
+    \Delta_\mu \colon \Ci(\MM) \lra \Ci(\MM), \quad \quad \Delta_\mu f := \frac{1}{2} \diver_\mu(X_f)
+  \end{equation}
+  where $\imath_{X_f} \omega = df$, i.e. $X_f$ is the Hamiltionian vector field of $f$.
+\end{definition}
+
+If $\{\cdot, \cdot\}$ denotes the Poisson-brackets, we get $X_f = \{f, \cdot\}$ such that $\{f,g \} = X_f (g)$. For a Darboux chart $\{x^i, \xi_i\}$ and assuming that $\mu = \rho \times \mu_{coord}$ we obtain the following result:
+
+\begin{lem}
+  $\Delta_\mu = \Delta_{BV} + \frac{1}{2} \{f, \log(\rho)\}$.
+\begin{proof}
+  First note that
+  \begin{equation}
+    \Delta_{BV} f = - \frac{1}{2} \diver_{\mu_{coord}}(X_f)
+  \end{equation}
+  and further
+  \begin{equation}
+    \diver_{\mu_{coord}}(X_f) = \dell{}{x^i} X_f^{(x^i)} - \dell{}{\xi_i} X_f^{(\xi_i)}
+  \end{equation}
+  Together this lets us write
+  \begin{align}
+    \imath_{X_f} \omega = df &\Longleftrightarrow \imath_{X_f} dx^i d\xi_i = \dell{f}{x^i} dx^i - \dell{f}{\xi_i} d\xi_i \\
+    & \Longleftrightarrow X_f^{(x^i)} = \dell{f}{x^i} \quad and \quad X_f^{(\xi_i)} = \dell{f}{\xi_i}
+  \end{align}
+  This allows us to reformulate the divergence of the Hamiltionian vector field as
+  \begin{align}
+    \diver_{\mu_{coord}}(X_f) &= - \dell{}{x^i} \dell{}{\xi_i} f - \dell{}{\xi_i} \dell{}{x^i} f \\
+    &= - 2 \sum_i \dell{}{x^i} \dell{}{\xi_i} f = - 2 \Delta_{BV} f
+  \end{align}
+  Now using $\diver_{\rho \mu_{coord}} (X) = \diver_{\mu_{coord}} (X) + X(\log(\rho))$ we can conclude
+  \begin{equation}
+    \Delta_\mu f = \Delta_{BV} f + \frac{1}{2} \{ f, \log(\rho) \}
+  \end{equation}
+  which proves the statement.
+\end{proof}
+\end{lem}
+
+\begin{rem}
+  Note that $\Delta_\mu$ does not necessarily square to $0$ as $\Delta_{BV}$ does. However it always will if $\mu$ is compatible with $\omega$.
+\end{rem}
+
+
+
+
+
+
 
 
 \newpage
