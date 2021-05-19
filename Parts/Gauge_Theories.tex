@@ -654,9 +654,189 @@ If $\{\cdot, \cdot\}$ denotes the Poisson-brackets, we get $X_f = \{f, \cdot\}$ 
   Note that $\Delta_\mu$ does not necessarily square to $0$ as $\Delta_{BV}$ does. However it always will if $\mu$ is compatible with $\omega$.
 \end{rem}
 
+\subsubsection{BV Integrals}
+Notice that so far we did not talk about physics at all. We merely introduced several notions about $(-1)$-symplectic manifolds. Having a well-defined integration will bring us quite a few steps closer to a physical theory using the given framework. To this end recall that $Ber(\MM) = \bigwedge^m T^* M \otimes \bigwedge^m E$. If $\MM = T^*[-1] M$ we obtain $Ber(\MM) = (\bigwedge^n T^*M)^{\otimes 2}$, namely two copies of top-forms on $M$. Similarly if $\NC$ is a graded manifold $Ber(T^*[-1]\NC)|_\NC \cong Ber(\NC)^{\otimes 2}$.\\
 
+%TODO diagram
 
+There is a canonical map sending a Berezinian $\mu$ on $T^*[-1]\NC$ to a Berezinian on $\NC$. We denote the induced Berezinian by $\sqrt{\mu|_\NC}$. Locall, denoting mixed-parity/degree coordinates on $\NC$ by $\{X^a\}$ and with $\{X^a, \Xi_a \}$ a Darboux chart for $T^*[-1]\NC$ we can write
+\begin{equation}
+  \mu = \rho \mu_{coord} = \rho(X, \Xi) \prod_a DX^a D\Xi_a
+\end{equation}
+which is mapped to the following Berezinian on $\NC$:
+\begin{equation}
+  \sqrt{\mu|_\NC} := \sqrt{\rho(X, \Xi)} DX
+\end{equation}
 
+\begin{definition}[BV Integral]
+  Let $(\MM, \omega, \mu)$ be compatible. A \textbf{BV integral} is an integral of the form
+  \begin{equation}
+    I_\LL = \int_{\LL \subset \MM} f \sqrt{\mu|_\LL}
+  \end{equation}
+  where $\LL$ is a Lagrangian submanifold and $f \in \Ci(M)$ such that $\Delta_\mu f = 0$.
+\end{definition}
+
+Now consider $T[1]M$ and $T^*[-1]M$ with coordinates $\{x^i, \theta^i \}$ and $\{x^i, \xi_i \}$ respectively. We can think of the deRham differential on $M$ as a cohomological vector field
+\begin{align}
+  &D \colon \Ci(T[1]M) \simeq \Omega^\circ(M) \lra \Omega^\circ(M) \\
+  &D^2 = 0, \quad D = \theta^i \dell{}{x^i}, \quad \theta^i = dx^i
+\end{align}
+Now if $\vol_M = \rho(x) dx^1 ... dx^n$ is a volume form on $M$ we arrive at the following statement:
+
+\begin{lem}
+  The following two statements hold true when we consider coordinate transformations of the form $\widetilde{\theta} = \widetilde{\theta}(x, \theta)$ or $\widetilde{\xi} = \widetilde{\xi}(x, \xi)$:
+  \begin{enumerate}
+    \item $ \int d^n \widetilde{\theta} \widetilde{\rho}^{-1} = \int d^n \theta \rho^{-1} $
+    \item $ \int d^n \widetilde{\xi} \widetilde{\rho} = \int d^n \xi \rho $
+  \end{enumerate}
+\begin{proof}
+  First note that
+  \begin{equation}
+    \widetilde{\vol}_M = \vol_M \quad \Lra \quad \widetilde{\rho} = \left[ \det \dell{\widetilde{x}}{x} \right]^{-1} \rho
+  \end{equation}
+  However
+  \begin{align}
+    d^m \widetilde{\theta} &= \left[ \det \dell{\widetilde{x}}{x} \right] d^m \theta \\
+    d^m \widetilde{\xi} &= \left[ \det \dell{\widetilde{x}}{x} \right]^{-1} d^m \xi
+  \end{align}
+  which proves the statement.
+\end{proof}
+\end{lem}
+
+Now we define an adapted version of the well-known \emph{Fourier Transformation}:
+
+\begin{definition}[Odd Fourier Transformation]
+  Let $f \in \Ci(T^*[-1]M)$ with $f = f(x, \xi)$. The \textbf{odd Fourier Transformation} is the map
+  \begin{equation}
+    \FF_\rho \colon \Ci(T^*[-1]M) \lra \Ci(T[1]M)
+  \end{equation}
+  given by its action on functions $f$ as above by
+  \begin{equation}
+    \widetilde{f} := \FF_\rho [f](x, \theta) := \int d^n \xi \ \rho \ e^{\theta^i \xi_i} f(x, \xi)
+  \end{equation}
+\end{definition}
+
+An interesting result reagrding the odd Fourier Transformation is the following:
+
+\begin{prop}
+  $\FF \circ \Delta = d \circ \FF$
+\begin{proof}
+  The proof is left as an exercise to the reader.
+\end{proof}
+\end{prop}
+
+Otherwise one can show that for $g \in \Ci(T[1]M)$ one can define
+\begin{equation}
+  \FF^{-1}[g] = \int \int d^n \theta \ \rho^{-1} \ e^{\xi_i \theta^i} g(x, \theta)
+\end{equation}
+such that
+\begin{equation}
+  \FF^{-1}[dg(x, \theta)] = \Delta(\FF^{-1}[g])
+\end{equation}
+
+Now we can finally formulate the main result shouldering the BV formalism:
+
+\begin{theo}[Batalin-Vilkovisky-Schwarz Theorem]
+  Let $(\MM, \omega, \mu)$ be a compatible $(-1)$-symplectic graded manifold with Berezinian $\mu$. The following statements hold true:
+  \begin{enumerate}
+    \item For any $g \in \Ci(\MM)$ and a Lagrangian submanifold $\LL \subset \MM$
+    \begin{equation}
+      \int_\LL \Delta_\mu g \sqrt{\mu_\LL} = 0
+    \end{equation}
+
+    \item Let $\LL$ and $\LL^\prime$ be two Lagrangian submanifolds whose bodies are homologous (as cycles) in the body of $\MM$ and let $f \in \Ci(M)$ such that $\Delta_\mu f = 0$. Then
+    \begin{equation}
+      \int_\LL f \sqrt{\mu_\LL} = \int_{\LL^\prime} f \sqrt{\mu_{\LL^\prime}}
+    \end{equation}
+  \end{enumerate}
+\begin{proof}
+  This proof is more of a sketch. You can fill in the details with the material at hand. Assume that $\mu = \rho \mu_{coord}$ and $\LL = \LL_C = N^*[-1]C$ for $C \subset M$ a submanifold of $M$. Then the BV integral can be seen as the map
+  \begin{equation}
+    f \lmap \int_{\LL_C} f \sqrt{\mu_{\LL_C}} = \int_C \widetilde{f}\ \Big|_C
+  \end{equation}
+  where $\widetilde{f}$ is the form representative of a function $f$ and the right hand side is thus seen as the integral of a differential form on $C$. Then in particular
+  \begin{equation}
+    \int_{\LL_C} \Delta_\mu g \sqrt{\mu_{\LL_C}} = \int_C d\widetilde{g} = 0
+  \end{equation}
+  and further
+  \begin{equation}
+    \int_{\LL^\prime_C} f \sqrt{\mu_{\LL^\prime_C}} - \int_{\LL_C} f \sqrt{\mu_{\LL_C}} = \left( \int_{C^\prime} - \int_{C} \right) \widetilde{f} = \int_D d\widetilde{f} = 0
+  \end{equation}
+  We obtain the last equation by seeing that
+  \begin{equation}
+    d \widetilde{f} = d \FF(f) = \FF \Delta f = 0
+  \end{equation}
+  as required per definition. Now since $\LL \sim \LL^\prime$ are homologous as cycles, $\LL \equiv \LL_C$ and $\LL^\prime = \LL^\prime_C$ such that there necessarily exists a submanifold $D \subset M$ with $\partial D = C^\prime - C$.\\
+
+  Now for a general Lagrangian submanifold part $a)$ of the classification tells us that we can reconstruct the calculation for general Lagrangian submanifolds to that of conormal type to prove the first statement of the theorem. To prove the second, we use the second part of the classification together with the following:\\
+
+  Let $\LL_t$ be a smooth family of Lagrangian submanifolds such that
+  \begin{equation}
+    \LL_{t+\epsilon} = \graph(\epsilon d\psi_t + \OO(\epsilon^2))
+  \end{equation}
+  for a function $\psi_t \in \Ci(\LL_t)^{(-1)}$. Then for $f \in \Ci(\MM)$ such that $\Delta_\mu f = 0$ we have
+  \begin{equation}
+    \dd{}{t} \int_{\LL_t} f \sqrt{\mu_{\LL_t}} = \int_{\LL_t} \Delta_\mu (f \cdot \psi_t) \sqrt{\mu_{\LL_t}}
+  \end{equation}
+  This can be separately proven by investigating
+  \begin{equation}\tag{$\diamond$} \label{eq:limeq}
+    \limit{\epsilon \lra 0} \left[ \frac{1}{\epsilon} \int_{\LL_{t + \epsilon}} f \sqrt{\mu_{\LL_{t + \epsilon}}} - \int_{\LL_{t}} f \sqrt{\mu_{\LL_{t}}} \right]
+  \end{equation}
+  To this end note that
+  \begin{align}
+    \limit{\epsilon \lra 0} \ \ \frac{1}{\epsilon} &\int_{\LL_{t}} \left( f(x, \epsilon d\psi_t + \epsilon^2) - f(x, \epsilon d\psi_t) \right) \sqrt{\mu_{\LL_{t}}} \\
+    = \ \limit{\epsilon \lra 0} \ \ \frac{1}{\epsilon} &\int_{\LL_{t}} \left( f(x, \epsilon d\psi_t) - f(x, \epsilon d\psi_t) + \OO(\epsilon^2) \right) \sqrt{\mu_{\LL_{t}}} \\
+    = &\int_{\LL_{t}} f(x, d\psi_t) \sqrt{\mu_{\LL_{t}}} \\
+  \end{align}
+  Now since
+  \begin{align}
+    \Delta(f \cdot \psi_t) = \Delta f \cdot \psi_t + f \cdot \Delta \psi_t + \dell{f}{\xi} \dell{\psi}{x} \equiv f(x, d\psi_t)
+  \end{align}
+  we can rewrite \eqref{eq:limeq} as
+
+  \begin{equation}
+    (\diamond) \ = \ \int_{\LL_{t}} \Delta_\mu (f \cdot \psi_t) \sqrt{\mu_{\LL_{t}}}
+  \end{equation}
+  Since the last equation vanishes by rule of the first statement of the proof, we only need to find a family $\LL_t$ connecting $\LL$ to $\LL_C$ but this is immeadiate.
+\end{proof}
+\end{theo}
+
+The BV integral vanished on $\Delta$-exact functions because regular integral vanish on $d$-exact forms. The BV integral does not depend on a particular Lagrangian inside a family of Lagrangians like $\LL_t$ if the function is $\Delta$-closed, since $d$-closed forms have the same property.
+
+\subsection{Classical and Quantum BV formalism}
+
+\begin{definition}[BV Theory]
+  The following set of data is called a \textbf{classcial BV theory}:
+  \begin{enumerate}
+    \item A $\ZZ$-graded manifold $\FF$ (the space of BV fields)
+    \item A $(-1)$-symplectic structure $\omega \in \Omega^2(\FF)^{(-1)}$ (the BV $2$-form)
+    \item A function $S \in \Ci(\FF)^{(0)}$ satisfying the Classical Master Equation \ref{ClassicalMasterEquation} $\{S, S\}_\omega = 0$ (the BV action or master action)
+  \end{enumerate}
+\end{definition}
+
+\begin{rem}
+  Often it is convenient to work with the cohomological vector field $Q := \{S, \ \cdot \ \}$ or alternatively $\imath_Q \omega = dS$. Observe that $\lie{Q} \omega = 0$, i.e. $\imath_Q \omega$ is closed, but the degree reasons that we can always find $S$ given $Q$ with $\lie{Q} \omega = 0$ such that $\imath_Q \omega = dS$.
+\end{rem}
+
+An important example which includes a huge part of interesting theories is the following:
+
+\begin{example}[BV-BRST]
+  Recall the construction of BRST data $(F_{min}, d_{CE}, S_0)$ and $(F_{BRST}, d_{BRST}, S_0)$. Now
+  \begin{enumerate}
+    \item define $\FF := T^*[-1]F_{min} \atob{p} F_{min}$ with $\omega_{BV}$ the canonical symplectic form.
+    \item define $S_{BV} = p^* S_0 + \widehat{d}_{CE}$ and recall that $\widehat{d}_{CE}$ is the function $\Ci(T^*[-1]F_{min})$ corresponding to a vector field on $F_{min}$.
+    \item define $Q_{BV} = X_{p^*S_0} + d_{CE}^{cl}$  where $d_{CE}^{cl}$ is the cotangent lift of $d_{CE}$ to $T^*[-1]F_{min}$.
+  \end{enumerate}
+  Now in a Darboux chart $\{\phi^a, \phi^t_a\}$ we can write
+  \begin{align}
+    \omega_{BV} &= \sum_a d\phi^a \wedge d\phi^t_a \\
+    S_{BV} &= S_0 + \sum_a \Phi^a d^a_{CE}
+  \end{align}
+  where $d^a_{CE} = d_{CE}(\Phi^a)$. Then we arrive at $Q_{BV}$ such that
+  \begin{equation}
+    \imath_{Q_{BV}} \omega_{BV} = dS_{BV}
+  \end{equation}
+\end{example}
 
 
 
