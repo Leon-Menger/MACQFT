@@ -213,7 +213,7 @@ After this small detour, we continue to define further structure in our graded s
     Now the only one left to prove is the sixth identity. First, for functions, we get
     $$ [\lie{X}, \lie{Y}] (f) = [X,Y](f) $$
     Now for $1$-forms we obtain, using the Cartan-Magic-Formula and the Jacobi-Identity:
-    $$ \lie{[X,Y]} = [d, \imath_{[X,Y]} = [\lie{X}, \lie{Y}]$$
+    $$ \lie{[X,Y]} = [d, \imath_{[X,Y]}] = [\lie{X}, \lie{Y}]$$
   \end{proof}
 \end{prop}
 
@@ -290,6 +290,7 @@ Now we make our way to define the notion of a full sheaf:
     $$ \rho_{V_i \ V_i \cap V_j} (s_i) = \rho_{V_j \ V_j \cap V_i} (s_i) \quad \forall i,j$$
     then there exists an $s\in\FF(U)$ such that $\rho_{U V_i} (s) = s_i \quad \forall i$.
   \end{itemize}
+  Alternatively, one can discard property d) and ask in e) that there exists a unique such $s\in\FF(U)$.
 \end{definition}
 
 We again provide some interesting examples of sheaves and presheaves:
@@ -299,7 +300,7 @@ We again provide some interesting examples of sheaves and presheaves:
   \item Let $X$ be a topological space. For each open set $U\subseteq X$ let $C(U)$ be the ring of continuous functions with codomain $\RR$. The maps $\rho_{UV}:C(U)\ra C(V)$ are now given by the restrictions of these functions in the usual sense. This makes $C$ a sheaf of rings on $X$.
   \item Let $f:X\ra Y$ be a continuous map between topological spaces $X,Y$. Define
   $$ \FF(U):=\{ s:U\ra Y, \ f\circ s = \id_U \} $$
-  This constitutes a sheaf on $X$. The maps $s$ in $\FF(U)$ are called \textbf{sections} of the sheaf.
+  This constitutes a sheaf on $Y$. The maps $s$ in $\FF(U)$ are called \textbf{sections} of the sheaf.
   \item Let $X= \RR$ and define $\FF(U)$ to be the ring of bounded functions of an open subset $U\subseteq \RR$. Now this is not a sheaf: If $U = \RR$, we choose $V_i := \{x \in \RR \ s.t. \ |x| <i \}$. Now let $\id :x \mapsto x$ denote the identity map. We note that $\id \in \FF(V_i) \ \forall i \in \NN$. Thus there cannot exist $s \in \FF(\RR)$ s.t. $s|_{V_i} = \id$ which implies that $\id \notin \FF(\RR)$ is not bounded. Thus we found a presheaf that is not a full sheaf.
 \end{itemize}
 \end{example}
@@ -320,7 +321,7 @@ The next natural step is to again identify the data needed for morphisms in the 
 To further expand upon the agricultural language of our setting, we go on to discuss the notion of germs and stalks:
 
 \begin{definition} (Germs)\\
-  Let $X$ be a topological spaxe and $x \in X$. A \textbf{germ} on $X$ at $x$ is an equivalence class of functions $f:X \ra Y$ for a set $Y$ where we define $f\sim g$ if there exists a neighbourhood $U\subseteq X$ of $x$ such that $f|_U = g|_U$.
+  Let $X$ be a topological space and $x \in X$. A \textbf{germ} on $X$ at $x$ is an equivalence class of functions $f:X \ra Y$ for a set $Y$ where we define $f\sim g$ if there exists a neighbourhood $U\subseteq X$ of $x$ such that $f|_U = g|_U$.
 \end{definition}
 
 Now it is very reasonable to ask how a sheaf behaves at an arbitrary point of the base topological space $X$. To this end, we can look at its behaviour in a small neighbourhood of a chosen point and then implement a fitting limit to come arbitrarily close. To this end, we use the direct limit known from category theory.
@@ -361,7 +362,7 @@ In the following we will mostly use notion of locally ringed spaces. Before cont
 While it may seem like some of the definitions were just loosely related, we gradualy closed in on the important definition of a graded manifold:
 
 \begin{definition} (Graded Manifold)
-  A \textbf{graded manifold} $M$ is a locally ringed space $(M, O_M)$ where $M$ is a manifold and $O_M$ is a sheaf that is locally isomorphic to $(U, \Ci(U) \tens{} S^\bullet(W^*))$ where $U\subseteq M$ is an arbitrary open subset and $W$ is a graded vector space. Also recall that $S^\bullet(W^*)$ denotes the graded algebra of graded polynomial functions on $W^\bullet$.\\
+  A \textbf{graded manifold} $M$ is a locally ringed space $(M, O_M)$ where $M$ is a manifold and $O_M$ is a sheaf that is locally isomorphic to $(U, \Ci(U) \tens{} S^\bullet(W_U^*))$ where $U\subseteq M$ is an arbitrary open subset and $W_U$ is a graded vector space. Also recall that $S^\bullet(W^*)$ denotes the graded algebra of graded polynomial functions on $W^\bullet$.\\
 
   The sections of the sheaf $O_M$ are called \textbf{graded functions} on the graded manifold $M$. Note that the graded functions form a graded algebra.
 \end{definition}
@@ -380,7 +381,7 @@ Now we once again turn to the respective morphisms of graded manifolds. Looking 
 
 \begin{definition} (Morphisms of Ringed Spaces)\\
   A \textbf{morphism between ringed spaces} $(X,O_X)$ and $(Y,O_Y)$ is a pair $(f, \psi)$ where $f:X\ra Y$ is continuous and $\psi:O_Y \ra f_* O_X$
-  is a morphism of sheaves (on $Y$). $f_* O_X$ denotes the direct image of the structure sheaf of $X$ defined for $U\subseteq Y$ as
+  is a local (see below) morphism  of sheaves (on $Y$). $f_* O_X$ denotes the direct image of the structure sheaf of $X$ defined for opens $U\subseteq Y$ as
   $$ (f_* O_X)(U) := O_X(f^{-1}(U)) $$
 \end{definition}
 
@@ -396,7 +397,7 @@ An algebraic version of the diagram can be formed as such: Let $s\in O_Y(V_2)$ b
 \begin{align}
   \rho^X \circ \psi = \psi \circ \rho^Y
 \end{align}
-Now in the case of a locally ringed space, we have an additional condition that must uphold. Namely the ring homomorphism induced by $\psi$ between the stalks of $Y$ and $X$ has to be a local homomorphism i.e. it has to map maximal ideal to maximal ideal.
+Now in the case of a locally ringed space, we have an additional condition that must uphold. Namely the ring homomorphism induced by $\psi$ between the stalks of $Y$ and $X$ has to be a local homomorphism i.e. it has to map the maximal ideal to the maximal ideal.
 
 \begin{definition} (The Algebra of Smooth Functions)\\
   The \textbf{algebra of smooth functions} $\Ci(M)$ of a graded manifold $(M, O_M)$ is the algebra of global sections of $O_M$. It automatically inherits a $\ZZ$ grading and thus forms a graded algebra.
