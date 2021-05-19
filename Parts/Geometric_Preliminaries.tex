@@ -20,8 +20,8 @@ To extend the notion of a graded vector space to a full category, we now investi
 
 \begin{definition} (Graded Morphisms)\\
  Let $V^\bullet, W^\bullet$ be graded vector spaces.  A \textbf{graded morphism} $\phi: V^\bullet \ra W^\bullet$ is  a collection of linear maps $\phi^k: V^k \ra W^k$ \ $\forall k \in \ZZ$. We extend this notion to that of a graded morphism of \textbf{degree $r$} by requiring that $\phi^k: V^k \ra W^{k+r}\ \forall k \in \ZZ$. In the case $V^\bullet = W^\bullet$ we call $\phi$ a \textbf{graded endomorphism} (of degree $r$, respectively).
- 
- The category $\mathsf{gVect}$ of graded vector spaces has objects graded vector spaces and morphisms graded morphisms. 
+
+ The category $\mathsf{gVect}$ of graded vector spaces has objects graded vector spaces and morphisms graded morphisms.
 \end{definition}
 
 Given a graded vector space $V^\bullet$ we call an element $v\in V^k$ an homogeneous element of degree $|v|\coloneqq k$.
@@ -149,7 +149,7 @@ As usual we provide some insightful examples to support the understanding of the
   \item Take $(A^\bullet, [\cdot , \cdot ])$ such that $A^\bullet$ is a graded associative algebra. We define for $a \in A^k,b \in A^l$:
   $$ [a,b] := ab-(-1)^{kl} \ ba$$ This constitutes a graded Lie algebra as can be checked through tedious calculation.
 
-  \item The set $(\End^\bullet(V^\bullet), [\cdot,\cdot])$ with the bracket defined as in the previous example is a graded Lie algebra seeing $\End^\bullet(V^\bullet)$ as a graded associative algebra with composition as its product. 
+  \item The set $(\End^\bullet(V^\bullet), [\cdot,\cdot])$ with the bracket defined as in the previous example is a graded Lie algebra seeing $\End^\bullet(V^\bullet)$ as a graded associative algebra with composition as its product.
 \end{itemize}
 \end{example}
 
@@ -615,7 +615,7 @@ Using the notion of a hamiltonian graded vector field, we take a differential gr
 $$ \imath_Q \omega = dS $$
 Now since $Q = \{S,\cdot\}$ we see
 $$ Q(f) = \{S, f\} = (-1)^{|S|+1} X_S(f) = X_S(f) $$
-implying that $[Q,Q](f) = \{\{S,S\},f\} = 0$ making $\{S,S\}$ a constant. Now since $\{S,S\}$ has degree $k+2$, $\omega$ has degree $k$ and $S$ has degree $k+1$ we see that $\{S,S\} = 0$ if $k \neq -2$. This equation is called the \textbf{Classical Master Equation} and will become increasingly important towards the end of the course.
+implying that $[Q,Q](f) = \{\{S,S\},f\} = 0$ making $\{S,S\}$ a constant. Now since $\{S,S\}$ has degree $k+2$, $\omega$ has degree $k$ and $S$ has degree $k+1$ we see that $\{S,S\} = 0$ if $k \neq -2$. This equation is called the \textbf{Classical Master Equation}\label{ClassicalMasterEquation} and will become increasingly important towards the end of the course.
 
 \newpage
 \subsection{Principal Bundles}
