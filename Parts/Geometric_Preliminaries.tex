@@ -362,14 +362,14 @@ In the following we will mostly use notion of locally ringed spaces. Before cont
 While it may seem like some of the definitions were just loosely related, we gradualy closed in on the important definition of a graded manifold:
 
 \begin{definition} (Graded Manifold)
-  A \textbf{graded manifold} $M$ is a locally ringed space $(M, O_M)$ where $M$ is a manifold and $O_M$ is a sheaf that is locally isomorphic to $(U, \Ci(U) \tens{} S^\bullet(W_U^*))$ where $U\subseteq M$ is an arbitrary open subset and $W_U$ is a graded vector space. Also recall that $S^\bullet(W^*)$ denotes the graded algebra of graded polynomial functions on $W^\bullet$.\\
+  A \textbf{graded manifold} $M$ is a locally ringed space $(M, O_M)$ where $M$ is a manifold and $O_M$ is a sheaf that is locally isomorphic to $(U, \Ci(U) \tens{} S^\bullet(W_U^*))$ where $U\subseteq M$ is an arbitrary open subset and $W_U$ is a graded vector space. Also recall that $S^\bullet(W_U^*)$ denotes the graded algebra of graded polynomial functions on $W_U^\bullet$.\\
 
   The sections of the sheaf $O_M$ are called \textbf{graded functions} on the graded manifold $M$. Note that the graded functions form a graded algebra.
 \end{definition}
 
 \begin{rem}
   The local isomorphism required above should preserve the grading of
-  $$ \bigoplus_{k \geq 0} \Ci(U) \tens{} S^k W^*$$
+  $$ \bigoplus_{k \geq 0} \Ci(U) \tens{} S^k W_U^*$$
   Note further that $|f  \tens{} v| = |v|$.
 \end{rem}
 
@@ -426,9 +426,12 @@ We try to bring the matter closer to the reader by giving one examples:
 \end{itemize}
 \end{example}
 
-\begin{theo} (Serre-Swan Theorem)\\
+\begin{theo} (Serre--Swan Theorem)\\
   Any graded manifold is isomorphic to a graded manifold associated to a graded vector-bundle.
 \end{theo}
+\begin{mdframed}
+The theorem will certainly apply when restricted to graded $W$ such that $W^i\neq0$ for finitely many $i$. Otherwise, the usual 'finitely presented' assumption of the original Serre--Swan theorem is not satisfied. Still, some people do say this is true without mentioning this assumption, so maybe it's still true. 
+\end{mdframed}
 
 This theorem tells us that all graded manifolds can be considered to be of the form seen in the aforementioned example regarding the sheaf of sections.\\
 
@@ -486,14 +489,14 @@ Again, we provide some interesting examples to further illuminate the definition
 
 \begin{example}~
 \begin{itemize}
-  \item Consider $T[1]M \ra $. The algebra of smooth functions on it is nothing but the algebra of differential forms on $M$, namely $\Omega^\bullet(M)$ using the de Rham differential. Note that $M$ is just a normal manifold in this example.\\
+  \item Consider $T[1]M$. The algebra of smooth functions on it is nothing but the algebra of differential forms on $M$, namely $\Omega^\bullet(M)$ using the de Rham differential. Note that $M$ is just a normal manifold in this example.\\
   This shows that the de Rham differential is a cohomological vector field on $T[1]M$ seen as the graded manifold $(U, \Ci(U) \tens{}S(T[1]M^*))$
 
-  \item Let $\fg$ be a finite dimensional Lie algebra. We look at the graded manifold $\fg [1]$. This graded manifold carries a cohomological vector field $Q$ corresponding to the Chivally-Eulenberg differential on $\bigwedge^\bullet \fg^* = \Ci(\fg[1])$. We use $(e_i)^n_{i=1}$ as a basis of $\fg$ and denote by $f^k_{ij}$ the induced structure constants
+  \item Let $\fg$ be a finite dimensional Lie algebra. We look at the graded manifold with body a point and $W=\fg [1]$. This graded manifold carries a cohomological vector field $Q$ corresponding to the Chivally--Eilenberg differential on $\bigwedge^\bullet \fg^* = \Ci(\fg[1])$. We use $(e_i)^n_{i=1}$ as a basis of $\fg$ and denote by $f^k_{ij}$ the induced structure constants
   $$ [e_i, e_j] = \sum_{k=1}^n f_{ij}^k e_k $$
   Now we can define $Q$ to be
   $$ Q := \frac{1}{2} \sum_{i,j = 1}^n x^i x^j f_{ij}^k \dell{}{x^k} $$
-  Where we denoted by $(x^i)_{i=1}^n$ the coordinates on $\fg[1]$ dual to the basis $(e_i)^n_{i=1}$. As an interesting exercise, prove that $Q$ is indeed cohomological, i.e. $Q^2=0$.
+  Where we denoted by $(x^i)_{i=1}^n$ the coordinates on $\fg[1]$ dual to the basis $(e_i)^n_{i=1}$. As an interesting exercise, prove that $Q$ is indeed cohomological, i.e. degree-$1$ and $Q^2=0$.
 \end{itemize}
 \end{example}
 
@@ -503,7 +506,7 @@ Again, we provide some interesting examples to further illuminate the definition
   A graded manifold together with a cohomological vector field is called a \textbf{differential graded manifold} or short dg-manifold. Notice that the morphisms of dg-manifolds are morphisms of graded manifolds with respect to which the respective cohomological vector fields are related.
 \end{definition}
 
-We turn our heads towards integration in the graded setting. To this end, we investigate differential forms. The main problem will be the problematic transformation behaviour of differential forms that will dramatically increase the notion of integration. As a result, we will turn towards the symplectic setting which eliminates many of the upcoming difficulties.\\
+We turn our heads towards integration in the graded setting. To this end, we investigate differential forms. The main problem will be the problematic transformation behaviour of differential forms that will dramatically complicate the notion of integration. As a result, we will turn towards the symplectic setting which eliminates many of the upcoming difficulties.\\
 
 Locally, we reconstruct the algebra of differential forms on $M$ by adding a new set of coordinates $(dx^i)^n_{i=1}$ with degree $(|x^i|+1)$. First note that generally $(dx^i)^2 \neq 0$. However we again go the other way and start with a global setting to then zoom into the local one. The rough outline of the procedure looks as follows:
 
@@ -547,6 +550,7 @@ With this definition at hand, we are ready to introduce the symplectic setting.
     is an isomorphism.
   \end{itemize}
 \end{definition}
+
 
 
 \begin{definition} (Graded Symplectic Manifolds)\\
