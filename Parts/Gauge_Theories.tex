@@ -259,7 +259,7 @@ A valid question is, why this should be relevant. To understand this, recall tha
   Now to define the generalized version of the change of variables, consider the super vector space $\RR^{n|m} = \RC$, recall that $\RR^{n|m} = \RR^n \oplus \Pi \RR^m$ and take an endomorphism of $\RC$. Now parametrise the endomorphism, namely look at $J \in \End(\RC) \otimes \Ci(S)$ where $S$ denoted the parameter space.
   \begingroup
     \allowdisplaybreaks
-    \begin{align*}
+    \begin{align}
     J &=
     \begin{pmatrix}
       A & B \\
@@ -269,7 +269,7 @@ A valid question is, why this should be relevant. To understand this, recall tha
     B &\in (\End(\RR^m) \otimes \Ci(S))_{even} \\
     C &\in (\Hom(\RR^m, \RR^n) \otimes \Ci(S))_{odd} \\
     D &\in (\Hom(\RR^n, \RR^m) \otimes \Ci(S))_{odd}
-    \end{align*}
+    \end{align}
   \endgroup
 
   \begin{definition}[Super determinant]
@@ -297,7 +297,7 @@ A valid question is, why this should be relevant. To understand this, recall tha
     Now let $\phi \colon \RR^{n|m}_1 \lra \RR^{n|m}_2$ be a smooth map of supermanifolds and let $f \in \Ci_c(\RR^{n|m}_2)$ such that
     $$ \int_{\RR^{n|m}_2} \mu_2 f = \int \mu_2 \sgn(\det(J_f^{nn})) \cdot \sdet(J_f) \phi^* f $$
     where
-    \begin{align*}
+    \begin{align}
     J_f =
     \begin{pmatrix}
       J_f^{(nn)} & J_f^{(mn)} \\
@@ -307,7 +307,7 @@ A valid question is, why this should be relevant. To understand this, recall tha
       \dell{y}{x} & \dell{y}{\theta} \\
       \dell{\psi}{x} & \dell{\psi}{\theta}
     \end{pmatrix}
-    \end{align*}
+    \end{align}
     Where we think of $J_f$ as a function in $\End(\RR^{n|m}) \otimes \Ci(\RR^{n|m})$.
   \end{theo}
 
@@ -346,10 +346,10 @@ A valid question is, why this should be relevant. To understand this, recall tha
 \end{rem}
 
 \begin{lem}
-  \begin{align*}
+  \begin{align}
     \diver_{\mu_{coord}} (d_{Aux}) &= 0 \\
     \diver_{\mu_{coord}} (d_{BRST}) &= \diver_{\mu_{coord}} (d_{CE}) = \sum_a c^a \left( \sum_b f^b_{ba} + \diver_F v_a \right)
-  \end{align*}
+  \end{align}
   where $v_a = \rho(t_a)$ for $\{t_a\}$ a basis of $\gf$.
 \begin{proof}
   First note that
@@ -363,7 +363,7 @@ This lemma lets us formulate and prove the main theorem of BRST:
 
 \begin{theo}[BRST]
   Let $\rho \colon \gf \lra \VF(F)$ be a Lie algebra action on $F$ and let $\tilde{\mu}$ be a Berezinian on $F_{BRST}$ such that $\diver_{\tilde{\mu}}(d_{BRST}) = 0$. Define
-  $$ \lrangle{h}_\psi = \frac{\int_{F_{BRST}} \exp(i/\hbar S_{gf})h \tilde{\mu}}{\int_{F_{BRST}} \exp(i/\hbar S_{gf})\tilde{\mu}} $$
+  $$ \lrangle{h}_\psi := \frac{\int_{F_{BRST}} \exp(i/\hbar S_{gf})h \tilde{\mu}}{\int_{F_{BRST}} \exp(i/\hbar S_{gf})\tilde{\mu}} $$
   such that
   \begin{enumerate}
     \item $S_{gf} = S + d_{BRST} \psi, \ \ \psi \in \Ci(F_{BRST})^{(-1)}$
@@ -376,67 +376,88 @@ This lemma lets us formulate and prove the main theorem of BRST:
   \end{itemize}
 \begin{proof}
   Let $\psi_t$ be a smooth family of "gauge fixing functions". Define
-  $$I_{\psi_t} = \int_{F_{BRST}} \exp(i/\hbar (S+ d_{BRST} \psi_t)) h \tilde{\mu}$$
+  \begin{equation}
+    I_{\psi_t} = \int_{F_{BRST}} \exp(i/\hbar (S+ d_{BRST} \psi_t)) h \tilde{\mu}
+  \end{equation}
   such that we can denote
-  \begin{align*}
+  \begin{align}
     \dd{}{t} I_{\psi_t} &= \frac{i}{\hbar} \int_{F_{BRST}} d_{BRST}\left(\dd{}{t}\psi_t\right) \exp(i/\hbar (S_{gf}(t))) h \tilde{\mu} \\
     &= \frac{i}{\hbar} \int_{F_{BRST}} d_{BRST} \left( \dd{}{t}\psi_t \exp(i/\hbar (S_{gf}(t))) h \right) \tilde{\mu} \\
     &= - \frac{i}{\hbar} \int_{F_{BRST}} (...) \diver(d_{BRST}) \tilde{\mu} = 0
-  \end{align*}
+  \end{align}
   Now for the second part note that
-  \begin{align*}
+  \begin{align}
     \int_{F_{BRST}} \exp(i/\hbar S) d_{BRST} f \tilde{\mu} = \int_{F_{BRST}} d_{BRST} (...) \tilde{\mu} = - \int_{F_{BRST}} \diver(d_{BRST}) \tilde{\mu} = 0
-  \end{align*}
+  \end{align}
   which proves our theorem.
 \end{proof}
 \end{theo}
 
 Now given a Berezinian $\tilde{\mu}$ we always have $\diver_{\tilde{\mu}}(d_{BRST}) = 0$. Thus BRST integrals descend to the BRST cohomology. Namely the value of the integrals do not change if you change the representative of a cohomology class.
 \begin{equation}
-  \int_{F_{BRST}} \tilde{\mu} \colon H^\circ_{BRST} (\Ci(F_{BRST})) \lra \RR
+  \int_{F_{BRST}} \tilde{\mu} \ : H^\circ_{BRST} (\Ci(F_{BRST})) \lra \RR
 \end{equation}
 If $S$ has a degenerate Hessian, we make our transition to $S_{gf} = S + d_{BRST} \psi$. The divergence-free condition is strong. In general we are interested in $d_{BRST}$-closed quantities like $\exp(i/ \hbar S_{gf}) h$ but not in $d_{BRST}$-exact quantities.\\
 
-When $\gf$ is unimodular then $\sum f^b_{ba} = 0$ and we can find a $\gf$-invariant measure on $F$, then $\diver(v_a) \equiv 0$ and thus in particular $\diver(d_{BRST}) = 0$.\\
+When $\gf$ is unimodular then $\sum f^b_{ba} = 0$ and we can find a $\gf$-invariant measure on $F$, then $\diver(v_a) \equiv 0$ and thus in particular $\diver(d_{BRST}) = 0$.
 
-\textbf{Interpretation:} For an action $\rho$ of $\gf$ on $F$, $S$ invariant and $\mu_F$ and invariant measure, the action of $\gf$ traces out orbits on $F$.
-%TODO Interpretation (pictures too?)
+\subsubsection{Interpretation of "gauge fixing"}
+Consider, as before, a manifold $F$ together with a Lie group/algebra action of $G$ (or $\gf$). Further suppose that we are given an invariant functions $S \colon F \lra \RR$ where $S \in \Ci(F)^G$ and an invariant volume form $\mu_F \in \Omega^n(F)^G$ (if $F$ is non compact, take $\mu_F$ compactly supported). The action of the Lie group traces out orbits along which $S$ is constant.\\
 
-But the quotient can be "badly behaved" so finding an appropriate $\tilde{S}$ might not be easy. Thus we might want to find a section $J$
-$$ F \atob{\rho} F/G \atob{J} F \quad \im(J) $$
-that "cuts" the $G$-orbits. Practically one looks for a function
-$$ \phi \colon F \lra \gf $$
+Let us look at the integral
+\begin{equation}
+  I = \int_{F} \mu_F e^{i/\hbar S} \quad \lra \quad  I = \vol_G \int_{F / G} \widetilde{\mu}_F \ e^{i/\hbar \widetilde{S}}
+\end{equation}
+
+where $\rho \colon F \lra F/G$ projects to equivalence classes (the space of leaves of the foliation defined by the group action), and $\widetilde{S} \in \Ci(F/G)$ is such that $S = \rho^* \widetilde{S}$, while $\widetilde{\mu} \in \Omega^{n-m}(F/G)$ is such that for a basis $\{v_a\}$ where $v_a = \rho(t_a)$
+\begin{equation}
+  \imath_{v_m} ... \imath_{v_1} \mu = \rho^* \mu
+\end{equation}
+Now this point of view does not generalise very well because a quotient can be very badly behaved and finding $\widetilde{S}$ might not be easy. Alternativ we look for a "section" of the projection $\rho$, denoted by $J$, such that $\im(J)$ cuts the $G$-orbits. Practically one looks for a function
+\begin{equation}
+  \phi \colon F \lra \gf
+\end{equation}
 such that
 \begin{enumerate}
   \item $0 \in \gf$ is a regular value for $\phi$
-  \item $\Sigma := \phi^{-1}(0)$ intersects the $G$-orbits $N$ times, transversally (locally, for $U$ a neighbourhood of an intersection point $T_p U = \gf \oplus T_p \Sigma$ for any $p \in \Sigma$)
+  \item $\Sigma := \phi^{-1}(0)$ intersects the $G$-orbits $N \geq 1$ times, transversally (locally, for $U$ a neighbourhood of an intersection point $T_p U = \gf \oplus T_p \Sigma$ for any $p \in \Sigma$)
 \end{enumerate}
 
 \begin{sketch}[Faddeev-Popov trick]
   This trick lets us write
-  \begin{align*}
+  \begin{align}
     I = \frac{\vol(G)}{N} \int_\Sigma \left. \imath_{v_1} ... \imath_{v_m} \mu e^{i/\hbar S} \right|_\Sigma = \frac{\vol(G)}{N} \int_F \delta^{(m)}(\phi) \imath_{v_1} ... \imath_{v_m} \mu e^{i/\hbar S}
-  \end{align*}
+  \end{align}
   where $\delta^{(m)}(\phi) := \delta(\phi) \cdot \bigwedge_a d\phi^a$ is a distributional $m$-form.
 \end{sketch}
 
 \begin{lem}
   $\bigwedge d\phi^a \imath_{v_1} ... \imath_{v_m} \mu = \det(FP(x)) \cdot \mu$ where
-  $$FP(x) = d_x \phi \circ d_{(1,x)} \rho \colon \gf \lra \gf$$
+  \begin{equation}
+    FP(x) = d_x \phi \circ d_{(1,x)} \rho \colon \gf \lra \gf
+  \end{equation}
   In components
-  $$ [FP(x)]^b_a = \pair{d_x\phi^b(x)}{v_a(x)} = v_a (\phi^b)|_x $$
+  \begin{equation}
+    [FP(x)]^b_a = \pair{d_x\phi^b(x)}{v_a(x)} = v_a (\phi^b)|_x
+  \end{equation}
 \begin{proof}
-  $FP(x)$ is non-degenerate iff the intersection of $\phi^{-1}(\phi(x))$ with a $G$-orbit is transversal. In fact we have $\pair{d\phi}{v}_x = 0$ iff $v \in \ker(d\phi_x)$ which is equivalent to $v$ being tangent to $\phi^{-1}(\phi(x))$. Now assume transversality, i.e. non-degeneracy, and consider $V_x = Span\{v_a^{(x)}\} \subset T_x F$. Now if we write the orbit as
-  $$ \OO_x := \{x \in F | \gf = \rho(g,x) \ g \in G \} $$
+  $FP(x)$ is non-degenerate iff the intersection of $\phi^{-1}(\phi(x))$ with a $G$-orbit is transversal. In fact we have $\pair{d\phi}{v}_x = 0$ iff $v \in \ker(d\phi_x)$ which is equivalent to $v$ being tangent to $\phi^{-1}(\phi(x))$. Now assume transversality, i.e. non-degeneracy, and consider $V_x = \Span\{v_a^{(x)}\} \subset T_x F$. Now if we write the orbit as
+  \begin{equation}
+    \OO_x := \{xg \ | \ g \in G \}
+  \end{equation}
   we observe $V_x \in T_x \OO$. Moreover if $\{\alpha_1, ..., \alpha_{n-m}\}$ is a basis, we can define
-  $$ Ann(V_x) := \{ \alpha \in T_x F | \pair{\alpha}{v} = 0 \ \forall v \in V \} \subset T^*_x F$$
+  \begin{equation}
+    Ann(V_x) := \{ \alpha \in T_x F | \pair{\alpha}{v} = 0 \ \forall v \in V \} \subset T^*_x F
+  \end{equation}
   Now a basis for $T^*_x F$ is $\{d\phi^1(x), ..., d\phi^m(x), \alpha_1, ..., \alpha_{n-m} \}$. Thus we define
-  $$ \mu = \bigwedge_{a=1}^m d\phi^a  \wedge \alpha_1 \wedge ... \wedge \alpha_{n-m}$$
+  \begin{equation}
+    \mu = \bigwedge_{a=1}^m d\phi^a  \wedge \alpha_1 \wedge ... \wedge \alpha_{n-m}
+  \end{equation}
   with a little care we now observe
-  \begin{align*}
-    \imath_{v_1} ... \imath_{v_m} \mu &= \left( \sum_{\sigma \in S_m} (-1)^S \prod_{a = 1}^m \pair{d\phi^a(x)}{v_{S(a)}(x)} \right) \alpha_1, ..., \alpha_{n-m}\\
+  \begin{align}
+    \imath_{v_1} ... \imath_{v_m} \mu &= \left( \sum_{\sigma \in S_m} (-1)^S \prod_{a = 1}^m \pair{d\phi^a(x)}{v_{S(a)}(x)} \right) \alpha_1 \wedge ... \wedge \alpha_{n-m}\\
     &= \det(FP(x)) \cdot \alpha_1 \wedge ... \wedge \alpha_{n-m}
-  \end{align*}
+  \end{align}
   Now conclude the proof by "wedging" with $\bigwedge d\phi^a$ to arrive at the statement of the lemma.
 \end{proof}
 \end{lem}
@@ -445,9 +466,13 @@ We will need to keep this lemma in mind when going forward. Another helpful lemm
 
 \begin{lem}
   Denote by $Dc D\overline{c}$ the coordinate Berezinians on $\gf[1] \oplus \gf^*[-1]$. Then
-  $$ \det(FP(x)) = \frac{\hbar}{i} \int_{\gf[1] \oplus \gf^*[-1]} DcD\overline{c} \exp(i/\hbar \pair{\overline{c}}{FP \cdot c})$$
+  \begin{equation}
+    \det(FP(x)) = \frac{\hbar}{i} \int_{\gf[1] \oplus \gf^*[-1]} DcD\overline{c} \exp(i/\hbar \pair{\overline{c}}{FP \cdot c})
+  \end{equation}
   The splitting $\gf[1] \oplus \gf^*[-1]$ was the original interpretation of \emph{ghosts/antighosts}. Moreover we now have an integral representation of the delta function in the form of
-  $$ \delta(\phi(x)) = \frac{1}{(2\pi\hbar)^m} \int_{\gf^*} d^m \lambda e^{i/\hbar \pair{\lambda}{\phi(x)}} $$
+  \begin{equation}
+    \delta(\phi(x)) = \frac{1}{(2\pi\hbar)^m} \int_{\gf^*} d^m \lambda e^{i/\hbar \pair{\lambda}{\phi(x)}}
+  \end{equation}
 \end{lem}
 
 \begin{theo}[Faddeev-Popov]
@@ -458,18 +483,21 @@ We will need to keep this lemma in mind when going forward. Another helpful lemm
   \end{align}
 \end{theo}
 
-\begin{theo}[FP withing BRST]
+\begin{theo}[FP within BRST]
 \label{theorem:FP_BRST}
-  Choose $\psi = \pair{\overline{c}}{\phi} \in \Ci(F_{BRST})^{(-1)}$ such that $S_{gf} = S + d_{BRST} \psi = S_{FP}$.
+  Choose $\psi = \pair{\overline{c}}{\phi} \in \Ci(F_{BRST})^{(-1)}$. Then
+  \begin{equation}
+    S_{gf} = S + d_{BRST} \psi = S_{FP}
+  \end{equation}
 \begin{proof}
   Note that
-  \begin{align*}
+  \begin{align}
     d_{BRST} \psi = \pair{d_{BRST} \overline{c}}{\phi} + \pair{\overline{c}}{d_{BRST} \phi}
-  \end{align*}
+  \end{align}
   such that we can write
-  \begin{align*}
+  \begin{align}
     d_{BRST} \phi = c^a v_a (\phi) = - \pair{d\phi}{v_a} c^a
-  \end{align*}
+  \end{align}
 \end{proof}
 \end{theo}
 
@@ -530,13 +558,17 @@ In finite dimensions one can prove that $\LL$ being Lagrangian is equivalent to 
 
 \begin{definition}[Conormal Bundle]
   Let $C$ be a submanifold of $M$. We can look at $ N^* C \subset (T^*M)|_C $ as the bundle over $C$ with fibre
-  $$ N_x^* C := \left \{ \alpha \in T_x^*M \big| \pair{\alpha}{v} = 0 \ \forall v \in T_x C \right\} $$
+  \begin{equation}
+    N_x^* C := \left \{ \alpha \in T_x^*M \big| \pair{\alpha}{v} = 0 \ \forall v \in T_x C \right\}
+  \end{equation}
   We call $N^* C$ the \textbf{conormal bundle} of $C \subset M$.
 \end{definition}
 
 \begin{example}[Conormal Lagrangian]
   Let $C \subset M$ be a smooth submanifold. The shifted conormal bundle
-  $$ N^*[-1]C \subset T^*[-1]M $$
+  \begin{equation}
+    N^*[-1]C \subset T^*[-1]M
+  \end{equation}
   is a Lagrangian submanifold. The proof is left as an interesting exercise to the reader.
 \end{example}
 
@@ -546,7 +578,9 @@ Another important theorem, which will be given without proof due to the lack of 
   Let $\LL \subset \MM$ be Lagrangian in $\MM$ where $\MM$ is $(-1)$-symplectic. Then there exist
   \begin{enumerate}
     \item a tubular neighbourhood $U \subseteq \MM$ of $\LL$, i.e. a vector bundle $p \colon E \lra \LL$ together with a smooth map $K \colon E \lra \MM$ such that
-    $$ J \circ 0_E = i, \quad \quad i \colon \LL \lra \MM $$
+    \begin{equation}
+      J \circ 0_E = i, \quad \quad i \colon \LL \lra \MM
+    \end{equation}
     and there exists $V \subseteq E$ with $0_E(\LL) \subset V$ such that $J|_V \atob{\sim} U$ is a diffeomorphism.
 
     \item a tubular neighbourhood $U_0 \subset T^*[-1] \LL$ (with projection $p_0$) of the zero section $\LL_0 \equiv \LL$.
@@ -562,14 +596,14 @@ Thus in a neighbourhood of a Lagrangian submanifold, the ambient $(-1)$-symplect
   \begin{equation}
     \NC_\psi := \graph(d \psi) \subset T^*[-1]F_{BRST}
   \end{equation}
-  is a Lagrangian submanifold. Denote by $\{\phi^a\}$ coordinates in $F_{BRST}$ and by $\{\phi^t_a\}$ coordinated in the fibre. Then
+  is a Lagrangian submanifold. Denote by $\{\phi^a\}$ coordinates in $F_{BRST}$ and by $\{\phi^t_a\}$ coordinates in the fibre. Then
   \begin{equation}
-    \graph(d \psi) = \left\{ (\phi^a, \phi^t_a) \Bigg| \phi^t_a = \dell{}{\phi_a} \psi \right\}
+    \graph(d \psi) = \left\{ (\phi^a, \phi^t_a) \ \Bigg| \ \phi^t_a = \dell{}{\phi_a} \psi \right\}
   \end{equation}
   We also define
   \begin{align}
     \omega |_{\NC_\psi} :&= \pair{d\phi^t}{d\phi} |_{\NC_\psi} = d \phi^t_a d\phi^a |_{\NC_\psi} \\
-    &= d\phi^b \partial_b \partial_a d\phi^a = 0
+    &= d\phi^b \partial_b \partial_a d\psi^a = 0
   \end{align}
   As an exercise check that $\dim(\graph(d \psi)) = \frac{1}{2} \dim(T^*[-1]F_{BRST})$. For $\psi = 0$ we get $\NC_0$ equal the zero section, thus $\NC_\psi$ is a kind of \emph{deformation} of the zero section.
 \end{example}
@@ -580,13 +614,13 @@ Let $\MM$ be a graded $(-1)$-symplectic manifold. Then
 \begin{enumerate}
   \item for $\LL \subset \MM$ a Lagrangian submanifold, there exists a submanifold $C \subset M$ and a symplectomorphism $\phi \colon \MM \atob{\sim} T^*[-1]M$ such that $\phi(\LL) = \LL_C \equiv \NC^*[-1] C \subset T^*[-1]M$.
 
-  \item for $\LL \subset \MM$ a Lagrangian submanifold obtained from $\LL_C = \NC^*[-1] C$w where $C \subset M$ as a graph of $d\psi$ for some $\psi \in \Ci(\LL_C)^{(-1)}$ we can use the tubular neighbourhood theorem to identify the neighbourhood of $\LL_C$ with $T^*[-1]\LL_C$.
+  \item for $\LL \subset \MM$ a Lagrangian submanifold obtained from $\LL_C = \NC^*[-1] C$ where $C \subset M$ as a graph of $d\psi$ for some $\psi \in \Ci(\LL_C)^{(-1)}$ we can use the tubular neighbourhood theorem to identify the neighbourhood of $\LL_C$ with $T^*[-1]\LL_C$.
 \end{enumerate}
 
-We say that $\LL \sim \LL^\prime$ homotopic as Lagrangian submanifolds, iff there exists a family of Lagrangian submanifolds $\LL_t$ smoothly varying over  such that $L_0 = \LL$ and $\LL_1 = \LL^\prime$ for $t \in [0,1]$.
+We say that $\LL \sim \LL^\prime$ homotopic as Lagrangian submanifolds, iff there exists a family of Lagrangian submanifolds $\LL_t$ smoothly varying over  such that $\LL_0 = \LL$ and $\LL_1 = \LL^\prime$ for $t \in [0,1]$.
 
 \begin{definition}
-  Let $(\MM, \omega)$ be a $?$-dimensional $(-1)$-symplectic graded manifold. A Berezinian $\mu$ on $\MM$ is called \textbf{compatible with} $\omega$, if there exists an atlas of Darboux charts $\{ x^i, \xi_i\}$ such that $\mu = d^nx D^n \xi$ in every chart. We also say that the triple $(\MM, \omega, \mu)$ is compatible.
+  Let $(\MM, \omega)$ be a $(n|n)$-dimensional $(-1)$-symplectic graded manifold. A Berezinian $\mu$ on $\MM$ is called \textbf{compatible with} $\omega$, if there exists an atlas of Darboux charts $\{ x^i, \xi_i\}$ such that $\mu = d^nx D^n \xi$ in every chart. We also say that the triple $(\MM, \omega, \mu)$ is compatible.
 \end{definition}
 
 Now for $(\MM, \omega, \mu)$ compatible we introduce with
@@ -619,7 +653,7 @@ the "Batalin-Vilkovisky" Laplacian defined locally in any Darboux chart as the d
   where $\imath_{X_f} \omega = df$, i.e. $X_f$ is the Hamiltionian vector field of $f$.
 \end{definition}
 
-If $\{\cdot, \cdot\}$ denotes the Poisson-brackets, we get $X_f = \{f, \cdot\}$ such that $\{f,g \} = X_f (g)$. For a Darboux chart $\{x^i, \xi_i\}$ and assuming that $\mu = \rho \times \mu_{coord}$ we obtain the following result:
+If $\{\cdot, \cdot\}$ denotes the Poisson-brackets, we get $X_f = \{f, \cdot\}$ such that $\{f,g \} = X_f (g)$. For a Darboux chart $\{x^i, \xi_i\}$ and assuming that $\mu = \rho \cdot \mu_{coord}$ we obtain the following result:
 
 \begin{lem}
   $\Delta_\mu = \Delta_{BV} + \frac{1}{2} \{f, \log(\rho)\}$.
@@ -634,8 +668,8 @@ If $\{\cdot, \cdot\}$ denotes the Poisson-brackets, we get $X_f = \{f, \cdot\}$ 
   \end{equation}
   Together this lets us write
   \begin{align}
-    \imath_{X_f} \omega = df &\Longleftrightarrow \imath_{X_f} dx^i d\xi_i = \dell{f}{x^i} dx^i - \dell{f}{\xi_i} d\xi_i \\
-    & \Longleftrightarrow X_f^{(x^i)} = \dell{f}{x^i} \quad and \quad X_f^{(\xi_i)} = \dell{f}{\xi_i}
+    \imath_{X_f} \omega = df \quad  &\Longleftrightarrow \quad  \imath_{X_f} dx^i d\xi_i = \dell{f}{x^i} dx^i - \dell{f}{\xi_i} d\xi_i \\
+     \quad &\Longleftrightarrow \quad  X_f^{(x^i)} = \dell{f}{x^i} \quad and \quad X_f^{(\xi_i)} = \dell{f}{\xi_i}
   \end{align}
   This allows us to reformulate the divergence of the Hamiltionian vector field as
   \begin{align}
@@ -784,9 +818,9 @@ Now we can finally formulate the main result shouldering the BV formalism:
   \end{equation}
   To this end note that
   \begin{align}
-    \limit{\epsilon \lra 0} \ \ \frac{1}{\epsilon} &\int_{\LL_{t}} \left( f(x, \epsilon d\psi_t + \epsilon^2) - f(x, \epsilon d\psi_t) \right) \sqrt{\mu_{\LL_{t}}} \\
-    = \ \limit{\epsilon \lra 0} \ \ \frac{1}{\epsilon} &\int_{\LL_{t}} \left( f(x, \epsilon d\psi_t) - f(x, \epsilon d\psi_t) + \OO(\epsilon^2) \right) \sqrt{\mu_{\LL_{t}}} \\
-    = &\int_{\LL_{t}} f(x, d\psi_t) \sqrt{\mu_{\LL_{t}}} \\
+    &\limit{\epsilon \lra 0} \ \ \frac{1}{\epsilon} \int_{\LL_{t}} \left( f(x, \epsilon d\psi_t + \epsilon^2) - f(x, \epsilon d\psi_t) \right) \sqrt{\mu_{\LL_{t}}} \\
+    = \ &\limit{\epsilon \lra 0} \ \ \frac{1}{\epsilon} \int_{\LL_{t}} \left( f(x, \epsilon d\psi_t) - f(x, \epsilon d\psi_t) + \OO(\epsilon^2) \right) \sqrt{\mu_{\LL_{t}}} \\
+    = \ &\int_{\LL_{t}} f(x, d\psi_t) \sqrt{\mu_{\LL_{t}}}
   \end{align}
   Now since
   \begin{align}
