@@ -999,8 +999,217 @@ Consider a complement $\gf$ of trivial symmetries $\tf$ inside all symmetries $\
 
 Now this is all the data we need for a physical theory. We have a critical locust, symmetries and a set of evolution equations. Summing up, our procedure goes as follows:\\
 
-We have $F, S_0$ and a set of nontrivial symmetries $\gf$. Now if $\gf$ is a Lie algebra, we can look at pure BRST or more generally at $(T^*[-1]F_{BRST}, Q_{BV})$. If it isn't, we \emph{need} to work with $(T^*[-1]F_{BRST}, Q_{BV})$. From here on we will take the tuple $(\FF_{BV}, \Omega_{BV}, S_{BV}, Q_{BV})$ (where technically $Q$ is induced) and construct a classical BV QFT.
+We have $F, S_0$ and a set of nontrivial symmetries $\gf$. Now if $\gf$ is a Lie algebra, we can look at pure BRST or more generally at $(T^*[-1]F_{BRST}, Q_{BV})$. If it isn't, we \emph{need} to work with $(T^*[-1]F_{BRST}, Q_{BV})$. From here on we will take the tuple $(\FF_{BV}, \Omega_{BV}, S_{BV}, Q_{BV})$ (where technically $Q$ is induced) and construct a classical BV QFT. Note that in general, one could need an infinite number of ghosts, "ghosts for ghosts", anti-fields and antighosts. In standard situations where $\gf$ is a lie subalgebra, the data of the BV construction goes under the name of $L_\infty$-algebra (we won't have time to discuss this). From now on, we can consider BV data as $(\FF \simeq T^*[-1]M, \Omega, S, Q)$ where $\imath_Q \Omega = dS$ such that $(\Ci(\FF), Q) = BV^\bullet$ is the BV complex.
+
+\subsection{Quantum Master Equations and Can. Transformations}
+
+We again consider the $(-1)$-symplectic manifold $(\FF, \Omega)$ and formal power series $\Ci(\FF)\llbracket \hbar \rrbracket$ therein.
+
+\begin{definition}
+  An element $S \in \Ci(\FF)\llbracket \hbar \rrbracket$ is said to satisfy the \textbf{Quantum Master Equation} iff
+  \begin{equation} \tag{$QME$} \label{QME}
+    \frac{1}{2} \{S,S\} - i \hbar \Delta_\mu S = 0
+  \end{equation}
+  where $\mu$ is a Berezinian on $\FF$.
+\end{definition}
+
+Formally the above requirement is equivalent to $\Delta_\mu e^{i/\hbar S} = 0$.
+
+\begin{ex}
+  Prove this fact. Also explain why it is "formally" equivalent.
+\end{ex}
+
+This follows from the following fact about BV data: The BV Laplacian is \textbf{not} a derivation of the product, i.e.
+
+\begin{align}
+  &\Delta_\mu (f \cdot g) = \Delta_\mu f \cdot g + (-1)^{|f|} f \cdot \Delta_\mu g + (-1)^{|f|} \{f,g\} \\
+  \Lra \quad &\Delta_\mu e^{i/\hbar S} = (-i \hbar)^{-2} \left( \frac{1}{2} \{S,S\} - i \hbar \Delta_\mu S \right) e^{i/\hbar S}
+\end{align}
+
+Note that we say that $(\Ci(\FF), \Delta_\mu, \{\cdot, \cdot\})$ is a BV algebra if $\Delta_\mu$ is a derivation of the bracket. Sometimes it is convenient to think of power series in $(-i \hbar)$ instead of just $\hbar$. Thus
+
+\begin{equation}
+  S = S^{(0)} + (-i \hbar) S^{(1)} + ...
+\end{equation}
+
+and \eqref{QME} is equivalent to the following set of equations
+
+\begin{align*}
+  &\{S^{(0)}, S^{(0)}\} = 0 \quad \quad (CME)\\
+  &\{S^{(1)}, S^{(1)}\} + \Delta_\mu S^{(0)} = 0 \\
+  &\{S^{(2)}, S^{(2)}\} + \frac{1}{2} \{S^{(1)}, S^{(1)}\} + \Delta_\mu S^{(1)} = 0 \\
+  &...
+\end{align*}
+
+Now starting from a solution of the Classical Master Equation \eqref{ClassicalMasterEquation} for classical BV date, we can extend it to a power series in $\hbar$ that satisfies \eqref{QME}
+\begin{equation}
+  \Delta_\mu S^{(0)} = - \{S^{(0)},S^{(1)}\}
+\end{equation}
+the class of $\Delta_\mu S^{(0)}$ in the $Q := \{S^{(0)}, \cdot\}$ cohomology to be trivial (i.e. $\Delta_\mu S^{(0)} = Q$-exact). Note that $Q$ is a differential by assumption. We can find an appropriate $S^{(1)}$ such that
+\begin{equation}
+  \frac{1}{2} \{S^{(1)}, S^{(1)}\} + \Delta_\mu S^{(1)} = - \{S^{(0)}, S^{(0)}\}
+\end{equation}
+Now the question is if there is a $Q$-exact $S^{(1)}$ such that the above equation holds. There are indeed obstructions to this but in many cases this has a chance to work.
+
+\begin{definition}
+  If $S$ and $S^\prime$ are two solutions of the \eqref{QME} they are said to be equivalent if there exists a \textbf{BV canonical transformation}, i.e. a family $S_t \in \Ci(\FF)^{(0)}\llbracket \hbar \rrbracket, R_t \in \Ci(\FF)^{(-1)}\llbracket \hbar \rrbracket$ such that $S_0 = S, S_1 = S^\prime$ and
+  \begin{equation}\tag{$\blacksquare$}\label{BVCanonical}
+    \dd{}{t} S_t = \{S_t, R_t\} - i \hbar \Delta_\mu R_t
+  \end{equation}
+\end{definition}
+
+If we denote $\{S_t, \cdot\} - i \hbar \Delta_\mu =: \delta_t$, a Quantum BV operator for $S_t$, then we can express \eqref{BVCanonical} as
+\begin{equation}
+  \dot S_t = \delta_t R_t
+\end{equation}
+
+\begin{rem}
+  The Koszul-Tate condition eliminates cohomology in negative degrees. The problem of extending $CME \lra QME$ however is related to cohomology in positive degrees. Now in field theory, thus when working with $\infty$-dimensional manifolds, the requirement that $BV^\bullet$ has vanishing negative cohomology is a quite strong one which can hinder the above transition. A strictly better requirement is that $\dim(H^{-i}) < + \infty$.
+\end{rem}
+
+Let us look at \eqref{QME} for the family $S_t$:
+\begin{equation}\tag{$QME_t$}\label{QMEt}
+  \frac{1}{2} \{S_t,S_t\} - i \hbar \Delta_\mu S_t = 0
+\end{equation}
+and thus in particular
+\begin{equation}
+  \delta_t (\dot S_t) = 0
+\end{equation}
+
+\begin{lem}
+  The Quantum BV operator
+  \begin{equation}
+    \delta_S := \{S, \cdot\} - i \hbar \Delta_\mu = -i \hbar e^{-i/\hbar S} \Delta_\mu \left( e^{-i/\hbar S} \ \cdot \right)
+  \end{equation}
+  squares to zero iff $S$ satisfies the \eqref{QME}
+\end{lem}
+
+Thus we see from \eqref{QMEt} that $\delta_t^2 = 0$ which means that $\delta_t$ is a differential and further that $\dot S_t$ is $\delta_t$-closed. Additionally $\dot S_t$ is $\delta_t$-exact due to \eqref{BVCanonical} which implies that
+\begin{equation}
+  \dd{}{t}[\eqref{QMEt}] = 0
+\end{equation}
+if \eqref{QMEt} is satisfied. Hence it is satisfied for all $t$ if $S_t, R_t$ parametrise a canonical transformation.
+
+\begin{prop}
+  $\dd{}{t} e^{i/\hbar S_t} = \Delta_\mu \left( - i \hbar e^{i/\hbar S_t} R_t \right)$ and for $S \sim S^\prime$ we have $e^{i/\hbar S} - e^{i/\hbar S^\prime} = \Delta_\mu \left( - i \hbar \int_0^t dt e^{i/\hbar S_t} R_t \right)$
+\end{prop}
+
+\begin{definition}
+  Define $\sigma := S_t + dt R_t$ such that $\sigma \in \Omega^\circ([0,1]) \otimes \Ci(\FF)\llbracket\hbar\rrbracket$. Then we have
+  \begin{equation}\tag{extQME} \label{extendedQME}
+    \left( dt \wedge \dd{}{t} - i \hbar \Delta_\mu \right) e^{i/\hbar \sigma} = 0
+  \end{equation}
+  This equation is sometimes referred to as the "extended QME" (Mnev) or as "homotopies of solutions of the QME" (Costello).
+\end{definition}
+
+This brings us to the following central definition:
+
+\begin{definition}[Quantum BV Formalism]
+  A finite-dimensional \textbf{Quantum BV theory} is specified by the following set of data:
+  \begin{enumerate}
+    \item A $\ZZ$-graded manifold $\FF$
+    \item A $(-1)$-symplectic form $\Omega$ on $\FF$
+    \item A Berezinian $\mu \in BER(\FF)$, compatible with $\Omega$
+    \item A function $S \in \Ci(\FF)\llbracket\hbar\rrbracket$ satisfying the \eqref{QME} (which is equivalent to $\delta_S := \{S, \cdot\}$ being a differential)
+  \end{enumerate}
+\end{definition}
+
+\begin{rem}
+  Note that the Hamiltionian vector field $X_S$ for the \textbf{full} BV quantum master function $S$ does \textbf{not} necessarily square to zero. However $\delta_S$ does. However we know that $\delta_S \mod \hbar = X_{S^{(0)}} =: Q_0$ will square to zero which is nothing but the \eqref{ClassicalMasterEquation}. Thus we always have a classical BV theory.
+\end{rem}
+
+Given a Quantum BV theory we define the partition function to be
+\begin{equation}
+  \ZF := \int_{\LL \subset \FF} e^{i/\hbar S} \sqrt{\mu|_\LL}
+\end{equation}
+where $\LL$ is a Lagrangian submanifold of $\FF$. Now since $\Delta_\mu e^{i/\hbar S} = 0$ the value of $\ZF$ does not depend on a particular choice of $\LL$ inside the homotopy class $[\LL]$.\\
+
+Now if $\FF = T^*[-1]F_{min}$ then $S$ is some lift of a classical action $S_{cl}$ on $F_{min}$. The zero section $\LL \equiv F_{min} \subset \FF$ is a valid Lagrangian submanifold but $\HH(S)$ is degenerate. Thus we deform $\LL_0 \sim \LL$ such that $\HH(S)$ is no longer degenerate and compute the integral here. This sums up the concept of gauge-fixing.
+
+\begin{rem}
+  Consider $\OO \in \Ci(\FF)\llbracket\hbar\rrbracket$. $\OO$ is an observable iff $\delta_S \OO = 0$. Then we can compute its expectation value to be
+  \begin{equation}
+    \langle \OO \rangle := \frac{1}{2} \int_{\LL \subset \FF} \OO e^{i/\hbar S} \sqrt{\mu|_\LL}
+  \end{equation}
+  However a nontrivial fact is that this notion does not behave well under product because $\delta_S$ is not a derivation of the product of functions. The arising problems and the above definition are subject to current research.
+\end{rem}
+
+If we again take the BV-BRST data from above, thus $\FF := T^*[-1]F_{BRST}$ and $S_{BV} = p^* S{cl} + d_{BRST}$ together with a function $\psi \in \Ci(F_{BRST})^{(-1)}$ we define
+\begin{equation}
+  \LL_\psi := \graph(d\psi)
+\end{equation}
+to obtain
+\begin{align}
+  S_{BV} |_{\LL_\psi} &= S_{BV} (\Phi^a, \Phi^\dagger_a = \dell{}{\Phi^a}\psi) = S_0 + \sum_a d^a_{BRST} \dell{}{\Phi^a}\psi) \\
+  &= S_0 + d_{BRST} \psi = S_{gf} \\
+  \int_{\LL_\psi \subset T^*[-1]F_{BRST}} e^{i/\hbar S_{BV}} \sqrt{\mu|_{\LL_\psi}} &= \int_{F_{BRST}} e^{i/\hbar S_{gf}} D\Phi
+\end{align}
+
+\begin{rem}
+  To look at a $\psi$-dependent gauge-fixing in BRST we need the nonminimal extension $F_{Aux}$ which is the same as adding $T^*[-1]F_{Aux}$ to $T^*[-1]F_{min}$. In principle in BV we can directly look at Lagrangian submanifolds in $T^*[-1]F_{min}$. Thus we have no further need for this nonminimal extension.
+\end{rem}
+
+\subsection{BV Fibre Integrals}
+Let $(\FF^{\prime}, \omega^{\prime})$ and $(\FF^{\prime\prime}, \omega^{\prime\prime})$ two $(-1)$-symplectic manifold and $\FF := \FF^\prime \times \FF^{\prime\prime}$ with $\omega := \omega^\prime \otimes 1 + 1 \otimes \omega^{\prime\prime} \in \Omega^\bullet(\FF^\prime) \otimes \Omega^\bullet(\FF^{\prime\prime})$.
+
+\begin{definition}[BV Fibre Integral]
+  IF $\LL \subset \FF^{\prime\prime}$ is a Lagrangian submanifold and if $\mu^{\prime\prime}$ is a Berezinian on $\FF^{\prime\prime}$ we have a map
+  \begin{equation}
+    P_*^{(\LL)} := \int_{\LL \subset \FF^{\prime\prime}} \cdot \ \sqrt{\mu^{\prime\prime}|_\LL} \colon \ \Ci(\FF) \lra \Ci(\FF^\prime)
+  \end{equation}
+  which is called a \textbf{BV fibre integral} or a \textbf{BV pushforward}.
+\end{definition}
+
+\begin{theo}[Stokes for BV fibre integrals]~
+  \begin{enumerate}
+    \item $P_*^{(\LL)}$ is a chain map intertwining the BV Laplacians $\Delta_\mu$ on $\FF$ and $\Delta_{\mu^\prime}$ on $\FF^\prime$, i.e.
+    \begin{equation}
+      \Delta_{\mu^\prime} P_*^{(\LL)} = P_*^{(\LL)} \Delta_\mu
+    \end{equation}
+    where $\mu = \mu^\prime \cdot \mu^{\prime\prime}$.
+
+    \item If $\LL \sim \LL^\prime$ are Lagrangian submanifolds in $\FF^{\prime\prime}$ and $\rho \in \Ci(\FF)$ such that $\Delta_\mu \rho = 0$ then
+    \begin{equation}
+      P_*^{(\LL)} \rho - P_*^{(\LL^\prime)} \rho = \Delta_{\mu^\prime}( – )
+    \end{equation}
+    where the last part is visibly exact in $\FF \prime$.
+  \end{enumerate}
+\end{theo}
 
 
+\begin{definition}[Effective BV Actions]
+  Let $S \in \Ci(\FF)\llbracket\hbar\rrbracket$ be a solution of the \eqref{QME} on $\FF$. Then we call $S^\prime \in \Ci(\FF^\prime)\llbracket\hbar\rrbracket$ the \textbf{effective BV action} for $S$ induced on $\FF^\prime$ (given $\LL$) iff
+  \begin{equation}
+    e^{i/\hbar S^\prime} = P_*^{(\LL)} \left( e^{i/\hbar S} \right)
+  \end{equation}
+\end{definition}
 
-\newpage
+\begin{corollary}~
+  \begin{enumerate}
+    \item If $S$ is a solution of the \eqref{QME} on $\FF$ then $S^\prime$ is a solution of the \eqref{QME} on $\FF^\prime$.
+
+    \item If $S$ is a solution of the \eqref{QME} on $\FF$ and $\LL \sim \LL^\prime$ in $\FF^{\prime\prime}$ then the corresponding effective actions are equivalent (i.e. related by a canonical transformation) (w.r.t. $\Delta_{\mu^\prime}$).
+
+    \item IF $S \sim S^\prime$ are two solutions of the \eqref{QME} (equivalent by means of a canonical transformation), then their respective effective actions w.r.t. the same Lagrangian submanifold $\LL$ are also equivalent.
+  \end{enumerate}
+\end{corollary}
+
+In short the BV fibre integral defines a map
+\begin{equation}
+  \Sol(QME(\FF))/\sim \atob{P_*^{[\LL]}} \Sol(QME(\FF^\prime))/\sim
+\end{equation}
+where $[\LL]$ is a homotopy class of Lagrangians in $\FF^{\prime\prime}$. We are going to use this fibre integral to interpret the renormalisation group flow/Wilson's effective action picture. Summing up we want a "tower" of theories
+\begin{equation}
+  (F,S) \lra ... \lra (F_\Lambda, S_\Lambda) \atob{P_*^{\Lambda \Lambda^\prime}} (F_{\Lambda^\prime}, S_{\Lambda^\prime}) \lra ... \lra (F_0, S_0)
+\end{equation}
+where on the left we have a local theory, in the middle we have finite-energy theories and on the right we have the zero modes. This will lead us to
+\begin{equation}
+  P_*^{\Lambda \Lambda^\prime} e^{i/\hbar S_\Lambda(\phi)} = \int_{[\Lambda, \Lambda^\prime]} D\widetilde{\phi} \ e^{i/\hbar S(\phi + \widetilde{\phi})} = e^{i/\hbar S_{\Lambda^\prime}}
+\end{equation}
+
+\begin{rem}
+  Note that $P_*^{[\LL]}$ is better thought of as an operator on Berezinians or even better on $1/2$-densities
+  \begin{equation}
+    \Ci(\MM) \atob{\sqrt{\mu}} Den^{1/2}(\MM) = \Gamma(\MM, BER(\MM)^{\otimes 1/2})
+  \end{equation}
+\end{rem}
