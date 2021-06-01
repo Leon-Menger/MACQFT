@@ -1200,7 +1200,7 @@ In short the BV fibre integral defines a map
 \end{equation}
 where $[\LL]$ is a homotopy class of Lagrangians in $\FF^{\prime\prime}$. We are going to use this fibre integral to interpret the renormalisation group flow/Wilson's effective action picture. Summing up we want a "tower" of theories
 \begin{equation}
-  (F,S) \lra ... \lra (F_\Lambda, S_\Lambda) \atob{P_*^{\Lambda \Lambda^\prime}} (F_{\Lambda^\prime}, S_{\Lambda^\prime}) \lra ... \lra (F_0, S_0)
+  (F,S) \lra \ ... \ \lra (F_\Lambda, S_\Lambda) \atob{P_*^{\Lambda \Lambda^\prime}} (F_{\Lambda^\prime}, S_{\Lambda^\prime}) \lra \ ... \ \lra (F_0, S_0)
 \end{equation}
 where on the left we have a local theory, in the middle we have finite-energy theories and on the right we have the zero modes. This will lead us to
 \begin{equation}
@@ -1213,3 +1213,177 @@ where on the left we have a local theory, in the middle we have finite-energy th
     \Ci(\MM) \atob{\sqrt{\mu}} Den^{1/2}(\MM) = \Gamma(\MM, BER(\MM)^{\otimes 1/2})
   \end{equation}
 \end{rem}
+
+
+\newpage
+\subsection{Field Theory}
+Our goal in this chapter is to construct an $\infty$-dimensional generalisation of the BV construction. To this end consider the data of a fibre bundle $F \lra M$ where $F = \bigtimes_{i = - \infty}^{\infty} F_i$ such that $F_i \lra M$ is a vector bundle for all $i \neq 0$ and $F_0 \lra M$ is just a fibre bundle.\\
+Now the space of BV fields is given by the sections $\FF = \Gamma(M, F)$ in the sense of classical field theory. Thus we know how to make sense of $J^\infty F$, $\Ci(J^\infty F)$, $C_{loc}^\infty(\FF)$ and so on.
+
+\begin{rem}
+  An important caveat in this setting is the definition of \textbf{duals}. We want to define $T^*[-1] \EE$ where $\EE = \Gamma(M, E)$. For simplicity we assume $E$ to be a vector bundle. The symbol $*$ in $E^*$ is used to denote the vector bundle $E^* := E^V \otimes Dens(M) \lra M$ where $E^V$ is the fibrewise dual. Thus define
+  \begin{equation}
+    \EE^* := \Gamma(M, E^*), \quad \quad T^*[-1]\EE := \EE \times \EE^*[-1]
+  \end{equation}
+  Alternatively one can use distributional sections and then consider the "strong dual" of the space of sections $\EE$. This ansatz is chosen in \emph{Perturbative Algebraic QFT}. With a little work one can extend the above ansatz to any fibre bundle $E \lra M$ by dualising $TE$ instead.
+\end{rem}
+
+The above remark lets us conclude the following: \textbf{Anti-fields} are "coordinates" in the cotangent fibre of $T^*[-1]\EE$ where $\EE = \Gamma(M, E)$. Thus $\phi^\dagger \in \Gamma(M, E^V \otimes Dens(M)) = \Gamma(M, E^*)$. Notice that $\EE^* = \Gamma(M, E^*)$. Now there exists a nondegenerate (weak) pairing
+\begin{align}
+  T_\phi \EE \otimes T^*_\phi \EE &\lra \CC/\RR \\
+  (v_\phi, \alpha_\phi) &\lmap \int_M \pair{v_\phi}{\alpha_\phi}
+\end{align}
+where $\pair{\cdot}{\cdot}$ is a $Dens(M)$-valued fibrewise pairing. This can be written as the local $2$-form
+\begin{equation}
+  \Omega = \int_M \pair{\delta \phi}{\delta \phi^\dagger}
+\end{equation}
+Then given a local Lagrangian field theory $(M, F, L)$ with $F \lra M$ a fibre bundle and $L \in \Omega_{loc}^{0,top}(\FF \times M)$ together with a set of local symmetries $\{V_a\}$ for now assumed to originate from a Lie algebra action
+
+\begin{align}
+  \rho \colon \gf &\lra \VF_{loc}(\FF) \quad \text{for some Lie group} \ \ G\\
+  \im(\rho) &\simeq \Gamma(M, \gf) \quad \quad M \times \gf \lra M
+\end{align}
+
+ Note that this is a simplification, the generalisation works analogously to the previously discussed cases! In this setting the space of BV fields is the space of smooth section of $T^*[-1](F \times \gf[1])$, i.e. $\psi \in \Gamma(M, F)$, $\psi^\dagger \in \Gamma(M, T^*F \otimes Dens(M))$, $c \in \Gamma(M, \gf[1])$, $c^\dagger \in \Gamma(M, \gf^*[-2] \otimes Dens(M))$. Then Ghost fields $c$ are functions on $M$ with values in the Lie algebra. For an even basis $\{t_a\}$ we have
+
+ \begin{align}
+   c = c^a (x) t_a \quad \quad |c^a| = 1 \quad \quad |t_a| = 0 \quad \quad |c| = 1
+ \end{align}
+
+Now we go an define the rest of the BV data
+
+\begin{equation}
+  \Omega_{BV} = \int_M \pair{\delta \phi}{\delta \phi^\dagger} = \int \pair{\delta \psi}{\delta \psi^\dagger} + \pair{\delta c^a}{\delta c^\dagger_a}
+\end{equation}
+
+The BV action functional, if $S = \int_M L$ is given by
+
+\begin{equation}
+  S_{BV} = p^* S + \int_M \pair{\phi^\dagger}{Q_{CE} \phi}
+\end{equation}
+
+where $p \colon \FF_{BV} \lra \FF \times \Gamma(M, \gf[1])$ for $\FF_{BV} = T^*[-1](\FF \times \Gamma(M, \gf[1]))$. Further $Q_{CE}$ is a local (evolutionary) vector field on $\FF_{CE}$ such that
+
+\begin{equation}
+  Q_{CE}(\psi) = c^a V_a(\psi) \quad \quad Q_{CE} (c) = \frac{1}{2} [c,c]
+\end{equation}
+
+\begin{example}[Yang-Mills theory]
+  Let $(M,g)$ be a $4$-dimensional Riemannian manifold and let $\gf$ be a semisimple Lie algebra with an invariant inner product $\pair{\cdot}{\cdot}$. Here "invariant" means
+
+  \begin{equation}
+    \pair{X}{[Y,Z]} = \pair{[X,Y]}{Z} \quad \forall X,Y,Z \in \gf
+  \end{equation}
+
+  Further assume that we have a trivial principal bundle $P \lra M$ such that the connections are identified with $\gf$-valued $1$-forms $\AC \simeq \Omega^1 (M, \gf) \simeq \Omega^1 (M) \otimes \gf$ thus $A \in \AC$ can be written as $A = A^a_i dx^i t_a$.\\
+  The "gauge group" $G = \Ci(M, G)$ acts on $\AC$ by $(g, A) \lmap A^g := g^{-1} A g + g^{-1} dg$ and infinitesimally we have the Lie algebra action
+
+  \begin{equation}
+    \rho \colon (X,A) \lmap A + d_A X = A + dX + [A,X]
+  \end{equation}
+
+  where $X \in Lie(G) \simeq \Ci(M, \gf)$ and $d_A X \in \Omega^1(M, \gf)$. Now the Yang-Mills action functional is
+  \begin{equation}
+    S_{YM_2} = \int \frac{1}{2} \pair{F_A}{* F_A}_\gf
+  \end{equation}
+  Note that $\pair{\cdot}{\cdot}_\gf$ extends to a pairing on $\Omega^\circ(M) \otimes \gf$ by denoting
+  \begin{equation}
+    \pair{\omega_1 \otimes E_1}{\omega_2 \otimes E_2} = \int \omega_1 \wedge \omega_2 \pair{E_1}{E_2}_\gf
+  \end{equation}
+
+  \begin{lem}
+    $S_{YM_2}$ is invariant under the Lie algebra action $\rho$.
+  \begin{proof}
+    Think of the vector field $d_A X \frac{\delta}{\delta A}$ representing $D_X(A) = d_A X$ on the algebra of functions. Now recall that $F_A = dA + \frac{1}{2} [A,A]$ such that
+    \begin{align}
+      D_X(F_A) &= d(d_A X) + [A, d_A X] = d[A,X] + [A,dX]
+       [A,[A,X]]\\
+       &= [dA,X] + \frac{1}{2}[[A,A], X] = [F_A, X]
+    \end{align}
+    But then we can compute
+    \begin{align}
+      \int D_X \left( \pair{F_A}{*F_A} \right) = \int \pair{[F_A, X]}{*F_A} + \pair{F_A}{ [*F_A, X]} = 0
+    \end{align}
+    Thus the pairing is indeed invariant.
+  \end{proof}
+  \end{lem}
+
+  Now we "promote" $X$ to a ghost field $C$ and look at $T^*[-1](\AA \times Lie(G)[1])$ with fields $((A,A^\dagger), (C, C^\dagger))$. Then
+  \begin{equation}
+    \Omega_{BV} = \int_M \pair{\delta A}{\delta A^\dagger} + \pair{\delta C}{\delta C^\dagger}
+  \end{equation}
+  where we tacitly identified $\gf \ra \gf^*$ in the first pairing. Thus we arrive at the following BV action:
+
+  \begin{equation}
+    S_{BV} = \int \frac{1}{2} \pair{F_A}{*F_A} + \pair{A^\dagger}{d_A C} + \frac{1}{2} \pair{C^\dagger}{[C,C]}
+  \end{equation}
+
+  Assuming $\partial M = \emptyset$ we can compute $\imath_{Q_{BV}} \Omega_{BV} = \delta S_{BV}$ as well as
+  \begin{align}
+    Q_{BV} A &= d_A C\\
+    Q_{BV} C &= \frac{1}{2} [C,C] \\
+    Q_{BV} A^\dagger &= d_A *F_A + [C,A^\dagger] \\
+    Q_{BV} C^\dagger &= -d_A A^\dagger - [C,C^\dagger]
+  \end{align}
+  \begin{proof}
+    \begin{align}
+      \imath_Q \Omega = &\int \pair{Q_A}{\delta A^\dagger} + \pair{Q_{A^\dagger}}{\delta A} + \pair{Q_C}{\delta C^\dagger} + \pair{Q_{C^\dagger}}{\delta C} \\
+      \delta S_{BV} = &\int \pair{d_A * F_A}{\delta A} + \pair{\delta A^\dagger}{d_A C} - \pair{A^\dagger}{[\delta A, C]}\\
+      &+ \pair{A^\dagger}{d_A \delta C} + \frac{1}{2} \pair{\delta C^\dagger}{[C,C]} - \pair{C^\dagger}{[C, \delta C]} \\
+      = &\int \pair{d_A * F_A}{\delta A} + \pair{d_A C}{\delta A} + \pair{[A^\dagger,C]}{\delta A}\\
+      &- \pair{d_A A^\dagger}{\delta C} + \frac{1}{2} \pair{[C,C]}{\delta C^\dagger} - \pair{[C^\dagger, C]}{\delta C} \\
+    \end{align}
+  \end{proof}
+
+  \begin{rem}
+    Note that for signs we use the total degree:
+    \begin{align}
+      td(A) &= f.d. + g.h. = 1, \quad \quad td(C) = f.d. + g.h. = 1\\
+      \Lra \quad [A,C] &= [C,A], \quad \quad [C,C] \neq 0
+    \end{align}
+    Further note that $td(\delta) = 1$ and $td(d) = 1$ such that $td(dA) = 2 = td(\delta A)$.
+  \end{rem}
+
+  For clarity:
+  \begin{align}
+    \FF_{YM} = \Omega^1(M) \otimes \gf \times \Omega^0(M) \otimes \gf \times \Omega^3(M) \otimes \gf[-1] \times \Omega^{top}(M) \otimes \gf[-2]
+  \end{align}
+  where $T^*(\AA \Omega^\circ (M) \otimes \gf)$ such that $\pair{\phi}{\phi^\dagger} \in Dens(M)$. Now we can turn to a first order formulation of Yang-Mills theory:
+  \begin{align}
+    \FF_{YM_1} &= T^*[-1]\left( \Omega^1(M) \otimes \gf \times \Omega^2(M) \otimes \gf \times \Omega^0(M) \otimes \gf[-1] \right) \\
+    \Omega_{YM_1} &= \int \pair{\delta A}{\delta A^\dagger} + \pair{\delta B}{\delta B^\dagger} + \pair{\delta C}{\delta C^\dagger}
+  \end{align}
+  Further we get the following action:
+  \begin{equation}
+    S_{YM_1} = \int \pair{B}{F_A} + \frac{1}{2} \pair{B}{*B} + \pair{A^\dagger}{d_A C} + \pair{B^\dagger}{[C,B]} + \pair{C^\dagger}{\frac{1}{2}[C,C]}
+  \end{equation}
+  And thus $F_A = *B$ and $d_A B = 0$ which yields $d_A *F_A = 0$. Now the Lie algebra action on $\Omega^2 (M) \otimes \gf$ is given by $B \lmap [X,B]$. Thus BV is promoted to $QB = [C,B]$.
+  %TODO equations
+
+  \begin{rem}
+    As a graded vector space $\FF_{YM_1}$ is
+    %TODO tikzcd diagram
+  \end{rem}
+\end{example}
+
+
+\begin{example}[Chern Simons theory]
+  Let $M$ be a $3$-dimensional oriented manifold with a trivial principal $G$-bundle $P \lra M$ over it. Then note $\gf = Lie(G)$ such that $\AA \simeq \Omega^1(M) \otimes \gf$. Now the action is given by
+  \begin{equation}
+    S_{CS} = \int \frac{1}{2} \pair{A}{dA} + \frac{1}{6} \pair{A}{[A,A]}
+  \end{equation}
+  where $F_{CS} = \AA \simeq \Omega^1(M) \otimes \gf$. Now we get
+  \begin{align}
+    \delta L_{CS} &= \frac{1}{2} \pair{\delta A}{dA} + \frac{1}{2} \pair{A}{d \delta A} + \frac{1}{6} \pair{\delta A}{[A,A]} + \frac{1}{3} \pair{A}{[A,\delta A]} \\
+    &= \pair{\delta A}{F_A} - d \left( \frac{1}{2} \pair{A}{\delta A} \right)
+  \end{align}
+  The latter term gives us a symplectic form on $\AA(\Sigma, \gf)$ while the former gives the equation of motion for CS theory. When $F_A = 0$ we have \textbf{flat connections}.
+
+  \begin{ex}
+    The usual Lie algebra action is $A \lmap A + d_A X$. Show that $S_{CS}$ is invariant under this action. Further compute the boundary term: Localsym $L_V (L_{CS}) = d(-)$.
+  \end{ex}
+\end{example}
+
+
+
+~\\
