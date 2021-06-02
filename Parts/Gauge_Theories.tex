@@ -1368,9 +1368,9 @@ where $p \colon \FF_{BV} \lra \FF \times \Gamma(M, \gf[1])$ for $\FF_{BV} = T^*[
 
 
 \begin{example}[Chern Simons theory]
-  Let $M$ be a $3$-dimensional oriented manifold with a trivial principal $G$-bundle $P \lra M$ over it. Then note $\gf = Lie(G)$ such that $\AA \simeq \Omega^1(M) \otimes \gf$. Now the action is given by
+  Let $M$ be a $3$-dimensional oriented manifold with a trivial principal $G$-bundle $P \lra M$ over it. Then note $\gf = Lie(G)$ such that $\AC \simeq \Omega^1(M) \otimes \gf$. Now the action is given by
   \begin{equation}
-    S_{CS} = \int \frac{1}{2} \pair{A}{dA} + \frac{1}{6} \pair{A}{[A,A]}
+    S_{CS}^0 = \int \frac{1}{2} \pair{A}{dA} + \frac{1}{6} \pair{A}{[A,A]}
   \end{equation}
   where $F_{CS} = \AA \simeq \Omega^1(M) \otimes \gf$. Now we get
   \begin{align}
@@ -1382,8 +1382,220 @@ where $p \colon \FF_{BV} \lra \FF \times \Gamma(M, \gf[1])$ for $\FF_{BV} = T^*[
   \begin{ex}
     The usual Lie algebra action is $A \lmap A + d_A X$. Show that $S_{CS}$ is invariant under this action. Further compute the boundary term: Localsym $L_V (L_{CS}) = d(-)$.
   \end{ex}
+
+  Now we can define
+  \begin{equation}
+    S_{CS} = S_{CS}^0 + \int_M \pair{A^\dagger}{d_A C} + \pair{C^\dagger}{\frac{1}{2}[C,C]}
+  \end{equation}
+  which, by defining $\AB := (C,A,A^\dagger) \in \Omega^\circ (M) \otimes \gf[1- \circ]$, can be rewritten as
+  \begin{equation}
+    S_{CS} = \int \frac{1}{2} \pair{\AB}{d\AB}^{top} + \frac{1}{6} \pair{\AB}{[\AB, \AB]}^{top}
+  \end{equation}
 \end{example}
 
+Now the question is, how we can extend out previous quantum considerations into the BV setting for field theory. To this end, consider a gauge-fixing Lagrangian submanifold as the image of a "gauge-fixing operator" \cite{Costello}.
 
+\begin{definition}
+  A \textbf{gauge-fixing operator} on a free BV theory $S^0$ is a quadratic functional given by
+  \begin{equation}
+    Q^{GF} \colon \FF \lra \FF
+  \end{equation}
+  such that the following conditions holds:
+  \begin{enumerate}
+    \item $|Q^{GF}| = -1$, $[Q^{GF}, Q^{GF}] = 0$ and it is self adjoint with respect to the pairing $\pair{\cdot}{\cdot}$.
+    \item The commutator $[Q, Q^{GF}] =: D$ is a generalised Laplacian.
+  \end{enumerate}
+\end{definition}
+
+\begin{rem}
+  Scalar field theory can be formulated within the BV framework. Just take
+  \begin{equation}
+    \FF = T^*[-1] \Ci(M) \simeq \Ci(M) \oplus \Ci(M)[-1] \otimes Dens(M)
+  \end{equation}
+  with the following action:
+  \begin{align}
+    S_{BV} &= S_0 = \frac{1}{2} \int_M d\phi \wedge *_g d\phi \\
+    Q_{BV} &\equiv d_\KK \quad \Lra \quad Q_{BV} \phi^\dagger = d *_g d\phi \equiv \Delta_g \phi \\
+    Q_{BV} &\colon \FF^{(0)} \lra \FF^{(1)}
+  \end{align}
+  Thus the gauge-fixing operator is the identity seen as a map $Q^{GF} \colon \FF^{(1)} \lra \FF^{(0)}$ such that $[Q, Q^{GF}] = \Delta_g$. The Lagrangian submanifold $\LL_0 \cong \Ci(M) \longleftrightarrow \FF$ is obtained as $\im(Q^{GF})$. Integrating on a BV path integral on this Lagrangian submanifold is the same as quantising scalar fields in the sense that we have previously seen.
+\end{rem}
+
+\subsubsection{Gauge fixing in $CS$ and $YM_1$}
+
+\begin{theo}[Hodge decomposition]
+  Let $(M,g)$ be a smooth Riemannian manifold. Then there exists an orhtogonal decomposition
+  \begin{equation}
+    \Omega^k(M) = d\Omega^{k-1}(M) \oplus \HH^k(M) \oplus d^* \Omega^{k+1}(M)
+  \end{equation}
+  where $\HH^k(M) = \{\alpha \in \Omega^k(M) | \Delta_g \alpha = 0 \}$. If $M$ is compact, $\HH^k(M)$ is the $k$-th de Rham cohomology group of $M$, namely $\HH^k(M) = H^k_{dR}(M,d)$.
+\end{theo}
+
+\begin{rem}
+  If $M$ is such that $H^k_{dR}(M,d) = 0$ for any $k > 0$ then
+  \begin{align}
+    \omega \ \ \text{closed} \quad &\Longleftrightarrow \quad \omega \ \ \text{exact} \\
+    \omega \ \ \text{coclosed} \quad &\Longleftrightarrow \quad \omega \ \ \text{coexact}
+  \end{align}
+  Further we have
+  \begin{align}
+    d^* := * d * \colon \Omega^{k+1}(M) \lra \Omega^{k}(M) \\
+    \Delta_g \equiv (d + d^*)^2 = dd^* + d^* d
+  \end{align}
+\end{rem}
+
+\begin{prop}
+  Assume $H^k_{dR}(M,d) = 0$ for any $k > 0$ and $M$ compact. Then $\ker(d^*) \subset \Omega^\circ(M) \otimes \gf$ is a Lagrangian submanifold.
+\begin{proof}
+  This is rather a sketch of the proof: For a submanifold to be Lagrangian, it needs to be isotropic with an isotropic complement. Thus if $W = V \oplus V^\prime$ we have $V$ and $V^\prime$ isotropic. Now $\LL = \ker(d^*)$ is isotropic, i.e. $\Omega_{BV}$ vanishes on $\LL$. Thus for $\omega_2 = d^* \alpha_2$ we obtain
+  \begin{align}
+    &\pair{\omega_1}{\omega_2}|_{\ker(d^*)} = \pair{\omega_1}{d^* \alpha_2}|_{\ker(d^*)} = \pm \pair{d^* \omega_1}{\alpha_2}|_{\ker(d^*)} = 0
+  \end{align}
+  The same argument holds for $d$-exact and $d$-closed forms. Thus there exists a decomposition $\Omega^k(M) = d\text{-exact} \oplus d^*\text{-exact}$ into isotropic subspaces.
+\end{proof}
+\end{prop}
+
+\begin{rem}
+  When looking at manifolds with nontrivial cohomology, thus becomes very complicated since
+  $\Omega^\circ(M) = d\Omega \oplus d^* \Omega \oplus \HH$
+  where the first two spaces harbour the path integral and the third the "effective fields".
+\end{rem}
+
+A good gauge-fixing operator for $CS$-theory is precisely $d^*$ since $d^{*2} = 0$, $|d^*| = -1$, $d^* \colon \Omega^k \lra \Omega^{k-1}$ and $[Q_{BV}, d^*] = \Delta_g$ because $Q \equiv d$. Note that $Q_0 A = dC + [A,C]$. This sloppines comes from the fact that \textit{Costello} \cite{Costello} defines a "free" BV operator as given by the quadratic part of the BV action:
+\begin{equation}
+  S_{CS} = \int \frac{1}{2} \pair{A}{dA} + \pair{A^\dagger}{dC} + \frac{1}{6} \pair{A}{[A,A]} + \pair{A^\dagger}{[A,C]}
+\end{equation}
+
+\begin{rem}
+  Chern Simons theory in principle does \textbf{not} require a specification of any metric in order to be defined and work. Thus it classifies as a so-called "Topological Theory" since it is independent of a metric. When working with gauge-fixing however, we need to fix a metric, even in this theory. Thus one needs to ask in how far the gauge-fixing procedure is independent of the choice of a metric. In his 89 paper %TODO reference
+  Witten has shown that one can remove "most" of the dependence on $g$. However it remains an open question if it is completely independent. Current belief is that it should be, although a full proof has yet to be developed. in $YM_1$ theory one can use the same gauge fixing using the same Riemannian structure $(M,g)$.
+\end{rem}
+
+\begin{notation}
+  One typically calls $\ker(d^*)$ the \textbf{Lorenz gauge} (namely thinking of $\ker(d^*)$ as an isotropic subspace of the fields) when one chooses $d^*A = 0$, thus $A \in \ker(d^*)$. This is typically written as $*d* A \lra \partial_\mu A^\mu = 0$, a form well-known from electrodynamics.
+\end{notation}
+
+
+\subsubsection{Quantum BV field theory}
+
+Classical BV field theories make perfect sense with minimal adaptations from the finite-dimensional case. This however turns out to be quite more complex for a quantum formulation. First remember that
+\begin{equation}
+  \Delta_\mu f = - \frac{1}{2} \diver_\mu(X_f)
+\end{equation}
+However this \emph{requires} a Berezinian which in infinite dimensions is generally not defined! Now there exist several types of "regularisation attempts" to define $\Delta_\mu$. Some try to regularise the heat kernel \cite{Costello} while other probe triangulations/decompositions of manifolds into cells (a kind of finite-dimensional filter) \cite{Mnev, ...}. Again others start from local functionals and deform the product among functionals. As a "byproduct" they obtain "$\Delta$". This ansatz is called "Deformation Quantisation" and can be found in \cite{PAQFT}. In this subchapter we will only consider the first ansatz. Note that this is a very active field of research and while some approaches are more widespread, there is none that is considered the "right" approach.\\
+
+Consider $\EE = \Gamma(M, E)$ where $E \lra M$ is a vector bundle, graded and endowed with a $(-1)$-symplectic pairing $\pair{\cdot}{\cdot}$ such that $\Omega_{BV}(V,W) = \pair{V}{W}$.
+
+\begin{definition}
+  Given any element $K \in \EE \otimes \EE$ we define a convolution
+  \begin{equation}
+    K* \colon \EE \lra \EE
+  \end{equation}
+  such that $\forall \psi \in \EE $ we have
+  \begin{equation}
+    K * \psi := (-1)^{|K|} ( 1 \otimes \pair{\cdot}{\cdot})(K \otimes \psi)
+  \end{equation}
+  Thus if $K = K_1 \otimes K_2$ we have $K * \psi = (-1)^{|K|} K_1 \pair{K_2}{\psi}$
+\end{definition}
+
+Now we denote $\widetilde{Q} = Q \otimes 1 + 1 \otimes Q$ on $\EE^{\otimes 2}$. This leads us to
+
+\begin{lem}
+  For $K$ as before we have $(\widetilde{Q} K) * \psi \equiv [Q, K *] \psi$.
+\begin{proof}
+  \begin{align}
+    &((Q \otimes 1 + 1 \otimes Q ) K ) * \psi \\
+    = \ \ &(QK_1 \otimes ) K_2 + (-1)^{|K_1|} K_1 \otimes Q K_2 ) * \psi \\
+    = \ \ & (-1)^{|K|} QK_1 \pair{K_2}{\psi} + (-1)^{|K|} (-1)^{|K_1|} K_1 \pair{Q K_2}{\psi} \\
+    = \ \ & Q \cdot (K*\psi) - (-1)^{|K|} K * Q \psi = ... \\
+    = \ \ &(-1)^{|K|} QK_1 \pair{K_2}{\psi} + (-1)^{|K|} (-1)^{|K_1|} K_1 \pair{QK_2}{\psi}
+  \end{align}
+\end{proof}
+\end{lem}
+
+Now assume that we are given a gauge-fixing operator $Q^{GF}$ such that $D = [Q, Q^{GF}]$ is our generalised Laplacian. This is sufficient to make sense of the heat kernel of $e^{-lD}$. Let $K_l \in \EE \otimes \EE$ be defined as $K_L * \psi = \exp(-lD) \psi$.
+
+\begin{definition}
+  The (gauge-fixed) propagator is defined as
+  \begin{equation}
+    P(\epsilon, L) := \int_\epsilon^L (Q^{GF} \otimes 1) K_l \ dl
+  \end{equation}
+  such that $P(\epsilon,L) * \psi = Q^{GF} \int_\epsilon^L e^{-lD} \psi \ dl$. Thus it lands in $\in(Q^{GF})$.
+\end{definition}
+
+Now recall that given an element $K \in \EE^{\otimes 2}$ we can define a second-order operator as
+\begin{equation}
+  \partial_K := \dell{}{K_1} \otimes \dell{}{K_2}, \quad \quad \text{where} \ \ K = K_1 \otimes K_2
+\end{equation}
+
+\begin{definition}
+  The scale-$l$ BV Laplacian is defined as
+  \begin{equation}
+    \Delta_L := - \partial_{K_l} \colon \Ci(\EE) \lra \Ci(\EE)
+  \end{equation}
+\end{definition}
+
+\begin{definition}
+  A functional $S \in \Ci(\EE)\llbracket\hbar\rrbracket$ satisfies the scale-$L$ \eqref{QME} iff
+  \begin{equation} \tag{$[QME]_L$} \label{QMEL}
+    \Delta_L \exp\left( 1/\hbar S \right) = 0 \quad \iff \quad \frac{1}{2} \{S,S\}_L + \hbar \Delta_L S = 0
+  \end{equation}
+  where
+  \begin{equation}
+    \{f,g\} := (-1)^{|f|} \Delta_L (fg) - (-1)^{|f|} \Delta_L f \cdot g - f \Delta_L g
+  \end{equation}
+  This means that we have a scale-$L$ BV algebra.
+\end{definition}
+
+Note that, in order to align with the respective parts in Costello \cite{Costello}, we did not choose a complex phase for the appearing exponentials. They are purely real.\\
+
+It is often convenient to split $S$ into a \emph{free} (quadratic) part $S_0$ and an \emph{interaction} (cubic) part $I$ such that $S = S_0 + I$. Now choosing $Q_0 := \{S_0, \cdot \}$ we have a \emph{classic free BV operator}. Thus we can reformulate the definition of the \eqref{QME} for interaction terms. $I$ satisfies \eqref{QMEL} iff
+\begin{equation}
+  (Q_0 + \Delta_L) \exp(1/\hbar I) = 0 \quad \iff \quad Q_0 I + \frac{1}{2} \{I,I\}_L + \hbar \Delta_L I = 0
+\end{equation}
+
+\begin{definition}[Pre-Theories]
+  A \textbf{Pre-Theory} is a collection of effective interactions $\{F[L]\}$ such that the following conditions hold:
+  \begin{enumerate}
+    \item Each $I \in \Ci(\EE)\llbracket\hbar\rrbracket$ is of degree $0$ and at least cubic modulo $\hbar$.
+    \item The $RGE$ $I[L] = W(P(\epsilon, L), I[\epsilon])$ is satisfied, where we defined $W(P(\epsilon, L), I[\epsilon]) = \hbar \log \left( \exp(\hbar \partial_{P(\epsilon,L)}) e^{I/\hbar} \right)$ (formally analogous to the scalar field theory case).
+    \item Each $I_{i,k}[L]$ has a small-$L$ asymptotic expansion in terms of local functionals, where $(i,k)$ indicate the homogenous part of degree $k$ of the $\hbar^i$ coefficient.
+  \end{enumerate}
+  Further, a \textbf{Theory} is a Pre-Theory such that $I[L]$ satisfies \eqref{QMEL} for all $L$.
+\end{definition}
+
+\begin{prop}
+  A functional $I \in \Ci(\EE)\llbracket\hbar\rrbracket$ satisfies $[QME]_\epsilon$ iff it satisfies $[QME]_L$. Note that this is the same as the BV theorem for fibre integrals.
+\begin{proof}
+  Note that $P(\epsilon,L)$ is the kernel of $\int_\epsilon^L Q^{GF} e^{-lD} \ dl$. Now this let's us denote
+  \begin{equation}
+    P * \psi = \int_\epsilon^L (Q^{GF} \otimes 1) K_l \ dl * \psi ) \int_\epsilon^L Q^{GF} e^{-lD} \psi
+  \end{equation}
+  Thus we can compute
+  \begin{align}
+    \left[Q, \int_\epsilon^L Q^{GF} e^{-lD} \ dl \right] &= \int_\epsilon^L [Q,Q^{GF}] e^{-lD} \ dl \\
+    &= \int_\epsilon^L D e^{-lD} \ dl = e^{-\epsilon D} - e^{-l D} \\
+    \Lra \quad (K_\epsilon - K_l) * \psi &= \left( e^{-\epsilon D} - e^{-l D} \right) \psi
+  \end{align}
+  Using the last lemma we obtain
+  \begin{align}
+    (\widetilde{Q} P(\epsilon,L)) * \psi &= [Q, P *] \psi \\
+    \Lra \quad \widetilde{Q} P &= K_\epsilon - K_L
+  \end{align}
+  Now passing to second-order operators we get
+  \begin{equation}
+    [Q, \partial_{P(\epsilon,L)}] = \partial_{K_\epsilon} - \partial_{K_L} = \Delta_L - \Delta_\epsilon
+  \end{equation}
+  Thus $\partial_{P(\epsilon,L)}$ can be seen as a chain homotopy between $\Delta_L$ and $\Delta_\epsilon$. Thus
+  \begin{align}
+    &(Q + \hbar \Delta_L) \exp(W(P(\epsilon,L)I)/\hbar)\\
+    = \ \ &(Q + \hbar \Delta_L) (\exp(\hbar \partial_P) \exp(I/\hbar))\\
+    = \ \ &\exp(\hbar \partial_P) (Q + \hbar \Delta_\epsilon) \exp(I/\hbar)
+  \end{align}
+\end{proof}
+
+\end{prop}
+
+This last result of the course poses as an entry point for even more sophisticated discussions in \textit{Costello} \cite{Costello} and other sources.
 
 ~\\
