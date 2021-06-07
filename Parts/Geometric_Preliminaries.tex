@@ -286,8 +286,10 @@ Now we make our way to define the notion of a full sheaf:
   \begin{itemize}
     \item[d)] If $U$ is an open subset of $X$ and $\{V_i\}$ and open cover of $U$, $s\in\FF(U)$ such that $\rho_{UV_i}(s) = 0 \quad \forall i$ then $s=0$.
 
-    \item[e)] If $U$ is an open subset of $X$ and $\{V_i\}$ and open cover of $U$. Let $s_i \in \FF(U_i)$ such that
-    $$ \rho_{V_i \ V_i \cap V_j} (s_i) = \rho_{V_j \ V_j \cap V_i} (s_i) \quad \forall i,j$$
+    \item[e)] If $U$ is an open subset of $X$ and $\{V_i\}$ and open cover of $U$. Let $s_i \in \FF(V_i)$ such that
+    \begin{equation}
+      \rho_{V_i \ V_i \cap V_j} (s_i) = \rho_{V_j \ V_j \cap V_i} (s_i) \quad \forall i,j
+    \end{equation}
     then there exists an $s\in\FF(U)$ such that $\rho_{U V_i} (s) = s_i \quad \forall i$.
   \end{itemize}
   Alternatively, one can discard property d) and ask in e) that there exists a unique such $s\in\FF(U)$.
@@ -297,24 +299,26 @@ We again provide some interesting examples of sheaves and presheaves:
 
 \begin{example}~
 \begin{itemize}
-  \item Let $X$ be a topological space. For each open set $U\subseteq X$ let $C(U)$ be the ring of continuous functions with codomain $\RR$. The maps $\rho_{UV}:C(U)\ra C(V)$ are now given by the restrictions of these functions in the usual sense. This makes $C$ a sheaf of rings on $X$.
-  \item Let $f:X\ra Y$ be a continuous map between topological spaces $X,Y$. Define
-  $$ \FF(U):=\{ s:U\ra Y, \ f\circ s = \id_U \} $$
+  \item Let $X$ be a topological space. For each open set $U\subseteq X$ let $C(U)$ be the ring of continuous functions with codomain $\RR$. The maps $\rho_{UV}:C(U)\ra C(V)$ for $V \subset U$ are now given by the restrictions of these functions in the usual sense. This makes $C$ a sheaf of rings on $X$.
+  \item Let $f:X \ra Y$ be a continuous map between topological spaces $X,Y$. Define
+  \begin{equation}
+    \FF(U):=\{ s:U \subset Y \ra X, \ f \circ s = \id_U \}
+  \end{equation}
   This constitutes a sheaf on $Y$. The maps $s$ in $\FF(U)$ are called \textbf{sections} of the sheaf.
-  \item Let $X= \RR$ and define $\FF(U)$ to be the ring of bounded functions of an open subset $U\subseteq \RR$. Now this is not a sheaf: If $U = \RR$, we choose $V_i := \{x \in \RR \ s.t. \ |x| <i \}$. Now let $\id :x \mapsto x$ denote the identity map. We note that $\id \in \FF(V_i) \ \forall i \in \NN$. Thus there cannot exist $s \in \FF(\RR)$ s.t. $s|_{V_i} = \id$ which implies that $\id \notin \FF(\RR)$ is not bounded. Thus we found a presheaf that is not a full sheaf.
+  \item Let $X= \RR$ and define $\FF(U)$ to be the ring of bounded functions of an open subset $U\subseteq \RR$. Now this is not a sheaf: If $U = \RR$, we choose $V_i := \{x \in \RR \ s.t. \ |x| <i \}$. Now let $\id \colon x \mapsto x$ denote the identity map. We note that $\id \in \FF(V_i) \ \forall i \in \NN$. Thus there cannot exist $s \in \FF(\RR)$ s.t. $s|_{V_i} = \id$ which implies that $\id \notin \FF(\RR)$ is not bounded. Thus we found a presheaf that is not a full sheaf.
 \end{itemize}
 \end{example}
 
 The next natural step is to again identify the data needed for morphisms in the category of presheaves:
 
 \begin{definition} (Morphisms of Sheaves)\\
-  Let $\FF$ and $\GG$ be two presheaves (or sheaves) on a topological space $X$. A \textbf{morphism of (pre-)sheaves} consist of a morphisms of rings $\phi_U: \FF(U) \ra \GG(U)$ for all open sets $U \in X$ such that the following diagram commutes:
-  \[
+  Let $\FF$ and $\GG$ be two presheaves (or sheaves) on a topological space $X$. A \textbf{morphism of (pre-) sheaves} consist of a morphisms of rings $\phi_U: \FF(U) \ra \GG(U)$ for all open sets $U \in X$ such that the following diagram commutes:
+  \begin{equation}
   \begin{tikzcd}
     \FF(U) \arrow{r}{\phi(U)} \arrow[swap]{d}{\rho_{UV}} & \GG(U) \arrow{d}{\rho^\prime_{UV}} \\
     \FF(V) \arrow{r}{\phi(V)} & \GG(V)
   \end{tikzcd}
-  \]
+  \end{equation}
   Which sums up to saying $\rho^\prime \circ \phi = \phi \circ \rho$.
 \end{definition}
 
@@ -348,7 +352,7 @@ Now it is very reasonable to ask how a sheaf behaves at an arbitrary point of th
   A \textbf{locally ringed space} is a ringed space such that all the stalk of $O_X$ are local rings in the sense of \ref{def:local_ring}.
 \end{definition}
 
-In the following we will mostly use notion of locally ringed spaces. Before continuing, we again provide some examples for the above constructs:
+In the following we will mostly use notion of locally ringed spaces. Before continuing, we again provide an example for the above constructs:
 
 \begin{example}~
   \begin{itemize}
@@ -362,7 +366,7 @@ In the following we will mostly use notion of locally ringed spaces. Before cont
 While it may seem like some of the definitions were just loosely related, we gradualy closed in on the important definition of a graded manifold:
 
 \begin{definition} (Graded Manifold)
-  A \textbf{graded manifold} $M$ is a locally ringed space $(M, O_M)$ where $M$ is a manifold and $O_M$ is a sheaf that is locally isomorphic to $(U, \Ci(U) \tens{} S^\bullet(W_U^*))$ where $U\subseteq M$ is an arbitrary open subset and $W_U$ is a graded vector space. Also recall that $S^\bullet(W_U^*)$ denotes the graded algebra of graded polynomial functions on $W_U^\bullet$.\\
+  A \textbf{graded manifold} $M$ is a locally ringed space $(M, O_M)$ where $M$ is a manifold and $O_M$ is a sheaf that is locally isomorphic to $(U, \Ci(U) \tens{} S^\bullet(W_U^*))$ where $U\subseteq M$ is an arbitrary open subset and $W_U$ is a graded vector space such that $(W_U)_0 = \{0\}$. Also recall that $S^\bullet(W_U^*)$ denotes the graded algebra of graded polynomial functions on $W_U$.\\
 
   The sections of the sheaf $O_M$ are called \textbf{graded functions} on the graded manifold $M$. Note that the graded functions form a graded algebra.
 \end{definition}
@@ -380,7 +384,7 @@ We denote the coordinates by $(x_i)^n_{i= 1,...,m}$. Now coordinates of degree $
 Now we once again turn to the respective morphisms of graded manifolds. Looking at the definition of a graded manifold, we first need to define the morphisms of (locally) ringed spaces:
 
 \begin{definition} (Morphisms of Ringed Spaces)\\
-  A \textbf{morphism between ringed spaces} $(X,O_X)$ and $(Y,O_Y)$ is a pair $(f, \psi)$ where $f:X\ra Y$ is continuous and $\psi:O_Y \ra f_* O_X$
+  A \textbf{morphism between ringed spaces} $(X,O_X)$ and $(Y,O_Y)$ is a pair $(f, \psi)$ where $f:X \lra Y$ is continuous and $\psi \colon O_Y \lra f_* O_X$
   is a local (see below) morphism  of sheaves (on $Y$). $f_* O_X$ denotes the direct image of the structure sheaf of $X$ defined for opens $U\subseteq Y$ as
   $$ (f_* O_X)(U) := O_X(f^{-1}(U)) $$
 \end{definition}
@@ -430,7 +434,7 @@ We try to bring the matter closer to the reader by giving one examples:
   Any graded manifold is isomorphic to a graded manifold associated to a graded vector-bundle.
 \end{theo}
 \begin{mdframed}
-The theorem will certainly apply when restricted to graded $W$ such that $W^i\neq0$ for finitely many $i$. Otherwise, the usual 'finitely presented' assumption of the original Serre--Swan theorem is not satisfied. Still, some people do say this is true without mentioning this assumption, so maybe it's still true. 
+The theorem will certainly apply when restricted to graded $W$ such that $W^i\neq0$ for finitely many $i$. Otherwise, the usual 'finitely presented' assumption of the original Serre--Swan theorem is not satisfied. Still, some people do say this is true without mentioning this assumption, so maybe it's still true.
 \end{mdframed}
 
 This theorem tells us that all graded manifolds can be considered to be of the form seen in the aforementioned example regarding the sheaf of sections.\\
@@ -620,7 +624,11 @@ Using the notion of a hamiltonian graded vector field, we take a differential gr
 $$ \imath_Q \omega = dS $$
 Now since $Q = \{S,\cdot\}$ we see
 $$ Q(f) = \{S, f\} = (-1)^{|S|+1} X_S(f) = X_S(f) $$
-implying that $[Q,Q](f) = \{\{S,S\},f\} = 0$ making $\{S,S\}$ a constant. Now since $\{S,S\}$ has degree $k+2$, $\omega$ has degree $k$ and $S$ has degree $k+1$ we see that $\{S,S\} = 0$ if $k \neq -2$. This equation is called the \textbf{Classical Master Equation}\label{ClassicalMasterEquation} and will become increasingly important towards the end of the course.
+implying that $[Q,Q](f) = \{\{S,S\},f\} = 0$ making $\{S,S\}$ a constant. Now since $\{S,S\}$ has degree $k+2$, $\omega$ has degree $k$ and $S$ has degree $k+1$ we see that
+\begin{equation}\label{ClassicalMasterEquation}\tag{CME}
+  \{S,S\} = 0
+\end{equation}
+if $k \neq -2$. This equation is called the \textbf{Classical Master Equation} and will become increasingly important towards the end of the course.
 
 \newpage
 \subsection{Principal Bundles}
