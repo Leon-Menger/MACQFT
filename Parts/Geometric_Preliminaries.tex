@@ -665,9 +665,9 @@ Remember that an action $\sigma$ is free, if for any $g\in G$ and $x\in X$ the e
 
   \item Let again $G$ be a Lie group and $H$ be a closed Lie subgroup of $G$. Then $H$ acts freely on $G$ via the right action and we denote the orbit space by $G/H$. Now the triple $(G,\pi, G/H)$ where $\pi$ is the standard projection to the orbit space is a principal $H$-bundle.
 
-  \item Let $M$ be an $m$-dimensional manifold. A linear frame $b_p$ at $p\in M$ is an ordered set $(b_1, ..., b_m)$ of vectors that forms a basis of the tangent space $\Tp$. Now we define the set $B(M)$ to be the set of all frames at all point of $M$ and the projection $\pi:B(M)\ra M$ that maps $b_p \mapsto p$. Using the vector space structure of the tangent spaces, we can define a natural free action on $B(M)$ using the lie group $GL(m,\RR)$ via
+  \item Let $M$ be an $m$-dimensional manifold. A linear frame $b_p$ at $p\in M$ is an ordered set $(b_1, ..., b_m)$ of vectors that forms a basis of the tangent space $\Tp$. Now we define the set $B(M)$ to be the set of all frames at all points of $M$ and the projection $\pi:B(M)\ra M$ that maps $b_p \mapsto p$. Using the vector space structure of the tangent spaces, we can define a natural free action on $B(M)$ using the Lie group $GL(m,\RR)$ via
   $$ (b_1, ...,b_m)g := \left( \sum_{j_1}^m b_{j_1} g_{j_1 1}, ..., \sum_{j_m}^m b_{j_m} g_{j_m 1} \right) $$
-  Now as an exercise $B(M)$ can be given the structure of a smooth manifold. This enables us to show that $(B(M), \pi, M)$ is a $GL(m,\RR)$-principal bundle.
+  Now as an exercise $B(M)$ can be given the structure of a smooth manifold. This enables us to show that $(B(M), \pi, M)$ is a $GL(m,\RR)$-principal bundle, known as the frame bundle.
 \end{itemize}
 \end{example}
 
@@ -676,10 +676,10 @@ Having defined a new set of objects, we again define the morphisms between them 
 \begin{definition} (Principal Bundle Morphisms)\\
   Let $(P,\pi_1,M)$ be a principal $G$-bundle and $(Q,\pi_2, N)$ be a principal $H$-bundle. A \textbf{principal bundle map} is a triple $(u, \phi, \Lambda)$ such that $u: P \ra Q$ and $\phi: M \ra N$ are smooth maps and $\Lambda: G \ra H$ is a group homomorphism and such that
   \begin{align}
-    \pi_2 \circ u &= \phi \circ \pi_1\\
-    u(pg) &= u(p) \Lambda(g) \quad \forall p \in P, \ g\in G
+    \pi_2 \circ u &= \phi \circ \pi_1,\\
+    u(pg) &= u(p) \Lambda(g) \quad \forall p \in P, \ g\in G.
   \end{align}
-  Namely the following two diagrams should commute:
+  %Namely the following two diagrams should commute:
   %TODO commutative diagrams!!
 \end{definition}
 
@@ -744,7 +744,7 @@ We take a step back and investigate a natural product defined on $G$-spaces. Thi
   and further $\pi_F: P_F \ra M$ via $\pi_F([p,v]) = \pi(p)$. Then $\xi[F]:= (P_F, \pi_F, M)$ is a fibre bundle on $M$ with fibre $F$. We call this bundle the \textbf{associated bundle} to the principal bundle $\xi$.
 \end{definition}
 
-To show that the above is indeed a well-defined concept, we need to prove that the introduced map $\pi_F$ does not care about the choice of the respresentant. Also we need to show that all fibres of the given bundle are indeed homeomorphic to one another:
+To show that the above is indeed a well-defined concept, we need to prove that the introduced map $\pi_F$ does not care about the choice of the respresentative. Also we need to show that all fibres of the given bundle are indeed homeomorphic to one another:
 \begin{proof} This proof can be split in two steps:
 \begin{itemize}
   \item[(1)] Let $(p_1, v_1) \sim (p_2, v_2)$ thus there exists $g \in G$ such that $(p_2, v_2) = (p_1g, g^{-1}v_1)$. Now our goal is to show that $\pi_F(p_1, v_1) = \pi_F(p_2, v_2)$ and $\pi(p_1 g) = \pi(p_1)$. But since $\pi_F(p_1, v_1) = \pi(p_1)$, we easily see that
@@ -787,7 +787,7 @@ Now defining the vertical subspace leaves us with the converse concept, a kind o
   where we denoted by $\delta_g(p) = pg$ the action of $G$.
 \end{definition}
 
-The main point is that, given a connection on a principal bundle, we can take any $\tau \in T_pP$ and uniquely decompose it as $\tau = hor(\tau) + vert(\tau)$. The same is possible for $X\in \VF(P)$ where $X = hor(X) + ver(X)$ such that $hor(X)_p \in H_pP$ and $ver(X)_p \in V_pP$ for all $p\in P$. Note that these two vector fields are smooth. Thus a connection ultimately gives us a tool to uniquely split a vector field which allows .\\
+The main point is that, given a connection on a principal bundle, we can take any $\tau \in T_pP$ and uniquely decompose it as $\tau = hor(\tau) + vert(\tau)$. The same is possible for $X\in \VF(P)$ where $X = hor(X) + ver(X)$ such that $hor(X)_p \in H_pP$ and $ver(X)_p \in V_pP$ for all $p\in P$. Note that these two vector fields are smooth. %Thus a connection ultimately gives us a tool to uniquely split a vector field which allows .\\
 
 
 Now in order to avoid working with spaces, we aim to give an equivalent notion using Lie algebras and some geometry. First recall that, given a Lie group $G$, we can identify the Lie algebra $\gf \simeq T_eG$. Now for $A \in \gf$ and a principal $G$-bundle $P$, we can define a vector field on $TP$ for $f:P\ra \RR$ via
