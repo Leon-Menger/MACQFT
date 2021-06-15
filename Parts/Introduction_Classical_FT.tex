@@ -666,7 +666,7 @@ We move on to some examples of classical Lagrangian field theories:
 \newpage
 \subsection{Scalar Field Theory and Yang-Mills-Theory}
 
-Consider a smooth, compact manifold $M$ equipped with a (pseudo-)Riemannian metric $g$. This metric defines a volume form on $M$ given by $\vol_g := \sqrt{|\det(g)|} dx^1 \wedge ... \wedge dx^n$.
+Consider a smooth, oriented, compact manifold $M$ equipped with a (pseudo-)Riemannian metric $g$. This metric and the orientation define a volume form on $M$ given by $\vol_g := \sqrt{|\det(g)|} dx^1 \wedge ... \wedge dx^n$. This so-called Riemannian volume form has this form independently of the choice of local coordinates.
 
 \begin{definition}[Hodge Duality]
   The \textbf{Hodge-Duality map} (Hodge-$*$) is the $\Ci(M)$-linear map
@@ -702,7 +702,7 @@ Using the above definition, one can directly show some interesting properties of
 
 
 \begin{definition}[Scalar Field Theory]
-  Let $(M,g)$ as above and $\FF= \Ci(M)$ seen as the sections of a trivial $\RR$-bundle. Then \textbf{Scalar field theory} on $\FF$ is defined with the Lagrangian
+  Let $(M,g)$ as above and $\FF= \Ci(M)$ seen as the sections of a trivial $\RR$-bundle. Then (free, a.k.a.\ non-interacting) \textbf{Scalar field theory} on $\FF$ is defined with the Lagrangian
   $$ L = \frac{1}{2} d \phi \wedge * d\phi \equiv  g^{\mu\nu} \partial_\mu \phi \partial_\nu \phi \sqrt{|\det(g)|} d^n x $$
 \end{definition}
 
@@ -726,20 +726,20 @@ The equations of motion for scalar field theory are
 $$ \Delta_g \phi = 0 $$
 
 \begin{rem}
-  One can add "potential terms" to the Lagrangian. A common example would be $V(\phi) = \frac{m^2}{2} \phi^2 + \frac{\beta}{4} \phi^4$. Note furter that our theory \emph{requires} a metric $g$ on $M$ and is thus a "Non-topological field theory".
+  One can add "potential (a.k.a.\ interaction) terms" to the Lagrangian. A common example would be $V(\phi) = \frac{m^2}{2} \phi^2 + \frac{\beta}{4} \phi^4$. Note furter that our theory \emph{requires} a metric $g$ on $M$ and is thus a "Non-topological field theory".
 \end{rem}
 
 \begin{definition}[Pure, d-dimensional Yang-Mills-Theory]
   Let $(M,g)$ be as above and $P \lra M$ a principal $G$-bundle where $G$ is a compact Lie group $(U(n))$. Denote by $A$ a connection $1$-form and let $F_A$ denote its curvature. In a local chart we can write it as
   $$ F_A = dA + \frac{1}{2}[A,A] $$
-  Assume for simplicity that $P \lra M$ is a trivial bundle and $A \in \Omega^1(P,y)$ descends to a form on $M$. Then a \textbf{Pure Yang-Mills-Theory} is the Lagrangian field theory given by $\FF = \mathcal{A}$ (space of principal connections on the principal bundle) and the Lagrangian (density)
+  Assume for simplicity that $P \lra M$ is a trivial bundle and $A \in \Omega^1(P,\mathfrak{g})$ descends to a $\mathfrak{g}$-valued $1$-form on $M$. Then a \textbf{Pure Yang-Mills-Theory} is the Lagrangian field theory given by $\FF = \mathcal{A}$ (space of principal connections on the principal bundle) and the Lagrangian (density)
   $$ L_{YM} = \frac{1}{2} \Tr[F_A \wedge * F_A] $$
 \end{definition}
 
 \begin{ex}
   As an exercise, you can show that the variation of $L_{YM}$ is given by
   $$ \delta L_{YM} = \Tr[d_A * F_A \wedge \delta A + d(\delta A * F_A)] $$
-  Remember that $d_A \phi = d\phi + A \phi$ for $\phi \in \Ci(M, R)$ and $R$ a representation of $y$. For any $\beta \in \Omega^1(M,y)$ one has $d_A \beta = d\beta + [A, \beta]$ where the latter term denotes the adjoint action/representation.
+  Remember that $d_A \phi = d\phi + A \phi$ for $\phi \in \Ci(M, R)$ and $R$ a representation of $y$. For any $\beta \in \Omega^1(M,\mathfrak{g})$ one has $d_A \beta = d\beta + [A, \beta]$ where the latter term denotes the adjoint action/representation.
 \end{ex}
 
 \begin{definition}[Yang-Mills-Theory with scalar "matter"]

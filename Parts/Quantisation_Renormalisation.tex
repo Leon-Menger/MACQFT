@@ -1,20 +1,20 @@
-\section{Quantisation and Normalisation Group Flow}
+\section{Quantisation and Renormalisation Group Flow}
 \label{sec:Renormalisation}
 
-This section will treat \emph{scalar perturbative quantum field theory}. We will start by giving a general introduction to the matter and then talk about the \emph{Renormalisation group equation}. After introducting \emph{Feynman graphs}, we will finally arrive at the first full definition of a \emph{QFT} and discuss some immediate results. Finally we will discuss the \emph{renormalisation of QFT}.
+This section will treat \emph{scalar perturbative quantum field theory}. We will start by giving a general introduction to the matter and then talk about the \emph{renormalisation group equation}. After introducting \emph{Feynman graphs}, we will finally arrive at the first full definition of a \emph{QFT} and discuss some immediate results. Finally we will discuss the \emph{renormalisation of QFT}.
 
 \subsection{Introduction}
 \label{subsec:quantisation_intro}
 
-The main idea of Quantum mechanics is to define a deterministic evolution of a system as a superposition of possible evolutions where one weights them by how likely they are. Our ultimate goal is to describe Quantum mechanics and Classical mechanics in terms of the sets of objects, states and observables. The main idea is to take a state $\omega$ and an observable $A$ such that the state associates a propability distribution to the observable on the real line in the form of $\omega_A(\lambda)$. To illuminate the concepts and systems we aim to unify, we present a short overview of both:\\
+The main idea of quantum mechanics is to define a deterministic evolution of a system as a superposition of possible evolutions where one weights them by how likely they are. Our ultimate goal is to describe quantum mechanics and classical mechanics in terms of the sets of objects, states and observables. The main idea is to take a state $\omega$ and an observable $A$ such that the state associates a probability distribution to the observable on the real line in the form of $\omega_A(\lambda)$. To illuminate the concepts and systems we aim to unify, we present a short overview of both:\\
 
-In Classical mechanics, states are nothing but normalized measures on the \emph{phase space} (mind: a symplectic manifold). Meanwhile observables are functions on the phase space given by $(p,q)$ such that $\omega = dp \wedge dq$. The propability distribution is then given by
+In classical mechanics, states are nothing but normalized measures on the \emph{phase space} (a symplectic manifold). Meanwhile observables are functions on the phase space given by $(p,q)$ such that $\omega = dp \wedge dq$. The probability distribution is then given by
 $$ \omega_A (\lambda) := \int_M \theta(\lambda - f_A (p,q)) d \mu_\omega$$
-where $\theta$ denotes the step function, $f_A$ an observable and $d\mu_\omega$ a measure corresponding to the state. The dynamics on the other hand are encoded in the \emph{Poisson brackets} defined using the symplectic form $\omega$ as
-$$ \dd{f}{t} = \{H, f\} $$
-for some functions $H$ which turns out to be the \emph{Hamiltonian} of the system.\\
+where $\theta$ denotes the step function, $f_A$ an observable and $d\mu_\omega$ a measure corresponding to the state. The dynamics on the other hand are encoded in the \emph{Poisson brackets} in that
+$$ \dd{f}{t} = \{H, f\}, $$
+defined using the symplectic form $\omega$, for some function $H$ which turns out to be the \emph{Hamiltonian} of the system.\\
 
-In Quantum mechanics, observables are linear operators on some complex \emph{Hilbert spae} $\HH$. States are positive trace-class operators with unit trace defined as $\Tr A = \sum_n \langle A e_n, e_n \rangle$. The propability distribution for a state is defined by
+In quantum mechanics, observables are linear operators on some complex \emph{Hilbert space} $\HH$. States are positive trace-class operators with unit trace defined as $\Tr A = \sum_n \langle A e_n, e_n \rangle$. The probability distribution for a state is defined by
 $$ \omega_A (\lambda) := \Tr(M P_A(\lambda)) $$
 where $M$ is a trace-class (state) and $P_A(\lambda)$ is a projection (observable). Note that we are looking at the field from a mathematical perspective, thus the reader might encounter unfamiliar technical details in this and upcoming discussions.\\
 The commutator of two states $A,B$ is defined as
@@ -24,13 +24,13 @@ $$ \dd{A}{t} = \{H,A\} $$
 With these classifications of the two fields in mind, we arrive at a first sketch of a transition between them:
 
 \begin{definition}[Quantisation Scheme]
-  A map passing from Classical mechanics to Quantum mechanics is called a \textbf{quantisation scheme}.
+  A map passing from classical mechanics to quantum mechanics is called a \textbf{quantisation scheme}.
 \end{definition}
 
 To illuminate this rather vague definition, we discuss a "toy example":
 
 \begin{example}[Weyl Quantisation]
-  This quantisation treats a mechanical system with one degree of freedom. The classical system has $\RR^2$ as its phase space with coordinates $(p,q)$. The dynamics are given by the Poisson-brackets with the Hamiltonian function. Now we want to transition to a quantum description:\\
+  This quantisation treats a mechanical system with one degree of freedom. The classical system has $\RR^2$ as its phase space with coordinates $(p,q)$. The dynamics are given by the Poisson brackets with the Hamiltonian function. Now we want to transition to a quantum description:\\
 
   We take the Hilbert-space $\HH$ defined as
   $$ \HH = L^2(\RR) := \left\{ \psi(q) \in C(\RR) \ \Big| \ \int_{-\infty}^\infty |\psi(q)|^2 dq < \infty  \right\} $$
@@ -85,9 +85,9 @@ In the following we give a short introduction to \textbf{Feynman Path Integrals}
 \fill [black] (-2.,-2.) circle (0.1) node[below]{$t^\prime$};
 \end{tikzpicture}
 \end{center}
-Feynman's approach to Quantum Field Theory was the idea of a "sum over all possible histories" of a particle. In \emph{chapter 2} \ref{subsec:Classical_field_theory} we already mentioned scalar field theories where $\psi \in\Ci(M)$ is a scalar field. The physical phenomenon corresponding to the "sum over histories" is described by a superposition of all possible scalar theories, weighted by $e^{iS(\psi) / \hbar}$ for $S(\psi)$ the action of $\psi$.\\
+Feynman's approach (historically first introduced by Dirac many years earlier) to Quantum Field Theory was the idea of a "sum over all possible histories" of a particle. In \emph{chapter 2} \ref{subsec:Classical_field_theory} we already mentioned scalar field theories where $\psi \in\Ci(M)$ is a scalar field. The physical phenomenon corresponding to the "sum over histories" is described by a superposition of all possible trajectories $\psi$, weighted by $e^{iS(\psi) / \hbar}$ for $S(\psi)$ the action of $\psi$.\\
 
-This in turn has an interpretation coming from statistical mechanics: Here, $\psi$ would represent the state of a statistical system, $S(\psi)$ would be the systems energy. Given a temperature $T$, the system could be in any state $e^{-S(\psi)/ T}$. Thus we obtain the following correspondence:
+This in turn has an interpretation (in Euclidean signature) coming from statistical mechanics: Here, $\psi$ would represent the state of a statistical system, $S(\psi)$ would be the systems energy. Given a temperature $T$, the system could be in any state $e^{-S(\psi)/ T}$. Thus we obtain the following correspondence:
 \begin{center}
 \begin{tikzcd}
   T \arrow[r,leftrightarrow] & i \hbar
