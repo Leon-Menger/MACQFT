@@ -1,6 +1,6 @@
 \section{An Introduction to Classical Field Theories}
 \label{sec:Classical_FT}
-In this section, we will explore classical field theories  in order to give a solid foundation to their concepts, especially locality. While field theories come in many forms like thermodynamics, electrodynamics, general relativity, the standard model of physics and even string theory, we will mainly focus on classical Lagrangian field theories.\\
+In this section, we will explore classical field theories  in order to give a solid foundation to their concepts, especially locality. While field theories come in many forms like thermodynamics, electrodynamics, general relativity, the standard model of particle physics and even string theory, we will mainly focus on classical Lagrangian field theories.\\
 
 In Lagrangian mechanics, as taught in undergrad physics, one uses the notion of the action functional, being a measure for the "excitednes" of a system, to find physically favoured and thus realized trajectories. A common action in this context would be
 $$ S(q) = \int_{\RR^+} \left( \frac{m}{2} \dot q^i(t) \dot q^i(t) - V(q(t)) \right) dt $$
@@ -12,7 +12,7 @@ For $q\in \Ci(\RR^+, \RR^n)$ and $V\colon\Ci(\RR^+, \RR^n) \ra \RR$. Now the con
 
 Now the \textbf{boundary term} $\frac{m}{2}\delta q^i(0) \dot q^i = \alpha$ can be thought of as a 1-form on $T^*\RR^n$ such that the boundary term, using $p^i(0) = \frac{m}{2} \dot q^i$, can be writen as $\omega := \delta \alpha = \delta q^i(0) \delta p^i(0)$ which is a symplectic form.\\
 
-This marks the starting point of a procedure called \textbf{canonical quantisation} of classical mechanics. As a Hilbert space we use $\mathcal{H} \colon= l^2(\RR^n)$. Our main goal will be to generalize this procedure.\\
+This marks the starting point of a procedure called \textbf{canonical quantisation} of classical mechanics. As a Hilbert space we use $\mathcal{H} \colon= L^2(\RR^n)$. Our main goal will be to generalize this procedure.\\
 
 \subsection{Spaces of fields and Locality}
 We will usually work on a fibre bundle $\pi\colon F \lra M$ over some smooth manifold $M$. For simplicity, we will assume that $M$ is closed and without boundary, furthermore we assume that $M$ is oriented and connected.
@@ -158,7 +158,7 @@ Using the above notions, we arrive at a proposition that sheds further light ont
     \item $(V, \Gamma)$ is Hausdorff iff
     $$ v = 0 \quad \Leftrightarrow \quad \left( |v|_i = 0 \quad \forall i \in I\right)$$
 
-    \item If $(V, \Gamma)$ is Hausdorff then it is metrisable iff the family $\Gamma$ is countable (i.e. there exists a metric $d:V\times V \lra \RR^+$ s.t. the topology induced by $d$ is $\mathcal{T}_\Gamma$).
+    \item If $(V, \Gamma)$ is Hausdorff then it is metrisable iff the family $\Gamma$ is countable (i.e. there exists a metric $d:V\times V \lra \RR_{\geq0}$ s.t.\ the topology induced by $d$ is $\mathcal{T}_\Gamma$).
 
     \item Convergence of sequences is controlled by the seminorms, i.e.:
     $$ (v_n)_{n\in\NN} : v_n \lra v \quad \Leftrightarrow \quad |v_n - v|_i \lra 0 \ \ \forall i \in I $$
