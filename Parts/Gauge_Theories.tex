@@ -27,7 +27,7 @@ $$ \HH[S]_{(ij)}(x_0) V^{(i)}_\alpha = 0 \quad \Leftrightarrow \quad V_\alpha \ 
   Show that $\{V_\alpha \in \VF_{evol}(\FF)\}$ which are local symmetries of $S$ forms a Lie subalgebra of $\VF_{evol}(\FF)$. We further denote it by $\widetilde{\gf}$.
 \end{ex}
 
-Note that not all symmetries are "interesting" and thus not all symmetries are created equal. Consider a bivectorfield $\mu \in \Gamma(\bigwedge^2 (T\FF))$ and look at the vector field
+Note that not all symmetries are "interesting" and thus not all symmetries are created equal. Consider a bivector field $\mu \in \Gamma(\bigwedge^2 (T\FF))$ and look at the vector field
 $$ \omega := \mu(\delta S), \quad \mu = \mu^{ij} \frac{\delta}{\delta \phi^{(i)}} \wedge \frac{\delta}{\delta \phi^{(j)}}, \quad \omega = \mu^{ij} \frac{\delta S}{\delta \phi^{(i)}} \frac{\delta S}{\delta \phi^{(j)}}, \quad \mu^{ij} = - \mu^{ji} $$
 Now we claim that $\omega$ is a local symmetry $\forall \mu$:
 
@@ -109,8 +109,8 @@ Now consider a Lie algebra action $\rho \colon \gf \lra \VF(M)$ and recall that 
 
 \begin{definition}
   The space of $\Ci(M)$-valued $k$-forms on $\gf$ is defined to be
-  $$ C^k_{CE}(\gf ; \Ci(M)) := \Hom\left(\bigwedge^k \gf^*, \Ci(M)\right) $$
-  This is called the \textbf{Chevally-Eilenberg} complex for the Lie algebra action $\rho \colon \gf \lra \Der(\Ci(M))$. Now define the map
+  $$ C^k_{CE}(\gf ; \Ci(M)) := \Hom\left(\bigwedge^k \gf, \Ci(M)\right)\cong\bigwedge^k\mathfrak{g}^*\otimes\Ci(M). $$
+  This is called the \textbf{Chevalley--Eilenberg} complex for the Lie algebra action $\rho \colon \gf \lra \Der(\Ci(M))$. Now define the map
   $$ d_{CE} \colon C^k_{CE}(\gf ; \Ci(M)) \lra C^{k+1}_{CE}(\gf ; \Ci(M)) $$
   as
   \begin{enumerate}
@@ -119,7 +119,7 @@ Now consider a Lie algebra action $\rho \colon \gf \lra \VF(M)$ and recall that 
     \item We extend to $\bigwedge^\bullet \gf^*$ using the Leibniz rule
     $$ d_{CE} (\alpha \wedge \beta) = d_{CE}\alpha \wedge \beta + (-1)^{|\alpha|} \wedge d_{CE} \beta $$
     where $|\alpha| = k$ if $\alpha \in \bigwedge^k\gf^*$
-    \item We extend to $\bigwedge^\bullet \gf \otimes \Ci(M)$ by
+    \item We extend to $\bigwedge^\bullet \gf^* \otimes \Ci(M)$ by
     $$ d_{CE}(\omega \otimes f) = d_{CE} \omega \otimes f + (-1)^{|\omega|} \omega \otimes d_{CE} f$$
   \end{enumerate}
 \end{definition}
@@ -145,13 +145,13 @@ $$ H^k(C_{CE}^\bullet; \Ci(M)) := \frac{\ker(d_{CE}|_{C^k})}{\ker(d_{CE}|_{C^{k-
 
 On $\bigwedge^\bullet \gf^*$ there are the following natural operations:
 \begin{align}
-  \forall \alpha \in \gf^* \quad \mathcal{E}(\alpha) \colon \Lambda^k \gf^* &\lra \bigwedge^{k+1} \gf^*, \\
+  \forall \alpha \in \gf^* \quad \mathcal{E}(\alpha) \colon \bigwedge^k \gf^* &\lra \bigwedge^{k+1} \gf^*, \\
   \omega &\lmap \alpha \wedge \omega \\
-  \forall X \in \gf \quad \imath(X) \colon \Lambda^k \gf^* &\lra \bigwedge^{k-1} \gf^*, \\
+  \forall X \in \gf \quad \imath(X) \colon \bigwedge^k \gf^* &\lra \bigwedge^{k-1} \gf^*, \\
   \omega &\lmap \imath_X (\omega)
 \end{align}
 
-Now we extend $\imath_X$ by odd-Leibniz rule
+Now we extend $\imath_X$ by the graded Leibniz rule
 $$ \imath_X(\alpha \wedge \beta) = (\imath_X \alpha) \wedge \beta + (-1)^{|\alpha|} \alpha \wedge (\imath_X \beta) $$
 Now if $\{t_a\}$ and $\{\alpha^a\}$ are basis for $\gf$ and $\gf^*$ respectively, then
 $$ d_{CE} = \mathcal{E}(\alpha^a) \rho(t_a) - \frac{1}{2} \mathcal{E}(\alpha^a) \mathcal{E}(\alpha^b) \imath_{[t_a, t_b]} $$
@@ -160,7 +160,7 @@ $$ C^a C^b = \mathcal{E}(\alpha^a) \alpha^b = - \mathcal{E}(\alpha^b) \alpha^a =
 such that
 $$ d_{CE} = C^a V_a - \frac{1}{2} f_{ab}^d C^a C^b \dell{}{C^d} $$
 Now we need to consider the collection $\{C^a\}$ as \textbf{odd coordinates}. This corresponds to the notion of \textbf{Ghost Variables} or \textbf{Ghost Fields} in physics. Thus we can formulate
-$$ \Ci(M \times \gf[1]) \simeq \bigwedge^\bullet \gf^* \otimes \Ci(M) \cong \Hom(\bigwedge^\bullet \gf^*, \Ci(M)) $$
+$$ \Ci(M \times \gf[1]) \simeq \bigwedge^\bullet \gf^* \otimes \Ci(M) \cong \Hom(\bigwedge^\bullet \gf, \Ci(M)) $$
 where $\gf[1]$ is a graded vector space, concentrated in degree $-1$. This leads us to
 $$ C_{CE}^\bullet (\gf ; \Ci(M)) \simeq \Ci(M \times \gf[1]) $$
 which allows us to think of $d_{CE}$ as a vector field of degree $1$ which squares to zero. Thus we can also think of it as a \textbf{cohomological vector field} on $M_{min}:=M \times \gf[1]$ such that
@@ -168,7 +168,7 @@ $$ \frac{1}{2} [d_{CE}, d_{CE}]_{\VF(M_{min})} = d_{CE}^2 = 0 $$
 
 \subsection{BRST Formalism}
 
-This subsection is dedicated to a consise formulation of the \textbf{Becchi-Rouet-Stora-Tyutin} (short BRST) formalism. Let $F$ be a smooth manifold endowed with a Lie algebra action
+This subsection is dedicated to a concise formulation of the \textbf{Becchi--Rouet--Stora--Tyutin} (short BRST) formalism. Let $F$ be a smooth manifold endowed with a Lie algebra action
 \begin{equation}
   \rho \colon \gf \lra \VF(F) \simeq \Der(\Ci(M))
 \end{equation}
@@ -178,12 +178,12 @@ We associate to it the Chevally-Eilenberg complex
   C_{CE}^\bullet (\gf, \Ci(F)) \simeq \bigwedge^\bullet \gf^* \otimes \Ci(F) \simeq \Ci(F \times \gf[1]) = \Ci(F_{min})
 \end{equation}
 
-Now consider the product $F_{Aux} := \gf^* \times \gf^*[-1]$. We want to extend $d_{CE}$ to a cohomological vectorfield on
+Now consider the product $F_{Aux} := \gf^* \times \gf^*[-1]$. We want to extend $d_{CE}$ to a cohomological vector field on
 $$ F_{BRST} := F_{min} \times F_{Aux} $$
 Luckily on $F_{Aux}$ there is a natural cohomological vector field:
 
 \begin{lem}
-  On $F_{Aux}$ consider the "vectorfield" $d_{Aux} \overline{c}_a = \lambda_a$ such that $d_{Aux} \lambda_a = 0$ where we are given a basis $\{e^a\}$ of $\gf^*$, the $\overline{c}_a$ are coordinates in $\gf^*[-1]$ and the $\lambda$ are coordinates in $\gf^*$. Then $d^2_{Aux} = 0$ and thus it is cohomological.
+  On $F_{Aux}$ consider the "vector field" $d_{Aux} \overline{c}_a = \lambda_a$ such that $d_{Aux} \lambda_a = 0$ where we are given a basis $\{e^a\}$ of $\gf^*$, the $\overline{c}_a$ are coordinates in $\gf^*[-1]$ and the $\lambda$ are coordinates in $\gf^*$. Then $d^2_{Aux} = 0$ and thus it is cohomological.
 \end{lem}
 
 Note that our conventions make $\overline{c}_a$ coordinates of degree $-1$ and $\lambda$ of degree $0$.
@@ -210,7 +210,7 @@ A valid question is, why this should be relevant. To understand this, recall tha
 
 \begin{rem}
   \textbf{Integration on Super/Graded manifolds}\\
-  Note that everything formulated for super manifolds also applies to $\ZZ$-graded manifolds by sending a degree to the parity. Let $E \lra M$ be a rank $m$ vector bundle over $M$ where $\dim(M) = n$. Denote by $\Pi E=: \MM$ the (super) vector bundle obtained by shifting the parity of the fibre vector spaces
+  Note that everything formulated for super manifolds also applies to $\ZZ$-graded manifolds by sending a degree to the parity. Let $E \lra M$ be a rank $m$ vector bundle over $M$ where $\dim(M) = n$. Denote by $\Pi E=: \MM$ the (super) vector bundle obtained by shifting the degree of the fibre vector spaces by $1$ (which just reverses the parity in $\ZZ/2$ (super) grading).
 
   \begin{definition}[Berezin line bundle]
     The (real) line bundle over $M$ defined by
@@ -223,7 +223,7 @@ A valid question is, why this should be relevant. To understand this, recall tha
     $$ \int_{\MM} \cdot \mu \colon \Ci_c(\MM) \lra \RR $$
     defined as
     $$ \int_\MM f \mu = \int_M \langle \mu, (f)_m \rangle $$
-    where $(f)_m$ is the component in $\Gamma_c(M, \bigwedge^m E)$ and $\langle \cdot, \cdot \rangle \colon \bigwedge^m E \otimes \bigwedge^m E^* \lra \RR$ is the fibrewise parity in $M$.
+    where $(f)_m$ is the component in $\Gamma_c(M, \bigwedge^m E)$ and $\langle \cdot, \cdot \rangle \colon \bigwedge^m E \otimes \bigwedge^m E^* \lra \RR$ is the fibrewise paring.
   \end{definition}
 
   Now consider a vector space $V$ and its parity-shifted version $\Pi V$. Now on $\Pi V$ let there be a function given as $f = f_0 + f_1 \theta$ with $f_0, f_1 \in \RR$ and $\theta$ an \emph{odd} coordinate such that
@@ -295,7 +295,7 @@ A valid question is, why this should be relevant. To understand this, recall tha
       \mu_1 = \prod_{i,a} dx^i d\theta_a, \quad \quad \mu_2 = \prod_{j,b} dy^j d\psi_b
     \end{equation}
     Now let $\phi \colon \RR^{n|m}_1 \lra \RR^{n|m}_2$ be a smooth map of supermanifolds and let $f \in \Ci_c(\RR^{n|m}_2)$ such that
-    $$ \int_{\RR^{n|m}_2} \mu_2 f = \int \mu_2 \sgn(\det(J_f^{nn})) \cdot \sdet(J_f) \phi^* f $$
+    $$ \int_{\RR^{n|m}_2} \mu_2 f = \int_{\RR^{n|m}_2} \mu_1 \sgn(\det(J_f^{nn})) \cdot \sdet(J_f) \phi^* f $$
     where
     \begin{align}
     J_f =
@@ -413,7 +413,7 @@ where $\rho \colon F \lra F/G$ projects to equivalence classes (the space of lea
 \begin{equation}
   \imath_{v_m} ... \imath_{v_1} \mu = \rho^* \mu
 \end{equation}
-Now this point of view does not generalise very well because a quotient can be very badly behaved and finding $\widetilde{S}$ might not be easy. Alternativ we look for a "section" of the projection $\rho$, denoted by $J$, such that $\im(J)$ cuts the $G$-orbits. Practically one looks for a function
+Now this point of view does not generalise very well because a quotient can be very badly behaved and finding $\widetilde{S}$ might not be easy. Alternatively we look for a "section" of the projection $\rho$, denoted by $J$, such that $\im(J)$ cuts the $G$-orbits. Practically one looks for a function
 \begin{equation}
   \phi \colon F \lra \gf
 \end{equation}
@@ -532,7 +532,7 @@ This is useful to decide the signs in the explicit calculations by defining the 
 \end{equation}
 Now recall that a graded $k$-symplectic manifold is a $\ZZ$-graded manifold $\MM$ together with a closed nondegenerate $2$-form $\omega$ of grade $\gr(\omega) = k$.
 \begin{equation}
-  \omega^\# \colon T\MM \atob{\sim} T^* \MM
+  \omega^\# \colon T\MM \atob{\sim} T^* \MM[k]
 \end{equation}
 Now in infinite dimensions, one speaks of \emph{weak symplectic} forms, if $d \omega = 0$, such that $\omega^\#$ is \emph{injective}. For special cases we can use the following result due to Schwarz
 
@@ -689,7 +689,7 @@ If $\{\cdot, \cdot\}$ denotes the Poisson-brackets, we get $X_f = \{f, \cdot\}$ 
 \end{rem}
 
 \subsubsection{BV Integrals}
-Notice that so far we did not talk about physics at all. We merely introduced several notions about $(-1)$-symplectic manifolds. Having a well-defined integration will bring us quite a few steps closer to a physical theory using the given framework. To this end recall that $Ber(\MM) = \bigwedge^m T^* M \otimes \bigwedge^m E$. If $\MM = T^*[-1] M$ we obtain $Ber(\MM) = (\bigwedge^n T^*M)^{\otimes 2}$, namely two copies of top-forms on $M$. Similarly if $\NC$ is a graded manifold $Ber(T^*[-1]\NC)|_\NC \cong Ber(\NC)^{\otimes 2}$.\\
+Notice that so far we did not talk about physics at all. We merely introduced several notions about $(-1)$-symplectic manifolds. Having a well-defined integration will bring us quite a few steps closer to a physical theory using the given framework. To this end recall that $Ber(\MM) = \bigwedge^m T^* M \otimes \bigwedge^m E$. If $\MM = T^*[-1] M$ we obtain $Ber(\MM) = (\bigwedge^n T^*M)^{\otimes 2}$. Similarly if $\NC$ is a graded manifold $Ber(T^*[-1]\NC)|_\NC \cong Ber(\NC)^{\otimes 2}$.\\
 
 %TODO diagram
 
@@ -712,7 +712,7 @@ which is mapped to the following Berezinian on $\NC$:
 
 Now consider $T[1]M$ and $T^*[-1]M$ with coordinates $\{x^i, \xi_i \}$ and $\{x^i, \theta^i \}$ respectively. We can think of the deRham differential on $M$ as a cohomological vector field
 \begin{align}
-  &D \colon \Ci(T[1]M) \simeq \Omega^\circ(M) \lra \Omega^\circ(M) \\
+  &D \colon \Ci(T[1]M) \simeq \Omega^\bullet(M) \lra \Omega^\bullet(M) \\
   &D^2 = 0, \quad D = \theta^i \dell{}{x^i}, \quad \theta^i = dx^i
 \end{align}
 Now if $\vol_M = \rho(x) dx^1 ... dx^n$ is a volume form on $M$ we arrive at the following statement:
@@ -894,17 +894,17 @@ The main goal of this section is to construct the data necessary for a complete 
 Now the set $\left\{\phi_i := \dell{S}{x^i}\right\}$ determines an ideal $I_S \subset \Ci(\FF)$ of functions vanishing on $\Crit(S) := \{ x \in F \ | \ dS(x) = 0 \}$
 Assume for now that there are no nontrivial symmetries of $S$. Now we \textbf{want} a complex $(\KK^\bullet, d_\KK)$ such that its cohomology in degree $0$ is the quotient $\Ci(F)/I_S \simeq \Ci(\Crit(S))$.\\
 
-The following is due to \emph{Koszul}:\\
+The following is due to Koszul:\\
 Let $V^\bullet$ be a graded vector space such that $\dim(V) = \dim(F)$, e.g. $V \simeq T^*_x F$. For every coordinate $x^i$ generate a new coordinate $x^\dagger_i \in \Ci(V[-1]) \simeq \bigwedge^\bullet V^*$. Then we can define an operator $d_\KK$ on $\Ci(F) \otimes \Ci(V[-1]) =: \KK^\bullet$ by setting
 \begin{equation}
   d_\KK x^\dagger_i := \phi^i \equiv \dell{S}{x^i}
 \end{equation}
-Thus in particular $d_\KK^2 = 0$ and $H^\circ(\KK^\bullet)/I_S$. Further for $f \in \KK^{(0)}$ we have $d_\KK f = 0 \ \Leftrightarrow \ f \in \Ci(F)$ but $f = d_\KK g \ \Leftrightarrow \ f \in I_S$ i.e. $fg = \sum_i g^i x^\dagger_i$.
+Thus in particular $d_\KK^2 = 0$. Further for $f \in \KK^{(0)}$ we have $d_\KK f = 0 \ \Leftrightarrow \ f \in \Ci(F)$ but $f = d_\KK g \ \Leftrightarrow \ f \in I_S$ i.e. $fg = \sum_i g^i x^\dagger_i$.
 
 \begin{prop}
   The \textbf{Koszul complex} $(\KK^\bullet, d_\KK)$ is a \textbf{resolution} of $\Ci(F)/I_S$.
 \begin{proof}
-  We want a complex $C^\bullet$ such that $H^\circ(C^\bullet) \simeq \Ci(F)/I_S \simeq \Ci(\Crit(S))$ and further $H^{-i} (C^\bullet) = 0$ for all $i > 0$. In our case $H^{-1} \neq 0$ iff $\exists R^i_\alpha$ such that $d_\KK (R^i_\alpha x^\dagger_i) = R^i_\alpha \phi^i = 0$ since there is nothing in degree $-2$ that can compensate the cocycle $R^i_\alpha x^\dagger_i$.\\
+  We want a complex $C^\bullet$ such that $H^\bullet(C^\bullet) \simeq \Ci(F)/I_S \simeq \Ci(\Crit(S))$ and further $H^{-i} (C^\bullet) = 0$ for all $i > 0$. In our case $H^{-1} \neq 0$ iff $\exists R^i_\alpha$ such that $d_\KK (R^i_\alpha x^\dagger_i) = R^i_\alpha \phi^i = 0$ since there is nothing in degree $-2$ that can compensate the cocycle $R^i_\alpha x^\dagger_i$.\\
 
   However $R^i_\alpha \phi^i \equiv R^i_\alpha \dell{S}{x^i} = 0$ (\textbf{Noether identity}) is equivalent to there being a vector field $V_\alpha \in \VF(F)$ with $V_\alpha = R^i_\alpha \dell{}{x^i}$ and such that $V_\alpha(S) = 0$. Namely such a cocycle exists iff $S$ admits nontrivial symmetries which we ruled out in the definition. This proves the claim.
 \end{proof}
@@ -954,7 +954,7 @@ where we set $S_{cl} = S_0$. Now extend $S_0 \lmap S_1 := S_0 + x^\dagger_i R^i_
   Show that $\{S_0, S_1\} = 0$ iff $\{R^i_\alpha\}$ represents a local symmetry. Also show that $\{S_1, S_1\} = 0$.
 \end{ex}
 
-In order to really reproduce the Chevally-Eilenberg cohomology, we need to further extend by
+In order to really reproduce the Chevalley--Eilenberg cohomology, we need to further extend by
 
 \begin{equation}
   S_2 = S_1 + \frac{1}{2} c^{(1)\dagger}_\alpha + f^\alpha_{\beta\gamma} c^\beta c^\gamma
@@ -988,14 +988,14 @@ Now the BV complex as constructed above achieves two main things:
 Consider a complement $\gf$ of trivial symmetries $\tf$ inside all symmetries $\widetilde{\gf}$ (for a function $S_{cl} \equiv S_0 \colon F \lra \RR$). We know that $\gf$ is a subalgebra "on shell", i.e. on $\Crit(S)$. Thus we construct $\KT^{(\infty)}$ such that $H^0(\KT^{(\infty)}) \simeq \Ci(\Crit(S))$ and use it as a $\gf$-module which means looking at the Chevally-Eilenberg complex for the $\gf$ action on $\Ci(\Crit(S))$. This leads us to the following result:
 
 \begin{theo}
-  $(BV^\bullet, Q_\infty) \simeq C^\bullet_{CE}(\gf, H^\circ(\KT^{(\infty)}))$
+  $(BV^\bullet, Q_\infty) \simeq C^\bullet_{CE}(\gf, H^\bullet(\KT^{(\infty)}))$
 \begin{proof}
   The proof is ommited since it is very technical and goes beyond the timescope of this course.
 \end{proof}
 \end{theo}
 
 \begin{corollary}
-  $H^\circ(BV^\bullet) \simeq \Ci(\Crit(S))^\gf \simeq \Ci(\Crit(S)/\gf)$
+  $H^\bullet(BV^\bullet) \simeq \Ci(\Crit(S))^\gf \simeq \Ci(\Crit(S)/\gf)$
 \end{corollary}
 
 Now this is all the data we need for a physical theory. We have a critical locust, symmetries and a set of evolution equations. Summing up, our procedure goes as follows:\\
@@ -1042,7 +1042,7 @@ and \eqref{QME} is equivalent to the following set of equations
   &...
 \end{align*}
 
-Now starting from a solution of the Classical Master Equation \eqref{ClassicalMasterEquation} for classical BV date, we can extend it to a power series in $\hbar$ that satisfies \eqref{QME}
+Now starting from a solution of the Classical Master Equation \eqref{ClassicalMasterEquation} for classical BV data, we can extend it to a power series in $\hbar$ that satisfies \eqref{QME}
 \begin{equation}
   \Delta_\mu S^{(0)} = - \{S^{(0)},S^{(1)}\}
 \end{equation}
@@ -1100,7 +1100,7 @@ if \eqref{QMEt} is satisfied. Hence it is satisfied for all $t$ if $S_t, R_t$ pa
   \begin{equation}\tag{extQME} \label{extendedQME}
     \left( dt \wedge \dd{}{t} - i \hbar \Delta_\mu \right) e^{i/\hbar \sigma} = 0
   \end{equation}
-  This equation is sometimes referred to as the "extended QME" (Mnev) or as "homotopies of solutions of the QME" (Costello).
+  This equation is sometimes referred to as the "extended QME" (Mn\"{e}v) or as "homotopies of solutions of the QME" (Costello).
 \end{definition}
 
 This brings us to the following central definition:
@@ -1173,7 +1173,7 @@ Let $(\FF^{\prime}, \omega^{\prime})$ and $(\FF^{\prime\prime}, \omega^{\prime\p
     \begin{equation}
       P_*^{(\LL)} \rho - P_*^{(\LL^\prime)} \rho = \Delta_{\mu^\prime}( – )
     \end{equation}
-    where the last part is visibly exact in $\FF \prime$.
+    where the last part is visibly exact in $\FF'$.
   \end{enumerate}
 \end{theo}
 
