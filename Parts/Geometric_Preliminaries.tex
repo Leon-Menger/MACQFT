@@ -119,7 +119,7 @@ To no surprise we encounter some regular customers that fit the definition of a 
   \end{itemize}
 \end{example}
 
-Now as promised, we note that on a graded algebra $A^\bullet$ the set of graded derivations $\Der^\bullet(A^\bullet)$ which turns out to be a natural subspace of $\End^\bullet(A^\bullet)$ in the sense that $\Der^k(A^\bullet) \subset \End^k(A^\bullet)$, \sout{turns out to be a subalgebra of $\End^\bullet$. The proof is again left as an exercise to the reader.}
+Now as promised, we note that on a graded algebra $A^\bullet$ the set of graded derivations $\Der^\bullet(A^\bullet)$ which turns out to be a natural subspace of $\End^\bullet(A^\bullet)$ in the sense that $\Der^k(A^\bullet) \subset \End^k(A^\bullet)$.%, \sout{turns out to be a subalgebra of $\End^\bullet$. The proof is again left as an exercise to the reader.}
 
 \begin{rem}
   Note that derivations \emph{do not} make up a subalgebra of endomorphisms, although they will turn out to make up a graded Lie subalgebra. This is analogous to the fact that if $X$ and $Y$ are vector fields on a manifold, $XY$ or $YX$ (their compositions as derivations on the algebra of functions) are \emph{not} vector fields, but one can show that $[X,Y]=XY-YX$ \emph{is} a vector field.
@@ -131,7 +131,7 @@ Combining the different classifications for graded endomorphisms, we go on to de
   A \textbf{differential} is a coboundary operator that is also a graded derivation.
 \end{definition}
 
-\begin{mdframed}I find this a terrible deviation from standard terminology. Normally, one would define a differential to be simply a degree-$1$ endomorphism that squares to zero. No reference to any algebra structure. Although most differentials on graded algebras in practice do happen to be derivations... \end{mdframed}
+%\begin{mdframed}I find this a terrible deviation from standard terminology. Normally, one would define a differential to be simply a degree-$1$ endomorphism that squares to zero. No reference to any algebra structure. Although most differentials on graded algebras in practice do happen to be derivations... \end{mdframed}
 
 Yet again, we find that the \emph{de Rham differential} lives up to its name by qualifying as a \emph{differential} in the sense of the above definition. We go on to define the notion of a graded \emph{Lie Algebra}. The definition is easily anticipated from that of a Lie algebra
 
@@ -175,14 +175,10 @@ An example for a graded Lie subalgebra would be the space of Derivations as a su
     \item If we want to define graded associated algebras, $G$ has to be a group (or a monoid) such that the order of composition does not matter.
     \item $G$ has to be abelian (or a commutative monoid), if we want to define graded commutative algebras.
   \end{itemize}
-  So far we did everything on $\ZZ$. Taking $\ZZ / 2\ZZ$ as the underlying set, we obtain the notion of \emph{super-linear algebra}. To prove the above claims is an insightful and interesting exercise!
+  So far we did everything on $\ZZ$. Taking $\ZZ / 2\ZZ$ as the underlying set, we obtain the notion of \emph{super-linear algebra}. To prove the above claims is an insightful and interesting exercise! We will only need $\ZZ$- and $\ZZ/2$-gradings.
 \end{rem}
-\begin{mdframed}
-I see no point in mentioning general $G$-gradings if we only want to talk about $\ZZ/2$ as the second case...
-\end{mdframed}
-After this small detour, we continue to define further structure in our graded setting. Next, we introduce the notion of a $\ZZ$-grading \begin{mdframed}
-???
-\end{mdframed} and discuss the so-called \emph{Cartan Calculus} using $d$ and $\imath$.
+
+After this small detour, we continue to define further structure in our graded setting. Next, we go back to $\ZZ$-grading and discuss the so-called \emph{Cartan Calculus} using $d$ and $\imath$.
 
 \begin{prop}
   The span over $\RR$ of the set
@@ -434,7 +430,7 @@ We try to bring the matter closer to the reader by giving one examples:
   Any graded manifold is isomorphic to a graded manifold associated to a graded vector-bundle.
 \end{theo}
 \begin{mdframed}
-The theorem will certainly apply when restricted to graded $W$ such that $W^i\neq0$ for finitely many $i$. Otherwise, the usual 'finitely presented' assumption of the original Serre--Swan theorem is not satisfied. Still, some people do say this is true without mentioning this assumption, so maybe it's still true.
+Ö - The theorem will certainly apply when restricted to graded $W$ such that $W^i\neq0$ for finitely many $i$. Otherwise, the usual 'finitely presented' assumption of the original Serre--Swan theorem is not satisfied. Still, some people do say this is true without mentioning this assumption, so maybe it's still true.
 \end{mdframed}
 
 This theorem tells us that all graded manifolds can be considered to be of the form seen in the aforementioned example regarding the sheaf of sections.\\
