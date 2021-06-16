@@ -169,7 +169,7 @@ Here, $I_0[\Lambda](\phi)$ is at least cubic in $\phi$ and all the $I_i$ are for
 \subsection{Renormalisation group equation}
 \label{subsec:renorm_group_eq}
 
-Now our goal is to "translate" a system $S_{eff}[\Lambda], Obs_{\leq \Lambda}, \Ci(M)_{\leq \Lambda}$ into one with threshold $\Lambda^\prime \leq \Lambda$. There exists an evident inclusion $Obs_{\leq \Lambda^\prime} \hookrightarrow Obs_{\leq \Lambda}$. The correlation functions should not change if we compute them in $Obs_{\leq \Lambda^\prime}$ rather than in $Obs_{\leq \Lambda}$:
+Now our goal is to "translate" a system $S_{eff}[\Lambda], Obs_{\leq \Lambda}, \Ci(M)_{\leq \Lambda}$ into one with threshold $\Lambda^\prime \leq \Lambda$. There exists an evident inclusion $Obs_{\leq \Lambda^\prime} \hookrightarrow Obs_{\leq \Lambda}$. The correlation functions should not change if we compute them in $Obs_{\leq \Lambda^\prime}$ rather than in $Obs_{\leq \Lambda}$ after including:
 
 \begin{align}
 \label{eq:connection_eq}
@@ -236,7 +236,7 @@ While we have indeed explored the meaning and framework of \emph{point 3.} of \r
 \begin{definition}[Local action functional]
   A functional $S\colon \Ci(M) \lra \RR \llbracket \hbar \rrbracket$ is a \textbf{local action functional} if it can be written as a sum
   $$ S(\phi) = \sum_k S_k (\phi), \quad \text{where} \quad S_k(\phi) = \int_M (D_1 \phi) ... (D_k \phi) \ \vol_M$$
-  for some differential operators $D_i$ on $M$. This allows us to write $S$ as
+  for some first-order differential operators $D_i$ on $M$. This allows us to write $S$ as
   $$ S(\phi) = \int_M \mathcal{L}(\phi)(x) \ dx $$
   where $\mathcal{L}(\phi)$ is a \textbf{Lagrangian} and depends only on the Taylor expansion of $\phi$ at $x$.
 \end{definition}
@@ -284,14 +284,14 @@ Using the genus of vertices in a graph we can define the genus of a stable graph
 As promised we give the following alternative yet equivalent definition of a stable graph:
 
 \begin{definition}[Stable Graph - Formal Version]
-  Let $H(\gamma)$ and $V(\gamma)$ be two finite sets (half edges or vertices) and let
+  Let $H(\gamma)$ and $V(\gamma)$ be two finite sets (half-edges and vertices) and let
   \begin{align}
     \sigma &\colon H(\gamma) \lra H(\gamma) \quad \quad \text{an involution}\\
     \pi &\colon H(\gamma) \lra V(\gamma)\\
     g &\colon V(\gamma) \lra \ZZ_{\geq 0} \quad \quad \text{(the genus map)}
   \end{align}
   then a \textbf{graph} is the topological space
-  $$ V(\gamma) \sqcup (H(\gamma) \times [0, 0.5]) / \sim $$
+  $$ V(\gamma) \sqcup (H(\gamma) \times [0, 1/2]) / \sim $$
   where $(h,0) \sim \pi(h)$ and $(h,0.5) \sim (\sigma(h), 0.5)$. A graph is \textbf{stable} if every vertex $v \in V(\gamma)$ is such that if
   \begin{align}
     g(v) &= 0 \quad \text{then} \quad \# \pi^{-1}(v) \geq 3\\
@@ -494,7 +494,7 @@ Let us now connect Feynman diagrams to integrals. Let $U$ now have the base fiel
 \end{proof}
 \end{prop}
 
-If $U$ should not be finite-dimensional we can still define $W(P,I)$ and $\partial_P$. We also still have
+Should $U$ not be finite-dimensional, we can still define $W(P,I)$ and $\partial_P$. We also still have
 $$ W(P,I) = \hbar \log\{ \exp(\hbar \partial_P) \exp(I/\hbar) \} $$
 This concludes our discussion of Feynman graphs which will now be used to make a transition from energy scales to length scales.
 
@@ -687,7 +687,7 @@ We will subsequently denote by $\OO_{loc}(\Ci(M))$ the \textbf{subspace of local
 $$ I = \sum_{i,k} \hbar^i I_{i,k} $$
 where the $I_{i,k}$ need to be in $\OO_{loc}(\Ci(M))$. We further define
 $$ \OO^+_{loc}(\Ci(M))\llbracket \hbar \rrbracket \subset \OO_{loc}(\Ci(M))\llbracket \hbar \rrbracket $$
-the subspae of local functionals which are at least cubic modulo $\hbar$. Finally we are prepared to define scalar QFTs:
+the subspace of local functionals which are at least cubic modulo $\hbar$. Finally we are prepared to define scalar QFTs:
 
 \begin{definition}[Perturbative scalar quantum field theories]
 \label{def:PSQFTs}
@@ -812,7 +812,7 @@ We can collect these results and definitions into a theorem:
 \begin{theo}
   Let $I \in \OO_{loc}(\Ci(M)) \llbracket \hbar \rrbracket$ be a local action functional and let $\gamma$ be a connected stable graph. Then
   $$ \sing_\epsilon(w_\gamma(P(\epsilon,L), I[\epsilon])) = \sum_i f_i(\epsilon) \psi_i  $$
-  where $f_i(\epsilon) \in \mathcal{P}((0,\infty))_{\geq 0}$ are singular periods (periods equivalent to their singular part) and the $\psi_i$ have a small-$L$ asymptotic expansions of the form
+  where $f_i(\epsilon) \in \mathcal{P}((0,\infty))_{<0}$ are singular periods (periods equivalent to their singular part) and the $\psi_i$ have a small-$L$ asymptotic expansions of the form
   $$ \phi_i \simeq \sum_{i = 0}^\infty f_{i,j} \psi_{i,j} $$
   where $\psi_{i,j} \in \OO_{loc}(\Ci(M))$ and $f_{i,j} \in \Ci((0,\infty)_L)$. Furthermore the limit
   $$ \lim_{\epsilon \lra 0} \left( w_\gamma (P(\epsilon,L), I[\epsilon]) - \sing_\epsilon(w_\gamma (P(\epsilon,L), I[\epsilon])) \right) $$
@@ -936,7 +936,7 @@ This leads us to the following result:
 \end{example}
 
 \begin{theo}
-  Let $\mathfrak{R}^{(k)}(\RR^n)$ be the space of renormalisable scalar field theories of $\RR^n$ invariant under translation defined modulo $\hbar^{n+1}$. Then
+  Let $\mathfrak{R}^{(k)}(\RR^n)$ be the space of dimension-${\geq k}$ renormalisable scalar field theories of $\RR^n$ invariant under translation defined modulo $\hbar^{n+1}$. Then
   $$  \mathfrak{R}^{(k+1)}(\RR^n) \lra \mathfrak{R}^{(k)}(\RR^n)$$
   is a torsor for the vector space of local action functionals $S(\phi)$ which are a sum of terms of non-negative dimensions. Furthermore $\mathfrak{R}^{(0)}(\RR^n)$ is canonically isomorphic to the space of local action functionals of the form
   $$ S(\phi) = \frac{1}{2} \int_{\RR^n} \phi D \phi + I $$
