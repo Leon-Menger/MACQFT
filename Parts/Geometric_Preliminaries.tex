@@ -80,7 +80,7 @@ Note that a very important example for a complex is $\Omega^\bullet(M)$ equipped
 \begin{itemize}
   \item The tensor algebra $T^\bullet(V)$ of a graded vector space $V^\bullet$ is a graded algebra with its product given by the tensor product $\tens{}$. Note that this makes $T^\bullet(V)$ an associative graded algebra.
 
-  \item The two spaces $(\bigwedge^\bullet V, \wedge)$ and $(\Omega^\bullet(M), \wedge)$ are associative commutative graded algebras as can be readily deduced from the definition of the wedge-product. \begin{mdframed}One should introduce shifts (and symmetric powers) to even say what $\bigwedge^\bullet V$ is, if $V$ is graded.\end{mdframed}
+  \item The two spaces $(\bigwedge^\bullet V, \wedge)$, with $V$ an ordinary vector space, and $(\Omega^\bullet(M), \wedge)$, with $M$ a smooth manifold, are associative commutative graded algebras as can be readily deduced from the definition of the wedge-product. 
 
   \item Given a graded vector space $V^\bullet$ we can take the graded vector space of endomorphisms $\End^\bullet(V^\bullet)$  and elevate it to an associative graded algebra. To this end, we define the product of two endomorphisms $\phi \in \End^r(V^\bullet)$ and $\psi \in \End^s(V^\bullet)$ as the graded endomorphism given by the collection of linear maps
   $$ \phi \psi : \phi^{k+s}\psi^k: V^k \ra V^{k+r+s}\quad \forall k\in \ZZ $$
@@ -426,16 +426,13 @@ We try to bring the matter closer to the reader by giving one examples:
 \end{itemize}
 \end{example}
 
-\begin{theo} (Serre--Swan Theorem)\\
-  Any graded manifold is isomorphic to a graded manifold associated to a graded vector-bundle.
-\end{theo}
-\begin{mdframed}
-Ö - The theorem will certainly apply when restricted to graded $W$ such that $W^i\neq0$ for finitely many $i$. Otherwise, the usual 'finitely presented' assumption of the original Serre--Swan theorem is not satisfied. Still, some people do say this is true without mentioning this assumption, so maybe it's still true.
-\end{mdframed}
+\begin{rem}[Serre--Swan Theorem] Under certain hypotheses one could prove that any graded manifold is isomorphic to a graded manifold associated to a graded vector-bundle. This result is a version of the Serre--Swan Theorem. 
+\end{rem}
+
 
 This theorem tells us that all graded manifolds can be considered to be of the form seen in the aforementioned example regarding the sheaf of sections.\\
 
-We go on to define \emph{graded vector fields} to fit some anaylsis into our graded setting.
+We go on to define \emph{graded vector fields} to fit some analysis into our graded setting.
 
 \begin{definition} (Graded Vector Fields)\\
   A \textbf{graded vector field} on a graded manifold $M$ is a graded linear map
