@@ -16,15 +16,13 @@ In the following section we will generalize the notion of Differential Geometry 
   $$ V^\bullet = \bigoplus_{k\in\ZZ} V^k .$$
 \end{definition}
 
-To extend the notion of a graded vector space to a full category, we now investigate the morphisms between them:
+To extend the notion of graded vector spaces to a category, we need morphisms between them:
 
 \begin{definition} (Graded Morphisms)\\
- Let $V^\bullet, W^\bullet$ be graded vector spaces.  A \textbf{graded morphism} $\phi: V^\bullet \ra W^\bullet$ is  a collection of linear maps $\phi^k: V^k \ra W^k$ \ $\forall k \in \ZZ$. We extend this notion to that of a graded morphism of \textbf{degree $r$} by requiring that $\phi^k: V^k \ra W^{k+r}\ \forall k \in \ZZ$. In the case $V^\bullet = W^\bullet$ we call $\phi$ a \textbf{graded endomorphism} (of degree $r$, respectively).
-
- The category $\mathsf{gVect}$ of graded vector spaces has objects graded vector spaces and morphisms graded morphisms.
+ Let $V^\bullet, W^\bullet$ be graded vector spaces.  A \textbf{graded morphism} $\phi: V^\bullet \ra W^\bullet$ is  a collection of linear maps $\phi^k: V^k \ra W^k$ \ $\forall k \in \ZZ$. We extend this notion to that of a graded morphism of \textbf{degree $r$} by requiring that $\phi^k: V^k \ra W^{k+r}\ \forall k \in \ZZ$. In the case $V^\bullet = W^\bullet$ we call $\phi$ a \textbf{graded endomorphism} (of degree $r$, respectively). The category $\mathsf{gVect}$ of graded vector spaces has objects graded vector spaces and morphisms graded morphisms.
 \end{definition}
 
-Given a graded vector space $V^\bullet$ we call an element $v\in V^k$ an homogeneous element of degree $|v|\coloneqq k$.
+Given $V^\bullet$ we call $v\in V^k$ an homogeneous element of degree $|v|\coloneqq k$.
 
 \begin{example}~
   \begin{itemize}
@@ -34,15 +32,15 @@ Given a graded vector space $V^\bullet$ we call an element $v\in V^k$ an homogen
 
     \item The \emph{contraction} of a differential form by a vector field defines another graded morphism on the space of differential forms $\Omega^\bullet(M)$. For $X \in \VF(M)$ we define
      \begin{align}
-       \imath_X : \Omega^k(M)\quad &\ra \quad\Omega^{k-1}(M),\\
-       \omega\quad  &\mapsto \quad \imath_X\omega = \omega (X, \cdot, \dots, \cdot).
+       \imath_X : \Omega^k(M)\quad &\lra \quad\Omega^{k-1}(M),\\
+       \omega\quad  &\lmap \quad \imath_X\omega = \omega (X, \cdot, \dots, \cdot).
      \end{align}
     The contraction is a graded morphism of degree $-1$.
 
     \item Given $X \in \VF(M)$ the \emph{Lie Derivative} $\lie{X}$ defines, by Cartan's magic formula, a graded morphism of degree $0$ by
       \begin{align}
-        \lie{X} : \Omega^k(M)\quad &\ra \quad\Omega^{k}(M),\\
-        \omega\quad  &\mapsto \quad \lie{X}\omega := \imath_X \circ d\omega + d \circ \imath_X\omega
+        \lie{X} : \Omega^k(M)\quad &\lra \quad\Omega^{k}(M),\\
+        \omega\quad  &\lmap \quad \lie{X}\omega := \imath_X \circ d\omega + d \circ \imath_X\omega
       \end{align}
 
     \item Given two graded vector spaces $V^\bullet, W^\bullet$ we obtain another graded vector space through the set of graded morphisms
@@ -59,7 +57,7 @@ Due to their importance for the forthcoming discussion, we classify certain spec
   Let $\phi$ be a graded endomorphism such that $\phi \circ \phi = 0$. We call $\phi$ a \textbf{boundary operator}, if $\phi$ is of degree $-1$. If $\phi$ is of degree $+1$, we call it a \textbf{coboundary operator}. A graded vector space $V^\bullet$ together with a coboundary operator is called a \textbf{complex}, or \textbf{cochain complex}. If it is equipped with a boundary operator, we call it a \textbf{cocomplex}, or \textbf{chain complex}.
 \end{definition}
 
-Note that a very important example for a complex is $\Omega^\bullet(M)$ equipped with the \emph{de Rham differential}, well known from \emph{de Rham cohomology}. To define further structure on graded vector spaces, we turn to algebraic relations defined on its realisation.
+A very important example for a cochain complex is $\Omega^\bullet(M)$ equipped with the \emph{de Rham differential} used for \emph{de Rham cohomology}. To define further structure on graded vector spaces, we turn to algebraic relations defined on its realisation.
 
 \begin{definition} (Graded Algebra)\\
   A \textbf{graded algebra} is a graded vector space $A^\bullet$ together with a collection of bilinear maps called the \emph{product} on $A^\bullet$
@@ -78,19 +76,19 @@ Note that a very important example for a complex is $\Omega^\bullet(M)$ equipped
 
 \begin{example}~
 \begin{itemize}
-  \item The tensor algebra $T^\bullet(V)$ of a graded vector space $V^\bullet$ is a graded algebra with its product given by the tensor product $\tens{}$. Note that this makes $T^\bullet(V)$ an associative graded algebra.
+  \item The tensor algebra $T^\bullet(V)$ of a graded vector space $V^\bullet$ is a graded algebra with its product given by the tensor product $\otimes$. Note that this makes $T^\bullet(V)$ an associative graded algebra.
 
-  \item The two spaces $(\bigwedge^\bullet V, \wedge)$, with $V$ an ordinary vector space, and $(\Omega^\bullet(M), \wedge)$, with $M$ a smooth manifold, are associative commutative graded algebras as can be readily deduced from the definition of the wedge-product. 
+  \item The two spaces $(\bigwedge^\bullet V, \wedge)$, with $V$ an ordinary vector space, and $(\Omega^\bullet(M), \wedge)$, with $M$ a smooth manifold, are associative commutative graded algebra.
 
-  \item Given a graded vector space $V^\bullet$ we can take the graded vector space of endomorphisms $\End^\bullet(V^\bullet)$  and elevate it to an associative graded algebra. To this end, we define the product of two endomorphisms $\phi \in \End^r(V^\bullet)$ and $\psi \in \End^s(V^\bullet)$ as the graded endomorphism given by the collection of linear maps
-  $$ \phi \psi : \phi^{k+s}\psi^k: V^k \ra V^{k+r+s}\quad \forall k\in \ZZ $$
+  \item Given a graded vector space $V^\bullet$ we can take the graded vector space of endomorphisms $\End^\bullet(V^\bullet)$  and elevate it to an associative graded algebra. To this end, define the product of two endomorphisms $\phi \in \End^r(V^\bullet)$ and $\psi \in \End^s(V^\bullet)$ as the graded endomorphism given by the collection of linear maps
+  $$ \phi \psi := \phi^{k+s}\psi^k: V^k \ra V^{k+r+s}\quad \forall k\in \ZZ $$
   resulting in a new graded endomorphism of degree $(r+s)$. It is left as an easy exercise to prove that this does indeed define an associative graded algebra on $\End^\bullet(V^\bullet)$.
 
-  \item The \emph{graded symmetric algebra} $S^\bullet(V)$ over a graded vector space $V^\bullet$ is the quotient of the tensor algebra $T^\bullet(V)$ by the ideal generated by all elements of the form
-  $$ v\tens{}w - (-1)^{|v||w|} w \tens{}v \quad \forall v,w \in V^\bullet $$
+  \item The \emph{graded symmetric algebra} $S^\bullet(V^\bullet)$ over a graded vector space $V^\bullet$ is the quotient of the tensor algebra $T^\bullet(V)$ by the ideal generated by all elements of the form
+  $$ v\otimes w - (-1)^{|v||w|} w \otimes v \quad \forall v,w \in V^\bullet $$
   This graded algebra is graded commutative with respect to the tensor product, the proof is left as an exercise.
 
- \item The \emph{algebra of polynomial functions} on $V^\bullet$ is the graded symmetric algebra $S^\bullet(V^*)$ over $(V^*)^\bullet$. This notion will be particularly useful when talking about graded manifolds later in the course.
+ \item The \emph{algebra of polynomial functions} on $V^\bullet$ is the graded symmetric algebra $S^\bullet((V^*)^\bullet)$ over $(V^*)^\bullet$. This notion will be particularly useful when talking about graded manifolds later in the course.
 \end{itemize}
 \end{example}
 
@@ -109,7 +107,7 @@ We go on to further classify certain graded morphisms by restricting to those sa
   %Notice that thus $\DD(ab) \in V^{n+r+s}$. \begin{mdframed}This is not applied by the Leibniz formula, but we say from the start that $\DD$ is degree $n$.\end{mdframed}
 \end{definition}
 
-To no surprise we encounter some regular customers that fit the definition of a graded derivation perfectly and historically inspired this more general definition:
+The following examples inspired the above general definition:
 
 \begin{example}~
   \begin{itemize}
@@ -119,21 +117,21 @@ To no surprise we encounter some regular customers that fit the definition of a 
   \end{itemize}
 \end{example}
 
-Now as promised, we note that on a graded algebra $A^\bullet$ the set of graded derivations $\Der^\bullet(A^\bullet)$ which turns out to be a natural subspace of $\End^\bullet(A^\bullet)$ in the sense that $\Der^k(A^\bullet) \subset \End^k(A^\bullet)$.%, \sout{turns out to be a subalgebra of $\End^\bullet$. The proof is again left as an exercise to the reader.}
+On a graded algebra $A^\bullet$ the set of graded derivations $\Der^\bullet(A^\bullet)$ is a subspace of $\End^\bullet(A^\bullet)$ in the sense that $\Der^k(A^\bullet) \subset \End^k(A^\bullet)$.%, \sout{turns out to be a subalgebra of $\End^\bullet$. The proof is again left as an exercise to the reader.}
 
 \begin{rem}
-  Note that derivations \emph{do not} make up a subalgebra of endomorphisms, although they will turn out to make up a graded Lie subalgebra. This is analogous to the fact that if $X$ and $Y$ are vector fields on a manifold, $XY$ or $YX$ (their compositions as derivations on the algebra of functions) are \emph{not} vector fields, but one can show that $[X,Y]=XY-YX$ \emph{is} a vector field.
+  Derivations \emph{do not} form a subalgebra of endomorphisms, although they do form a graded Lie subalgebra. This is analogous to the fact that if $X$ and $Y$ are vector fields on a manifold, $XY$ or $YX$ (their compositions as derivations on the algebra of functions) are \emph{not} vector fields, but $[X,Y]=XY-YX$ \emph{is}.
 \end{rem}
 
 Combining the different classifications for graded endomorphisms, we go on to define yet another utterly important subspecies:
 
 \begin{definition}
-  A \textbf{differential} is a coboundary operator that is also a graded derivation.
+  A \textbf{differential} is a coboundary operator that is also a graded derivation. A \textbf{codifferential} is a boundary operator that is a graded derivation.
 \end{definition}
 
 %\begin{mdframed}I find this a terrible deviation from standard terminology. Normally, one would define a differential to be simply a degree-$1$ endomorphism that squares to zero. No reference to any algebra structure. Although most differentials on graded algebras in practice do happen to be derivations... \end{mdframed}
 
-Yet again, we find that the \emph{de Rham differential} lives up to its name by qualifying as a \emph{differential} in the sense of the above definition. We go on to define the notion of a graded \emph{Lie Algebra}. The definition is easily anticipated from that of a Lie algebra
+The \emph{de Rham differential} is a differential in the sense of the above definition. We consider a graded \emph{Lie Algebra}. The definition is easily anticipated from that of a usual Lie algebra
 
 \begin{definition} (Graded Lie Algebra)\\
   For simplicity, let us assume that the base field has characteristic zero. A \textbf{graded Lie algebra} is a graded algebra $\mathfrak{g}^\bullet$ whose product, $[-,-]\colon \mathfrak{g}^\bullet\times\mathfrak{g}^\bullet\rightarrow\mathfrak{g}^\bullet$ is graded skew-commutative and satisfies the graded Jacobi-Identity, i.e.
@@ -154,11 +152,9 @@ As usual we provide some insightful examples to support the understanding of the
 \end{example}
 
 \begin{rem}
-  We note that if both $a,b \in A^\bullet$ are odd, the bracket as defined in the above examples turns out to be the anticommutator
-  $$ [a,b] = ab+ba $$ Thus, if $a$ is odd, we obtain $[a,a] = 2a^2 \neq 0$.
+  If both $a,b \in A^\bullet$ are of odd degree, the bracket as defined in the above examples turns out to be the anticommutator
+  $$ [a,b] = ab+ba $$ Thus, if $a$ is odd and nonzero, we obtain $[a,a] = 2a^2 \neq 0$.
 \end{rem}
-
-Now again, we can induce the idea of a subspace on our newly defined construct. Note that we again use the algebraic structure it has to define them:
 
 \begin{definition}
   A \textbf{graded Lie subalgebra} is a graded subalgebra of a graded Lie algebra.
@@ -175,14 +171,14 @@ An example for a graded Lie subalgebra would be the space of Derivations as a su
     \item If we want to define graded associated algebras, $G$ has to be a group (or a monoid) such that the order of composition does not matter.
     \item $G$ has to be abelian (or a commutative monoid), if we want to define graded commutative algebras.
   \end{itemize}
-  So far we did everything on $\ZZ$. Taking $\ZZ / 2\ZZ$ as the underlying set, we obtain the notion of \emph{super-linear algebra}. To prove the above claims is an insightful and interesting exercise! We will only need $\ZZ$- and $\ZZ/2$-gradings.
+  So far we did everything on $\ZZ$. Taking $\ZZ / 2\ZZ$ as the underlying set, we obtain the notion of \emph{super-linear algebra}. To prove the above claims is an insightful and interesting exercise! We will only need $\ZZ$- and $\ZZ/\ZZ 2$-gradings.
 \end{rem}
 
 After this small detour, we continue to define further structure in our graded setting. Next, we go back to $\ZZ$-grading and discuss the so-called \emph{Cartan Calculus} using $d$ and $\imath$.
 
 \begin{prop}
   The span over $\RR$ of the set
-  $$ {d, \imath_X, \lie{X}: X \in \VF(M)} $$
+  $$ \{d, \imath_X, \lie{X}\colon X \in \VF(M)\} $$
   is a graded Lie subalgebra of $\Der^\bullet(\Omega^\bullet(M))$. Moreover it satisfies the following algebraic properties with regard to the usual bracket as defined before:
   \begin{multicols}{3}
     \begin{itemize}
@@ -201,11 +197,11 @@ After this small detour, we continue to define further structure in our graded s
     $$ [d, \imath_X] df = d\circ \imath_X df = d \circ \lie{X}f = \lie{X} df $$
     Now the third claim is again easily obtained using the Cartan-Magic-Formula and the graded Jacobi-Identity:
     $$ [d, \lie{X}] = [d,[d,\imath_X]] = [[d,d],\imath_X] - [d,[d,\imath_X]] = - [d, \lie{X}]$$
-    Thus it trivialy becomes $0$. For the fourth identity we note $[\imath_X, \imath_Y] = \imath_X \imath_Y + \imath_Y \imath_X$. Now if we define $I_{XY} := [\imath_X, \imath_Y]$, we can apply to the wedge product of two forms to obtain
+    Thus it trivialy becomes $0$. For the fourth identity we note $[\imath_X, \imath_Y] = \imath_X \imath_Y + \imath_Y \imath_X$. Now if we define $I_{XY} := [\imath_X, \imath_Y]$, we can apply to the wedge product of two $1$-forms to obtain
     $$ I_{XY} (\alpha \wedge \beta) = (I_{XY}\alpha) \wedge \beta +  \alpha \wedge (I_{XY}\beta) $$
     Thus $I_{XY}$ is defined by its action on 1-forms, for which we see $I_{XY}(\alpha) = 0$ thus $I_{XY} =0$.\\
     For the fifth identity we simply note
-    $$ [\imath_X, \lie{Y}](f) = \imath_X \imath_Y (f), \quad \quad [\imath_X, \lie{Y}](df) = \imath_{[X,Y]} df $$
+    $$ [\imath_X, \lie{Y}](f) = \imath_X \imath_Y (df), \quad \quad [\imath_X, \lie{Y}](df) = \imath_{[X,Y]} df $$
     Now the only one left to prove is the sixth identity. First, for functions, we get
     $$ [\lie{X}, \lie{Y}] (f) = [X,Y](f) $$
     Now for $1$-forms we obtain, using the Cartan-Magic-Formula and the Jacobi-Identity:
@@ -232,30 +228,29 @@ Now we use the previous lemma, to constitute a way of calculating the de Rham di
 \begin{prop}
   Let again  $X_0,...,X_{k} \in \VF(M)$ and $\omega \in \Omega^k(M)$. Then
   \begin{align}
-    d\omega(X_0, ..., X_k) =& \sum_{i=0}^{k} (-1)^i \ X_i(\omega(X_0, ..., \widehat{X_i}, ..., X_k))\\
-    &+ \sum_{0 \leq i,j \leq k} (-1)^{i+j} \omega([X_i,X_j], X_0, ..., \widehat{X_i}, ..., \widehat{X_j}, ..., X_k)
+    d\omega(X_0, ..., X_k) =& \ \sum_{i=0}^{k} (-1)^i \ X_i(\omega(X_0, ..., \widehat{X_i}, ..., X_k))\\
+    +& \sum_{0 \leq i,j \leq k} (-1)^{i+j} \omega([X_i,X_j], X_0, ..., \widehat{X_i}, ..., \widehat{X_j}, ..., X_k)
   \end{align}
   \begin{proof}
     We again use induction on $k$. For $k=0$ we already know the formular holds. Now given for some $k-1$, we want to show that it also holds for $k$. To this end, note that
     \begin{align}
-      (d\imath_{X_0}\omega)(X_1, ..., X_k) &= \sum_{i=1}^{k} (-1)^{i+1} \ X_i(\imath_{X_0} \omega(X_1, ..., \widehat{X_i}, ..., X_k))\\
+      (d\imath_{X_0}\omega)(X_1, ..., X_k) &= \ \sum_{i=1}^{k} (-1)^{i+1} \ X_i(\imath_{X_0} \omega(X_1, ..., \widehat{X_i}, ..., X_k))\\
       &+  \sum_{1 \leq i,j \leq k} (-1)^{i+j} \imath_{X_0} \omega([X_i,X_j], X_1, ..., \widehat{X_i}, ..., \widehat{X_j}, ..., X_k)\\
-      &= \sum_{i=1}^{k} (-1)^{i+1} \ X_i( \omega(X_0, X_1, ..., \widehat{X_i}, ..., X_k))\\
+      &= \ \sum_{i=1}^{k} (-1)^{i+1} \ X_i( \omega(X_0, X_1, ..., \widehat{X_i}, ..., X_k))\\
       &+  \sum_{1 \leq i,j \leq k} (-1)^{i+j} \omega([X_i,X_j],X_0,  X_1, ..., \widehat{X_i}, ..., \widehat{X_j}, ..., X_k)
     \end{align}
     Now we further note
     \begin{align}
       d\circ \imath_{X_0}\ \omega(X_1, ..., X_k) &= \imath_{X_k} ... \imath_{X_1} \circ d\circ \imath_{X_0} \omega\\
-      &= -d\omega(X_k, X_0) + \sum_{i=1}^k (-1)^{i+1} \ \imath_{X_k} ... \widetilde{\imath_{X_i}} ... \imath_{X_1} \imath_{[X_i, X_0]} - X_0 (\omega(X_1, ..., X_k))
+      &= -d\omega(X_k, X_0) + \sum_{i=1}^k (-1)^{i+1} \ \imath_{X_k} ... \widehat{\imath_{X_i}} ... \imath_{X_1} \imath_{[X_i, X_0]} - X_0 (\omega(X_1, ..., X_k))
     \end{align}
     Putting those two together proves the Proposition.
   \end{proof}
 \end{prop}
 
-\newpage
 \subsection{Sheaves}
 
-\begin{definition} (Presheaf)\\
+\begin{definition}[Presheaf]
   Let $X$ be a topological space. A \textbf{presheaf} $\FF$ of rings on $X$ consists of the following data:
   \begin{itemize}
     \item[(1)] For every open subset $U\subset X$ there exists a ring $\FF(U)$
@@ -275,9 +270,7 @@ Now we use the previous lemma, to constitute a way of calculating the de Rham di
   \end{itemize}
 \end{definition}
 
-Now we make our way to define the notion of a full sheaf:
-
-\begin{definition} (Sheaf)\\
+\begin{definition}[Sheaf]
   A presheaf $\FF$ on a topological space $X$ is a \textbf{sheaf}, if it satisfies the following additional properties:
   \begin{itemize}
     \item[d)] If $U$ is an open subset of $X$ and $\{V_i\}$ and open cover of $U$, $s\in\FF(U)$ such that $\rho_{UV_i}(s) = 0 \quad \forall i$ then $s=0$.
@@ -298,16 +291,16 @@ We again provide some interesting examples of sheaves and presheaves:
   \item Let $X$ be a topological space. For each open set $U\subseteq X$ let $C(U)$ be the ring of continuous functions with codomain $\RR$. The maps $\rho_{UV}:C(U)\ra C(V)$ for $V \subset U$ are now given by the restrictions of these functions in the usual sense. This makes $C$ a sheaf of rings on $X$.
   \item Let $f:X \ra Y$ be a continuous map between topological spaces $X,Y$. Define
   \begin{equation}
-    \FF(U):=\{ s:U \subset Y \ra X, \ f \circ s = \id_U \}
+    \FF(U):=\{ s \colon U \subset Y \ra X, \ f \circ s = \id_U \}
   \end{equation}
   This constitutes a sheaf on $Y$. The maps $s$ in $\FF(U)$ are called \textbf{sections} of the sheaf.
-  \item Let $X= \RR$ and define $\FF(U)$ to be the ring of bounded functions of an open subset $U\subseteq \RR$. Now this is not a sheaf: If $U = \RR$, we choose $V_i := \{x \in \RR \ s.t. \ |x| <i \}$. Now let $\id \colon x \mapsto x$ denote the identity map. We note that $\id \in \FF(V_i) \ \forall i \in \NN$. Thus there cannot exist $s \in \FF(\RR)$ s.t. $s|_{V_i} = \id$ which implies that $\id \notin \FF(\RR)$ is not bounded. Thus we found a presheaf that is not a full sheaf.
+  \item Let $X= \RR$ and define $\FF(U)$ to be the ring of bounded functions of an open subset $U\subseteq \RR$. Now this is not a sheaf: If $U = \RR$, we choose $V_i := \{x \in \RR \ s.t. \ |x| <i \}$. Now let $\id \colon x \mapsto x$ denote the identity map. We note that $\id \in \FF(V_i) \ \forall i \in \NN$. Thus there cannot exist $s \in \FF(\RR)$ s.t. $s|_{V_i} = \id_{V_i}$ since $\id_\RR \notin \FF(\RR)$ as it is not bounded. Thus we found a presheaf that is not a full sheaf.
 \end{itemize}
 \end{example}
 
 The next natural step is to again identify the data needed for morphisms in the category of presheaves:
 
-\begin{definition} (Morphisms of Sheaves)\\
+\begin{definition}[Morphisms of Sheaves]
   Let $\FF$ and $\GG$ be two presheaves (or sheaves) on a topological space $X$. A \textbf{morphism of (pre-) sheaves} consist of a morphisms of rings $\phi_U: \FF(U) \ra \GG(U)$ for all open sets $U \in X$ such that the following diagram commutes:
   \begin{equation}
   \begin{tikzcd}
@@ -318,15 +311,15 @@ The next natural step is to again identify the data needed for morphisms in the 
   Which sums up to saying $\rho^\prime \circ \phi = \phi \circ \rho$.
 \end{definition}
 
-To further expand upon the agricultural language of our setting, we go on to discuss the notion of germs and stalks:
+To further expand upon the agricultural language of our setting, we go on to discuss the notion of germs:
 
-\begin{definition} (Germs)\\
+\begin{definition}[Germs]
   Let $X$ be a topological space and $x \in X$. A \textbf{germ} on $X$ at $x$ is an equivalence class of functions $f:X \ra Y$ for a set $Y$ where we define $f\sim g$ if there exists a neighbourhood $U\subseteq X$ of $x$ such that $f|_U = g|_U$.
 \end{definition}
 
 Now it is very reasonable to ask how a sheaf behaves at an arbitrary point of the base topological space $X$. To this end, we can look at its behaviour in a small neighbourhood of a chosen point and then implement a fitting limit to come arbitrarily close. To this end, we use the direct limit known from category theory.
 
-\begin{definition} (Stalks)\\
+\begin{definition}[Stalks]
   Let $\FF$ be a presheaf on $X$, $p \in X$. The \textbf{stalk} $\FF_p$ of $\FF$ at $p$ is the direct limit of the rings $\FF(U)$ for all open sets $U$ containing $p$ through the restiction maps $\rho$.
 \end{definition}
 
@@ -335,47 +328,46 @@ Now it is very reasonable to ask how a sheaf behaves at an arbitrary point of th
   As an interesting exercise you can show that the space of continuous functions at a point $p \in X$ is the stalk at $p$ of the sheaf of continuous functions on $X$.
 \end{ex}
 
-\begin{definition}
+\begin{definition}[Locally Ringed Spaces]
 \label{def:local_ring}
-  A ring $R$ is a \textbf{local ring} if it has a unique maximal left (or equivalently right) ideal.
+  A ring $R$ is a \textbf{local ring} if it has a unique maximal left or right ideal.
 \end{definition}
-
-\begin{definition} (Ringed Space)\\
+\begin{definition}[Ringed Space]
   A \textbf{ringed space} $(X, O_X)$ is a topological space $X$ together with a sheaf of rings $O_X$ on $X$. $O_X$ is called the \textbf{structure sheaf} of $X$.
 \end{definition}
-
-\begin{definition}
-  A \textbf{locally ringed space} is a ringed space such that all the stalk of $O_X$ are local rings in the sense of \ref{def:local_ring}.
+\begin{definition}[Locally Ringed Space]
+  A \textbf{locally ringed space} is a ringed space such that all the stalk of $O_X$ are local rings.
 \end{definition}
 
 In the following we will mostly use notion of locally ringed spaces. Before continuing, we again provide an example for the above constructs:
 
 \begin{example}~
   \begin{itemize}
-    \item Let $X$ be a topological space. $X$ is a locally ringed space if it is equipped with the sheaf of real valued continuous functions on $X$. The same holds for $X$ a manifold equipped with the sheaf of smooth functions. As an exercise you can prove that $X$ is indeed locally ringed. Hint: The unique maximal ideal consists of the germs for which the value at $x$ is $0$.
+    \item Let $X$ be a topological space. $X$ is a locally ringed space if it is equipped with the sheaf of real valued continuous functions on $X$. The same holds for $X$ a manifold equipped with the sheaf of smooth functions. As an exercise you can prove that $X$ is indeed locally ringed. Hint: The unique maximal ideal consists of the germs for which the value at $x \in X$ is $0$.
+    \item A smooth manifold is a locally ringed space locally isomorphic to $(R^n,\Ci(M, \RR^n))$.
   \end{itemize}
 \end{example}
 
-\newpage
+
 \subsection{Graded Manifolds}
 
-While it may seem like some of the definitions were just loosely related, we gradualy closed in on the important definition of a graded manifold:
-
 \begin{definition} (Graded Manifold)
-  A \textbf{graded manifold} $M$ is a locally ringed space $(M, O_M)$ where $M$ is a manifold and $O_M$ is a sheaf that is locally isomorphic to $(U, \Ci(U) \tens{} S^\bullet(W_U^*))$ where $U\subseteq M$ is an arbitrary open subset and $W_U$ is a graded vector space such that $(W_U)_0 = \{0\}$. Also recall that $S^\bullet(W_U^*)$ denotes the graded algebra of graded polynomial functions on $W_U$.\\
+  A \textbf{graded manifold} $M$ is a locally ringed space $(M, O_M)$ where $M$ is a manifold and $O_M$ is a sheaf such that, for $U\subseteq \RR^n$ an arbitrary open subset, $O_M|_U \cong (U, \Ci(U) \otimes S^\bullet((W_U^*)^\bullet))$. $W_U$ is a graded vector space such that $(W_U)^0 = \{0\}$ (here, the index $0$ indicates the grade). Recall that $S^\bullet((W_U^*)^\bullet))$ denotes the graded algebra of graded polynomial functions on $W_U$.\\
 
   The sections of the sheaf $O_M$ are called \textbf{graded functions} on the graded manifold $M$. Note that the graded functions form a graded algebra.
 \end{definition}
 
+For later use, consider $S^\bullet((W_U^*)^\bullet)$ as a generalisation of formal power series (say in $\hbar$) and $\Ci(U)$ as smooth functions depending on $n$ variables.
+
 \begin{rem}
   The local isomorphism required above should preserve the grading of
-  $$ \bigoplus_{k \geq 0} \Ci(U) \tens{} S^k W_U^*$$
-  Note further that $|f  \tens{} v| = |v|$.
+  $$ \bigoplus_{k \geq 0} \Ci(U) \otimes S^k W_U^*$$
+  Note further that $|f  \otimes v| = |v|$.
 \end{rem}
 
 On a graded manifold we do have local coordinates. But aside from the usual coordinates defined using open coverings of $M$, we also have coordinates that do justice to the graded setting:\\
 
-We denote the coordinates by $(x_i)^n_{i= 1,...,m}$. Now coordinates of degree $0$ are coordinates on the open sets of an open cover $U_i$. Meanwhile coordinates with $|x_i| \neq 0$ are coordinates on $S^\bullet(W^*)$.\\
+We denote the coordinates by $(x_i)^k_{i= 1,...,m}$ with $x^k \colon U \lra S^\bullet((W^*_U)^k)$. Now coordinates of degree $0$ are coordinates on the open sets of an open cover $U_i$. Meanwhile coordinates with $|x_i| \neq 0$ are coordinates on $S^\bullet(W^*)$.\\
 
 Now we once again turn to the respective morphisms of graded manifolds. Looking at the definition of a graded manifold, we first need to define the morphisms of (locally) ringed spaces:
 
@@ -385,7 +377,8 @@ Now we once again turn to the respective morphisms of graded manifolds. Looking 
   $$ (f_* O_X)(U) := O_X(f^{-1}(U)) $$
 \end{definition}
 
-Unpacking the above definition we note: We have $f:X \ra Y$ continuous and a family of ring morphisms $\psi_U: O_Y(V) \ra O_X(f^{-1}(V))$ for all $V\subseteq Y$ open. Now this makes the following diagram commute for some $V_1 \subseteq V_2$:
+Unpacking the above definition we note: We have $f:X \ra Y$ continuous and a family of morphisms of rings $\psi_U \colon O_Y(V) \ra O_X(f^{-1}(V))$ for all $V\subseteq Y$ open. Now this makes the following diagram commute for some $V_1 \subseteq V_2$:
+
 \[
 \begin{tikzcd}
   O_Y(V_2) \arrow{r}{\psi_{V_2}} \arrow[swap]{d}{\rho^Y_{V_2 V_1}} & O_Y(f^{-1}(V_2)) \arrow{d}{\rho^X_{f^{-1}(V_2) f^{-1}(V_1)}} \\
@@ -409,54 +402,64 @@ Note that the graded symmetric algebra is the generalisation of both the symmetr
   A \textbf{graded vector bundle} over a manifold $M$ is a collection of ordinary vector bundles $(E_i)_{i\in \ZZ}$ over $M$.
 \end{definition}
 
-We try to bring the matter closer to the reader by giving one examples:
+We try to bring the matter closer to the reader by giving one example:
 
 \begin{example}~
 \label{Sheaf_of_sections}
-  Given a manifold $M$ and a vector bundle $E\longrightarrow M$, the sheaf of sections
-  $$ U \mapsto \Gamma(U, S^\bullet(E^*|_U)) $$
+  Given a manifold $M$ and a vector bundle $E \lra M$, the sheaf of sections
+  $$ U \lra \Gamma(U, S^\bullet(E^*|_U)) $$
   is a graded manifold denoted by $E$. As a rather complicated exercise, you can prove the above statement.
 \end{example}
 
 \begin{example}~
 \begin{itemize}
-  \item Let $V$ be a vector bundle. We can construct a graded manifold as in Example \ref{Sheaf_of_sections} by taking $E:= V[1]$.
+  \item Let $V$ be a vector bundle. We can construct a graded manifold as in Example \ref{Sheaf_of_sections} by taking $E:= V[1]$. Here, $V[1]$ is the graded vector bundle with $V$ at grade $1$ and no other content.
 
   \item In the same manner we can take $T[1]M$ to get the graded manifold $\Omega^\bullet(M)$.
 \end{itemize}
 \end{example}
 
-\begin{rem}[Serre--Swan Theorem] Under certain hypotheses one could prove that any graded manifold is isomorphic to a graded manifold associated to a graded vector-bundle. This result is a version of the Serre--Swan Theorem. 
+\begin{rem}[Serre--Swan Theorem] Under certain assumptions one could prove that any graded manifold is isomorphic to a graded manifold associated to a graded vector-bundle. This result is a version of the Serre--Swan Theorem.
 \end{rem}
 
 
-This theorem tells us that all graded manifolds can be considered to be of the form seen in the aforementioned example regarding the sheaf of sections.\\
+This theorem tells us that all graded manifolds can be considered to be of the form seen in the aforementioned example regarding the sheaf of sections. We go on to define \emph{graded vector fields} to fit some analysis into our graded setting.
 
-We go on to define \emph{graded vector fields} to fit some analysis into our graded setting.
-
-\begin{definition} (Graded Vector Fields)\\
+\begin{definition}[Graded Vector Fields]
   A \textbf{graded vector field} on a graded manifold $M$ is a graded linear map
-  $$ X:\Ci(M) \ra \Ci(M)[k] $$
+  \begin{equation}
+    X:\Ci(M) \ra \Ci(M)[k]
+  \end{equation}
   satisfying the \textbf{graded Leibniz rule}
-  $$ X(fg) = X(f) g + (-1)^{k|f|} \ f \ X(g) \quad \quad \forall f,g \in \Ci(M)$$
-  It is easy to show that the graded vector fields form a graded vector space.
+  \begin{equation}
+    X(fg) = X(f) g + (-1)^{k|f|} \ f \ X(g) \quad \quad \forall f,g \in \Ci(M)
+  \end{equation}
+  Graded vector fields form a graded vector space. Note that $\Ci(M)$ is the algebra of smooth functions on $(M, O_M)$.
 \end{definition}
 
 Now we use the coordinates $x^i$, we previously defined on a graded manifold, to locally express graded vector fields as
-$$ X := X^i \ \dell{}{x^i} $$
+\begin{equation}
+  X := X^i \ \dell{}{x^i}
+\end{equation}
 
 \begin{example}~
   The \emph{graded Euler vector field} is a graded vector field existing for any graded manifold $M$ defined as
-  $$ E(f) := |f| \ f $$
-  for $f$ any homogenous function. As an exercise you can show that $E$ is a graded derivation of degree $0$.
+  \begin{equation}
+    E(f) := |f| \ f
+  \end{equation}
+  for $f$ any homogeneous function. As an exercise you can show that $E$ is a graded derivation of degree $0$.
 \end{example}
 
 In local coordinates, we can express the Euler vector field as
-$$ E = \sum_i |x^i| x^i \ \dell{}{x^i} $$
+\begin{equation}
+  E = \sum_i |x^i| \ x^i \ \dell{}{x^i}
+\end{equation}
 
 \begin{rem}
   The \textbf{graded commutator} equips the graded vector space of graded vector fields with the structure of a graded Lie algebra:
-  $$ [X,Y] := X \circ Y - (-1)^{kl} \ Y \circ X $$
+  \begin{equation}
+    [X,Y] := X \circ Y - (-1)^{kl} \ Y \circ X
+  \end{equation}
   It is an easy exercise to prove this statement.
 \end{rem}
 
@@ -464,7 +467,9 @@ Now we further investigate the graded Euler vector field and its remarkable prop
 
 \begin{prop}
   For any graded vector field $X$ we have
-  $$ [E,X] = deg(X) \ X $$
+  \begin{equation}
+    [E,X] = deg(X) \ X
+  \end{equation}
 \begin{proof}
   \begin{align}
     [E,X](f) &= E(X(f)) - X(E(f)) = |X(f)| X(f) - X(|f| f)\\
@@ -478,21 +483,26 @@ To bring further notions of our usual geometric background to the graded setting
 
 \begin{definition} (Cohomological Vector Fields)\\
   A \textbf{cohomological vector field} is a graded vector field of degree $+1$ which commutes with itself, thus
-  $$ [Q,Q] = 0 \quad \Rightarrow \quad 2 Q\cdot Q = 0 \quad \Rightarrow \quad Q^2=0 $$
-  Note that thus every cohomological vector field corresponds to a differential on the graded algebra of smooth functions $\Ci(M)$.
+  \begin{equation}
+    [Q,Q] = 0 \quad \Rightarrow \quad 2 Q\cdot Q = 0 \quad \Rightarrow \quad Q^2=0
+  \end{equation}
+  Thus every cohomological vector field corresponds to a differential on the graded algebra of smooth functions $\Ci(M)$.
 \end{definition}
 
 Again, we provide some interesting examples to further illuminate the definitions:
 
 \begin{example}~
 \begin{itemize}
-  \item Consider $T[1]M$. The algebra of smooth functions on it is nothing but the algebra of differential forms on $M$, namely $\Omega^\bullet(M)$ using the de Rham differential. Note that $M$ is just a normal manifold in this example.\\
-  This shows that the de Rham differential is a cohomological vector field on $T[1]M$ seen as the graded manifold $(U, \Ci(U) \tens{}S(T[1]M^*))$
+  \item Consider $T[1]M$. The algebra of smooth functions on it is the algebra of differential forms on $M$, namely $\Omega^\bullet(M)$ using the de Rham differential. Note that $M$ is just a normal manifold in this example. This shows that the de Rham differential is a cohomological vector field on $T[1]M$ seen as the graded manifold $(U, \Ci(U) \otimes S(T[1]M^*))$.
 
-  \item Let $\fg$ be a finite dimensional Lie algebra. We look at the graded manifold with body a point and $W=\fg [1]$. This graded manifold carries a cohomological vector field $Q$ corresponding to the Chivally--Eilenberg differential on $\bigwedge^\bullet \fg^* = \Ci(\fg[1])$. We use $(e_i)^n_{i=1}$ as a basis of $\fg$ and denote by $f^k_{ij}$ the induced structure constants
-  $$ [e_i, e_j] = \sum_{k=1}^n f_{ij}^k e_k $$
+  \item Let $\fg$ be a finite dimensional Lie algebra. We look at the graded manifold $\fg [1]$. It carries a cohomological vector field $Q$ corresponding to the Chevalley--Eilenberg differential on $\bigwedge^\bullet \fg^* = \Ci(\fg[1])$. We use $(e_i)^n_{i=1}$ as a basis of $\fg$ and denote by $f^k_{ij}$ the induced structure constants
+  \begin{equation}
+    [e_i, e_j] = \sum_{k=1}^n f_{ij}^k e_k
+  \end{equation}
   Now we can define $Q$ to be
-  $$ Q := \frac{1}{2} \sum_{i,j = 1}^n x^i x^j f_{ij}^k \dell{}{x^k} $$
+  \begin{equation}
+    Q := \frac{1}{2} \sum_{i,j = 1}^n x^i x^j f_{ij}^k \dell{}{x^k}
+  \end{equation}
   Where we denoted by $(x^i)_{i=1}^n$ the coordinates on $\fg[1]$ dual to the basis $(e_i)^n_{i=1}$. As an interesting exercise, prove that $Q$ is indeed cohomological, i.e. degree-$1$ and $Q^2=0$.
 \end{itemize}
 \end{example}
@@ -500,36 +510,37 @@ Again, we provide some interesting examples to further illuminate the definition
 %TODO text
 
 \begin{definition} (Differential Graded Manifolds)\\
-  A graded manifold together with a cohomological vector field is called a \textbf{differential graded manifold} or short dg-manifold. Notice that the morphisms of dg-manifolds are morphisms of graded manifolds with respect to which the respective cohomological vector fields are related.
+  A graded manifold together with a cohomological vector field is called a \textbf{differential graded manifold} or short \textbf{dg-manifold}. The morphisms of dg-manifolds are morphisms of graded manifolds with respect to which the respective cohomological vector fields are related.
 \end{definition}
 
 We turn our heads towards integration in the graded setting. To this end, we investigate differential forms. The main problem will be the problematic transformation behaviour of differential forms that will dramatically complicate the notion of integration. As a result, we will turn towards the symplectic setting which eliminates many of the upcoming difficulties.\\
 
-Locally, we reconstruct the algebra of differential forms on $M$ by adding a new set of coordinates $(dx^i)^n_{i=1}$ with degree $(|x^i|+1)$. First note that generally $(dx^i)^2 \neq 0$. However we again go the other way and start with a global setting to then zoom into the local one. The rough outline of the procedure looks as follows:
+Locally, we reconstruct the algebra of differential forms on $M$ by adding a new set of coordinates $(dx^i)^n_{i=1}$ with total degree (grading plus degree of differential form) $(|x^i|+1)$. Note that generally $(dx^i)^2 \neq 0$. The rough outline of the procedure looks as follows:
 
 \begin{itemize}
   \item[1.] Differential forms are reconstructed as a graded manifold starting from $T[1]M$.
-  \item[2.] The de Rham differential has already been shown to be a cohomological vector field on $\Ci(T[1]M)$.\\
-  Now we interpret $T[1]M$ as a dg-manifold where $Q$ is the de Rham differential. In coordinates, we have
+  \item[2.] The de Rham differential has already been shown to be a cohomological vector field on $\Ci(T[1]M)$. Now we interpret $T[1]M$ as a dg-manifold where $Q$ is the de Rham differential. In coordinates, we have
   $$ Q = \sum_{i=1}^n dx^i \dell{}{x^i} $$
 \end{itemize}
 
 \begin{definition} (Graded de Rham Complex)\\
-  The \textbf{graded de Rham complex} $(\Omega(M), d)$ is defined as $\Ci(T[1]M)$ equipped with the differential $Q$ as defined above. Thus the elements of the space of this complex are differential forms on $M$.
+  The \textbf{graded de Rham complex} (cochain complex) $(\Omega^\bullet(M), d)$ is defined as $\Ci(T[1]M)$ equipped with the differential (coboundary operator) $Q$ as defined above. Thus the elements of the space of this complex are differential forms on $M$.
 \end{definition}
 
-Now our next goal is to extend the Cartan Calculus to this setting. The main point is thus to define the respective operators. First note that $ \imath_{\dell{}{x^i}} $ has degree $(|x^i|-1)$ and $ \imath_{\dell{}{x^i}} dx^j = \delta^j_i $. Note further that
+Now our next goal is to extend the Cartan Calculus to this setting. The main point is to define the respective operators. First note that $ \imath_{\dell{}{x^i}} $ has degree $(|x^i|-1)$ and $ \imath_{\dell{}{x^i}} dx^j = \delta^j_i $. Note further that
 $$ \lie{X}\omega := \imath_X \circ d\omega + (-1)^{|X|} d \circ \imath_X \omega $$
 Now it would be convenient to pinpoint the degree of a differential form. To no surprise, the graded Euler vector field can be used to do just that:
 \begin{align}
   \lie{E} x^i &= E(x^i) = |x^i| x^i\\
-  \lie{E} dx^i &= d \circ \lie{E}(x^i) = |x^i| dx^i
+  \lie{E} dx^i &= d \circ \imath_{E}(dx^i) = d \circ \lie{E}(x^i) = |x^i| dx^i
 \end{align}
 Thus we can unambigously define the degree of a differential form:
 
 \begin{definition}
-  We define the degree $|\omega|$ of a differential form $\omega$ through the formula
-  $$ \lie{E}\omega = |\omega| \omega $$
+  We define the \textbf{degree of a differential form}, denoted by $\gra(\omega)$, for a differential form $\omega$ through the formula
+  \begin{equation}
+    \lie{E}\omega = \gra(\omega) \ \omega
+  \end{equation}
 \end{definition}
 
 With this definition at hand, we are ready to introduce the symplectic setting.
@@ -537,7 +548,7 @@ With this definition at hand, we are ready to introduce the symplectic setting.
 \begin{definition} (Graded Symplectic Forms)\\
   A \textbf{graded symplectic form} of degree $k$ is a two-form $\omega$ which has the following properties:
   \begin{itemize}
-    \item[1.] $\omega$ is homogenous of degree $k$
+    \item[1.] $\omega$ is homogeneous of degree $k$
     \item[2.] $\omega$ is closed wrt. the de Rham operator
     \item[3.] $\omega$ is non-degenerate, i.e. the induced musical morphism
     \begin{align}
@@ -554,10 +565,10 @@ With this definition at hand, we are ready to introduce the symplectic setting.
   A \textbf{graded symplectic manifold of degree $k$} is a pair $(M, \omega)$ where $M$ is a graded manifold and $\omega$ is a graded symplectic form on $M$ of degree $k$.
 \end{definition}
 
-Now this definition directly implies some interesting properties of graded symplectic manifolds:
+This definition implies some interesting properties of graded symplectic manifolds:
 
 \begin{lem}
- Let $\omega$ be the respective graded symplectic form of $M$ and let $\degr(\omega) = k \neq 0$. This implies that $\omega$ is exact.
+ Given $(M, \omega)$, let $\gr(\omega) = k \neq 0$. This implies that $\omega$ is exact.
 
 \begin{proof}
   We easily show that
@@ -570,16 +581,20 @@ We extend the notion of a symplectic form to vector fields:
 \begin{definition}~
 \begin{itemize}
   \item Let $\omega$ be a graded symplectic form on $M$. A vector field $X$ is a \textbf{symplectic vector field} if
-  $$ \lie{X}\omega = 0 $$
+  \begin{equation}
+    \lie{X}\omega = 0
+  \end{equation}
 
   \item A vector field $X$ is an \textbf{hamiltonian vector field} if the contraction of $X$ and $\omega$ is an exact one-form, i.e. $\exists H \in \Ci(M)$ s.t.
-  $$ \imath_X \omega = dH $$
+  \begin{equation}
+    \imath_X \omega = dH
+  \end{equation}
 
 \end{itemize}
 \end{definition}
 
 \begin{lem}
-  Let $\omega$ be a graded symplectic form on $M$ of degree $k$ and let $X$ be a symplectic vector field of degree $l$. If $k+l \neq 0$, then $X$ is hamiltonian.
+  Let $\omega$ be a graded symplectic form on $M$ with $\gra(\omega) = k$ and let $X$ be a symplectic vector field of degree $l$. If $k+l \neq 0$, then $X$ is hamiltonian.
 
 \begin{proof}
   First, we note that
@@ -598,32 +613,36 @@ We extend the notion of a symplectic form to vector fields:
 \end{proof}
 \end{lem}
 
-We go on to extend dg-manifolds to the symplectic setting.
-
 \begin{definition} (Differential Graded Symplectic Manifolds)\\
-  A graded manifold with a graded symplectic form and a symplectic cohomological vector field is called a \textbf{differential graded symplectic manifold} and is denoted by $(M, \omega, Q)$.
+  A graded symplectic manifold of degree $k$ with a symplectic cohomological vector field is called a \textbf{differential graded symplectic manifold of degree $k$} and is denoted by $(M, \omega, Q)$.
 \end{definition}
 
-Using the previous lemma we directly see that, given $\degr(\omega) \neq -1$, the cohomological vector field $Q$ is necessarily hamiltonian. As an interesting analogy, we can define a structure similar to that of the well-known \emph{Poisson-bracket} using the symplectic form of a differential graded symplectic manifold. To this end, define
+Using the previous lemma we see that, given $\gra(\omega) \neq -1$, the cohomological vector field $Q$ is necessarily hamiltonian. As an interesting analogy, we can define a structure similar to that of the well-known \emph{Poisson-bracket} using the symplectic form of a differential graded symplectic manifold. To this end, define
 \begin{align}
   \{\cdot, \cdot \} : \Ci(M) \times \Ci(M) \quad &\ra \quad \Ci(M),\\
   (f,g) \quad &\mapsto \quad \{f,g\} := (-1)^{|f|+1} \ X_f(g)
 \end{align}
 where we denote by $X_f$ the unique hamiltonian graded vector field corresponding to $f$, thus satisfying
-$$ \imath_{X_f}\omega = df $$
+\begin{equation}
+  \imath_{X_f}\omega = df
+\end{equation}
 As an exercise you can show that the thus defined bracket satisfies relations strikingly similar to those of the Poisson-bracket.\\
 
-Using the notion of a hamiltonian graded vector field, we take a differential graded symplectic manifold $(M,\omega, Q)$ and use the innert cohomological vector field $Q$ to define the unique function $S$ that satisfies (modulo sign)
-$$ \imath_Q \omega = dS $$
+Using the notion of a hamiltonian graded vector field, we take a differential graded symplectic manifold $(M,\omega, Q)$ and use the cohomological vector field $Q$ to define the unique function $S$ that satisfies (modulo sign)
+\begin{equation}
+  \imath_Q \omega = dS
+\end{equation}
 Now since $Q = \{S,\cdot\}$ we see
-$$ Q(f) = \{S, f\} = (-1)^{|S|+1} X_S(f) = X_S(f) $$
-implying that $[Q,Q](f) = \{\{S,S\},f\} = 0$ making $\{S,S\}$ a constant. Now since $\{S,S\}$ has degree $k+2$, $\omega$ has degree $k$ and $S$ has degree $k+1$ we see that
+\begin{equation}
+  Q(f) = \{S, f\} = (-1)^{|S|+1} X_S(f) = X_S(f)
+\end{equation}
+implying that $[Q,Q](f) = \{\{S,S\},f\} = 0$ making $\{S,S\}$ a constant. $\omega$ has degree $k$ and $S$ can be chosen of degree $k+1$. Then $\{S,S\}$ has degree $k+2$. Thus if $k \neq -2$
 \begin{equation}\label{ClassicalMasterEquation}\tag{CME}
   \{S,S\} = 0
 \end{equation}
-if $k \neq -2$. This equation is called the \textbf{Classical Master Equation} and will become increasingly important towards the end of the course.
+since constants have degree $0$. This equation is called the \textbf{Classical Master Equation} and will become increasingly important towards the end of the course.
 
-\newpage
+
 \subsection{Principal Bundles}
 
 \begin{rem}
@@ -646,8 +665,8 @@ Now recall that a \textbf{$G$-space} $X$ is a topological space $X$ equipped wit
 
 We introduce further classification of $G$-bundles by restricting to certain types of actions:
 
-\begin{definition} (Principal $G$-bundles)\\
-  A $G$-bundle $(E,\pi,M)$ is a \textbf{principal $G$-bundle} of $G$ acts freely on $E$ and transitively on fibres.
+\begin{definition}[Principal $G$-bundles]
+  A $G$-bundle $(E,\pi,M)$ is a \textbf{principal $G$-bundle} if $G$ acts freely on $E$ and transitively on fibres.
 \end{definition}
 
 Remember that an action $\sigma$ is free, if for any $g\in G$ and $x\in X$ the equation $\sigma_g(x) = x$ implies $g = e_G$. Now a free action results in each orbit, and thus each fibre, being homomorphic to $G$ itself and hence $(E,\pi,M)$ is indeed a fibre bundle as implied before. We give some interesting examples to illuminate the definitions:
@@ -694,7 +713,7 @@ We further classify special cases of principal $G$-bundles using the aforementio
 An important property to classify trivial bundles is the existence of smooth global sections (which imply global frames):
 
 \begin{theo}
-  A principal $G$-bundle $(P,\pi,M)$ is trivial iff it there exsist a smooth global section.
+  A principal $G$-bundle $(P,\pi,M)$ is trivial iff there exists a smooth global section.
 
 \begin{proof}
   Let $\sigma:M\ra P$ be a section such that $\pi \circ \sigma(x) = x$ for all $x \in M$. Now for all $p\in P$ there exists a $\chi_\sigma(p) \in G$ such that
@@ -728,7 +747,7 @@ We take a step back and investigate a natural product defined on $G$-spaces. Thi
   $$ (x,y) \sim (x^\prime, y^\prime) \quad \text{if} \quad \exists g\in G\  s.t. \ x^\prime = xg, \ y^\prime = yg $$
 \end{definition}
 
-\begin{definition} (Associated Bundles)\\
+\begin{definition}[Associated Bundles]
   Let $\xi = (P, \pi, M)$ be a principal $G$-bundle an let $F$ be a left $G$-space. Define
   \begin{align}
     P_F \ &:= \ P \times_G F\\
@@ -868,8 +887,8 @@ We will now turn towards the notion of curvature: Given a connection on a princi
   \item $\Omega^1(P) = \Omega^1_{vert}(P) \oplus \Omega^1_{hor}(P)$
   \item $\Omega^2(P) = \Omega^2_{vert}(P) \oplus \Omega^2_{mix}(P) \oplus \Omega^2_{hor}(P)$
 \end{itemize}
-Note that thus a connection form $\omega$ lies in $\Omega^1_{vert}(P) \tens{} \gf$. Now we use the exterior derivative (de Rham differential) to state
-$$ d\omega \in \Omega^2(P) \tens{} \gf = (\Omega^2_{vert}(P) \oplus \Omega^2_{mix}(P) \oplus \Omega^2_{hor}(P)) \tens{} \gf $$
+Note that thus a connection form $\omega$ lies in $\Omega^1_{vert}(P) \otimes \gf$. Now we use the exterior derivative (de Rham differential) to state
+$$ d\omega \in \Omega^2(P) \otimes \gf = (\Omega^2_{vert}(P) \oplus \Omega^2_{mix}(P) \oplus \Omega^2_{hor}(P)) \otimes \gf $$
 and thus
 $$ d\omega = d\omega_{vert} + d\omega_{mix} + d\omega_{hor} $$
 which leads us to the following proposition:
@@ -888,7 +907,7 @@ We can now define the notion of curvature on a principal bundle using the differ
 
 \begin{definition}(Curvature)\\
   Let $P$ be a principal $G$-bundle and $\omega$ a connection form on $P$. The \textbf{curvature} of $\omega$ is the unique $2$-form
-  $$ F_\omega := d\omega_{hor} \in \Omega^2_{hor}(P) \tens{} \gf $$
+  $$ F_\omega := d\omega_{hor} \in \Omega^2_{hor}(P) \otimes \gf $$
 \end{definition}
 
 Keep in mind that this notion will be particularly useful in Yang-Mills-Theory. Now one simple case of curvature is trivial curvature:
@@ -926,11 +945,11 @@ Thus $X$ and $G$ are isomorphic as sets or manifolds depending on the context. W
 \end{itemize}
 \end{example}
 
-resource: Wiki principal homogenous space.
+resource: Wiki principal homogeneous space.
 
 \subsection{(Co-)chain Complexes}
 
-In this subsection, we will completely change topic and turn towards the notion of \emph{chain complexes} and \emph{cochain complexes} and thus \emph{honology} and \emph{cohomology}. We start by giving the definition of a (co-)chain complex:
+In this subsection, we will completely change topic and turn towards the notion of \emph{chain complexes} and \emph{cochain complexes} and thus \emph{homology} and \emph{cohomology}. We start by giving the definition of a (co-)chain complex:
 
 \begin{definition}
   A \textbf{Chain complex} is a sequence of homomorphisms of abelian groups denoted as
@@ -974,22 +993,30 @@ We can pictorially denote a chain map in the following commuting diagram which o
 We use the above diagram to arrive at an interesting intuitive lemma connecting the homology groups of two chain complexes:
 
 \begin{lem}
-  Let $f_\bullet :(C_{1\bullet}, \partial_{1\bullet}) \lra (C_{2\bullet}, \partial_{2\bullet})$ be a chain map. The $f_\bullet$ induces an homomorphism of homology groups
-  $$ \mathcal{H}_n (f_\bullet): \mathcal{H}_n(C_{1\bullet}) \lra \mathcal{H}_N (C_{2\bullet})  $$
+  Let $f_\bullet :(C_{1\bullet}, \partial_{1\bullet}) \lra (C_{2\bullet}, \partial_{2\bullet})$ be a chain map. Then $f_\bullet$ induces an homomorphism of homology groups
+  \begin{equation}
+    \mathcal{H}_n (f_\bullet): \mathcal{H}_n(C_{1\bullet}) \lra \mathcal{H}_N (C_{2\bullet})
+  \end{equation}
   for each $n \in \NN$, defined by
-  $$ [\mathcal{Z}_n] \lra [f_n(\mathcal{Z}_n)] $$
+  \begin{equation}
+    [\mathcal{Z}_n] \lra [f_n(\mathcal{Z}_n)]
+  \end{equation}
 \begin{proof}
   Our main goal is to show that $f_\bullet$ maps cycles to cycles and boundaries to boundaries. This is equivalent to showing that it is a homomorphism of homology groups.\\
 
   We begin by fixing $n\in \NN$. Note that $f_n(\mathcal{Z}_n(C_{1\bullet})) \subseteq \mathcal{Z}_n(C_{2\bullet}) $ and let $z_n \in \mathcal{Z}_n(C_{1\bullet})$ which means $\partial_{1n}z_n = 0$. Now we calculate
-  $$ \partial_{2n}(f_n(z_n)) = f_{n-1}(\partial_{1n}(z_n)) = 0 $$
+  \begin{equation}
+    \partial_{2n}(f_n(z_n)) = f_{n-1}(\partial_{1n}(z_n)) = 0
+  \end{equation}
   which shows that $f_\bullet$ maps cycles to cycles. For boundaries, we note $f_n(\mathcal{B}_n)(C_{1\bullet}) \subseteq \mathcal{B}_n(C_{2\bullet})$. Now choose $b\in \mathcal{B}_n(C_{1\bullet})$ i.e. $b = \partial_{1 \ n+1}(a)$ for some $a \in C_{1 \ n+1}$. Now we calculate
   \begin{align}
     f_n(b) &= f_n(\partial_{1 \ n+1}(a)) = \partial_{2 \ n+1}(f_{n+1}(a))\\
     &\Rightarrow f_n(b) \in \im \partial_{2 \ n+1}
   \end{align}
   Thus $f_n$ is constant on equivalence classes. Let now $[z^1_n]$ be an equivalence class and let $x^1, x^2$ be two representatives. Thus
-  $$ x^1, x^2 \in \mathcal{Z}_n \quad \quad and \quad \quad x^1-x^2 = b  \in \mathcal{B}_n$$
+  \begin{equation}
+    x^1, x^2 \in \mathcal{Z}_n \quad \quad and \quad \quad x^1-x^2 = b  \in \mathcal{B}_n
+  \end{equation}
   Which proves that the equivalence class of $f_n(x^1)$ is the same as that of $f_n(x^2)$.
 \end{proof}
 \end{lem}
@@ -1012,7 +1039,7 @@ Note that the name "quasi-isomorphism" makes sense since the isomorphisms only i
   is called a \textbf{short exact sequence}. Note that for a short exact sequence $\ker(j) = \im(i)$ as well as
   \begin{align}
     \im(j) &= \ker(0) \quad \quad \Rightarrow j \ \text{is surjective}\\
-    \im(0) &= \ker(i) \quad \quad \Rightarrow i \ \text{is injective}\\
+    \im(0) &= \ker(i) \quad \quad \Rightarrow i \ \text{is injective}
   \end{align}
 \end{definition}
 
@@ -1034,7 +1061,7 @@ We can use short exact sequences for many important proofs and definitions. Thus
     making the following diagram commute:
     \begin{center}
       \begin{tikzcd}[column sep=large]
-        && B\ar[dr,"j"] &&\\
+        && B\ar[dr,"j"] \ar[dd, leftrightarrow, "\psi"] &&\\
 
         0 \ar[r] &A\ar[ur, "i"]\ar[dr, "i^\prime"  ']&& C \arrow[r]& 0\\
 
@@ -1047,7 +1074,7 @@ We can use short exact sequences for many important proofs and definitions. Thus
 \end{definition}
 
 \begin{lem}
-  The three properties above are indeed equivalent.
+  The three properties above are equivalent.
 
 \begin{proof}~
 \begin{itemize}
@@ -1062,7 +1089,7 @@ We can use short exact sequences for many important proofs and definitions. Thus
   We further have $j \circ s = id_C$ due to
   $$ j \circ s(c) = j(\psi^{-1}(0,c)) = j^\prime(0,c) = c $$
 
-  \item[$2\ra 1$] The last thing we need to show uses $s,i,j$. We define $p(b) := i^{-1}(b - s \circ j(b))$. This
+  \item[$2\ra 1$] The last thing we need to show uses $s,i,j$. To this end define $p(b) := i^{-1}(b - s \circ j(b))$.
 \end{itemize}
 \end{proof}
 \end{lem}
@@ -1075,8 +1102,6 @@ We now move to the important concept of cochain complexes, which form the dual c
   such that $\delta^n \circ \delta^{n-1} = 0$ for each $n\in \NN$, namely $\im (\delta^{n-1}) \subseteq \ker (\delta^n)$
 \end{definition}
 
-A namescheme very similar to that of chain complexes is given to that of cochain complexes:
-
 \begin{definition}
   Elements of $D^n$ are called \textbf{cocycles} if they lie in $\ker(\delta^n)$ and \textbf{coboundaries} if they lie in $\im(\delta^{n-1})$.
 \end{definition}
@@ -1087,24 +1112,32 @@ As promised this allows us to define the dual concept to homology groups:
 \label{def:Cohomology}
 (Cohomology groups)\\
 Let $(D^\bullet, \delta^\bullet)$ be a cochain complex. We define the \textbf{n-th cohomology group} to be the quotient group
-$$ \mathcal{H}^n := \ker(\delta^n) / \im(\delta^{n-1}) $$
+\begin{equation}
+  \mathcal{H}^n := \ker(\delta^n) / \im(\delta^{n-1})
+\end{equation}
 Elements of $\mathcal{H}^n$ (thus cosets of $\ker(\delta^n)$) are called \textbf{cohomology classes}.
 \end{definition}
 
-Now we aim to further illuminate the claim that cochaincomplexes is indeed the dual concept to chain complexes. To this end, let $G$ be a group and $(C_\bullet, \partial_\bullet)$ be a chain complex. Now define its dual
-$$ D^{n+1} := (C_n)^* = \Hom(C_n, G) $$
+Now we aim to prove that cochaincomplexes are dual to chain complexes. To this end, let $G$ be a group and $(C_\bullet, \partial_\bullet)$ be a chain complex. Now define its dual
+\begin{equation}
+  D^{n+1} := (C_n)^* = \Hom(C_n, G)
+\end{equation}
 as the group of homomorphisms $C_n \lra G$. Now remember that a \textbf{dual homomorphism} is defined as follows: Take a group homomorphism $\alpha: A \lra B$. One defines the dual homomorphism (sometimes called "pullback") via
 \begin{align}
   \alpha^*: \Hom(A,B) &\lra \Hom(A,G),\\
   \phi &\lmap \alpha^*(\phi) = \phi \circ \alpha
 \end{align}
 We apply the same concept to our chain complex $\partial_n:C_n \lra C_{n-1}$ which lets us define
-$$\delta^n := \partial_n^* : \Hom(C_{n-1}, G) \lra \Hom(C_n, G)$$
-These maps automatically satisfy $\delta^n \circ \delta^{n-1} = 0$ due to the corresponding equation for $\partial_n$. Now there exists a theorem, which is out of the scope of this lecture, but can be found in \source{AlgebraicTopology}, that states that the cohomology groups of $C_\bullet$ under $G$ denoted by $\mathcal{H}^n(C;G)$ are fully determined by $G$ and the homology groups $\mathcal{H}_n(C_\bullet)$.
+\begin{equation}
+  \delta^n := \partial_n^* : \Hom(C_{n-1}, G) \lra \Hom(C_n, G)
+\end{equation}
+These maps satisfy $\delta^n \circ \delta^{n-1} = 0$ due to the corresponding equation for $\partial_n$. There exists a theorem, found in \source{AlgebraicTopology}, stating that the cohomology groups of $C_\bullet$ under $G$ denoted by $\mathcal{H}^n(C;G)$ are fully determined by $G$ and the homology groups $\mathcal{H}_n(C_\bullet)$.
 
 \begin{rem}
   Cochain maps and all of the other notions defined for chain complexes carry over to cochains. For example the analogous equation for cochain maps is
-  $$ f^n \circ \delta_1^{n-1} = \delta_2^{n-1} \circ f^{n-1} $$
+  \begin{equation}
+    f^n \circ \delta_1^{n-1} = \delta_2^{n-1} \circ f^{n-1}
+  \end{equation}
   for maps $f^n: D_1^n \lra D^n_2$. As an exercise, you can transport all of these results to the cochains.
 \end{rem}
 
@@ -1115,7 +1148,7 @@ We conclude this subchapter by bringing the notion of substructures to (co-)chai
 \end{definition}
 
 \begin{rem}
-  Note that a subcomplex is indeed itself a chain complex. In this case the inclusion map acts as a chain complex map.
+  A subcomplex is a chain complex itself. The inclusion map acts as a chain complex map.
 \end{rem}
 
 
