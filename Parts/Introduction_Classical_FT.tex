@@ -10,12 +10,12 @@ For $q\in \Ci(\RR^+, \RR^n)$ and $V\colon\Ci(\RR^+, \RR^n) \ra \RR$. Now the con
   &\Rightarrow \quad \quad \delta q^i \Big|_{t=0} = 0 \quad \text{"Boundary conditions"}
 \end{align}
 
-Now the \textbf{boundary term} $\frac{m}{2}\delta q^i(0) \dot q^i = \alpha$ can be thought of as a 1-form on $T^*\RR^n$ such that the boundary term, using $p^i(0) = \frac{m}{2} \dot q^i$, can be writen as $\omega := \delta \alpha = \delta q^i(0) \delta p^i(0)$ which is a symplectic form.\\
+Now the \textbf{boundary form} $\frac{m}{2}\delta q^i(0) \dot q^i = \alpha$ can be thought of as a 1-form on $T^*\RR^n$ such that the boundary term, using $p^i(0) = \frac{m}{2} \dot q^i$, can be writen as $\omega := \delta \alpha = \delta q^i(0) \delta p^i(0)$ which is a symplectic form.\\
 
-This marks the starting point of a procedure called \textbf{canonical quantisation} of classical mechanics. As a Hilbert space we use $\mathcal{H} \colon= L^2(\RR^n)$. Our main goal will be to generalize this procedure.\\
+This marks the starting point of a procedure called \textbf{canonical quantisation} of classical mechanics. As a Hilbert space we use $\mathcal{H} := L^2(\RR^n)$. Our main goal will be to generalize this procedure.\\
 
 \subsection{Spaces of fields and Locality}
-We will usually work on a fibre bundle $\pi\colon F \lra M$ over some smooth manifold $M$. For simplicity, we will assume that $M$ is closed and without boundary, furthermore we assume that $M$ is oriented and connected.
+We will usually work on a fibre bundle $\pi \colon F \lra M$ over some smooth manifold $M$. For simplicity, we will assume that $M$ is compact and without boundary, furthermore we assume that $M$ is oriented and connected.
 
 \begin{definition}[Sections and local sections]
   A \textbf{section} of $\pi\colon F \lra M$ is a smooth map $\phi\colon  M \lra F$ such that $\pi \circ \phi = \id_M$. We call $\phi$ a \textbf{local section} if it is only defined on an open subset $U \subseteq M$ such that $\pi \circ \phi = \id_U$. We further denote the space of sections by
@@ -28,7 +28,7 @@ We will usually work on a fibre bundle $\pi\colon F \lra M$ over some smooth man
 We are mainly interested in \textbf{locality}. Thus we work with equivalence classes of such sections that coincide in a neighbourhood of a point up to some arbitrary $k$-th derivative:
 
 \begin{definition}
-  If $p \in M$ we denote by $\Gamma(p)$ the space of local sections whose domain contains $p$.
+  For $p \in M$ denote by $\Gamma(p)$ the space of local sections whose domain contains $p$.
 \end{definition}
 
 Using the thus defined local spaces allows us to define the utterly important notion of \emph{Jets of sections}:
@@ -52,11 +52,11 @@ As we will see later, this will also introduce coordinates on the objects $J^k_p
   and $J^0 F \equiv F$ together with the maps
   \begin{align}
     \pi_k \colon  J^k F &\lra M, \quad \textbf{k-th Jet bundles}\\
-    j^k_p &\lmap p \\
+    j^k_p \phi &\lmap p \\
     \pi^l_k\colon  J^kF &\lra J^l F, \quad 1 \leq l \leq k \\
     j^k_p  \phi &\lmap j^l_p \phi
   \end{align}
-  such that $\pi_k = \pi \circ \pi^0_k$, $\pi^l_k = \pi^l_m \circ \pi^m_k$ for $0 \leq m \leq l$. Moreover if $\phi$ is a section of our fibre bundle local in some $U\subseteq M$, we define the \textbf{Jet Prolongations}
+  such that $\pi_k = \pi \circ \pi^0_k$, $\pi^l_k = \pi^l_m \circ \pi^m_k$ for $0 \leq l \leq m \leq k$. Moreover if $\phi$ is a section of our fibre bundle local in some $U\subseteq M$, we define the \textbf{Jet Prolongations}
   \begin{align}
     j^k: \mathcal{F}_p U &\lra J^k F,\\
     (\phi, p) &\lmap j^k(\phi)(p) := j^k_p(\phi)
@@ -70,7 +70,7 @@ As we will see later, this will also introduce coordinates on the objects $J^k_p
   \end{center}
 \end{definition}
 
-The next proposition will go without its proof which can be found in (Saunders, Ch6). %TODO reference
+The next proposition will go without proof (see Saunders, Ch6).
 
 \begin{prop}
  There exists a sequence of smooth fibre bundles
@@ -78,18 +78,18 @@ The next proposition will go without its proof which can be found in (Saunders, 
  for every $k$. Furthermore that maps $\pi^{k-1}_k$ are \emph{surjective} with \emph{surjective tangent map} (sumbersions).
 \end{prop}
 
-Now if $(U, \mathcal{U})$ is an adapted coordinate system for $F$ such that $(x^i, u^\alpha) \equiv u$ and thus
+Now if $(U, u)$ is an adapted chart ($U$ ) of the fibre bundle $F$ such that $(x^i, u^\alpha) \equiv u$ and thus
 \begin{align}
-  \Rightarrow \quad \quad \quad U^k &= \{j^k_p \phi \colon  \phi(p) \in U\}\\
+  \Rightarrow \quad \quad \quad U^k &= \{j^k_p \phi : p \in M, \phi(p) \in U \subset F\}\\
   u^k &= (x^i, u^\alpha, u_I^\alpha)\\
   u^\alpha_I(j^k_p \phi) &= \dell{^{|I|} (u^\alpha \circ \phi)}{x^I}\Big|_p
 \end{align}
 
-Now to make precise the statement "for all $k$" in the above proposition, we need to introduce some extra structures:
+Where $I$ is a multiindex with $|I| = k$ and $U^0 \cong U$. Now to make precise Jets agreeing "for all $k$" in the above proposition, we need to introduce some extra structures:
 
 \begin{definition}[Inverse/Projective systems]
 \label{def:inverse_system}
-  Define $Sys_x \colon = (\{x_i\}, f_{ij} | i,j \in I \subset \NN)$ with
+  Define $Sys_X \colon = (\{X_i\}, f_{ij} | i,j \in I \subset \NN)$ with
   \begin{itemize}
     \item $\{x_i\}$ a collection of spaces (generalizes to objects in a category)
     \item $f_{ij}:x_i \lra x_j$ for all $i,j$ s.t. $i \leq j$ and
@@ -98,7 +98,7 @@ Now to make precise the statement "for all $k$" in the above proposition, we nee
   We call this construct an \textbf{inverse system} or \textbf{projective system}.
 \end{definition}
 
-Now we denote by $\underset{\longleftarrow}{\lim} \ x_i$ the subset of $\Pi_i x_i$ of elements $x\in \{ x_i\}$ such that $x_i = f_{ij}(x_j) \ \ \forall j \geq i$. We call $\underset{\longleftarrow}{\lim}$ the \textbf{projective/inverse} limit of the inverse system.
+Now we denote by $\underset{\longleftarrow}{\lim} \ X_i$ the subset of elements $x \in \Pi_i X_i$ such that $x_i = f_{ij}(x_j) \ \ \forall i \leq j$. We call $\underset{\longleftarrow}{\lim}$ the \textbf{projective/inverse} limit of the inverse system.
 
 \begin{definition}
   The sequence $\{J^k F\}_{n\in\NN}$ together with $\pi^k_l: J^l F \lra J^k F$ defines an inverse system (of fibre bundles). We thus use the inverse limit to define $J^\infty F := \underset{\longleftarrow}{\lim}\ J^k F$.
@@ -209,10 +209,10 @@ Using this idea of a differential or derivative, we can define what it means for
   are continuous for all $k\in \NN$.
 \end{definition}
 
-Applying the above concept of infinite dimensional manifolds onto \ref{def:inverse_system} leads us to the following idea:
+Applying the above concept to \ref{def:inverse_system} leads us to the following idea:
 
 \begin{lem}
-  Inverse limits of normed spaces are Fréchet.
+  Inverse limits of normed spaces are Fréchet manifolds.
 \begin{proof}
   Consider the system $f^m_n: V_n \lra V_m$ with $(V_m, |\cdot |_n)$ a normed vector space $\forall n\in \NN$. The inverse limit of the system, denoted by $V$, is endowed with the linear maps $f^n_\infty: V  \lra V_n$. The norms $|\cdot|_n$ induce a family of seminorms on $V$ via $||\cdot ||_n := |\cdot |_n \circ f^n_\infty$, such that
   \begin{enumerate}
@@ -228,7 +228,7 @@ Applying the above concept of infinite dimensional manifolds onto \ref{def:inver
 \end{proof}
 \end{lem}
 
-Now let $F\lra M$ be a fibre bundle with coordinate charts $(U_a, u_a)$. Consider the induced cover $U^\infty = \{ (\pi^0_\infty)^{-1}(U_a) \}$ and the induced maps $u^\infty_a: (\pi^0_\infty)^{-1}(U_a) \lra \RR^\infty$. This defines an atlas as can be seen in \emph{Saunders 7.2.4.}. We thus arrive at one of the marking stones of our infinite dimensional analysis:
+Now let $F\lra M$ be a fibre bundle with coordinate charts $(U_a, u_a)$. Consider the induced cover $U^\infty = \{ (\pi^0_\infty)^{-1}(U_a) \}$ and the induced maps $u^\infty_a: (\pi^0_\infty)^{-1}(U_a) \lra \RR^\infty$ of $F$ respecting the $\infty$-jet bundle. This defines an atlas as can be seen in \emph{Saunders 7.2.4.}. We thus arrive at one of the corner stones of our infinite-dimensional analysis:
 
 \begin{prop}
   The infinite jet bundle $J^\infty F$ together with an atlas given by $(J^\infty F, \{u^\infty_a:(\pi^0_\infty)^{-1}(U_a))\lra \RR^\infty\}_{a\in A})$ is a Fréchet manifold.
@@ -290,13 +290,13 @@ This in turn makes the morphism $d$ into a graded derivation of the wedge produc
 Now for convenience, denote
 \begin{align}
   \partial^I_\alpha &:= \frac{i_1 ! ... i_m !}{k!} \dell{}{u^\alpha_I}\\
-  D_i &:= \dell{}{x^i} + u^\alpha_{I,i} + \partial^I_\alpha
+  D_i &:= \dell{}{x^i} + u^\alpha_{I,i} \cdot \partial^I_\alpha
 \end{align}
 We can thus denote $d_H f = D_i f dx^i$ and further define the \textbf{vertical differential}
 \begin{equation}d_V f = (d-d_H) f = \partial^I_\alpha f (d-d_H) u^\alpha_I = \partial^I_\alpha f d_V u^\alpha_I\end{equation}
 We can also prove
 \begin{align}
-  &(D_j f ) (j^\infty \phi) = \dell{}{x^i}(f(j^\infty \phi))\\
+  &(D_i f ) (j^\infty \phi) = \dell{}{x^i}(f(j^\infty \phi))\\
   &d_H x^i = dx^i, \quad \quad d_H(u^\alpha_I) = u^\alpha_{I,i} dx^i
 \end{align}
 
@@ -317,17 +317,17 @@ Using vertical vector fields, we can now define certain types of differential fo
   \item The set of \textbf{horizontal $(p,s)$-forms} is defined as
   \begin{equation}\Omega^{(p,s)}_H := \{ \omega \in \Omega^p(J^\infty F) : \omega_\chi (x_1, ..., x_{p-s+1}, \cdot, ..., \cdot) = 0 \ \ |\ \  x_i \in V_\chi(J^\infty F) \} \end{equation}
 
-  \item A \textbf{contact form} is a differential form $\theta$ on $J^\infty F$ that is annihilated by all jets of the form $j^\infty \phi : M \lra J^\infty F$ via pullback, i.e. $(j^\infty \phi)^* \theta = 0$
+  \item A \textbf{contact form} is a differential $1$-form $\theta$ on $J^\infty F$ that is annihilated by all jets of the form $j^\infty \phi : M \lra J^\infty F$ via pullback, i.e. $(j^\infty \phi)^* \theta = 0$. Their set is denoted by $\mathcal{C}$.
 
   \item The set of \textbf{vertical $(p,r)$-forms} are defined as
   \begin{equation}\Omega^{(p,r)}_V := \{ \omega \in \Omega^p(J^\infty F) : \theta_1 \wedge \theta_2 \wedge ... \wedge \theta_r \wedge \widetilde \omega \ \ |\ \  \theta_i \text{ a  contact form} \} \end{equation}
 \end{itemize}
 \end{definition}
 
-For contact forms, we can attain a helpful extra property as well as a basis forming the space of contact forms:
+Thus in particular $\Omega^{(s,p)}_V$ trivially vanishes for $s > p$ and $\Omega^{(0,p)}_V = \Omega^p$. In the same manner, $\Omega^{(r,p)}_H$ trivially vanishes for $r > p$ and $\Omega^{(0,p)}_H = \Omega^p$. For contact forms, we can attain a helpful extra property as well as a basis forming the space of contact forms:
 
 \begin{theo}
-  Contact forms generate a differential ideal denoted by $\mathcal{C}$. Its basis is given by $\theta^\alpha_I = du^\alpha_I - u^\alpha_{I,i} dx^i$.
+  Contact forms $\mathcal{C}$ form a differential ideal. Its basis is given by $\theta^\alpha_I = du^\alpha_I - u^\alpha_{I,i} dx^i$.
 \begin{proof}
   Let $\theta$ be a contact form, thus $(j^\infty \phi)^* \theta = 0$ for all $\phi \in \mathcal{F}$. Then for all $\alpha \in \Omega^\bullet(J^\infty F)$ we have
   \begin{align}
@@ -339,11 +339,11 @@ For contact forms, we can attain a helpful extra property as well as a basis for
     (j^\infty \phi)^* d_V u^\alpha_I &= (j^\infty \phi)^*(du^\alpha_I - u^\alpha_{I,i} dx^i)\\
     &= \dell{(u^\alpha_I \circ \phi)}{x^i} dx^i - (u^\alpha_{I,i} \circ \phi) dx^i
   \end{align}
-  Thus we have a basis of the given form, since locally any form $\theta$ splits to $\theta = d_H f + d_V f$.
+  Thus we have a basis of the given form, since locally any $1$-form $\theta$ splits to $\theta = d_H f + d_V f$.
 \end{proof}
 \end{theo}
 
-We can now use the ideal of contact forms to investigate local sections of the bundle $\pi_\infty$:
+Thus we obtain $\Omega_V^{s,p} = \mathcal{C}^s \cap \Omega^p$. We can now use the ideal of contact forms to investigate local sections of the bundle $\pi_\infty$:
 
 \begin{lem}
   Let $F\lra M$ be a smooth fibre bundle. A local section $\xi$ of $\pi_\infty: J^\infty F \lra M$ is holonomic, i.e. a $\infty$-prolongation of a section of $F$, if and only if $\xi^* \mathcal{C} = 0$.
@@ -375,7 +375,7 @@ and thus $d_V \theta^\alpha_I = 0$ and $d_H \theta^\alpha_I = - \theta^\alpha_{I
 \end{theo}
 
 
-\newpage
+
 \subsection{Local Lagrangian Field Theory}
 
 So far, we have been working on the infinite jet bundle. Our goal is to work on $\mathcal{F}$ in a \emph{local} way. Thus we need to find some local calculus on $\mathcal{F} \times M$.\\
@@ -698,7 +698,7 @@ We move on to some examples of classical Lagrangian field theories:
   \end{proof}
 \end{example}
 
-\newpage
+
 \subsection{Scalar Field Theory and Yang-Mills-Theory}
 
 Consider a smooth, oriented, compact manifold $M$ equipped with a (pseudo-)Riemannian metric $g$. This metric and the orientation define a volume form on $M$ given by $\vol_g := \sqrt{|\det(g)|} dx^1 \wedge ... \wedge dx^n$. This so-called Riemannian volume form has this form independently of the choice of local coordinates.
