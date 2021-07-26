@@ -3,7 +3,7 @@
 In this section, we will explore classical field theories  in order to give a solid foundation to their concepts, especially locality. While field theories come in many forms like thermodynamics, electrodynamics, general relativity, the standard model of particle physics and even string theory, we will mainly focus on classical Lagrangian field theories.\\
 
 In Lagrangian mechanics, as taught in undergrad physics, one uses the notion of the action functional, being a measure for the "excitednes" of a system, to find physically favoured and thus realized trajectories. A common action in this context would be
-$$ S(q) = \int_{\RR^+} \left( \frac{m}{2} \dot q^i(t) \dot q^i(t) - V(q(t)) \right) dt $$
+\begin{equation}S(q) = \int_{\RR^+} \left( \frac{m}{2} \dot q^i(t) \dot q^i(t) - V(q(t)) \right) dt \end{equation}
 For $q\in \Ci(\RR^+, \RR^n)$ and $V\colon\Ci(\RR^+, \RR^n) \ra \RR$. Now the condition of vanishing variation $\delta S \equiv 0$ imposes two conditions
 \begin{align}
   &\Rightarrow \quad \quad \frac{m}{2} \ddot q^i(t) + \nabla^i V = 0 \quad \text{Euler-Lagrange-equations}\\
@@ -18,7 +18,10 @@ This marks the starting point of a procedure called \textbf{canonical quantisati
 We will usually work on a fibre bundle $\pi\colon F \lra M$ over some smooth manifold $M$. For simplicity, we will assume that $M$ is closed and without boundary, furthermore we assume that $M$ is oriented and connected.
 
 \begin{definition}[Sections and local sections]
-  A \textbf{section} of $\pi\colon F \lra M$ is a smooth map $\phi\colon  M \lra F$ such that $\pi \circ \phi = \id_M$. We call $\phi$ a \textbf{local section} if it is only defined on an open subset $U \subseteq M$ such that $\pi \circ \phi = \id_U$. We further denote the space of sections by $$\Gamma(M,F)\colon = \{ \phi \in \Ci(M,F) | \pi \circ \phi = \id_M \} \equiv \mathcal{F}$$
+  A \textbf{section} of $\pi\colon F \lra M$ is a smooth map $\phi\colon  M \lra F$ such that $\pi \circ \phi = \id_M$. We call $\phi$ a \textbf{local section} if it is only defined on an open subset $U \subseteq M$ such that $\pi \circ \phi = \id_U$. We further denote the space of sections by
+  \begin{equation}
+    \Gamma(M,F)\colon = \{ \phi \in \Ci(M,F) | \pi \circ \phi = \id_M \} \equiv \mathcal{F}
+  \end{equation}
   We often refer to $\mathcal{F}$ as the \textbf{space of fields}. Note that if we work with a vector bundle, $\mathcal{F}$ inherits a linear structure.
 \end{definition}
 
@@ -33,19 +36,19 @@ Using the thus defined local spaces allows us to define the utterly important no
 \begin{definition}[$k$-Jets of sections]
 \label{def:Jets_sections}
 Let $\pi\colon F\lra M$ be a fibre bundle and $k$ any integer. We say that two local sections of $\pi$ at $p \in M$ \textbf{have the same $k$-th jet at $p$} if their partial derivatives agree at $p$ up to $k$-th order in some chart around $p$. We denote by $J^k_p F$ the set of such equivalence classes and use
-$$ j^k_p \phi \colon = [(\phi, p)]_k $$
+\begin{equation}j^k_p \phi \colon = [(\phi, p)]_k \end{equation}
 to denote such equivalence classes.
 \end{definition}
 
 \begin{rem}
 As a rather abstract but interesting exercise, you can show that the above definition does not depend on the choice of coordinate charts. \emph{Hint:} Introduce multiindices $I$ such that if $U^\alpha$ is a chart for $F$, we look at
-$$ \dell{^{|I|}}{x^I} (u^\alpha \circ \phi) \Big|_p $$
+\begin{equation}\dell{^{|I|}}{x^I} (u^\alpha \circ \phi) \Big|_p \end{equation}
 As we will see later, this will also introduce coordinates on the objects $J^k_p F$
 \end{rem}
 
 \begin{definition}[Jet bundles]
   Given a fibre bundle $\pi\colon  F\lra M$ and an integer $k$ we denote
-  $$ J^k F \colon = \{j^k_p \phi | p \in M, \phi \in \Gamma(p) \}$$
+  \begin{equation}J^k F \colon = \{j^k_p \phi | p \in M, \phi \in \Gamma(p) \}\end{equation}
   and $J^0 F \equiv F$ together with the maps
   \begin{align}
     \pi_k \colon  J^k F &\lra M, \quad \textbf{k-th Jet bundles}\\
@@ -71,7 +74,7 @@ The next proposition will go without its proof which can be found in (Saunders, 
 
 \begin{prop}
  There exists a sequence of smooth fibre bundles
- $$ ... \lra J^kF \overset{\pi^{k-1}_k}{\lra} J^{k-1}F \lra ... \lra F \lra M $$
+ \begin{equation}... \lra J^kF \overset{\pi^{k-1}_k}{\lra} J^{k-1}F \lra ... \lra F \lra M \end{equation}
  for every $k$. Furthermore that maps $\pi^{k-1}_k$ are \emph{surjective} with \emph{surjective tangent map} (sumbersions).
 \end{prop}
 
@@ -90,7 +93,7 @@ Now to make precise the statement "for all $k$" in the above proposition, we nee
   \begin{itemize}
     \item $\{x_i\}$ a collection of spaces (generalizes to objects in a category)
     \item $f_{ij}:x_i \lra x_j$ for all $i,j$ s.t. $i \leq j$ and
-    $$ f_{ik} = f_{ij} \circ f_{jk} $$
+    \begin{equation}f_{ik} = f_{ij} \circ f_{jk} \end{equation}
   \end{itemize}
   We call this construct an \textbf{inverse system} or \textbf{projective system}.
 \end{definition}
@@ -107,16 +110,22 @@ Now the interesting question for our physical analysis will be if $J^\infty F$ c
 
 \begin{definition}
   Let $\pi: F \lra M$ be a fibre budle and let $J^kF$ denote the space of $k$-jets. Since we are dealing with regular finite dimensional manifolds, we can consider $\Ci(J^kF, P)$ for some manifold $P$. For every $l\geq k$ there are connecting maps
-  $$\widetilde \pi^l_k : \Ci(J^k(E), P) \lra \Ci(J^l(E), P)$$
+  \begin{equation}
+    \widetilde \pi^l_k : \Ci(J^k(E), P) \lra \Ci(J^l(E), P)
+  \end{equation}
   which can be constructed using precomposition, thus $(\pi^k_l)^* f := \widetilde \pi^l_k (f)$. Thus we obtain a so-called \textbf{direct system}
-  $$ \Ci(F) \lra \Ci(J^1F) \lra \Ci(J^2F) \lra ... $$
+  \begin{equation}
+    \Ci(F) \lra \Ci(J^1F) \lra \Ci(J^2F) \lra ...
+  \end{equation}
   with functions $f_{ij}:x_i \lra x_j$ for $i\leq j$. We further define the \textbf{direct limit}
-  $$\Ci(J^\infty F) := \underset{\lra}{\lim}\ \Ci(J^k F) = \Pi_k \Ci(J^k F) / \sim$$
+  \begin{equation}
+    \Ci(J^\infty F) := \underset{\lra}{\lim}\ \Ci(J^k F) = \Pi_k \Ci(J^k F) / \sim
+  \end{equation}
   where $g_i \sim g_l$ iff $\exists k \geq i, k \geq l$ s.t. $\widetilde \pi^k_i g_i = \widetilde \pi^k_l g_l$.
 \end{definition}
 
 Note that by construction $f \in \Ci(J^\infty F)$ is fully represented by functions $\widehat f_k \in \Ci(J^k F)$ which only depend on a finite number of derivatives. This will be the essence of the notion of locality which we will unfold in the following pages. Thus if we consider $f \in \Ci(J^\infty F)$ represented by $\widehat f$ one some $k$-jet then on each coordinate neighbourhood $(\pi^\infty)^{-1}(U)$ and each point $\sigma = j^\infty(\phi)(p) \in (\pi^\infty)^{-1}(U)$ we have
-$$ f(\sigma) = \widehat f(x^i, u^\alpha, u^\alpha_{i_1}, u^\alpha_{i_1 i_2}, ..., u^\alpha_{i_1 ... i_k})  $$
+\begin{equation}f(\sigma) = \widehat f(x^i, u^\alpha, u^\alpha_{i_1}, u^\alpha_{i_1 i_2}, ..., u^\alpha_{i_1 ... i_k})  \end{equation}
 From now on, we will, in a slight abuse of notation, not distinguish between functions on $J^\infty F$ and their representatives.
 
 
@@ -144,7 +153,7 @@ Using families of seminorms, we can assign a unique topology to the vector space
 
 \begin{definition}
   A family of seminorms $\Gamma$ on a vector space $V$ defines a \textbf{unique topology} $\mathcal{T}_\Gamma$ compatible with the vector space structure. The neighbourhood base of $\mathcal{T}_\Gamma$ is given by the family
-  $$ B_\Gamma := \{ U^J_\epsilon | \epsilon > 0, \ J \subset I \ \text{finite} \} $$
+  \begin{equation}B_\Gamma := \{ U^J_\epsilon | \epsilon > 0, \ J \subset I \ \text{finite} \} \end{equation}
   with $U^J_\epsilon := \{ v \in V \big| |v|_i < \epsilon \ \forall i \in J \}$
 \end{definition}
 
@@ -156,12 +165,12 @@ Using the above notions, we arrive at a proposition that sheds further light ont
     \item $\mathcal{T}_\Gamma$ is the finest topology in which all included seminorms are continuous.
 
     \item $(V, \Gamma)$ is Hausdorff iff
-    $$ v = 0 \quad \Leftrightarrow \quad \left( |v|_i = 0 \quad \forall i \in I\right)$$
+    \begin{equation}v = 0 \quad \Leftrightarrow \quad \left( |v|_i = 0 \quad \forall i \in I\right)\end{equation}
 
     \item If $(V, \Gamma)$ is Hausdorff then it is metrisable iff the family $\Gamma$ is countable (i.e. there exists a metric $d:V\times V \lra \RR_{\geq0}$ s.t.\ the topology induced by $d$ is $\mathcal{T}_\Gamma$).
 
     \item Convergence of sequences is controlled by the seminorms, i.e.:
-    $$ (v_n)_{n\in\NN} : v_n \lra v \quad \Leftrightarrow \quad |v_n - v|_i \lra 0 \ \ \forall i \in I $$
+    \begin{equation}(v_n)_{n\in\NN} : v_n \lra v \quad \Leftrightarrow \quad |v_n - v|_i \lra 0 \ \ \forall i \in I \end{equation}
 
     \item $V$ is complete with respect to $\mathcal{T}_\Gamma$ iff every Cauchy sequence converges, i.e. iff every $(v_n)_{n\in\NN}$ with $\underset{n,m \lra \infty}{\lim} |v_n - v_m|_i = 0$ converges $\forall i \in I$.
   \end{enumerate}
@@ -185,7 +194,9 @@ Our next step is to generalize the notion of a derivative (differential) to infi
 
 \begin{definition}[Gâteaux-differential]
   Let $V,W$ be locally convex topological vector spaces, $U\subset V$ open and $F:V \lra W$ then $dF(u)(v)$, the \textbf{Gâteaux-differential} of $F$ at $u\in U$ along $v\in V$, is defined as
-  $$dF(u)(v) := \underset{\tau \ra 0}{\lim} \frac{F(u+\tau v) - F(u)}{\tau} = \dd{}{\tau} F(u+\tau v) \Big|_{\tau = 0}$$
+  \begin{equation}
+    dF(u)(v) := \underset{\tau \ra 0}{\lim} \frac{F(u+\tau v) - F(u)}{\tau} = \dd{}{\tau} F(u+\tau v) \Big|_{\tau = 0}
+  \end{equation}
   If the limit exists $\forall v \in V$, $F$ is \textbf{Gâteaux differentiable} at $u \in U$.
 \end{definition}
 
@@ -194,7 +205,7 @@ Using this idea of a differential or derivative, we can define what it means for
 \begin{definition}[Fréchet manifolds]
 \label{def:Frechet_manifolds}
   A Hausdorff topological space $M$ is a \textbf{Fréchet manifold} if it is equipped with an atlas of homeomorphisms to open sets $U$ of a Fréchet space $V$ such that the transition functions are smooth in the sense that the Gâteaux-derivations $D^{k+1}f:U \times ... \times U \lra V$ with
-  $$ Df(u)v := \underset{t \lra 0}{\lim} \frac{f(u+tv)-f(u)}{t} $$
+  \begin{equation}Df(u)v := \underset{t \lra 0}{\lim} \frac{f(u+tv)-f(u)}{t} \end{equation}
   are continuous for all $k\in \NN$.
 \end{definition}
 
@@ -212,7 +223,7 @@ Applying the above concept of infinite dimensional manifolds onto \ref{def:inver
     \item $||av||_n = |f^n_\infty(a\cdot v)|_n = |a\cdot f^n_\infty(v)|_n = |a| \cdot ||v||_n$
   \end{enumerate}
   As can be seen in \emph{Schäfer A.2.3}, the space is also metrisable. Since
-  $$ \{v = 0 \ \Leftrightarrow \ f^n_\infty(v) = 0 \ \forall n \in \NN \ \Leftrightarrow \ |f^n_\infty(v)|_n = 0 \ \forall n \in \NN \ \Leftrightarrow \ |v|_n = 0 \ \forall n \in \NN \}  $$
+  \begin{equation}\{v = 0 \ \Leftrightarrow \ f^n_\infty(v) = 0 \ \forall n \in \NN \ \Leftrightarrow \ |f^n_\infty(v)|_n = 0 \ \forall n \in \NN \ \Leftrightarrow \ |v|_n = 0 \ \forall n \in \NN \}  \end{equation}
   which proves that our space is indeed Hausdorff which proves the lemma.
 \end{proof}
 \end{lem}
@@ -239,13 +250,13 @@ Furthermore, we can state the following:
 \textbf{Tangent Bundle:} There are several alternative ways to progress further with differential geometry on Jet bundles:
 \begin{itemize}
   \item  The tangent bundle $T_xJ^\infty F$ at a point $x\in J^\infty F$ can be seen as the limit of the system $\{ (T_{\pi^k_\infty(x)}J^kF, T\pi_k) \}$ such that the bundle $T(J^\infty F) = \bigcup_{x\in J^\infty F} T_x(J^\infty F)$ is modeled on the $T(J^k F)$ and the projection
-  $$ pr_{J^\infty F}: T(J^\infty F) \lra J^\infty F $$
+  \begin{equation}pr_{J^\infty F}: T(J^\infty F) \lra J^\infty F \end{equation}
   is represented by $\{ pr_\infty^k = pr_{J^kF} \}$ where $pr_{J^kF}: T(J^kF) \lra J^kF$.
 
   \item Observe that if $\phi_t$ is a smooth 1-parameter family of sections, we can define $\dot \phi_0: M \lra TF$. But $\phi$ is a section such that $d\pi(\dot \phi_0) = \dd{}{t} \big|_{t=0} (\pi(\phi_t(x))) = 0_m$ and thus $\dot \phi_0 \in \ker(d\pi)$. Hence we can associate a tangent bundle to $J^\infty F$ in the context of Fréchet manifolds via
-  $$ T(J^\infty F) := \Ci(\RR, J^\infty F) / \sim $$
+  \begin{equation}T(J^\infty F) := \Ci(\RR, J^\infty F) / \sim \end{equation}
   where $c\sim c^\prime$ iff $c(0) = c^\prime (0)$ and further
-  $$ D(\phi\circ c) (0,1) = D(\phi \circ c^\prime) (0,1) $$
+  \begin{equation}D(\phi\circ c) (0,1) = D(\phi \circ c^\prime) (0,1) \end{equation}
   with $\phi$ any chart around $c(0) \in J^\infty F$ and $D$ denoting the Gâteaux-derivative.
 \end{itemize}
 
@@ -253,7 +264,7 @@ These two notions can be shown to be equivalent. Now in order to unambigously de
 
 \begin{definition}[Complex of differential forms]
 Let $F\lra M$ be a smooth fibre bundle. We define the \textbf{complex of differential forms} $\Omega^\bullet(J^\infty F)$ to be the direct limit of the sequence
-$$ \Omega^\bullet(F) = \Omega^\bullet(J^0F) \lra \Omega^\bullet(J^1F)\lra ... $$
+\begin{equation}\Omega^\bullet(F) = \Omega^\bullet(J^0F) \lra \Omega^\bullet(J^1F)\lra ... \end{equation}
 together with the morphism $d:\Omega^\bullet(J^\infty F)\lra \Omega^\bullet(J^\infty F)$ given by the collection $\{ d^k: \Omega^\bullet(J^k F) \lra \Omega^\bullet(J^k F) \}$ such that $d\circ d = 0$.
 \end{definition}
 
@@ -272,7 +283,7 @@ This in turn makes the morphism $d$ into a graded derivation of the wedge produc
     u^\alpha_I (j^k(\phi, p)) &:= \dell{^{|I|} (u^\alpha \circ \phi)}{x^I} \Bigg|_p
   \end{align}
   Both are clearly smooth and uniquely determine the equivalence class $j^k(\phi, p)$. We now define the \textbf{horizontal differential} for any $f\in\Ci(J^\infty F)$ to be
-  $$ d_H f := \dell{f}{x^i} dx^i + \frac{i_1 ! ... i_m !}{k!} \dell{f}{u^\alpha_I} u^\alpha_{I,i} dx^i$$
+  \begin{equation}d_H f := \dell{f}{x^i} dx^i + \frac{i_1 ! ... i_m !}{k!} \dell{f}{u^\alpha_I} u^\alpha_{I,i} dx^i\end{equation}
   where $k = |I|$, $i_l$ denotes the number of occurences of $l$ in $I$, $m = \dim(M)$ and $u^\alpha_{I,i} = \partial_{x^i} u^\alpha_I$.
 \end{definition}
 
@@ -282,7 +293,7 @@ Now for convenience, denote
   D_i &:= \dell{}{x^i} + u^\alpha_{I,i} + \partial^I_\alpha
 \end{align}
 We can thus denote $d_H f = D_i f dx^i$ and further define the \textbf{vertical differential}
-$$ d_V f = (d-d_H) f = \partial^I_\alpha f (d-d_H) u^\alpha_I = \partial^I_\alpha f d_V u^\alpha_I$$
+\begin{equation}d_V f = (d-d_H) f = \partial^I_\alpha f (d-d_H) u^\alpha_I = \partial^I_\alpha f d_V u^\alpha_I\end{equation}
 We can also prove
 \begin{align}
   &(D_j f ) (j^\infty \phi) = \dell{}{x^i}(f(j^\infty \phi))\\
@@ -304,12 +315,12 @@ Using vertical vector fields, we can now define certain types of differential fo
 \begin{definition}~
 \begin{itemize}
   \item The set of \textbf{horizontal $(p,s)$-forms} is defined as
-  $$ \Omega^{(p,s)}_H := \{ \omega \in \Omega^p(J^\infty F) : \omega_\chi (x_1, ..., x_{p-s+1}, \cdot, ..., \cdot) = 0 \ \ |\ \  x_i \in V_\chi(J^\infty F) \} $$
+  \begin{equation}\Omega^{(p,s)}_H := \{ \omega \in \Omega^p(J^\infty F) : \omega_\chi (x_1, ..., x_{p-s+1}, \cdot, ..., \cdot) = 0 \ \ |\ \  x_i \in V_\chi(J^\infty F) \} \end{equation}
 
   \item A \textbf{contact form} is a differential form $\theta$ on $J^\infty F$ that is annihilated by all jets of the form $j^\infty \phi : M \lra J^\infty F$ via pullback, i.e. $(j^\infty \phi)^* \theta = 0$
 
   \item The set of \textbf{vertical $(p,r)$-forms} are defined as
-  $$ \Omega^{(p,r)}_V := \{ \omega \in \Omega^p(J^\infty F) : \theta_1 \wedge \theta_2 \wedge ... \wedge \theta_r \wedge \widetilde \omega \ \ |\ \  \theta_i \text{ a  contact form} \} $$
+  \begin{equation}\Omega^{(p,r)}_V := \{ \omega \in \Omega^p(J^\infty F) : \theta_1 \wedge \theta_2 \wedge ... \wedge \theta_r \wedge \widetilde \omega \ \ |\ \  \theta_i \text{ a  contact form} \} \end{equation}
 \end{itemize}
 \end{definition}
 
@@ -338,7 +349,7 @@ We can now use the ideal of contact forms to investigate local sections of the b
   Let $F\lra M$ be a smooth fibre bundle. A local section $\xi$ of $\pi_\infty: J^\infty F \lra M$ is holonomic, i.e. a $\infty$-prolongation of a section of $F$, if and only if $\xi^* \mathcal{C} = 0$.
 \begin{proof}
   Note that
-  $$ \xi^* d_V u^\alpha_I = 0 \quad \text{iff} \quad \dell{}{x^i} (u^\alpha_I \circ \xi) = u^\alpha_{I,i} \circ \xi $$
+  \begin{equation}\xi^* d_V u^\alpha_I = 0 \quad \text{iff} \quad \dell{}{x^i} (u^\alpha_I \circ \xi) = u^\alpha_{I,i} \circ \xi \end{equation}
   for all indices $I,i,\alpha$ such that $\xi$ can be constructed inductively from $u_i \circ \xi$. Thus define $\phi := \pi_\infty^0 \circ \xi$ we see that $\xi = j^\infty \phi$.
 \end{proof}
 \end{lem}
@@ -347,16 +358,16 @@ Using the thus defined structures, we can approach the spliting of the complex $
 
 \begin{definition}[Forms of bi-degree]
   Let $F \lra M$ and $J^\infty F$ be as above. Define the space of \textbf{forms of bi-degree $(r,s)$} to be the intersection
-  $$ \Omega^{r,s}(J^\infty F) := \Omega_V^{p,r}(J^\infty F) \cap \Omega_H^{s,s}(J^\infty F) $$
+  \begin{equation}\Omega^{r,s}(J^\infty F) := \Omega_V^{p,r}(J^\infty F) \cap \Omega_H^{s,s}(J^\infty F) \end{equation}
   where $p:= r+s$. A form $\omega \in \Omega^\bullet(J^\infty F)$ is of bi-degree $(r,s)$ iff it is of the form
-  $$ \omega^{I_1 ... I_r}_{\alpha_1 ... \alpha_r ; i_1 ... i_s} \theta^{\alpha_1}_{I_1} \wedge ... \wedge \theta^{\alpha_r}_{I_r} \wedge dx^{i_1} \wedge ... \wedge dx^{i_s}$$
+  \begin{equation}\omega^{I_1 ... I_r}_{\alpha_1 ... \alpha_r ; i_1 ... i_s} \theta^{\alpha_1}_{I_1} \wedge ... \wedge \theta^{\alpha_r}_{I_r} \wedge dx^{i_1} \wedge ... \wedge dx^{i_s}\end{equation}
   where all the functions $\omega^{(\cdot)}_{(\cdot)}$ are smooth in $\Ci(J^\infty F)$.
 \end{definition}
 
 We are now in a position to "split" $(\Omega^\bullet(J^\infty F), d)$. First we define
-$$ \Omega^p (J^\infty F) := \bigoplus_{r+s=p} \Omega^{r,s}(J^\infty F) $$
+\begin{equation}\Omega^p (J^\infty F) := \bigoplus_{r+s=p} \Omega^{r,s}(J^\infty F) \end{equation}
 Since $d(dx^i)=0$ we also have $d_H(dx^i) = 0$ and $d_V(dx^i) = 0$. Now we can also use $\theta^\alpha_I = du^\alpha_I - u^\alpha_{I,i} dx^j$ such that
-$$ d \theta^\alpha_I = -d u^\alpha_{I,i} \wedge dx^i = - \theta^\alpha_{I,j} \wedge dx^j $$
+\begin{equation}d \theta^\alpha_I = -d u^\alpha_{I,i} \wedge dx^i = - \theta^\alpha_{I,j} \wedge dx^j \end{equation}
 and thus $d_V \theta^\alpha_I = 0$ and $d_H \theta^\alpha_I = - \theta^\alpha_{I,j} \wedge dx^j$. This brings us to the following theorem, which is the defining theorem for the \emph{variational bicomplex}:
 
 \begin{theo}[Variational bicomplex]
@@ -367,19 +378,21 @@ and thus $d_V \theta^\alpha_I = 0$ and $d_H \theta^\alpha_I = - \theta^\alpha_{I
 \newpage
 \subsection{Local Lagrangian Field Theory}
 
-So far, we have been working on the infinite jet bundle. Our goal is to work on $\mathcal{F}$ in a \emph{local} way. Thus we need to find some local calculus on $\mathcal{F}\times M$.\\
+So far, we have been working on the infinite jet bundle. Our goal is to work on $\mathcal{F}$ in a \emph{local} way. Thus we need to find some local calculus on $\mathcal{F} \times M$.\\
 
-To this end, denote by $VF:=\ker(d\pi)$ the vertical tangent bundle. Recall that if $\phi_t$ is a smooth curve in $\mathcal{F} = \Gamma(M, F)$, $\dot\phi\big|_{t=0}$ is vertical and
-$$0 = d\pi(\dot\phi\big|_{t=0}) = \dd{}{t}(\pi(\phi_t))\big|_{t=0}$$
-Thus we can think of $\dot \phi_0 : M \lra VF$ as a section covering $\phi_0 = pr_F \circ \dot \phi_0$. We can express this in the following diagram:\\
+To this end, denote by $VF := \ker(d\pi)$ the vertical tangent bundle. Recall that if $\phi_t$ is a smooth curve in $\mathcal{F} = \Gamma(M, F)$, $\dot\phi\big|_{t=0}$ is vertical and
+\begin{equation}
+  0 = d\pi(\dot\phi\big|_{t=0}) = \dd{}{t}(\pi(\phi_t))\big|_{t=0}
+\end{equation}
+Thus we can think of $\dot \phi_0 : M \lra VF$ as a section covering $\phi_0 = pr_F \circ \dot \phi_0$. We can express this in the following diagram:
 \begin{center}
-\begin{tikzcd}[sep = large]
-  VF \arrow[r,"pr_\FF"] & F \arrow[dr,"\pi"] &  \\
-  M \arrow[u,"\dot\phi_0"] \arrow[r,"\id"] & M \arrow[u,"\phi_0"] \arrow[r,"\id"] & M
+\begin{tikzcd}[sep = huge]
+  VF \arrow[r,"pr_F"] & F \arrow[d,"\pi"] \\
+  M \arrow[u,"\dot\phi_0"] \arrow[ur,"\phi_0"] \arrow[r, "\id"]  & M
 \end{tikzcd}
 \end{center}
 
-Now we can think of sections $\Gamma(M, VF)_\phi = \Gamma(M, \phi^*VF)$. An element of $\Gamma(M, VF)_\phi$ is a map that associates to every $x\in M$ a vector $v_{\phi(x)} \in V_{\phi(x)}F$. We can think of $v_\phi \in \Gamma(M, \phi^*VF)$.
+For $\phi \in \Gamma(M,F) = \FF$ consider sections $\Gamma(M, VF)_\phi = \Gamma(M, \phi^*VF)$. An element of $\Gamma(M, VF)_\phi$ is a map that associates to every $x\in M$ a vector $v_{\phi(x)} \in V_{\phi(x)}F$. We can think of $v_\phi \in \Gamma(M, \phi^*VF)$.
 
 \begin{definition}
   We define the tangent bundles
@@ -391,7 +404,7 @@ Now we can think of sections $\Gamma(M, VF)_\phi = \Gamma(M, \phi^*VF)$. An elem
 \end{definition}
 
 Now let $E \lra M$ and $F\lra M$ be two fibre bundles with projections $\pi_E$ and $\pi_F$ respectively. Note that the following diagram commutes and thus defines the \emph{product bundle}:
-$$ E\times F := \{ (e,f) \in E\times F \big| \pi_E(e)=\pi_F(f) \} $$
+\begin{equation}E\times F := \{ (e,f) \in E\times F \big| \pi_E(e)=\pi_F(f) \} \end{equation}
 such that the following diagram commutes:
 \begin{center}
 \begin{tikzcd}[sep = large]
@@ -401,9 +414,11 @@ such that the following diagram commutes:
 \end{center}
 
 In general, this allows us to write $\Gamma(M, E \times_M F) \cong \EE \times \FF$ where we identify $\EE = \Gamma(M,E)$ and $\FF = \Gamma(M,F)$. We can also write
-$$T(\EE \times \FF) \cong \Gamma(M, V(E\times_M F)) \cong \Gamma(M, VE \times_M VF) \cong T\EE \times T\FF \cong (T\EE \times \FF) \times_{\EE\times\FF} (\EE\times T\FF) $$
-As an exercise, you can prove the above chain of isomorphisms. Since we can further write $T(\FF\times M) \cong (T\FF \times M) \times_{\FF\times M} (\FF \times TM)$ we can for the above statements take a pair $(\phi, x)$ and denote
-$$ T_{(\phi, x)}(\FF_x M) \cong T_\phi \FF \times T_x M $$
+\begin{equation}
+  T(\EE \times \FF) \cong \Gamma(M, V(E\times_M F)) \cong \Gamma(M, VE \times_M VF) \cong T\EE \times T\FF \cong (T\EE \times \FF) \times_{\EE\times\FF} (\EE\times T\FF)
+\end{equation}
+As an exercise, you can prove the above chain of isomorphisms. Since we can further write $T(\FF\times M) \cong (T\FF \times M) \times_{\FF\times M} (\FF \times TM)$ we can for the above statements take a pair $(\phi, x) \in \FF \times M$ and denote
+\begin{equation}T_{(\phi, x)}(\FF_x M) \cong T_\phi \FF \times T_x M \end{equation}
 We denote by $T_\phi \FF$ the \textbf{vertical tangent space} and by $T_x M$ the \textbf{horizontal tangent space}.\\
 
 Taking the $\infty$-prolongation $j^\infty$ and its tangent map we obtain the following commuting diagram:
@@ -418,12 +433,12 @@ This leads us to the following interesting piece of information:
 
 \begin{prop}
   The tangent map
-  $$ T_{(\phi,X)}j^k \colon T_\phi \FF \times T_x M \lra T_{j^k_x \phi} J^k F $$
+  \begin{equation}T_{(\phi,x)}j^k \colon T_\phi \FF \times T_x M \lra T_{j^k_x \phi} J^k F \end{equation}
   is given by
-  $$ (T_{(\phi, x)} j^k)(\xi_\phi, v_x) := \sum_{|I|=0}^k \dot u^\alpha_I (j^k_x \xi_\phi) \dell{}{u^\alpha_I} + v^i \left( \dell{}{x^i} + \sum_{|I|=0}^k u^\alpha_{I,i} (j^{k+1}_x \phi) \dell{}{u^\alpha_I} \right) $$
+  \begin{equation}(T_{(\phi, x)} j^k)(\xi_\phi, v_x) := \sum_{|I|=0}^k \dot u^\alpha_I (j^k_x \xi_\phi) \dell{}{u^\alpha_I} + v_x^i \left( \dell{}{x^i} + \sum_{|I|=0}^k u^\alpha_{I,i} (j^{k+1}_x \phi) \dell{}{u^\alpha_I} \right) \end{equation}
 \begin{proof}
   While the proof is left as an exercise to the reader, we give the following hint: To compute tangent maps in coordinates, compute the time derivative of a path $t \lmap (\phi_t, x(t))$. For example
-  $$ \dd{}{t}\left( u^\alpha_I (j^k(\phi_t, x(t))) \right)\Big|_{t=0} = \dd{}{t}\left( \dell{^{|I|}}{x^I} \phi^\alpha(t, x(t)) \right)\Bigg|_{t=0} $$
+  \begin{equation}\dd{}{t}\left( u^\alpha_I (j^k(\phi_t, x(t))) \right)\Big|_{t=0} = \dd{}{t}\left( \dell{^{|I|}}{x^I} \phi^\alpha(t, x(t)) \right)\Bigg|_{t=0} \end{equation}
   Now set $\xi_\phi = \dot \phi_0$ and $v_x = \dot x(0)$.
 \end{proof}
 \end{prop}
@@ -461,11 +476,11 @@ Now using our results for $TJ^kF$ we obtain a splitting for $TJ^\infty F$:
     \VF_{hor} &\cong \Hom(J^\infty F, TM)
   \end{align}
   Thus we can split any $V \in \VF(J^\infty F)$ into
-  $$ V = V^i \dell{}{x^i} + \sum_{|I|=0}^\infty V^\alpha_I \dell{}{u^\alpha_I} $$
+  \begin{equation}V = V^i \dell{}{x^i} + \sum_{|I|=0}^\infty V^\alpha_I \dell{}{u^\alpha_I} \end{equation}
   where both $V^i$ and $V^\alpha_I$ are in $\Ci(J^\infty F)$.
 \end{corollary}
 
-Now we can finally unambigously answer to the question \emph{"What is Locality?"}. Essentially, locality is the requirement that we work with $(j^\infty)^* \Omega^{\bullet, \bullet}(J^\infty F)$.
+Now we can finally unambigously answer the question \emph{"What is Locality?"}. Essentially, locality is the requirement that we work with $(j^\infty)^* \Omega^{\bullet, \bullet}(J^\infty F)$ where $(j^\infty)^* \colon TJ^\infty F \lra T(\FF \times M)$.
 
 \begin{rem}
   Note that we always assume that our base manifold $M$ is orientable. There exist generalisations for non-orientable manifolds (see Deligne/Freed).
@@ -474,9 +489,9 @@ Now we can finally unambigously answer to the question \emph{"What is Locality?"
 
 \begin{definition}[Local differential forms]
   A differential form on $\FF_x M$ is called a \textbf{local differential form}, iff it is the pullback of a form on $J^\infty F$ by the $\infty$-jet prolongation $j^\infty\colon \FF_x M \lra J^\infty F$. We define the \textbf{bicomplex of local forms} as
-  $$ \left( \Omega^{\bullet, \bullet}_{loc} (\FF \times M) := ((j^\infty )^* \Omega^{\bullet, \bullet} (J^\infty F), d, \delta \right) $$
+  \begin{equation}\left( \Omega^{\bullet, \bullet}_{loc} (\FF \times M) := ((j^\infty )^* \Omega^{\bullet, \bullet} (J^\infty F), d, \delta \right) \end{equation}
   such that
-  $$ \delta((j^\infty)^* \alpha) := (j^\infty)^* d_V \alpha, \quad \quad d((j^\infty)^* \alpha) := (j^\infty)^* d_H \alpha $$
+  \begin{equation}\delta((j^\infty)^* \alpha) := (j^\infty)^* d_V \alpha, \quad \quad d((j^\infty)^* \alpha) := (j^\infty)^* d_H \alpha \end{equation}
 \end{definition}
 
 We can also extend this \emph{local} setting to vector fields:
@@ -507,7 +522,7 @@ We also port the idea of a derivation to our newly defined setting by defining t
 
 \begin{definition}[Local derivations]
   A derivation $D$ of $\Ci_{loc}(\FF \times M)$ is called a \textbf{local derivation}, iff there exists a vector field $\chi^\infty \colon J^\infty F \lra TJ^\infty F$ such that
-  $$ Df = (\chi^\infty f^\infty) \circ j^\infty $$
+  \begin{equation}Df = (\chi^\infty f^\infty) \circ j^\infty \end{equation}
   for every $(f, f^\infty)$. We denote a local derivation by $(D, \chi^\infty)$.
 \end{definition}
 
@@ -521,40 +536,39 @@ A proposition coming directly from usual differential geometry is the correspond
 \end{prop}
 
 We go on with a short remark on local coordinates: If we identify
-$$ (j^\infty)^* x^i \equiv x^i, \quad \quad \quad (j^\infty)^* u^\alpha_I \equiv u^\alpha_I $$
+\begin{equation}(j^\infty)^* x^i \equiv x^i, \quad \quad \quad (j^\infty)^* u^\alpha_I \equiv u^\alpha_I \end{equation}
 we can interpret $dx^i \in \Omega^{0,1}_{loc}(\FF\times M)$ and $\delta u^\alpha_I \in \Omega^{1,0}_{loc}(\FF\times M)$ as a basis for $\Omega^{\bullet, \bullet}_{loc}(\FF\times M)$. This allows us to write a form $\omega \in \Omega^{p,q}_{loc}(\FF\times M)$ as
-$$ \omega = \omega^{I_1 ... I_p}_{\alpha_1 ... \alpha_p i_1 ... i_q} \delta u^{\alpha_1}_{I_1}\wedge ... \wedge \delta u^{\alpha_p}_{I_p} \wedge dx^{i_1} \wedge ... \wedge dx^{i_q}  $$
+\begin{equation}\omega = \omega^{I_1 ... I_p}_{\alpha_1 ... \alpha_p i_1 ... i_q} \delta u^{\alpha_1}_{I_1}\wedge ... \wedge \delta u^{\alpha_p}_{I_p} \wedge dx^{i_1} \wedge ... \wedge dx^{i_q}  \end{equation}
 for $\omega^{I_1 ... I_p}_{\alpha_1 ... \alpha_p i_1 ... i_q} \in \Ci_{loc}(\FF\times M)$, $df = D_i f dx^i$ and $\delta f = \partial^I_\alpha f \delta u^\alpha_I$. Thus if we take $X\in \VF_{loc}(\FF)$ and $\omega \in \Omega^{\bullet,\bullet}_{loc}(\FF\times M)$, we obtain a variational \emph{Cartan Calculus}
-$$ \lie{X} \omega = \imath_X \circ \delta \omega + \delta \circ \imath_X \omega $$
+\begin{equation}\lie{X} \omega = \imath_X \circ \delta \omega + \delta \circ \imath_X \omega \end{equation}
 This can be generalized to $\VF_{loc}(\FF\times M)$.
 
 
-\newpage
 \subsection{Classical Field Theory}
 \label{subsec:Classical_field_theory}
 
 \begin{definition}[Classical Lagrangian Field Theory]
-   A \textbf{Classical Lagrangian Field Theory} is a triple $(M, F, L)$ where $\pi:F\lra M$ is a smooth fibre bundle and $L \in \Omega^{0, top}_{loc}(\FF \times M)$ called a \textbf{Lagrangian (density)}. We call the integral
-   $$ S = \int_M L $$
+   A \textbf{Classical Lagrangian Field Theory} is a triple $(M, F, L)$ where $F \atob{\pi} M$ is a smooth fibre bundle and $L \in \Omega^{0, top}_{loc}(\FF \times M)$ called a \textbf{Lagrangian (density)}. We call the integral
+   \begin{equation}S = \int_M L \end{equation}
    the \textbf{action functional}.
 \end{definition}
 
 This means
-$$ L = (j^\infty)^* L^\infty \quad \text{for} \quad L^\infty \in \Omega^{0, top}_{loc}(J^\infty F) $$
+\begin{equation}L = (j^\infty)^* L^\infty \quad \text{for} \quad L^\infty \in \Omega^{0, top}_{loc}(J^\infty F) \end{equation}
 and thus
-$$ L^k \left(x^i, u^\alpha, u^\alpha_{i_1}, ..., u^\alpha_{i_1 ...i_n} \right) dx^1 ... dx^n$$
+\begin{equation}L^k \left(x^i, u^\alpha, u^\alpha_{i_1}, ..., u^\alpha_{i_1 ...i_n} \right) dx^1 ... dx^n\end{equation}
 If we evaluate $L$ at $\phi$, we obtain
-$$ L(\phi) = L\left(x^i, \phi^\alpha, \dell{\phi^\alpha}{x^i}, ..., \dell{^k \phi^\alpha}{x^{i_1} ... \partial x^{i_n}}\right) $$
+\begin{equation}L(\phi) = L\left(x^i, \phi^\alpha, \dell{\phi^\alpha}{x^i}, ..., \dell{^k \phi^\alpha}{x^{i_1} ... \partial x^{i_n}}\right) \end{equation}
 
 \begin{definition}[Source forms]
   Let $\alpha \in \Omega^{1,top}_{loc}(\FF \times M)$. $\alpha$ is called a \textbf{source form}, iff it only depends on the $dx^i$ and $\delta u^\alpha$, not the $\delta u^\alpha_I$.
 \end{definition}
 
-While this definition is more of a working version and does not really explain itself, the following theorem sheds some light onto the situation:
+Thus a source form, if evaluated on a vectorfield, depends only on the projection of that vectorfield to on on $F$. This definition is a working version and does not really explain itself. The following theorem sheds some light onto the situation:
 
 \begin{theo}
-  Let $(M,F,L)$ be a Lagrangian field theory. Then there exists a source form $EL \in \Omega^{1,top}_{loc}(\FF \times M)$ and two "boundary" forms
-  $$ \alpha \in \Omega^{1,top-1}_{loc}(\FF \times M), \quad \quad \omega \in \Omega^{2,top-1}_{loc}(\FF \times M) $$
+  Let $(M,F,L)$ be a Lagrangian field theory. Then there exists a unique source form $EL \in \Omega^{1,top}_{loc}(\FF \times M)$ and two unique "boundary" forms
+  \begin{equation}\alpha \in \Omega^{1,top-1}_{loc}(\FF \times M), \quad \quad \omega \in \Omega^{2,top-1}_{loc}(\FF \times M) \end{equation}
   such that
   \begin{itemize}
     \item $\delta L = EL - d \alpha$
@@ -564,9 +578,11 @@ While this definition is more of a working version and does not really explain i
 \end{theo}
 
 This is the statement that by means of "integration by parts" we can write $\delta L$ as
-$$EL = E_\alpha \delta u^\alpha \wedge dx^1 \wedge ... \wedge dx^n$$
+\begin{equation}
+  EL = E_\alpha \delta u^\alpha \wedge dx^1 \wedge ... \wedge dx^n
+\end{equation}
 with $E_\alpha\colon J^k F \lra \RR$ which defines the \textbf{Euler-Lagrange-equations} as
-$$ E_\alpha  \left(x^i, \phi^\beta, \dell{\phi^\beta}{x^i}, ..., \dell{^k \phi^\beta}{x^{i_1} ... \partial x^{i_n}}\right) $$
+\begin{equation}E_\alpha  \left(x^i, \phi^\beta, \dell{\phi^\beta}{x^i}, ..., \dell{^k \phi^\beta}{x^{i_1} ... \partial x^{i_n}}\right) = 0 \end{equation}
 
 To prove the above statement, we would need to reformulate integration by parts in "cohomological terms", thus in terms of operators on local forms, which does not fit into the scope of this course. Doing this, allows us to define the "Euler Operator" $\mathbb{E}$ such that $\mathbb{E}(L) \equiv EL$.\\
 
@@ -574,7 +590,7 @@ With the following statements, we introduce some notions necessary to make the c
 
 \begin{definition}[Strictly vertical/horizontal vector fields]
 \label{def:strictly}
-  A vector field $v\in \VF(J^\infty F)$ is called \textbf{strictly vertical} or \textbf{strictly horizontal}, iff $[\imath_v, d_V] = 0$ or $[\imath_v, d_H] = 0$ respectively.
+  A vector field $v\in \VF(J^\infty F)$ is called \textbf{strictly vertical} or \textbf{strictly horizontal}, iff $[\imath_v, d_H] = 0$ or $[\imath_v, d_V] = 0$ respectively.
 \end{definition}
 
 We use this definition to formulate the following proposition:
@@ -594,11 +610,11 @@ We use this definition to formulate the following proposition:
 \begin{lem}
   A vector field $v\in \VF(J^\infty F)$ is strictly horizontal, iff $v = v^i D_i$ for $v^i \in \Ci(M)$.
 \begin{proof}
-  First note that $[\imath_v, d_V] = 0$ iff it annihilates functions and $1$-forms $\{d_H x^i, d_V u^\alpha_I \}$.
+  First note that $[\imath_v, d_V] = 0$ iff it annihilates functions and $1$-forms generated by $\{d_H x^i, d_V u^\alpha_I \}$.
   \begin{align}
     &\Rightarrow \quad [i_v, d_V] f = i_v \dell{f}{u^\alpha_I} d_V u^\alpha_I = \dell{f}{u^\alpha_I} (v^\alpha_I - u^\alpha_{I,i} v^i) = 0\\
     &\Leftrightarrow \quad v^\alpha_I = u^\alpha_{I,i} v^i\\
-    &\Leftrightarrow \quad v = v^i \dell{}{x^i} + u^\alpha_{I,i} v^i \dell{}{u^\alpha_I}
+    &\Leftrightarrow \quad v = v^i \dell{}{x^i} + u^\alpha_{I,i} v^i \dell{}{u^\alpha_I} = v^i D_i
   \end{align}
   Thus we can conclude by checking what happens on $1$-forms.
 \end{proof}
@@ -611,12 +627,24 @@ We use this definition to formulate the following proposition:
 \end{proof}
 \end{lem}
 
-As mentioned above, the introduced terminology helps us better understand \emph{evolutionary vector fields}. Namely if $\xi \in \VF_{loc}(\FF \times M)$ it is called \textbf{evolutionary}, iff it covers a vector field $v\in \VF(J^\infty F)$ that is \emph{strictly vertical}. This in turn allows us to start talking about symmetries leading us to   Noethers first theorem:
+\begin{definition}
+  A vector field $\xi \colon \FF \lra T \FF$ is said to \textbf{project} to a vector field $v$ on $J^\infty F$, iff the following diagram commutes:
+  \begin{center}
+  \begin{tikzcd}[sep=huge]
+    \FF \times M \arrow[d, "j^\infty"']  \arrow[r, "\xi \times \id"] & T \FF \times M \arrow[d, "Tj^\infty"] \\
+    J^\infty F \arrow[r, "v"] & T J^\infty F
+  \end{tikzcd}
+  \end{center}
+\end{definition}
+
+\begin{theo}
+  A vector field $v$ on $J^\infty F$ is strictly vertical, iff there exists a local vector field $\xi \in \Gamma(\FF, T \FF)$ that projects to it. Moreover $\xi$ is unique and called an \textbf{evolutionary} vector field.
+\end{theo}
 
 \begin{definition}[Local symmetries]
 \label{def:LocalSymmetry}
   An evolutionary vector field $\xi \in \VF_{loc}(\FF \times M)$ is called a \textbf{local symmetry} of the Lagrangian field theory $(M,F,L)$ iff $\exists A_\xi \in \Omega^{0,top-1}_{loc}(\FF\times M)$ such that
-  $$ \lie{\xi} L = \imath_\xi \delta L = dA_\xi $$
+  \begin{equation}\lie{\xi} L = \imath_\xi \delta L = dA_\xi \end{equation}
   We denote a \textbf{symmetry} by the pair $(\xi, A_\xi)$.
 \end{definition}
 
@@ -625,9 +653,9 @@ Showing the power of the presented formalism, we can now prove \emph{Noether's f
 \begin{theo}[Noether's first]
 \label{theo:Noether_first}
   Let $(M,F,L)$ be a Lagrangian field theory such that $\delta L = EL - d \alpha$ and let $(\xi, A_\xi)$ be a local symmetry of the theory. Then
-  $$ j := A_\xi - \imath_\xi \alpha \ \in \Omega^{0,top-1}_{loc}(\FF\times M) $$
-  is called \textbf{on shell}, i.e.
-  $$d j = 0 \mod(EL)$$
+  \begin{equation}j := A_\xi - \imath_\xi \alpha \ \in \Omega^{0,top-1}_{loc}(\FF\times M) \end{equation}
+  is \textbf{on shell}, i.e.
+  \begin{equation}d j = 0 \mod(EL) \end{equation}
   Here, "on shell" means "on those configurations $\phi$ s.t. $EL_\phi = 0$ that satisfy the Euler-Lagrange-equations".
 \begin{proof}
   To prove this, we can simply calculate:
@@ -646,21 +674,28 @@ If we allow dependency of currents on a vector bundle $W\lra M$ together with a 
   w &\lmap (\xi_w, A_{\xi_w})
 \end{align}
 such that
-$$\lie{\xi_w}L = dA_{\xi_w} \quad \Rightarrow j_w = A_{\xi_w} - \imath_{\xi_w} \alpha$$
+\begin{equation}
+  \lie{\xi_w}L = dA_{\xi_w} \quad \Rightarrow j_w = A_{\xi_w} - \imath_{\xi_w} \alpha
+\end{equation}
 
 We move on to some examples of classical Lagrangian field theories:
 
 \begin{example}[\textbf{Classical Mechanics}]
   Let $F= \RR \times M \lra \RR$ such that $\FF = \Gamma(\RR, F)$ and take
-  $$L = \left(\frac{m}{2} \ \dot q_i \dot q^i - V(q) \right) dt$$
+  \begin{equation}
+    L = \left(\frac{m}{2} \ \dot q_i \dot q^i - V(q) \right) dt
+  \end{equation}
   as a Lagrangian density. Note that $L$ is defined on $J^1(M \times \RR) \simeq TM \times \RR$. We find the variation of $L$ to be
   \begin{align}
     \delta L &= \left( m \ \delta \dot q \ \dot q - \delta q \nabla V \right) \wedge dt \\
-    &= \dd{}{t} \left( m \ \delta q \cdot \dot q \right) \wedge dt - \delta q \left( m \ddot q + \nabla V \right) \wedge dt\\
+    &= \left( \dd{}{t} \left( m \ \delta q \cdot \dot q \right) - \delta q \left( m \ddot q + \nabla V \right) \right) \wedge dt\\
     &= d \left( m \ \delta q \cdot \dot q \right) - \left( m \ddot q + \nabla V \right) \delta q \wedge dt
   \end{align}
-  Thus we have $\alpha = m \dot q^i \delta q_i$ and $E_q = m \ddot q + \nabla V$. Now if we consider a time translation $t \lmap t + \epsilon$ we find the induced evolutionary vector field $\xi = - \dot q^i \dell{}{q^i} - \ddot q^i \dell{}{q^i} ...$\\
-  \textbf{Exercise:} Show that $j_\xi$ is an energy, i.e. $j = \frac{m}{2} \ \dot q \cdot \dot q + V(q)$.
+  Thus we have $\alpha = m \dot q^i \delta q_i$ and $E_q = m \ddot q + \nabla V$. Now if we consider a time translation $t \lmap t + \epsilon$ we find the induced evolutionary vector field $\xi = - \dot q^i \dell{}{q^i} - \ddot q^i \dell{}{\dot q^i} ...$\\
+  \textbf{Exercise:} Show that $j_\xi$ is an energy, i.e. $j = m \ \dot q \cdot \dot q + V(q)$.
+  \begin{proof}
+    First note $\imath_\xi \alpha = - m \dot q^i \dot q_i$ and thus let $A_\xi = V(q)$. We obtain $j = V(q) + m \dot q^i \dot q_i$.
+  \end{proof}
 \end{example}
 
 \newpage
@@ -670,23 +705,23 @@ Consider a smooth, oriented, compact manifold $M$ equipped with a (pseudo-)Riema
 
 \begin{definition}[Hodge Duality]
   The \textbf{Hodge-Duality map} (Hodge-$*$) is the $\Ci(M)$-linear map
-  $$ * \colon \Omega^k(M) \lra \Omega^{n-k}(M) $$
+  \begin{equation}* \colon \Omega^k(M) \lra \Omega^{n-k}(M) \end{equation}
   uniquely determined by the equation
-  $$ \alpha \wedge * \beta = \langle \alpha, \beta \rangle_g \vol_g $$
+  \begin{equation}\alpha \wedge * \beta = \langle \alpha, \beta \rangle_g \vol_g \end{equation}
 \end{definition}
 
 The Hodge star acts on a local basis as
-$$ *(dx^1\wedge ... \wedge dx^n) = \frac{\sqrt{|\det(g)|}}{(n-k)!} g^{i_1 j_1} ... g^{i_k j_k} \epsilon_{j_1 ... j_k} dx^{j_k+1} ... dx^{j_n} $$
+\begin{equation}*(dx^1\wedge ... \wedge dx^n) = \frac{\sqrt{|\det(g)|}}{(n-k)!} g^{i_1 j_1} ... g^{i_k j_k} \epsilon_{j_1 ... j_k} dx^{j_k+1} ... dx^{j_n} \end{equation}
 Using the Hodge star we can define the
 
 \begin{definition}[Codifferential]
 \label{def:codifferential}
   The \textbf{Codifferential} is the operator
-  $$ \delta_g := \Omega^k(M) \lra \Omega^{k-1}(M) $$
+  \begin{equation}\delta_g := \Omega^k(M) \lra \Omega^{k-1}(M) \end{equation}
   defined as
-  $$ \delta_g := (-1)^{n(k-1)+1} \sgn(g) * d * $$
+  \begin{equation}\delta_g := (-1)^{n(k-1)+1} \sgn(g) * d * \end{equation}
   Using the codifferential, one can define the \textbf{Laplace-deRham operator}
-  $$ \Delta_g := (d+\delta_g)^2 = d \delta_g + \delta_g d $$
+  \begin{equation}\Delta_g := (d+\delta_g)^2 = d \delta_g + \delta_g d \end{equation}
 \end{definition}
 
 Using the above definition, one can directly show some interesting properties of the codifferential:
@@ -702,8 +737,8 @@ Using the above definition, one can directly show some interesting properties of
 
 
 \begin{definition}[Scalar Field Theory]
-  Let $(M,g)$ as above and $\FF= \Ci(M)$ seen as the sections of a trivial $\RR$-bundle. Then (free, a.k.a.\ non-interacting) \textbf{Scalar field theory} on $\FF$ is defined with the Lagrangian
-  $$ L = \frac{1}{2} d \phi \wedge * d\phi \equiv  g^{\mu\nu} \partial_\mu \phi \partial_\nu \phi \sqrt{|\det(g)|} d^n x $$
+  Let $(M,g)$ as above and $\FF= \Ci(M)$ seen as the sections of a trivial $\RR$-bundle. Then (a.k.a.\ non-interacting) \textbf{free Scalar field theory} on $\FF$ is defined using the Lagrangian
+  \begin{equation}L = \frac{1}{2} d \phi \wedge * d\phi \equiv  g^{\mu\nu} \partial_\mu \phi \partial_\nu \phi \sqrt{|\det(g)|} d^n x \end{equation}
 \end{definition}
 
 \begin{ex}
@@ -723,7 +758,7 @@ Using the above definition, one can directly show some interesting properties of
 \end{ex}
 
 The equations of motion for scalar field theory are
-$$ \Delta_g \phi = 0 $$
+\begin{equation}\Delta_g \phi = 0 \end{equation}
 
 \begin{rem}
   One can add "potential (a.k.a.\ interaction) terms" to the Lagrangian. A common example would be $V(\phi) = \frac{m^2}{2} \phi^2 + \frac{\beta}{4} \phi^4$. Note furter that our theory \emph{requires} a metric $g$ on $M$ and is thus a "Non-topological field theory".
@@ -731,34 +766,34 @@ $$ \Delta_g \phi = 0 $$
 
 \begin{definition}[Pure, d-dimensional Yang-Mills-Theory]
   Let $(M,g)$ be as above and $P \lra M$ a principal $G$-bundle where $G$ is a compact Lie group $(U(n))$. Denote by $A$ a connection $1$-form and let $F_A$ denote its curvature. In a local chart we can write it as
-  $$ F_A = dA + \frac{1}{2}[A,A] $$
+  \begin{equation}F_A = dA + \frac{1}{2}[A,A] \end{equation}
   Assume for simplicity that $P \lra M$ is a trivial bundle and $A \in \Omega^1(P,\mathfrak{g})$ descends to a $\mathfrak{g}$-valued $1$-form on $M$. Then a \textbf{Pure Yang-Mills-Theory} is the Lagrangian field theory given by $\FF = \mathcal{A}$ (space of principal connections on the principal bundle) and the Lagrangian (density)
-  $$ L_{YM} = \frac{1}{2} \Tr[F_A \wedge * F_A] $$
+  \begin{equation}L_{YM} = \frac{1}{2} \Tr[F_A \wedge * F_A] \end{equation}
 \end{definition}
 
 \begin{ex}
   As an exercise, you can show that the variation of $L_{YM}$ is given by
-  $$ \delta L_{YM} = \Tr[d_A * F_A \wedge \delta A + d(\delta A * F_A)] $$
+  \begin{equation}\delta L_{YM} = \Tr[d_A * F_A \wedge \delta A + d(\delta A * F_A)] \end{equation}
   Remember that $d_A \phi = d\phi + A \phi$ for $\phi \in \Ci(M, R)$ and $R$ a representation of $y$. For any $\beta \in \Omega^1(M,\mathfrak{g})$ one has $d_A \beta = d\beta + [A, \beta]$ where the latter term denotes the adjoint action/representation.
 \end{ex}
 
 \begin{definition}[Yang-Mills-Theory with scalar "matter"]
   Working with the same setting as usual Yang-Mills-Theory, one takes the Lagrangian (density)
-  $$ L^{scalar}_{YM} = \Tr[F_A \wedge * F_A] + \langle d_A \phi, *d_A \phi \rangle_R $$
+  \begin{equation}L^{scalar}_{YM} = \Tr[F_A \wedge * F_A] + \langle d_A \phi, *d_A \phi \rangle_R \end{equation}
   for $\phi \in \Ci(M, R)$ where $R$ is a representation that comes with an inner product $\langle \cdot , \cdot \rangle_R$. One can then add
-  $$ + \text{mass terms} \ \frac{m^2}{2} \langle \phi, \phi \rangle_R + \beta \phi^4$$
+  \begin{equation}+ \text{mass terms} \ \frac{m^2}{2} \langle \phi, \phi \rangle_R + \beta \phi^4\end{equation}
   to form the "Higgs-mechanism" Lagrangian that appears in the \emph{Standard Modell of Particle Physics}. Here, $\phi$ plays the role of the "Higgs" field.
 \end{definition}
 
 Due to its convenience in upcoming applications in Yang-Mills-Theory, we reformulate some parts of our setting. This induces the \emph{First order formulation of YM-theory}. First note that
-$$ L_{YM} = \frac{1}{2} \Tr[F_A \wedge * F_A] $$
+\begin{equation}L_{YM} = \frac{1}{2} \Tr[F_A \wedge * F_A] \end{equation}
 The trick is to introduce a field $B := *F_A$ allowing for the following desription:
 \begin{align}
   \FF^{1st} &:= \mathcal{A}_P \times \Omega^{n-2}(M,y) \\
   L^{1st}_{YM} &:= \Tr[B \wedge F_A - \frac{1}{2} B \wedge *B]
 \end{align}
 This results in the following variation
-$$ \delta L^{1st}_{YM} = (F_A - *B) \delta B + d_A B \delta A + d(B \wedge \delta A) $$
+\begin{equation}\delta L^{1st}_{YM} = (F_A - *B) \delta B + d_A B \delta A + d(B \wedge \delta A) \end{equation}
 Further note that $F_A = *B$ together with $d_A B = 0$ is equivalent to $d_A * F_A = 0$. First and second order formulations are \textbf{classically equivalent}. This concludes our introduction to classical field theory.
 
 

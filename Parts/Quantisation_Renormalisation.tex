@@ -8,19 +8,19 @@ This section will treat \emph{scalar perturbative quantum field theory}. We will
 
 The main idea of quantum mechanics is to define a deterministic evolution of a system as a superposition of possible evolutions where one weights them by how likely they are. Our ultimate goal is to describe quantum mechanics and classical mechanics in terms of the sets of objects, states and observables. The main idea is to take a state $\omega$ and an observable $A$ such that the state associates a probability distribution to the observable on the real line in the form of $\omega_A(\lambda)$. To illuminate the concepts and systems we aim to unify, we present a short overview of both:\\
 
-In classical mechanics, states are nothing but normalized measures on the \emph{phase space} (a symplectic manifold). Meanwhile observables are functions on the phase space given by $(p,q)$ such that $\omega = dp \wedge dq$. The probability distribution is then given by
-$$ \omega_A (\lambda) := \int_M \theta(\lambda - f_A (p,q)) d \mu_\omega$$
-where $\theta$ denotes the step function, $f_A$ an observable and $d\mu_\omega$ a measure corresponding to the state. The dynamics on the other hand are encoded in the \emph{Poisson brackets} in that
-$$ \dd{f}{t} = \{H, f\}, $$
+In classical mechanics, states are nothing but normalized measures on the \emph{phase space} (a symplectic manifold). Meanwhile observables are functions on the phase space given by $(p,q)$ such that the symplectic form $\Omega = dp \wedge dq$. The probability distribution is then given by
+\begin{equation} \omega_A (\lambda) := \int_M \theta(\lambda - f_A (p,q)) d \mu_\Omega\end{equation}
+where $\theta$ denotes the step function, $f_A$ an observable and $d\mu_\Omega$ a measure corresponding to the state. The dynamics on the other hand are encoded in the \emph{Poisson brackets} in that
+\begin{equation} \dd{f}{t} = \{H, f\},\end{equation}
 defined using the symplectic form $\omega$, for some function $H$ which turns out to be the \emph{Hamiltonian} of the system.\\
 
 In quantum mechanics, observables are linear operators on some complex \emph{Hilbert space} $\HH$. States are positive trace-class operators with unit trace defined as $\Tr A = \sum_n \langle A e_n, e_n \rangle$. The probability distribution for a state is defined by
-$$ \omega_A (\lambda) := \Tr(M P_A(\lambda)) $$
+\begin{equation} \omega_A (\lambda) := \Tr(M P_A(\lambda))\end{equation}
 where $M$ is a trace-class (state) and $P_A(\lambda)$ is a projection (observable). Note that we are looking at the field from a mathematical perspective, thus the reader might encounter unfamiliar technical details in this and upcoming discussions.\\
 The commutator of two states $A,B$ is defined as
-$$ \{A,B\} = \frac{i}{\hbar} (AB-BA) $$
+\begin{equation} \{A,B\} = \frac{i}{\hbar} (AB-BA)\end{equation}
 such that the time evolution, given the Hamiltonian operator $H$, is defined as
-$$ \dd{A}{t} = \{H,A\} $$
+\begin{equation} \dd{A}{t} = \{H,A\}\end{equation}
 With these classifications of the two fields in mind, we arrive at a first sketch of a transition between them:
 
 \begin{definition}[Quantisation Scheme]
@@ -33,25 +33,25 @@ To illuminate this rather vague definition, we discuss a "toy example":
   This quantisation treats a mechanical system with one degree of freedom. The classical system has $\RR^2$ as its phase space with coordinates $(p,q)$. The dynamics are given by the Poisson brackets with the Hamiltonian function. Now we want to transition to a quantum description:\\
 
   We take the Hilbert-space $\HH$ defined as
-  $$ \HH = L^2(\RR) := \left\{ \psi(q) \in C(\RR) \ \Big| \ \int_{-\infty}^\infty |\psi(q)|^2 dq < \infty  \right\} $$
+  \begin{equation}\HH = L^2(\RR) := \left\{ \psi(q) \in C(\RR) \ \Big| \ \int_{-\infty}^\infty |\psi(q)|^2 dq < \infty  \right\}\end{equation}
   Observables are now operators on $\HH$. We define the two operators
-  $$ (P\psi)(q) = \frac{\hbar}{i} \dd{}{q} \psi(q), \quad \quad (Q\psi)(q) = q \psi(q) $$
+  \begin{equation}(P\psi)(q) = \frac{\hbar}{i} \dd{}{q} \psi(q), \quad \quad (Q\psi)(q) = q \psi(q)\end{equation}
   Now we can define products
-  $$ (A\psi)(q) = \int_{-\infty}^\infty A(q,q^\prime) \psi(q^\prime) dq^\prime $$
+  \begin{equation}(A\psi)(q) = \int_{-\infty}^\infty A(q,q^\prime) \psi(q^\prime) dq^\prime\end{equation}
   where $A(q,q^\prime)$ denotes the integral kernel of $A$ defined as
-  $$ A(q,q^\prime) = \frac{1}{2 \pi \hbar} \int_{-\infty}^\infty f\left( p, \frac{q+q^\prime}{2} \right) e^{ip(q-q^\prime)/\hbar} dq $$
+  \begin{equation}A(q,q^\prime) = \frac{1}{2 \pi \hbar} \int_{-\infty}^\infty f\left( p, \frac{q+q^\prime}{2} \right) e^{ip(q-q^\prime)/\hbar} dp\end{equation}
   where the $f$ are functions that represent $A$ in classical mechanics. As an exercise you can show that with these definitions you obtain the previously defined operators $P,Q$ if you set $f=p$ and $f=q$ respectively.\\
 
   Next we need to define a product. Since generally $A_{fg} \neq A_f A_g$ we investigate
-  $$ A_f A_g (q, q^\prime) = \int_{-\infty}^\infty A_f(q, q^{\prime \prime}) A_g(q^{\prime \prime},q^\prime) dq^{\prime \prime} $$
+  \begin{equation}A_f A_g (q, q^\prime) = \int_{-\infty}^\infty A_f(q, q^{\prime \prime}) A_g(q^{\prime \prime},q^\prime) dq^{\prime \prime}\end{equation}
   and then define
-  $$ f *_\hbar g = fg + \frac{i\hbar}{2} \{f,g\} + \mathcal{O}(\hbar^2) \quad \Rightarrow \quad \frac{i}{\hbar} (f *_\hbar g - g *_\hbar f) = \{f,g\} + \mathcal{O}(\hbar^2)$$
+  \begin{equation}f *_\hbar g = fg + \frac{i\hbar}{2} \{f,g\} + \mathcal{O}(\hbar^2) \quad \Rightarrow \quad \frac{i}{\hbar} (f *_\hbar g - g *_\hbar f) = \{f,g\} + \mathcal{O}(\hbar^2)\end{equation}
   We now encode the dynamics via the time derivative using the Hamiltonian operator
-  $$ \dd{A(t)}{t} = \{H, A(t)\}_\hbar , \quad \quad A(0) = A $$
+  \begin{equation}\dd{A(t)}{t} = \{H, A(t)\}_\hbar , \quad \quad A(0) = A\end{equation}
   where we define $A(t)$ as
-  $$ A(t) = U^{-1}(t) A U(t), \quad \quad U(t) = e^{-i H t / \hbar} $$
+  \begin{equation}A(t) = U^{-1}(t) A U(t), \quad \quad U(t) = e^{-i H t / \hbar}\end{equation}
   As an exercise you can prove this in a formal setting. Note that we do not yet have a concrete way to define the exponential of an operator such as $H$. Thus, setting $\hbar = 1$ for simplicity, we investigate the integral kernel of $U = e^{-iH(t^{\prime \prime} - t^\prime)}$ in terms of $h(p,q)$. To this end let $\Delta \ll 1$ such that
-  $$ U_\Delta := e^{-i H \Delta} \cong 1- i H \Delta $$
+  \begin{equation}U_\Delta := e^{-i H \Delta} \cong 1- i H \Delta\end{equation}
   Thus setting $t^{\prime \prime} - t^\prime = N \Delta$ we obtain $e^{-iH(t^{\prime \prime} - t^\prime)} = (U_\Delta)^N$. Now we calculate
   \begin{align}
     U_\Delta(q,q^\prime) &= \frac{1}{2\pi} \int_{-\infty}^\infty dp e^{ip(q-q^\prime)} \left( 1- i h\left(p, \frac{q+q^\prime}{2} \right) \Delta \right) \\
@@ -65,9 +65,9 @@ To illuminate this rather vague definition, we discuss a "toy example":
 
   Thus we take $N\lra \infty$ such that $q_j - q_{j-1}$ being proportional to $\frac{1}{N}$ goes against $0$. While we do not discuss convergence and well-definedness at this point, the reader is invited to start looking critically at these notions from now on! Formally this gives us the following form of $U$ which indeed has many problems with convergence of integrals
   \begin{align}
-    U(q,q^\prime, t^{\prime\prime}-t^\prime) = \int ... \int_{t^\prime}^{t^{\prime\prime}}  \exp\left[i\int_{t^\prime}^{\prime \prime}( p(t)\dot q(t) - h(p(t),q(t)))\ dt \right] \prod_i \frac{dp(t) dq(t)}{2\pi}
+    U(q,q^\prime, t^{\prime\prime}-t^\prime) = \int ... \int  \exp\left[i\int_{t^\prime}^{t^{\prime\prime}}( p(t)\dot q(t) - h(p(t),q(t)))\ dt \right] \prod_i \frac{dp_i(t) dq^i(t)}{2\pi}
   \end{align}
-  Where the first fraction defines our measure on the space of paths from $[t^\prime, t^{\prime\prime}]$ called the \textbf{Liouville-measure} and the term in the exponential is called the \textbf{Action functional}.\\
+  Where the fraction defines our measure on the space of paths from $[t^\prime, t^{\prime\prime}]$ called the \textbf{Liouville-measure} and the term in the exponential is called the \textbf{Action functional}.\\
 
   Note that this is only a one-dimensional "toy model" which already boasts some pretty severe convergence problems. Since we ultimately aim to define an infinite-dimensional generalisation, the rest of the course will deal with the "taming" of these problems.
 \end{example}
@@ -102,12 +102,8 @@ In statistical mechanics, observables are maps $O: \Ci(M,\RR) \lra \CC$ and corr
 \end{align}
 The main problem in this situation is that $\Ci(M)$ is an infinite-dimensional vector space.
 
-\begin{rem}~
-\begin{itemize}
-  \item[(1)] One approach to resolve this is \emph{perturbative QFT} where we work in the limit $\hbar \lra 0$ such that we can take formal power series in $\hbar$. This provides us with a formal procedure to go from a quantum description to a classical one. Note that this endows $\hbar$ with the role of a formal parameter.
-
-  \item[(2)] In addition to a perturbative treatment, we can drop the Lorentzian signature and stick to Riemannian ones since the mathematical background is better understood.
-\end{itemize}
+\begin{rem}
+  One approach to resolve this is \emph{perturbative QFT} where we work in the limit $\hbar \lra 0$ such that we can take formal power series in $\hbar$. This provides us with a formal procedure to go from a quantum description to a classical one. Note that this endows $\hbar$ with the role of a formal parameter. In addition to a perturbative treatment, we can drop the Lorentzian signature and stick to Riemannian ones since the mathematical background is better understood.
 \end{rem}
 
 
@@ -126,13 +122,13 @@ The main idea of \emph{"Wilson low-energy theories"} is that observables can onl
 \end{lem}
 
 Now let $\Lambda \in I$ and define $J = [0,\Lambda)$. We thus define
-$$ \Ci(M)_J := \Ci(M)_{\leq \Lambda} \subseteq \Ci(M) $$
+\begin{equation} \Ci(M)_J := \Ci(M)_{\leq \Lambda} \subseteq \Ci(M)\end{equation}
 and call it the \textbf{space of fields with energy at most $\Lambda$}. Observables in this framework, i.e. restricted to such fields, are functionals
-$$ O \colon \Ci(M)_{\leq \Lambda} \lra \RR\llbracket\hbar\rrbracket $$
-where $\RR\llbracket\hbar\rrbracket$ denotes formal power series in $\hbar$. We can extend each such operator $O$ to $\Ci(M)$ by composing it with the evident projection to $\Ci(M)_{\leq \Lambda}$. We define $Obs_{\leq \Lambda}$ to be the thus arising observables.\\
+\begin{equation} O \colon \Ci(M)_{\leq \Lambda} \lra \RR\llbracket\hbar\rrbracket\end{equation}
+where $\RR\llbracket\hbar\rrbracket$ denotes formal power series in $\hbar$. We can extend each such operator $O$ to $\Ci(M)$ by composing it with the evident projection from $\Ci(M)_{\leq \Lambda}$. We define $Obs_{\leq \Lambda}$ to be the thus arising observables.\\
 
 Now we investigate $\langle O_1, ..., O_n \rangle$ where $O_i \in Obs_{\leq \Lambda}$. We define quantities of this form as
-$$ \langle O_1, ..., O_n \rangle := \int_{\phi \in \Ci(M)_{\leq \Lambda}} e^{S_{eff}[\Lambda](\phi) / \hbar} \ O_1 ... O_n \ D\phi$$
+\begin{equation} \langle O_1, ..., O_n \rangle := \int_{\phi \in \Ci(M)_{\leq \Lambda}} e^{S_{eff}[\Lambda](\phi) / \hbar} \ O_1 ... O_n \ D\phi\end{equation}
 Here, $D\phi$ is the Lebesgue measure on $\Ci(M)_{\leq \Lambda}$, $S_{eff}[\Lambda]$ is a function on $\Ci(M)_{\leq \Lambda}$ and thus a formal power series in $\hbar$. We call such an action a \textbf{low energy effective action}.
 
 \begin{rem}
@@ -142,13 +138,13 @@ Here, $D\phi$ is the Lebesgue measure on $\Ci(M)_{\leq \Lambda}$, $S_{eff}[\Lamb
 \begin{definition}(Scalar Quantum Field Theory)
 \label{def:scalar_qft}
   A \textbf{scalar (perturbative) quantum field theory} is a collection of effective actions
-  $$ S_{eff}[\Lambda]\colon \Ci(M)_{\leq \Lambda} \lra \RR\llbracket\hbar\rrbracket $$
+  \begin{equation}S_{eff}[\Lambda]\colon \Ci(M)_{\leq \Lambda} \lra \RR\llbracket\hbar\rrbracket\end{equation}
   for all $\Lambda \in [0,\infty)$ such that
   \begin{enumerate}
     \item $S_{eff}[\Lambda]$ is a formal power series in both the field $\phi \in \Ci(M)_{\leq \Lambda}$ and the variable $\hbar$.
 
     \item When setting $\hbar = 1$, $S_{eff}[\Lambda]$ must be of the form
-    $$ S_{eff}[\Lambda] = - \frac{1}{2} \int \phi (D + m^2) \phi + \mathcal{O}(\phi^3) $$
+    \begin{equation}S_{eff}[\Lambda] = - \frac{1}{2} \int \phi (D + m^2) \phi + \mathcal{O}(\phi^3)\end{equation}
     where $D$ is the positive-definite Laplacian.
 
     \item If $\Lambda^\prime \leq \Lambda$, $S_{eff}[\Lambda^\prime]$ is determined by $S_{eff}[\Lambda]$ by the renormalisation group equation.
@@ -159,11 +155,13 @@ Here, $D\phi$ is the Lebesgue measure on $\Ci(M)_{\leq \Lambda}$, $S_{eff}[\Lamb
 \end{definition}
 
 We will subsequently fix the notions mentioned in the previous definition. From point $2.$ we know that $S_{eff}[\Lambda]$ must be of the following form:
-$$S_{eff}[\Lambda](\phi) = - \frac{1}{2} \langle \phi, (D+m^2)\phi \rangle + I[\Lambda](\phi) $$
+\begin{equation}S_{eff}[\Lambda](\phi) = - \frac{1}{2} \langle \phi, (D+m^2)\phi \rangle + I[\Lambda](\phi)\end{equation}
 Here, $\langle \cdot , \cdot \rangle$ denotes the $L^2$-inner product on $\Ci(M)$ defined via
-$$ \langle \phi , \psi \rangle := \int_M \phi(x) \psi(x) dx$$
-$D$ is the Laplacian and $m$ is a positive real parameter. Further, $I[\Lambda]$, the \textbf{effective interaction}, is understood as a formal power series in $\hbar$:
-$$ I[\Lambda](\phi) = I_0[\Lambda](\phi) + \hbar I_1[\Lambda](\phi) + ... $$
+\begin{equation}
+  \langle \phi , \psi \rangle := \int_M \phi(x) \psi(x) dx
+\end{equation}
+is the Laplacian and $m$ is a positive real parameter. Further, $I[\Lambda]$, the \textbf{effective interaction}, is understood as a formal power series in $\hbar$:
+\begin{equation} I[\Lambda](\phi) = I_0[\Lambda](\phi) + \hbar I_1[\Lambda](\phi) + ...\end{equation}
 Here, $I_0[\Lambda](\phi)$ is at least cubic in $\phi$ and all the $I_i$ are formal power series in $\phi$.\\
 
 \subsection{Renormalisation group equation}
@@ -177,7 +175,7 @@ Now our goal is to "translate" a system $S_{eff}[\Lambda], Obs_{\leq \Lambda}, \
 \end{align}
 
 Further note that we can split
-$$ \Ci(M)_{\leq \Lambda} = \Ci(M)_{\leq \Lambda^\prime} \oplus \Ci(M)_{(\Lambda^\prime,\Lambda]} $$
+\begin{equation} \Ci(M)_{\leq \Lambda} = \Ci(M)_{\leq \Lambda^\prime} \oplus \Ci(M)_{(\Lambda^\prime,\Lambda]}\end{equation}
 Using this splitting to separate \eqref{eq:connection_eq} allows us to formulate:
 
 \begin{align}
@@ -189,9 +187,9 @@ Using this splitting to separate \eqref{eq:connection_eq} allows us to formulate
   e^{S_{eff}[\Lambda] (\phi_L + \phi_H) / \hbar} \ D\phi^{\Lambda \Lambda^\prime} \right] \ O_1(\phi_L) ... O_n(\phi_L) \ D\phi^{\Lambda^\prime} \\
 \end{align}
 This in turn allows us to identify
-$$ e^{S_{eff}[\Lambda^\prime](\phi_L)/\hbar}
+\begin{equation} e^{S_{eff}[\Lambda^\prime](\phi_L)/\hbar}
 = \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}}
-e^{S_{eff}[\Lambda] (\phi_L + \phi_H) / \hbar} \ D\phi^{\Lambda \Lambda^\prime} $$
+e^{S_{eff}[\Lambda] (\phi_L + \phi_H) / \hbar} \ D\phi^{\Lambda \Lambda^\prime}\end{equation}
 which ultimately leads to the \textbf{Renormalisation group equation (RGE)}
 \begin{align}
 \label{eq:RGE}\tag{RGE}
@@ -209,9 +207,9 @@ One approach is to describe \eqref{eq:RGE} in terms of effective interactions. N
 \end{align}
 
 Now if we define
-$$ F(\phi) = - \frac{1}{2} \pair{\phi}{(D+m^2)\phi}, \quad \quad s.t. \quad \quad F(\phi_L + \phi_H) = F(\phi_L) + F(\phi_H) $$
+\begin{equation} F(\phi) = - \frac{1}{2} \pair{\phi}{(D+m^2)\phi}, \quad \quad s.t. \quad \quad F(\phi_L + \phi_H) = F(\phi_L) + F(\phi_H)\end{equation}
 we can rewrite our effective action as
-$$ S_{eff}[\Lambda](\phi) = F(\phi) + I[\Lambda](\phi), \quad \quad s.t. \quad \quad S_{eff}[\Lambda](\phi_L + \phi_H) = F(\phi_L) + F(\phi_H) + I[\Lambda](\phi_L + \phi_H)$$
+\begin{equation} S_{eff}[\Lambda](\phi) = F(\phi) + I[\Lambda](\phi), \quad \quad s.t. \quad \quad S_{eff}[\Lambda](\phi_L + \phi_H) = F(\phi_L) + F(\phi_H) + I[\Lambda](\phi_L + \phi_H)\end{equation}
 Combining this with \eqref{eq:RGE} brings us to
 \begin{align}
   F(\phi_L) + I[\Lambda^\prime](\phi_L) &= \hbar \log \left[  \int_{\phi_H \in \Ci(M)_{(\Lambda^\prime,\Lambda]}} \exp\left(\frac{F(\phi_H)}{\hbar} + \frac{F(\phi_L)}{\hbar} + \frac{I[\Lambda](\phi_H + \phi_L)}{\hbar} \right) \ D\phi^{\Lambda^\prime \Lambda} \right] \\
@@ -235,9 +233,9 @@ While we have indeed explored the meaning and framework of \emph{point 3.} of \r
 
 \begin{definition}[Local action functional]
   A functional $S\colon \Ci(M) \lra \RR \llbracket \hbar \rrbracket$ is a \textbf{local action functional} if it can be written as a sum
-  $$ S(\phi) = \sum_k S_k (\phi), \quad \text{where} \quad S_k(\phi) = \int_M (D_1 \phi) ... (D_k \phi) \ \vol_M$$
+  \begin{equation}S(\phi) = \sum_k S_k (\phi), \quad \text{where} \quad S_k(\phi) = \int_M (D_1 \phi) ... (D_k \phi) \ \vol_M\end{equation}
   for some first-order differential operators $D_i$ on $M$. This allows us to write $S$ as
-  $$ S(\phi) = \int_M \mathcal{L}(\phi)(x) \ dx $$
+  \begin{equation}S(\phi) = \int_M \mathcal{L}(\phi)(x) \ \vol_M\end{equation}
   where $\mathcal{L}(\phi)$ is a \textbf{Lagrangian} and depends only on the Taylor expansion of $\phi$ at $x$.
 \end{definition}
 
@@ -245,8 +243,8 @@ In our current formulation this condition on $S$ does not really make sense yet 
 
 \begin{definition}
   A collection of low-energy effective actions $S_{eff}[\Lambda]$ satisfying the renormalisation group equation \ref{eq:RGE} is \textbf{asymptotically local} if there exists an asymptotic expansion for large $\Lambda$
-  $$ S_{eff}[\Lambda] (\phi) \cong \sum_i f_i (\Lambda) \ \Theta_i (\phi) $$
-  where the $\Theta_i (\phi)$ are local action functionals.
+  \begin{equation}S_{eff}[\Lambda] (\phi) \cong \sum_i f_i (\Lambda) \ \Theta_i (\phi)\end{equation}
+  where the $\Theta_i (\phi)$ are local action functionals and $f_i \in \Ci(\RR)$.
 \end{definition}
 
 While tentative, this definition certainly is not a good idea: Supposing $S_{eff}[\Lambda]$ is close to a local action functional, then using the \ref{eq:RGE} one obtains that $S_{eff}[\Lambda^\prime]$ is in fact entirely non local for $\Lambda^\prime < \Lambda$. The solution to this problem is to consider length scales instead of energy scales.\\
@@ -257,9 +255,9 @@ The theory based on length scales takes as fundamental objects the propagator of
 \label{subsec:feynmann_graphs}
 
 The RGE contains an integral of the form
-$$ \int_{x \in U} \exp(\Phi(x)/\hbar + I(x+a)/\hbar) $$
+\begin{equation} \int_{x \in U} \exp(\Phi(x)/\hbar + I(x+a)/\hbar)\end{equation}
 where $\Phi$ is a quadratic negative definite form on a vector space $U$. From now on we will assume as a convention that the measure on $U$ is the \emph{Lebesgue measure} normalized such that
-$$ \int_{x \in U} \exp(\Phi(x)/\hbar) = 1 $$
+\begin{equation} \int_{x \in U} \exp(\Phi(x)/\hbar) = 1\end{equation}
 Note that the measure does in fact depend on $\hbar$. Now this type of integral can be expressed as a sum over \emph{Feynman graphs} where we understand the integral as an asymptotic series in $\hbar$. To introduce \emph{Feynman graphs}, we start by giving two separate but equivalent definitions of \emph{stable graphs}:
 
 \begin{definition}[Stable Graphs -- Graph Version]
@@ -277,8 +275,8 @@ Using the genus of vertices in a graph we can define the genus of a stable graph
 
 \begin{definition}[Genus of a Stable Graph]
   Let $\gamma$ be a stable graph. Its \textbf{genus} $g(\gamma)$ is defined by
-  $$ g(\gamma) \ = \ b_1(\gamma) + \sum_{v\in V(\gamma)} g(v) $$
-  where $b_1(\gamma)$ is the first \emph{Betti number} of $\gamma$ defined by $b_1(\gamma) = |E| + |C| - |V|$ where $E$ is the set of \emph{external} edges, $C$ the set of connected components of $\gamma$ and $V$ the set of vertices (nodes).
+  \begin{equation}g(\gamma) \ = \ b_1(\gamma) + \sum_{v\in V(\gamma)} g(v)\end{equation}
+  where $b_1(\gamma)$ is the first \emph{Betti number} of $\gamma$ defined by $b_1(\gamma) = |E| + |C| - |V|$ where $E$ is the set of \emph{internal} edges, $C$ the set of connected components of $\gamma$ and $V$ the set of vertices (nodes).
 \end{definition}
 
 As promised we give the following alternative yet equivalent definition of a stable graph:
@@ -291,7 +289,7 @@ As promised we give the following alternative yet equivalent definition of a sta
     g &\colon V(\gamma) \lra \ZZ_{\geq 0} \quad \quad \text{(the genus map)}
   \end{align}
   then a \textbf{graph} is the topological space
-  $$ V(\gamma) \sqcup (H(\gamma) \times [0, 1/2]) / \sim $$
+  \begin{equation}V(\gamma) \sqcup (H(\gamma) \times [0, 1/2]) / \sim\end{equation}
   where $(h,0) \sim \pi(h)$ and $(h,0.5) \sim (\sigma(h), 0.5)$. A graph is \textbf{stable} if every vertex $v \in V(\gamma)$ is such that if
   \begin{align}
     g(v) &= 0 \quad \text{then} \quad \# \pi^{-1}(v) \geq 3\\
@@ -318,10 +316,10 @@ As promised we give the following alternative yet equivalent definition of a sta
 We denote by $T(\gamma)$ the set of fixed points of the involution $\sigma$ and by $E(\gamma)$ the set of two element orbits of $\sigma$. As such, $T(\gamma)$ stands for the tails or external edges and $E(\gamma)$ for the internal edges of the graph.\\
 
 Now we turn towards the data associated to \emph{Feynman graphs} using the previously presented tools. Let us fix a finite graded vector space $U$ over a field $\mathds{k}$. Let further $\OO(U)$ be the (completed) symmetric algebra on the dual vector space $U^*$. This algebra coincides with $\OO(U)$ being the ring of formal power series in variables in $U$. Thus given a basis $\BB$ of $U$ there exists a canonical isomorphism
-$$ \OO(U) \longleftrightarrow \mathds{k}\llbracket\BB\rrbracket $$
+\begin{equation} \OO(U) \longleftrightarrow \mathds{k}\llbracket\BB\rrbracket\end{equation}
 
 \begin{definition}
-  Let $f \in \OO(U)$ be homogenous of degree $k$. Then we can define an $S_k$-invariant linear map
+  Let $f \in \OO(U)$ be homogenous of degree $k$. Then for a local action $S$ it defines an $S_k$-invariant linear map
   \begin{align}
     D^kf \colon U^{\otimes k} &\lra \mathds{k}\\
     u_1 \otimes ... \otimes u_k &\lmap \left( \dell{}{u_1} ... \dell{}{u_k} f \right) (0)
@@ -332,21 +330,21 @@ Our next goal is to assign some algebraic data to our graphs:
 
 \begin{definition}
   Let us denote by $\OO^+(U) \llbracket \hbar \rrbracket \subset \OO(U) \llbracket \hbar \rrbracket$ the subset of functionals at least cubic modulo $\hbar$. An element $I \in \OO(U) \llbracket \hbar \rrbracket$ can be decomposed as $I = \sum_{i,k} \hbar^i I_{i,k}$ where $I_{i,k}$ is homogenous of degree $k$ in $U$. Now fix an ordering of the set of tails of $\gamma$
-  $$ T(\gamma) \overset{\psi}{\longleftrightarrow} \{1, ..., n\}$$
+  \begin{equation}T(\gamma) \overset{\psi}{\longleftrightarrow} \{1, ..., n\}\end{equation}
   Also fix an element $P \in \Sym^2(U) \subset U^{\otimes 2}$ and some $a_1, ..., a_n \in U$. Then we have
   \begin{align}
     2 E(\gamma) + T(\gamma) &= H(\gamma) \\
     U^{\otimes 2 E(\gamma)} \otimes U^{\otimes T(\gamma)} &\cong U^{\otimes H(\gamma)} \\
-    P \otimes ... \otimes P \otimes a_1 \otimes ... \otimes a_n &=: \mathds{P}
+    P \otimes ... \otimes P \otimes a_1 \otimes ... \otimes a_n &=: \mathds{P} \in U^{\otimes H(\gamma)}
   \end{align}
   Now fix $I \in \OO(U) \llbracket \hbar \rrbracket$ and pick a vertex $v$ with arbitrary valency $k$ and genus $i$. We associate to it
-  $$ D^k I_{i,k} \in \Hom(U^{\otimes k}, \mathds{k}) $$
+  \begin{equation}D^k I_{i,k} \in \Hom(U^{\otimes k}, \mathds{k})\end{equation}
   Taking the tensor product of these elements yields
   \begin{align}
-    \mathds{I} &= \bigotimes_v D^k I_{i,k}\\
-    \mathds{I} &\in \Hom(U^{\otimes H(\sigma)}, \mathds{k})
+    \mathds{I} &= \bigotimes_{v \in \gamma} D^k I_{i,k}\\
+    \mathds{I} &\in \Hom(U^{\otimes H(\gamma)}, \mathds{k}) = (U^{\otimes H(\gamma)})^* \subset \OO(U)
   \end{align}
-  Now define
+  Now define the \textbf{weight} of a graph $\gamma$ with fixed ordering $\psi$, elements $P$ and $a_1, ..., a_n$ and interaction $I$ as
   \begin{align}
     w_{\gamma, \psi} (P,I) (a_1, ..., a_n) \quad &:= \quad \mathds{I}(\mathds{P}) \in \mathds{k} \\
     w_\gamma (P,I) (a) \quad &:= \quad w_{\gamma,\psi} (P,I)(a, ..., a)
@@ -357,18 +355,20 @@ Our next goal is to assign some algebraic data to our graphs:
 \begin{ex}
 Show the following statements:
 \begin{enumerate}
-  \item $w_\gamma(P,I) \in \OO(U)$
+  \item $w_\gamma(P,I)(a_1, ..., a_n) \in \OO(U)$
 
-  \item $w_\gamma(P,I)$ is homogenous of degree $n$ and has the property
-  $$ \dell{}{a_1} ... \dell{}{a_n} w_\gamma(P,I) = \sum_\psi w_{\gamma, \psi} (P,I) (a_1, ..., a_n) $$
+  \item $w_\gamma(P,I)(a_1, ..., a_n)$ is homogenous of degree $n$ and has the property
+  \begin{equation}\dell{}{a_1} ... \dell{}{a_n} w_\gamma(P,I)(a_1, ..., a_n) = \sum_{\psi \in \pi(T(\gamma))} w_{\gamma, \psi} (P,I) (a_1, ..., a_n)\end{equation}
 
-  \item If $v_{i,k}$ is the graph with one vertex of genus $i$ and valency $k$ and no internal edges, then $w_{v_{i,k}} = k! \ I_{i,k}$
+  \item If $v_{i,k}$ is the graph with one vertex of genus $i$ and valency $k$ and no internal edges, then $w_{v_{i,k}}(1, I)(a) = k! \ I_{i,k}$
 \end{enumerate}
 \end{ex}
 
 Using $w_\gamma (P,I) \in \OO(U)$ we define
-$$ W(P,I) = \sum_\gamma \frac{1}{|\Aut(\gamma)|} \hbar^{g(\gamma)} w_\gamma (P,I) \ \in \ \OO^+(U)\llbracket\hbar\rrbracket$$
-where we sum over all connected stable graphs. This is indeed a power series in $u \in U$ and in $\hbar$. We present some insightful examples:
+\begin{equation}\label{eq:WPI}\tag{Weight}
+  W(P,I) = \sum_\gamma \frac{1}{|\Aut(\gamma)|} \hbar^{g(\gamma)} w_\gamma (P,I) \ \in \ \OO^+(U)\llbracket\hbar\rrbracket
+\end{equation}
+where we sum over all connected stable graphs. This is a power series in $u \in U$ and in $\hbar$. We further define $W_{i,j}(P,I)$ to be the sum of all terms of $W(P,I)$ where $g(\gamma) = i$ and $|T(\gamma)| = j$.
 
 \begin{example}~
    \begin{center}
@@ -418,19 +418,19 @@ where we sum over all connected stable graphs. This is indeed a power series in 
 
 \begin{lem}
   For $a_1, ..., a_k \in U$ we get
-  $$ \left( \dell{}{a_1} ... \dell{}{a_n} W(P,I) \right)(0) = \sum_{\gamma, \psi} \frac{\hbar^{g(\gamma)}}{|\Aut(\sigma, \psi)|} w_{\gamma,\psi}(P,I)(a_1, ..., a_k) $$
+  \begin{equation}\left( \dell{}{a_1} ... \dell{}{a_n} W(P,I) \right)(0) = \sum_{\gamma, \psi} \frac{\hbar^{g(\gamma)}}{|\Aut(\gamma, \psi)|} w_{\gamma,\psi}(P,I)(a_1, ..., a_k)\end{equation}
 \begin{proof}
   The proof is left as an exercise to the reader.
 \end{proof}
 \end{lem}
 
 Now we define some helpful notation to formulate our next result: Let $P \in \Sym^2(U)$. We define $\partial_P \colon \OO(U) \lra \OO(U)$ using the decomposition $P = \sum_i P_i^\prime \otimes P^{\prime\prime}_i$ as
-$$ \partial_P := \frac{1}{2} \sum_i \dell{}{P_i^\prime} \dell{}{P^{\prime\prime}_i} $$
+\begin{equation} \partial_P := \frac{1}{2} \sum_i \dell{}{P_i^\prime} \dell{}{P^{\prime\prime}_i}\end{equation}
 This leads us to the following lemma:
 
 \begin{lem}
 \label{lemma:WPI}
-  $$ W(P,I)(a) = \hbar \ \log\{ \exp(\hbar \partial_P) \ \exp(I/\hbar) \} (a) \quad \in \OO^+(U)\llbracket\hbar\rrbracket $$
+  \begin{equation}W(P,I)(a) = \hbar \ \log\{ \exp(\hbar \partial_P) \ \exp(I/\hbar) \} (a) \quad \in \OO^+(U)\llbracket\hbar\rrbracket\end{equation}
 \begin{proof}
   The case of $P=0$ is treated in \ref{lemma:P_zero}. Thus assume $P \neq 0$ such that
   \begin{equation}
@@ -443,19 +443,22 @@ This leads us to the following lemma:
     (\diamond) \ \Leftrightarrow \ \exp( \hbar^{-1} W(P+ \epsilon P^\prime,I)) = (1+ \hbar \epsilon \partial_{P^\prime}) \exp( \hbar^{-1} W(P,I)) \quad \forall P,P^\prime
   \end{equation}
   Thus we get $(1+\hbar \epsilon \partial_{P^\prime}) \approx \exp(\hbar \epsilon \partial_{P^\prime})$. Now if we assume in \eqref{eq:exp} that $P \lra P + \epsilon P^\prime$ we get:
+
   %TODO equations
 
   So we want to prove \eqref{eq:exp2}
-  $$ \dd{}{\epsilon} \left( \exp(\hbar^{-1} W(P+ \epsilon P^\prime,I)) \right) = \hbar \partial_{P^\prime} \exp(W(P,I)/ \hbar) $$
+  \begin{equation}\dd{}{\epsilon} \left( \exp(\hbar^{-1} W(P+ \epsilon P^\prime,I)) \right) = \hbar \partial_{P^\prime} \exp(W(P,I)/ \hbar)\end{equation}
   which is equivalent to \eqref{eq:exp2}. Thus we have already done it and can integrate it. The arising constant can be computed using $\epsilon = 0$.
   \begin{align}
     \left( \dell{}{a_1} ... \dell{}{a_n} W(P,I)  \right)(0) &= \sum_{\gamma, \psi} \frac{\hbar^{g(\gamma)}}{|\Aut(\sigma, \psi)|} w_{\gamma,\psi}(P,I)(a_1, ..., a_k) \\
     \dell{}{a_1} ... \dell{}{a_n} \exp(\hbar W(P,I))(0) &= \sum_{\gamma, \psi} \frac{\hbar^{g(\gamma)}}{|\Aut(\sigma, \psi)|} w_{\gamma,\psi}(P,I)(a_1, ..., a_k)
   \end{align}
   This formula will be used for $P+ \epsilon P^\prime$. Consider
-  $$ w_{\gamma,\psi}(P+ \epsilon P^\prime, I) (a_1, ..., a_k) $$
+  \begin{equation}w_{\gamma,\psi}(P+ \epsilon P^\prime, I) (a_1, ..., a_k)\end{equation}
   and recall $\epsilon^2 \approx 0$. Now note that
-  $$P+ \epsilon P^\prime = P \otimes ... \otimes \epsilon P^\prime \otimes a_1 ... a_k + P \otimes ... \otimes \epsilon P \otimes a_1 ... a_k$$
+  \begin{equation}
+    P+ \epsilon P^\prime = P \otimes ... \otimes \epsilon P^\prime \otimes a_1 ... a_k + P \otimes ... \otimes \epsilon P \otimes a_1 ... a_k
+  \end{equation}
   where $P^\prime$ is at edge $e$. We thus inspect the derivative
   \begin{align}
     \dd{}{\epsilon} \left( \dell{}{a_1} ... \dell{}{a_k} \exp(\hbar W(P+ \epsilon P^\prime,I)) \right)(0) &= \sum_{\gamma, e, \psi} \frac{\hbar^{g(\gamma)}}{|\Aut(\sigma, e, \psi)|} w_{\gamma,e,\psi}(P,I)(a_1, ..., a_k) \\
@@ -469,11 +472,11 @@ This leads us to the following lemma:
 Let us now connect Feynman diagrams to integrals. Let $U$ now have the base field $\RR$ and let $\Phi$ be a non-degenerate quadratic form on it. Further let $P = \sum_i e_i \otimes e_i$ where $\{e_i\}$ forms an orthonormal basis for $- \Phi$.
 
 \begin{prop}
-  $$ W(P,I)(a) = \hbar \ \log \int_{x \in U} \exp\left( \frac{1}{2\hbar} \Phi(x,x) + \frac{1}{\hbar} I(x+a) \right) \quad \forall a \in U $$
+  \begin{equation}W(P,I)(a) = \hbar \ \log \int_{x \in U} \exp\left( \frac{1}{2\hbar} \Phi(x,x) + \frac{1}{\hbar} I(x+a) \right) \quad \forall a \in U\end{equation}
 \begin{proof}
   Note that this is but a sketch of the proof, you can fill in the details as an exercise. First note
-  $$ \int_{x \in U} \exp\left( \frac{1}{2\hbar} \Phi(x,x) \right) f(x+a) = (\exp(\hbar \partial_P) f) (a) \quad \forall f \in \OO(U) $$
-  where we identified the exponential of $I(x+a)$ with $f(x+a)$. Note that the integral of only the first exponential in above equation amounts to $1$. Thus for $f = 1$ the equation holds. Thus let us fix $l \in U^*$ thus $lf \in \OO(U)$. Note that
+  \begin{equation}\int_{x \in U} \exp\left( \frac{1}{2\hbar} \Phi(x,x) \right) f(x+a) = (\exp(\hbar \partial_P) f) (a) \quad \forall f \in \OO(U)\end{equation}
+  where we identified the exponential of $I(x+a)$ with $f(x+a)$. Note that the integral of only the first exponential in above equation amounts to $1$. Thus for $f = 1$ the equation holds. Note that
   \begin{align}
     \Phi \colon U &\lra U^* \quad \text{isomorphism}\\
     a &\lmap \Phi(a, \cdot) := a^*
@@ -495,7 +498,7 @@ Let us now connect Feynman diagrams to integrals. Let $U$ now have the base fiel
 \end{prop}
 
 Should $U$ not be finite-dimensional, we can still define $W(P,I)$ and $\partial_P$. We also still have
-$$ W(P,I) = \hbar \log\{ \exp(\hbar \partial_P) \exp(I/\hbar) \} $$
+\begin{equation} W(P,I) = \hbar \log\{ \exp(\hbar \partial_P) \exp(I/\hbar) \}\end{equation}
 This concludes our discussion of Feynman graphs which will now be used to make a transition from energy scales to length scales.
 
 \subsection{Towards a definition of perturbative QFTs}
@@ -504,61 +507,91 @@ We start by introducing some common concepts used in the arising theory:
 
 \begin{definition}[Integral Kernels]
   Given $F\colon \Ci(M) \lra \Ci(M)$ an \textbf{integral kernel} of $F$ is a map $K \colon M \times M \lra \RR$ such that
-  $$ F(f)(y) = \int_{x \in M} f(x) K(x,y) $$
+  \begin{equation}F(f)(y) = \int_{x \in M} f(x) K(x,y)\end{equation}
 \end{definition}
 
 A certain type of integral kernels will be of particular importance:
 
 \begin{definition}[Propagators]
-  Given a scalar field theory, we define its \textbf{propagator} to be the integral kernel of the operator $(D+m^2)^{-1}$ where $m \in \RR_+$ and $D$ is the \emph{Laplacian} \ref{def:codifferential}.
+  The \textbf{propagator} of a scalar field theory is the integral kernel of the operator $(D+m^2)^{-1}$ where $ 0 < m \in \RR$ and $D$ denotes the \emph{Laplacian} \ref{def:codifferential}.
 \end{definition}
 
-Now we fix a basis $\{e_i\}$ of $\Ci(M)$ of orthonormal eigenvectors of $D$ with eigenvalues $\lambda_i \in \RR_{\geq 0}$. Then
-$$ P = \sum_i \frac{1}{\lambda_i^2 + m^2} e_i \otimes e_i $$
-In the spirit of cutting our action into many effective actions, we define a cut-off operator by considering the following quantity for $U \subseteq \RR_{\geq 0}$
-$$ P_U := \sum_{i|\lambda_i \in U} \frac{1}{\lambda_i^2 + m^2} e_i \otimes e_i $$
-Note that $P_U$ is smooth as long as $U$ is a bounded subset of $\RR_{\geq 0}$. Now we consider
-$$ W(P,I)(a) = \hbar \log \int_{\phi \in \Ci(M)} \exp\left( - \frac{1}{2\hbar} \langle \phi, (D+m^2) \phi \rangle + \frac{1}{\hbar} I(\phi +a) \right) $$
-Clearly this is not well-defined, thus we utilize the bounded subsets to define
-$$ W(P_U,I)(a) = \hbar \log \int_{\phi \in \Ci(M)_U} \exp\left( - \frac{1}{2\hbar} \langle \phi, (D+m^2) \phi \rangle + \frac{1}{\hbar} I(\phi +a) \right) $$
-which is indeed well-defined. This leads us to rewrite
-$$ I[\Lambda^\prime](a) = \hbar \log \int_{\phi_H \in \Ci(M)_{[\Lambda^\prime, \Lambda)}} \exp(F(\phi_H) / \hbar + I[\Lambda](\phi_H + a)/\hbar) $$
-into the \textbf{rephrased RGE}:
+Given a basis $\{e_i\}$ for $\Ci(M)$ formed by orthonormal eigenvectors of $D$ with eigenvalues $\lambda_i \in \RR_{\geq 0}$ the propagator takes the following form:
+\begin{equation}
+  P = \sum_i \frac{1}{\lambda_i^2 + m^2} e_i \otimes e_i
+\end{equation}
+Define a cut-off operator by considering the following quantity for any subset $U \subseteq \RR_{\geq 0}$:
+\begin{equation}
+  P_U := \sum_{i|\lambda_i \in U} \frac{1}{\lambda_i^2 + m^2} e_i \otimes e_i
+\end{equation}
+$P_U$ is smooth as long as $U$ is a bounded subset of $\RR_{\geq 0}$. Using these bounded subsets, we denote subsets of $\Ci(M)$ whose Laplacian eigenvalues lie in $U$ by $\Ci(M)_U$. Thus consider
+\begin{equation}
+  W(P,I)(a) = \hbar \log \int_{\phi \in \Ci(M)} \exp\left( - \frac{1}{2\hbar} \langle \phi, (D+m^2) \phi \rangle + \frac{1}{\hbar} I(\phi +a) \right).
+\end{equation}
+Due to the integration over $\Ci(M)$ this is not well-defined. We utilise the bounded subsets to define
+\begin{equation}
+  W(P_U,I)(a) = \hbar \log \int_{\phi \in \Ci(M)_U} \exp\left( - \frac{1}{2\hbar} \langle \phi, (D+m^2) \phi \rangle + \frac{1}{\hbar} I(\phi +a) \right).
+\end{equation}
+This expression is well-defined since $\Ci(M)_U$ is of finite dimension for $U$ bounded. Hence take
+\begin{equation}
+  I[\Lambda^\prime](a) = \hbar \log \int_{\phi_H \in \Ci(M)_{[\Lambda^\prime, \Lambda)}} \exp(F(\phi_H) / \hbar + I[\Lambda](\phi_H + a)/\hbar)
+\end{equation}
+and let $U = [\Lambda^\prime, \Lambda)$. This yields a \textbf{rephrased RGE}:
 \begin{equation}
 \label{eq:RGE_2}\tag{RGE}
-I[\Lambda^\prime] = W \left( P_{[\Lambda^\prime, \Lambda)}, I[\Lambda] \right)
+  I[\Lambda^\prime] = W \left( P_{[\Lambda^\prime, \Lambda)}, I[\Lambda] \right)
 \end{equation}
+This result shows that the weight of a Feynman graph for an interaction term at energy $\Lambda$ allows the calculation of an interaction at energy $\Lambda^\prime$ by rule of \eqref{eq:RGE_interaction}. This new formulation of the same process allows for a transition to length scales using the previously defined propagators of a theory.\\
 
-Now Feynman proved the following:
-$$ P(x,y) = \int_{\tau = 0}^{\infty} e^{- \tau m^2} \kappa_\tau (x,y) \ d\tau $$
-where $\kappa_\tau (x,y)$ is the \textbf{heat kernel} of the Laplacian i.e. the integral kernel of $e^{\tau D}$ where $D$ is the Laplacian. We will try to work towards understanding this result.\\
+For any operator $P \colon \Ci(M) \lra \Ci(M)$ define the \textbf{heat kernel} $\kappa_l (x,y)$ for $\phi \in \Ci(M)$ via
+\begin{equation}
+  (e^{-l P} \phi)(x) = \int_M \kappa_l(x,y) \phi(y) dy
+\end{equation}
+Given an operator like $P$, one often calls $e^{-l P}$ the \emph{heat operator}; the heat kernel of $P$ is its kernel. Feynman proved the following result relating the heat kernel of the Laplacian and the propagator:
+\begin{equation}
+  P(x,y) = \int_{l = 0}^{\infty} e^{- l m^2} \kappa_l (x,y) \ dl
+\end{equation}
+This equation allows for a transition from an energy scale, thus energy eigenvalues of $D$, to length scales. Understanding this result and its implications will be the goal of the next pages.\\
 
-To this end let $l \in \RR_{\geq 0}$ and $\kappa^0_l$ the heat kernel of $lD$. For all $\phi \in \Ci(M)$ this gives us
-$$ \left( e^{-lD}\phi \right) (x) = \int_{y \in M} \kappa^0_l (x,y) \phi(y) dy $$
-Using the basis above we get
-$$ \kappa^0_l = \sum_i e^{-l \lambda_i} e_i \otimes e_i $$
+Let $l \in \RR_{\geq 0}$ and $\kappa^0_l$ the heat kernel of $D$. Thus for all $\phi \in \Ci(M)$
+\begin{equation}
+  \left( e^{-l D}\phi \right) (x) = \int_{y \in M} \kappa^0_l (x,y) \phi(y) dy.
+\end{equation}
+Using the energy eigenvector basis $\{e_i\}$ of $D$ we write
+\begin{equation}
+  \kappa^0_l = \sum_i e^{-l \lambda_i} e_i \otimes e_i.
+\end{equation}
 Now define
-$$ \kappa_l := e^{-l m^2} \kappa^0_l \quad \text{which is the kernel of the operator} \quad e^{-l (D+m^2)} $$
-All of this construction lets us denote the propagator (integral kernel of $(D+m^2)^{-1}$) as
-$$ P = \int_{l=0}^\infty \kappa_l \ dl $$
-Before this, we had the following form in the energy scale:
-$$ P = \sum_i \frac{1}{x_i^2 + m^2} e_i \otimes e_i $$
-where the $e_i$ denoted the eigenfunctions to eigenvalues $\lambda_i$. We then defined a cut-off via
-$$ P_U = \sum_{i|\lambda_i \in U} \frac{1}{\lambda_i^2 + m^2} e_i \otimes e_i$$
-In an analogy we define the cut-off propagator in length scales as
-$$ P(\epsilon, L) = \int_\epsilon^L \kappa_l dl $$
-for $\epsilon, L \in (0,\infty)$ and $\epsilon < L$. This corresponds to a propagator with an infrared cutoff at $L$ and an ultraviolet cutoff at $\epsilon$ where both are length scales instead of energy scales instead of energy scales. Note that length scales behave inverse to energy scales. Using coordinates, one can write this propagator as
-$$ P(\epsilon, L) = \frac{e^{-\epsilon \lambda_i} - e^{-L  \lambda_i}}{\lambda_i^2 + m^2} e_i \otimes e_i $$
-Thus the coefficients decay for large $\lambda_i$. As an \textbf{exercise} you can prove this claim.\\
-
-Now we know how to express the \eqref{eq:RGE_2} in terms of length sclaes:
-
+\begin{equation}
+  \kappa_l := e^{-l m^2} \kappa^0_l = \sum_i e^{-l (\lambda_i + m^2)} e_i \otimes e_i
+\end{equation}
+which is the integral kernel of $e^{-l (D+m^2)}$ which in turn is the heat operator of $(D+m^2)$. The propagator of a theory is the integral kernel of $(D+m^2)^{-1}$. Thus, by an abuse of notation, we can write it in a "length-scale form" as
+\begin{equation}
+  P = \int_{l=0}^\infty \kappa_l \ dl.
+\end{equation}
+In the energy form, we had the following representation:
+\begin{equation}
+  P = \sum_i \frac{1}{x_i^2 + m^2} e_i \otimes e_i
+\end{equation}
+For a subset $U \subseteq \RR$ we defined a cut-off propagator via
+\begin{equation}
+  P_U = \sum_{i|\lambda_i \in U} \frac{1}{\lambda_i^2 + m^2} e_i \otimes e_i.
+\end{equation}
+In a similar fashion, define the cut-off propagator in length scales as
+\begin{equation}
+  P(\epsilon, L) = \int_\epsilon^L \kappa_l dl
+\end{equation}
+where $\epsilon, L \in (0,\infty)$ and $\epsilon < L$. This corresponds to a propagator with an infrared cutoff at $L$ and an ultraviolet cutoff at $\epsilon$. Note that length scales behave inverse to energy scales; small energies correspond to large length scales and vice versa. Using the basis of energy eigenfunctions $\{e_i\}$, one can write this propagator as
+\begin{equation}
+  P(\epsilon, L) = \frac{e^{-\epsilon \lambda_i} - e^{-L  \lambda_i}}{\lambda_i^2 + m^2} e_i \otimes e_i
+\end{equation}
+Thus for fixed $\epsilon$ and $L$ the coefficients decay for growing $\lambda_i$. Since we can express the interaction term in length scales, we can rewrite \eqref{eq:RGE_2} to:
 \begin{equation}
 \label{eq:RGE_length}\tag{L-RGE}
   I[L] = W(P(\epsilon, L), I(\epsilon))
 \end{equation}
 
-We can indeed give a pictorial explanation for some examples of the \eqref{eq:RGE_length} in form of Feynman diagrams:
+Again, a pictorial explanation for some examples of the \eqref{eq:RGE_length} in form of Feynman diagrams greatly helps understanding this relation:
 
 \begin{center}
  \begin{tikzpicture}
@@ -598,11 +631,10 @@ We can indeed give a pictorial explanation for some examples of the \eqref{eq:RG
  \end{tikzpicture}
 \end{center}
 
-The following ideas on taking limits of the above construction for $\epsilon \lra 0$ will be presented as a sketch rather than a more strict formulation. Note that this is due to time restrictions and the respectable overhead a strict treatment demands.
+Our initial problem was the limit for high energies. So far we have just rephrased the issue. Note that the high-energy limit now corresponds to the limit $\epsilon \lra 0$. The following ideas are just a sketch of the formal procedure which has to be cut short due to time constraints and depth of the material.
 
 \begin{sketch}
   We consider $W(P(\epsilon,L), I(\epsilon))$ and $I(\phi) = \frac{1}{3!} \int_M \phi^3$. In particular we consider two graphs:
-
   \begin{center}
    \begin{tikzpicture}
      \fill [black] (-1.3,0) circle (0.0) node[]{$\gamma_1 =$};
@@ -622,28 +654,30 @@ The following ideas on taking limits of the above construction for $\epsilon \lr
 
    \end{tikzpicture}
   \end{center}
-
-  Now note that
-  $$ w_{\gamma_1} (P(\epsilon,L), I(\epsilon))(a) = \int_{l\in[\epsilon,L]} \int_{x\in M} a^2(x) \ \kappa_l(x,x) \ d\vol_M dl$$
-  Now if we take the limit $l \lra 0$ we obtain
-  $$ \kappa_l(x,x) \simeq l^{-(\dim M)/2} + h.o.t. $$
-  The problem is, that the integral over this term does not converge and thus
-  $$ \lim_{\epsilon \lra 0} w_{\gamma_1} (P(\epsilon,L), I(\epsilon))(a) $$
+  For $\gamma_1$ we obtain:
+  \begin{equation}
+    W_{\gamma_1} (P(\epsilon,L), I(\epsilon))(a) = \int_{l\in[\epsilon,L]} \int_{x\in M} a^2(x) \ \kappa_l(x,x) \ d\vol_M dl.
+  \end{equation}
+  In the limit $l \lra 0$ we obtain
+  \begin{equation}
+    \kappa_l(x,x) \simeq l^{-(\dim M)/2} + h.o.t.
+  \end{equation}
+  However the integral over this term does not converge and thus
+  \begin{equation}
+    \lim_{\epsilon \lra 0} W_{\gamma_1} (P(\epsilon,L), I(\epsilon))(a)
+  \end{equation}
   does not exist. For $\gamma_2$ we note that
   \begin{align}
-    w_{\gamma_2} (P(\epsilon,L), I(\epsilon))(a) &= \int_{l\in[\epsilon,L]} \int_{x,y\in M} a^2(x) \ \kappa_l(x,y) \ a^2(y) \ dx dy dl \\
+    W_{\gamma_2} (P(\epsilon,L), I(\epsilon))(a) &= \int_{l\in[\epsilon,L]} \int_{x,y\in M} a^2(x) \ \kappa_l(x,y) \ a^2(y) \ dx dy dl \\
     &= \left\langle a^2, \int_\epsilon^L e^{-lD} a^2 \ dl \right\rangle
   \end{align}
-  In this case the limit $\lim_{\epsilon \lra 0} w_{\gamma_2}$ does indeed exist!
+  In this case the limit $\limit{\epsilon \lra 0} W_{\gamma_2}$ does exist!
 \end{sketch}
 
-Now this rough sketch can indeed be linked to a more general result:
+This fairly rough sketch is linked to a much deeper result whose proof we omit due to time constraints:
 
-\begin{fact}~
-\begin{itemize}
-  \item \textbf{graphs with loops do not have a limit} $\epsilon \lra 0$
-  \item \textbf{graphs without loops (tree-level graphs) do have a limit} $\epsilon \lra 0$
-\end{itemize}
+\begin{fact}
+  Only graphs without loops (tree-level graphs) have a limit $\epsilon \lra 0$.
 \end{fact}
 
 We will see in the subsequent material that and how we need to react to the infinities that arise when working with graphs that do contain loops.
@@ -654,61 +688,61 @@ We will see in the subsequent material that and how we need to react to the infi
 
 The heat kernel can be interpreted as a form of transition propability such that we arrive at the following propability for a transition from $x$ to $y$:
 
-$$ P(x,y) = \int_{l=0}^\infty e^{-lm^2} \int_{f\in X}  \exp\left( - \int_0^l ||df||^2 \right)$$
+\begin{equation} P(x,y) = \int_{l=0}^\infty e^{-lm^2} \int_{f\in X}  \exp\left( - \int_0^l ||df||^2 \right)\end{equation}
 where $X = \{f \colon [0,l] \lra M | f(0) = x, f(l) = y \}$ is the space of paths from $x$ to $y$. Remember that we defined the energy of such a path as
-$$ E(f) := - \int_0^l \langle df, df \rangle $$
+\begin{equation} E(f) := - \int_0^l \langle df, df \rangle\end{equation}
 Now we can collect this as
-$$ P(x,y) = \int_0^\infty \kappa_l(x,y) \ dl $$
+\begin{equation} P(x,y) = \int_0^\infty \kappa_l(x,y) \ dl\end{equation}
 To make this integral well-defined, we also need the \emph{Wiener} measure, which we won't go into detail about:
-$$ \kappa_f (x,y) = \int_X D_{Wiener} f $$
+\begin{equation} \kappa_f (x,y) = \int_X D_{Wiener} f\end{equation}
 To consider a particular interaction and think about why it physically corresponds to Feynman graphs, we take
 
-$$ S(\phi) = \int_M - \frac{1}{2} \phi D\phi + \frac{1}{3!} \phi^3 $$
+\begin{equation} S(\phi) = \int_M - \frac{1}{2} \phi D\phi + \frac{1}{3!} \phi^3\end{equation}
 
 note that this consideration is not necessarily well-defined and does contain quite some problems. Thus this discussion is more of a sketch. For $n$ particles we consider the expectation value
 
-$$ \mathds{E}(x_1, x_2, ..., x_n) = \int_{\phi \in \Ci(M)} e^{S(\phi)/\hbar} \phi(x_1) ... \phi(x_n) $$
+\begin{equation} \mathds{E}(x_1, x_2, ..., x_n) = \int_{\phi \in \Ci(M)} e^{S(\phi)/\hbar} \phi(x_1) ... \phi(x_n)\end{equation}
 
 Now we associate to $n$ particles $n$ external edges:
 
-$$ \mathds{E}(x_1, ..., x_n) = \sum_\gamma \frac{1}{|\Aut(\gamma)|} \hbar^{-\sigma(\gamma)} \int_{g \in Met_\gamma} \int_{f: \gamma \ra M} e^{-E(f)} $$
+\begin{equation} \mathds{E}(x_1, ..., x_n) = \sum_\gamma \frac{1}{|\Aut(\gamma)|} \hbar^{-\sigma(\gamma)} \int_{g \in Met_\gamma} \int_{f: \gamma \ra M} e^{-E(f)}\end{equation}
 where $Met_\gamma$ stands for the space of metrics on the space of curves $\gamma$ and $f$ are those maps $\gamma \lra M$ that take the endpoints of the $n$ external edges of $\gamma$ to $x_1,...,x_n$. Also consider the inverse assignment
-$$ f \colon \gamma \lra M, \quad \quad E(\gamma) \lmap (x_1,...,x_n) $$
+\begin{equation} f \colon \gamma \lra M, \quad \quad E(\gamma) \lmap (x_1,...,x_n)\end{equation}
 
 \begin{definition}[Local action functional]
   A functional $I \in \OO(\Ci(M))$ that can be written as $I = \sum_k I_k$ where $I_k$ is homogenous of degree $k$ in the variable $a \in \Ci(M)$, that is
-  $$ I_k(\lambda a) = \lambda^k I_k(a) $$
+  \begin{equation}I_k(\lambda a) = \lambda^k I_k(a)\end{equation}
   and such that the $I_k$ can be written as
-  $$ I_k (a) = \sum_{j=1}^{S} \int_M D_{1,j} (a) ... D_{k,j} (a) $$
+  \begin{equation}I_k (a) = \sum_{j=1}^{S} \int_M D_{1,j} (a) ... D_{k,j} (a)\end{equation}
   where $D_{i,j}$ are differential operators on $M$ is called a \textbf{local action functional}.
 \end{definition}
 
 We will subsequently denote by $\OO_{loc}(\Ci(M))$ the \textbf{subspace of local action functionals}. This definition extends to the formal power series in $\hbar$ that is $I \in \OO(\Ci(M))\llbracket \hbar \rrbracket$ as follows:
-$$ I = \sum_{i,k} \hbar^i I_{i,k} $$
+\begin{equation} I = \sum_{i,k} \hbar^i I_{i,k}\end{equation}
 where the $I_{i,k}$ need to be in $\OO_{loc}(\Ci(M))$. We further define
-$$ \OO^+_{loc}(\Ci(M))\llbracket \hbar \rrbracket \subset \OO_{loc}(\Ci(M))\llbracket \hbar \rrbracket $$
+\begin{equation} \OO^+_{loc}(\Ci(M))\llbracket \hbar \rrbracket \subset \OO_{loc}(\Ci(M))\llbracket \hbar \rrbracket\end{equation}
 the subspace of local functionals which are at least cubic modulo $\hbar$. Finally we are prepared to define scalar QFTs:
 
 \begin{definition}[Perturbative scalar quantum field theories]
 \label{def:PSQFTs}
   A \textbf{perturbative scalar quantum field theory} is given by a set of effective interactions
-  $$ I[L] \in \OO^+_{loc}(\Ci(M))\llbracket \hbar \rrbracket \quad \forall L \in [0, \infty] $$
+  \begin{equation}I[L] \in \OO^+_{loc}(\Ci(M))\llbracket \hbar \rrbracket \quad \forall L \in [0, \infty]\end{equation}
   (plus a kinetic action $- \frac{1}{2} \langle \phi, (D + m^2) \phi \rangle$ for $\phi \in \Ci(M)$) such that
   \begin{enumerate}
     \item $I[L] = W(P(\epsilon, L), I[\epsilon]) \quad \forall \epsilon,L \in (0,\infty)$
 
     \item Let
-    $$ I[L] = \sum_{i,k} \hbar^i I_{i,k}[L] $$
+    \begin{equation}I[L] = \sum_{i,k} \hbar^i I_{i,k}[L]\end{equation}
     For each $i,k$ we require a small-$L$ asymptotic expansion
-    $$ I_{i,k}[L] \simeq \sum_{r \in \ZZ} g_r(L) \Phi_r $$
+    \begin{equation}I_{i,k}[L] \simeq \sum_{r \in \ZZ} g_r(L) \Phi_r\end{equation}
     where $g_r(L) \in \Ci((0,\infty)_L)$ and $\Phi_r \in \OO_{loc}(\Ci(M))$. Small-$L$ asymptotic expansion means that there exists a non-decreasing sequence
-    $$ d_R \in \ZZ, \quad d_R \lra \infty, \quad R\lra \infty $$
+    \begin{equation}d_R \in \ZZ, \quad d_R \lra \infty, \quad R\lra \infty\end{equation}
     such that for all $R$
-    $$ \lim_{L \lra 0} L^{-d_R} \left( I_{i,k}[L](a) - \sum_{r=0}^R g_r(L) \Phi_r(a) \right) = 0 $$
+    \begin{equation}\lim_{L \lra 0} L^{-d_R} \left( I_{i,k}[L](a) - \sum_{r=0}^R g_r(L) \Phi_r(a) \right) = 0\end{equation}
     for all $a \in \Ci(M)$.
   \end{enumerate}
   We will denote by $\mathcal{Z}^{(a)}$ the set of perturbative quantum field theories and by $\mathcal{Z}^{(n)}$ the set of such theories defined modulo $\hbar^{n+1}$, that is ignoring terms in $\hbar$ of order higher than $n$. Further we denote
-  $$ \mathcal{Z}^{(\infty)} = \lim_{\longleftarrow} \mathcal{Z}^{(n)} $$
+  \begin{equation}\mathcal{Z}^{(\infty)} = \lim_{\longleftarrow} \mathcal{Z}^{(n)}\end{equation}
 \end{definition}
 
 \subsection{The structure of scalar perturbative QFTs}
@@ -726,7 +760,7 @@ We now have a definition of quantum field theory and we might ask how we can con
 While we might not find the time to discuss the proofs of the two above theorems, their statements are the most important points. The first one provides convenient and interesting structure, mainly telling us that once we restrict to the classical setting, we recover a classical action functional, hence providing a canonical transition from quantum to classical. The second theorem provides a direct link between local action functionals and perturbative QFTs, thus enabling the transition shown in the first.\\
 
 We now discuss a \textit{strategy} to work with both of these statements: First fix $I \in \OO^+_{loc}(\Ci(M))\llbracket \hbar \rrbracket$. We want to build the effective interaction $I[L]$ satisfying the properties of its definition. So first of all we want to construct counterterms $I^{CT}(\epsilon)$ such that
-$$ \lim_{\epsilon \lra 0} W\left(P(\epsilon,L), I-I^{CT}(\epsilon)\right)$$
+\begin{equation} \lim_{\epsilon \lra 0} W\left(P(\epsilon,L), I-I^{CT}(\epsilon)\right)\end{equation}
 exists and in particular defines $I[L]$. Conversely given $\{I[L]\}$ we construct $I$ as a renormalised limit, subtracting the suitable counterterms. To this end, we define some new helpful notions:
 
 \begin{definition}[Periods]
@@ -743,7 +777,7 @@ exists and in particular defines $I[L]$. Conversely given $\{I[L]\}$ we construc
 \end{example}
 
 Now let $t \in (0, \infty)$ be a real parameter. Formally we might write a "period depending smoothly on $t$" as
-$$ \alpha(t) = \int_{\gamma(t)} \omega(t) $$
+\begin{equation} \alpha(t) = \int_{\gamma(t)} \omega(t)\end{equation}
 where we allow $\gamma(t)$ and $\omega(t)$ to depend smoothly on $t$. But of course we further need to require that $\alpha(t)$ is a period, thus $\in \PP$, for every rational number $t \in \QQ \cap (0,\infty)$. Collecting these requirements leads us to a definition from \emph{algebraic geometry}:
 
 \begin{definition}[Periods in Algebraic Geometry]
@@ -752,29 +786,29 @@ where we allow $\gamma(t)$ and $\omega(t)$ to depend smoothly on $t$. But of cou
 
 \begin{definition}
   We define $\mathcal{P}((0,\infty))$ to be the real vector space spanned by the space of rational periods:
-  $$ \mathcal{P}((0,\infty)) = P_\QQ((0,\infty)) \otimes \RR \subset \Ci((0,\infty)) $$
+  \begin{equation}\mathcal{P}((0,\infty)) = P_\QQ((0,\infty)) \otimes \RR \subset \Ci((0,\infty))\end{equation}
   By an abuse of notation, we call elements of $\mathcal{P}((0,\infty))$ \textbf{periods}.
 \end{definition}
 
 Now we still investigate $w_\gamma(P(\epsilon,L), I(\epsilon))(a)$ in the limit $\epsilon \lra 0$. We interpret $w_\gamma$ as a function of $\epsilon,L,a$, thus in
-$$ \OO(\Ci(M), \Ci((0,\infty)_\epsilon)) \otimes \Ci((0,\infty)_L) $$
+\begin{equation} \OO(\Ci(M), \Ci((0,\infty)_\epsilon)) \otimes \Ci((0,\infty)_L)\end{equation}
 In particular, if we fix $\epsilon$, we have
-$$ w_\gamma \in \OO(\Ci(M), \Ci((0,\infty)_L)) $$
+\begin{equation} w_\gamma \in \OO(\Ci(M), \Ci((0,\infty)_L))\end{equation}
 
 This leads us to the following theorem which allows us to extract the singular terms in the finite-dimensional integrals $w_\gamma$ in order to extract singular points in our Feynman graphs:
 
 \begin{theo}
   Let $I \in \OO_{loc}(\Ci(M))\llbracket \hbar \rrbracket$ be a local action functional and let $\gamma$ be a connected stable graph. Then there exists a small-$\epsilon$ asymptotic expansion
-  $$ w_\gamma (P(\epsilon,L), I[\epsilon]) \simeq \sum_{i=0}^{\infty} g_i(\epsilon) \psi_i $$
+  \begin{equation}w_\gamma (P(\epsilon,L), I[\epsilon]) \simeq \sum_{i=0}^{\infty} g_i(\epsilon) \psi_i\end{equation}
   where $g_i \in \mathcal{P}((0,\infty)_\epsilon)$ are periods and $\psi_i \in \OO(\Ci(M), \Ci((0,\infty)_L))$ such that
   \begin{enumerate}
-    \item $$ \lim_{\epsilon\lra 0} L^{-d_R} \left(w_\gamma - \sum_{r=0}^R g_r(\epsilon) \psi_r \right) = 0 \quad \forall a \in \Ci(M) $$
+    \item \begin{equation}\lim_{\epsilon\lra 0} L^{-d_R} \left(w_\gamma - \sum_{r=0}^R g_r(\epsilon) \psi_r \right) = 0 \quad \forall a \in \Ci(M)\end{equation}
 
     \item the $g_i(\epsilon)$ have finite order poles at $0$, i.e. for $\forall i \ \exists k$ such that
-    $$ \lim_{\epsilon\lra 0} \epsilon^k g_i(\epsilon) = 0 $$
+    \begin{equation}\lim_{\epsilon\lra 0} \epsilon^k g_i(\epsilon) = 0\end{equation}
 
     \item the $\psi_i$ have a small-$L$ asymptotic expansion of the form
-    $$ \psi_i \simeq \sum_{j=0}^{\infty} f_{i,j} (L) \psi_{i,j} $$
+    \begin{equation}\psi_i \simeq \sum_{j=0}^{\infty} f_{i,j} (L) \psi_{i,j}\end{equation}
     where $\psi_{i,j} \in \OO_{loc}(\Ci(M))$ and $f_{i,j} \in \Ci((0,\infty)_L)$.
   \end{enumerate}
 \end{theo}
@@ -789,9 +823,9 @@ Using this definition we can finally expand upon the previously mentioned \emph{
 
 \begin{definition}[Renormalisation Schemes]
   A choice of a subspace
-  $$ \mathcal{P}((0,\infty))_{< 0} \subset \mathcal{P}((0,\infty))  $$
+  \begin{equation}\mathcal{P}((0,\infty))_{< 0} \subset \mathcal{P}((0,\infty)) \end{equation}
   complementary to $\mathcal{P}((0,\infty))_{\geq 0}$ is called a \textbf{renormalisation scheme}. Hence a renormalisation scheme provides a direct sum decomposition
-  $$ \mathcal{P}((0,\infty)) = \mathcal{P}((0,\infty))_{\geq 0} \oplus \mathcal{P}((0,\infty))_{< 0} $$
+  \begin{equation}\mathcal{P}((0,\infty)) = \mathcal{P}((0,\infty))_{\geq 0} \oplus \mathcal{P}((0,\infty))_{< 0}\end{equation}
   Note that this decomposition is not unique, hence fixing a normalisation scheme is a \textbf{real choice}, since $\mathcal{P}((0,\infty))$ has the structure of a vector space.
 \end{definition}
 
@@ -802,28 +836,28 @@ Introducing further notation using the decomposition at hand we define
 \end{definition}
 
 \textbf{From now on, we fix a renormalisation scheme.} From the previous theorem, take
-$$ w_\gamma (P(\epsilon,L), I[\epsilon]) \simeq \sum_{i=0}^{\infty} g_i(\epsilon) \psi_i $$
+\begin{equation} w_\gamma (P(\epsilon,L), I[\epsilon]) \simeq \sum_{i=0}^{\infty} g_i(\epsilon) \psi_i\end{equation}
 Now there exists an $N$ such that $\forall n > N$ the $g_n(\epsilon)$ admits a limit $\epsilon \lra 0$. As an \textbf{exercise} you can prove this claim. Now define
-$$ \psi_N := \sum_{i=0}^N g_i(\epsilon) \psi_i $$
+\begin{equation} \psi_N := \sum_{i=0}^N g_i(\epsilon) \psi_i\end{equation}
 and note that
-$$ \sing_\epsilon (w_\gamma(P(\epsilon,L), I[\epsilon])) := \sing( \psi_N(\epsilon)) = \sum_{i=0}^N \sing_\epsilon(g_i(\epsilon)) \psi_i $$
+\begin{equation} \sing_\epsilon (w_\gamma(P(\epsilon,L), I[\epsilon])) := \sing( \psi_N(\epsilon)) = \sum_{i=0}^N \sing_\epsilon(g_i(\epsilon)) \psi_i\end{equation}
 We can collect these results and definitions into a theorem:
 
 \begin{theo}
   Let $I \in \OO_{loc}(\Ci(M)) \llbracket \hbar \rrbracket$ be a local action functional and let $\gamma$ be a connected stable graph. Then
-  $$ \sing_\epsilon(w_\gamma(P(\epsilon,L), I[\epsilon])) = \sum_i f_i(\epsilon) \psi_i  $$
+  \begin{equation}\sing_\epsilon(w_\gamma(P(\epsilon,L), I[\epsilon])) = \sum_i f_i(\epsilon) \psi_i \end{equation}
   where $f_i(\epsilon) \in \mathcal{P}((0,\infty))_{<0}$ are singular periods (periods equivalent to their singular part) and the $\psi_i$ have a small-$L$ asymptotic expansions of the form
-  $$ \phi_i \simeq \sum_{i = 0}^\infty f_{i,j} \psi_{i,j} $$
+  \begin{equation}\phi_i \simeq \sum_{i = 0}^\infty f_{i,j} \psi_{i,j}\end{equation}
   where $\psi_{i,j} \in \OO_{loc}(\Ci(M))$ and $f_{i,j} \in \Ci((0,\infty)_L)$. Furthermore the limit
-  $$ \lim_{\epsilon \lra 0} \left( w_\gamma (P(\epsilon,L), I[\epsilon]) - \sing_\epsilon(w_\gamma (P(\epsilon,L), I[\epsilon])) \right) $$
+  \begin{equation}\lim_{\epsilon \lra 0} \left( w_\gamma (P(\epsilon,L), I[\epsilon]) - \sing_\epsilon(w_\gamma (P(\epsilon,L), I[\epsilon])) \right)\end{equation}
   exists in $\OO_{loc}(\Ci(M), \Ci((0,\infty)_L))$.
 \end{theo}
 
 \begin{theo}
   There exists a unique series of local counterterms
-  $$ I_{i,k}^{CT}(\epsilon) \in \OO_{loc}(\Ci(M)) \otimes \mathcal{P}((0,\infty))_{<0} $$
+  \begin{equation}I_{i,k}^{CT}(\epsilon) \in \OO_{loc}(\Ci(M)) \otimes \mathcal{P}((0,\infty))_{<0}\end{equation}
   for any $i,k$ with $I_{i,k}^{CT}$ homogenous of degree $k$ as a function of $a \in \Ci(M)$ and such that for all $L \in (0,\infty)$ the limit
-  $$ \lim_{\epsilon \lra 0} W\left(P(\epsilon, L), I - \sum_{i,k} \hbar^i I_{i,k}^{CT}(\epsilon)\right) $$
+  \begin{equation}\lim_{\epsilon \lra 0} W\left(P(\epsilon, L), I - \sum_{i,k} \hbar^i I_{i,k}^{CT}(\epsilon)\right)\end{equation}
   exists.
 \begin{proof}
   First note that
@@ -832,11 +866,11 @@ We can collect these results and definitions into a theorem:
     W_{i,k}(P,I) &= \sum_{\gamma \in \Gamma_{i,k}} w_\gamma (P(\epsilon, L), I[\epsilon])
   \end{align}
   where $\Gamma_{i,k}$ is the set of all stable graphs of genus $i$ with $k$ external edges. Now for $i = 0$ the term
-  $$ \lim_{\epsilon \lra 0} w_\gamma (P(\epsilon, L), I[\epsilon])$$
+  \begin{equation}\lim_{\epsilon \lra 0} w_\gamma (P(\epsilon, L), I[\epsilon])\end{equation}
   converges. Now for $i\neq 0$ we denote
-  $$ (i,j) < (k,l) \quad \Leftrightarrow \quad i<k \ or \ (i=k \ \text{and} \ j<l) $$
+  \begin{equation}(i,j) < (k,l) \quad \Leftrightarrow \quad i<k \ or \ (i=k \ \text{and} \ j<l)\end{equation}
   To investigate the base case we define
-  $$ I_{1,1}^{CT}(\epsilon, L) = \sing_\epsilon(W_{1,1}(P(\epsilon, L), I[\epsilon])) $$
+  \begin{equation}I_{1,1}^{CT}(\epsilon, L) = \sing_\epsilon(W_{1,1}(P(\epsilon, L), I[\epsilon]))\end{equation}
   To show that this is indeed a fitting counterterm, we calculate
   \begin{align}
     W_{1,1}(P(\epsilon,L), I[\epsilon] - \hbar I_{1,1}^{CT}(\epsilon,L)) &= W_{1,1}(P(\epsilon,L), I[\epsilon]) - I_{1,1}^{CT}(\epsilon,L)\\
@@ -853,9 +887,9 @@ We can collect these results and definitions into a theorem:
     %TODO graphs?
   \end{align}
   Since $K_L$ is smooth the singular point of the derivative is zero. Further the singular point of $W_{1,1}$ does not depend on $L$ which implies
-  $$ I_{1,1}^{CT}(\epsilon, L) = I_{1,1}^{CT}(\epsilon) $$
+  \begin{equation}I_{1,1}^{CT}(\epsilon, L) = I_{1,1}^{CT}(\epsilon)\end{equation}
   Now recall that
-  $$ \sing_\epsilon w_\gamma = \sum_i f_i(\epsilon) \phi_i $$
+  \begin{equation}\sing_\epsilon w_\gamma = \sum_i f_i(\epsilon) \phi_i\end{equation}
   where the $\phi_i$ have a small-$L$ asymptotic expansion. Thus $\sing_\epsilon w_\gamma$ is local. Having established the base case, we now use induction to conclude the proof:\\
   Suppose we have constructed $I_{j,l}^{CT}(\epsilon)$ for all $(j,l)<(i,k)$ such that they satisfy our theorem. For convenience we define
   \begin{align}
@@ -863,7 +897,7 @@ We can collect these results and definitions into a theorem:
     &= \sum_{\gamma \in \Gamma_{<(i,k)}} \frac{\hbar^{g(\gamma)}}{|\Aut(\gamma)|} w_\gamma (P,I)
   \end{align}
   Now we define the counterterms as
-  $$ I_{i,k}^{CT}(\epsilon, L) = \sing_\epsilon W_{i,k}\left(P(\epsilon,L), I - \sum_{(j,l)<(i,k)}\hbar^j I_{j,l}^{CT}(\epsilon)\right) $$
+  \begin{equation}I_{i,k}^{CT}(\epsilon, L) = \sing_\epsilon W_{i,k}\left(P(\epsilon,L), I - \sum_{(j,l)<(i,k)}\hbar^j I_{j,l}^{CT}(\epsilon)\right)\end{equation}
   Thus we again investigate the limit of
   \begin{align}
     &W_{i,k}\left( P(\epsilon,L), I - \sum_{(j,l)<(i,k)}\hbar^j I_{j,l}^{CT}(\epsilon) - \hbar^i I_{i,k}^{CT}(\epsilon, L) \right)\\
@@ -874,7 +908,7 @@ We can collect these results and definitions into a theorem:
 \end{theo}
 
 Now let $I \in \OO^+(\Ci(M))\llbracket\hbar\rrbracket$ be a local action functional. We define
-$$ I[L] := \lim_{\epsilon \lra 0} \left( W(P(\epsilon,L), I - I^{CT}(\epsilon)) \right) =: W^R(P(0,L), I) $$
+\begin{equation} I[L] := \lim_{\epsilon \lra 0} \left( W(P(\epsilon,L), I - I^{CT}(\epsilon)) \right) =: W^R(P(0,L), I)\end{equation}
 where $I \simeq I(\epsilon \ra 0) $.
 
 \begin{ex}
@@ -882,13 +916,13 @@ where $I \simeq I(\epsilon \ra 0) $.
 \end{ex}
 
 Conversely, let $\{I[L]\}$ be a collection of effective actions defining a theory. Now for
-$$ I = \sum_{i,k} \hbar^i I_{i,k} $$
+\begin{equation} I = \sum_{i,k} \hbar^i I_{i,k}\end{equation}
 we want to construct the terms $I_{i,k}$. For $I_{0,0}$ just take the limit $\lim_{\epsilon \ra 0} W(P(\epsilon,L), I[L])$. Now let us suppose we have constructed $I_{r,s}$ for $(r,s)<(i,k)$ such that
-$$ W^R_{a,b}\left(P(0,L), \sum_{(r,s)<(i,k)} \hbar^k I_{r,s}\right) = I_{a,b}(L)$$
+\begin{equation} W^R_{a,b}\left(P(0,L), \sum_{(r,s)<(i,k)} \hbar^k I_{r,s}\right) = I_{a,b}(L)\end{equation}
 for all $(a,b) < (i,k)$. Now
-$$I_{i,k} = I_{i,k}[L] - W^R_{i,k}\left(P(0,L), \sum_{(r,s)<(i,k)} \hbar^r I_{r,s} \right)$$
+\begin{equation}I_{i,k} = I_{i,k}[L] - W^R_{i,k}\left(P(0,L), \sum_{(r,s)<(i,k)} \hbar^r I_{r,s} \right)\end{equation}
 Thus recall
-$$ W^R(P(0,L), I) = \sum_{i,k} \hbar^i W_{i,k}^R (P(0,L), I) $$
+\begin{equation} W^R(P(0,L), I) = \sum_{i,k} \hbar^i W_{i,k}^R (P(0,L), I)\end{equation}
 
 \begin{ex}
   Show that this quantity does not depend on $L$ (use \eqref{eq:RGE_length}) and is local (use the locality of $\{I[L]\}$).
@@ -913,9 +947,9 @@ Thus we want to consider a finite subset of these theories, namely renormalisabl
 
 
 \textbf{Aside:} If $M = \RR^n$, it is not compact, but we can define a scalar PQFT in (more or less) the same way and get similar results. Define
-$$ R_l \colon \Ci(\RR^n) \lra \Ci(\RR^n), \quad \quad \phi(x) \lmap l^{1-n/2} \phi(l^{-1} x) $$
+\begin{equation} R_l \colon \Ci(\RR^n) \lra \Ci(\RR^n), \quad \quad \phi(x) \lmap l^{1-n/2} \phi(l^{-1} x)\end{equation}
 and additionally the map
-$$ RG_l (S^{eff}[\Lambda]) (\phi) := S^{eff}[l^{-2} \Lambda](R_l(\phi)) $$
+\begin{equation} RG_l (S^{eff}[\Lambda]) (\phi) := S^{eff}[l^{-2} \Lambda](R_l(\phi))\end{equation}
 This leads us to the following result:
 
 \begin{lem}
@@ -925,7 +959,7 @@ This leads us to the following result:
 
 \begin{definition}
   A theory is \textbf{renormalisable} if $RG_l(S^{eff}[\Lambda])$ grows, in terms of $\Lambda$, at most logarithmically as $l \lra 0$. Suppose that $S$ is translation invariant. We say that $S$ is of dimension $m$ if
-  $$ S(R_l(\phi)) = l^m S(\phi) $$
+  \begin{equation}S(R_l(\phi)) = l^m S(\phi)\end{equation}
 \end{definition}
 
 \begin{example}~
@@ -937,15 +971,15 @@ This leads us to the following result:
 
 \begin{theo}
   Let $\mathfrak{R}^{(k)}(\RR^n)$ be the space of renormalisable scalar field theories of $\RR^n$ invariant under translation, defined modulo $\hbar^{k+1}$. Then
-  $$  \mathfrak{R}^{(k+1)}(\RR^n) \lra \mathfrak{R}^{(k)}(\RR^n)$$
+  \begin{equation} \mathfrak{R}^{(k+1)}(\RR^n) \lra \mathfrak{R}^{(k)}(\RR^n)\end{equation}
   is a torsor for the vector space of local action functionals $S(\phi)$ which are a sum of terms of non-negative dimensions. Furthermore $\mathfrak{R}^{(0)}(\RR^n)$ is canonically isomorphic to the space of local action functionals of the form
-  $$ S(\phi) = \frac{1}{2} \int_{\RR^n} \phi D \phi + I $$
+  \begin{equation}S(\phi) = \frac{1}{2} \int_{\RR^n} \phi D \phi + I\end{equation}
   where the $I$ are cubic or higher terms of non-negative dimensions.
 \end{theo}
 
 \begin{corollary}
   On $\RR^4$ renormalisable scalar field theories invariant under $SO(4) \times \RR^4$ and $\phi \lmap -\phi$ are in bijection with Lagrangians of the form
-  $$ \LL (\phi) = a \phi D \phi + b \phi^4 + c \phi^2 $$
+  \begin{equation}\LL (\phi) = a \phi D \phi + b \phi^4 + c \phi^2\end{equation}
   for $a,b,c \in \RR\llbracket\hbar \rrbracket$ and such that $a = - \frac{1}{2}$ modulo $\hbar$ and $c = 0$ modulo $\hbar$.
 \end{corollary}
 
