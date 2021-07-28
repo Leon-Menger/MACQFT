@@ -51,6 +51,15 @@ Given $V^\bullet$ we call $v\in V^k$ an homogeneous element of degree $|v|\colon
   \end{itemize}
 \end{example}
 
+\begin{definition}[Shifted Vector Spaces]
+  Let $V^\bullet$ be a graded vector space. We \textbf{shift} $V^\bullet$ by $k \in \ZZ$ by defining the \textbf{shifted vector bundle}
+  \begin{equation}
+    V[k] := \bigoplus_{i \in \ZZ} V[k]^i = \bigoplus_{i \in \ZZ} V^{k+i}
+  \end{equation}
+  Given a vector space $V^\bullet$ such that $V^i = \{0\}$ for all $i \neq p$, we call $V^\bullet$ \textbf{concentrated in $p$}. In particular for any vector space $V$, the shifted vector space $V[k]$ is concentrated in degree $-k$. For a dual space $V^*$ we obtain
+  $$ V^*[k] = \bigoplus_{i \in \ZZ} V^*[k]_i = \bigoplus_{i \in \ZZ} (V^*)_{k+i} = \bigoplus_{i \in \ZZ} (V^{k+i})^* $$
+\end{definition}
+
 Due to their importance for the forthcoming discussion, we classify certain special cases of graded endomorphisms.
 
 \begin{definition}
@@ -484,7 +493,7 @@ Again, we provide some interesting examples to further illuminate the definition
   \begin{equation}[e_i, e_j] = \sum_{k=1}^n f_{ij}^k e_k \end{equation}
   Now we can define $Q$ to be
   \begin{equation}Q := \frac{1}{2} \sum_{i,j = 1}^n x^i x^j f_{ij}^k \dell{}{x^k} \end{equation}
-  Where we denoted by $(x^i)_{i=1}^n$ the coordinates on $\fg[1]$ dual to the basis $(e_i)^n_{i=1}$. As an interesting exercise, prove that $Q$ is indeed cohomological, i.e. degree-$1$ and $Q^2=0$.
+  Where we denoted by $(x^i)_{i=1}^n$ the coordinates on $\fg[1]$ dual to the basis $(e_i)^n_{i=1}$. As an interesting exercise, prove that $Q$ is indeed cohomological, i.e. of degree $1$ and $Q^2=0$.
 \end{itemize}
 \end{example}
 

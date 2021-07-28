@@ -571,7 +571,7 @@ which is the integral kernel of $e^{-l (D+m^2)}$ which in turn is the heat opera
 \end{equation}
 In the energy form, we had the following representation:
 \begin{equation}
-  P = \sum_i \frac{1}{x_i^2 + m^2} e_i \otimes e_i
+  P = \sum_i \frac{1}{\lambda_i^2 + m^2} e_i \otimes e_i
 \end{equation}
 For a subset $U \subseteq \RR$ we defined a cut-off propagator via
 \begin{equation}
@@ -583,7 +583,7 @@ In a similar fashion, define the cut-off propagator in length scales as
 \end{equation}
 where $\epsilon, L \in (0,\infty)$ and $\epsilon < L$. This corresponds to a propagator with an infrared cutoff at $L$ and an ultraviolet cutoff at $\epsilon$. Note that length scales behave inverse to energy scales; small energies correspond to large length scales and vice versa. Using the basis of energy eigenfunctions $\{e_i\}$, one can write this propagator as
 \begin{equation}
-  P(\epsilon, L) = \frac{e^{-\epsilon \lambda_i} - e^{-L  \lambda_i}}{\lambda_i^2 + m^2} e_i \otimes e_i
+  P(\epsilon, L) = \sum_i \frac{e^{-\epsilon \lambda_i} - e^{-L  \lambda_i}}{\lambda_i^2 + m^2} e_i \otimes e_i
 \end{equation}
 Thus for fixed $\epsilon$ and $L$ the coefficients decay for growing $\lambda_i$. Since we can express the interaction term in length scales, we can rewrite \eqref{eq:RGE_2} to:
 \begin{equation}
@@ -627,7 +627,6 @@ Again, a pictorial explanation for some examples of the \eqref{eq:RGE_length} in
    \fill [black] (11.5,0) circle (0.1) node[below, xshift=-.25cm, yshift=-.1cm]{$I_{0,3}[\epsilon]$};
    \draw[thick, dashed] (12.5,-1) -- (11.5,0);
    \draw[thick, dashed] (12.5,1) -- (11.5,0);
-
  \end{tikzpicture}
 \end{center}
 
@@ -656,7 +655,7 @@ Our initial problem was the limit for high energies. So far we have just rephras
   \end{center}
   For $\gamma_1$ we obtain:
   \begin{equation}
-    W_{\gamma_1} (P(\epsilon,L), I(\epsilon))(a) = \int_{l\in[\epsilon,L]} \int_{x\in M} a^2(x) \ \kappa_l(x,x) \ d\vol_M dl.
+    w_{\gamma_1} (P(\epsilon,L), I(\epsilon))(a) = \int_{l\in[\epsilon,L]} \int_{x\in M} a^2(x) \ \kappa_l(x,x) \ d\vol_M dl.
   \end{equation}
   In the limit $l \lra 0$ we obtain
   \begin{equation}
@@ -664,14 +663,14 @@ Our initial problem was the limit for high energies. So far we have just rephras
   \end{equation}
   However the integral over this term does not converge and thus
   \begin{equation}
-    \lim_{\epsilon \lra 0} W_{\gamma_1} (P(\epsilon,L), I(\epsilon))(a)
+    \lim_{\epsilon \lra 0} w_{\gamma_1} (P(\epsilon,L), I(\epsilon))(a)
   \end{equation}
   does not exist. For $\gamma_2$ we note that
   \begin{align}
-    W_{\gamma_2} (P(\epsilon,L), I(\epsilon))(a) &= \int_{l\in[\epsilon,L]} \int_{x,y\in M} a^2(x) \ \kappa_l(x,y) \ a^2(y) \ dx dy dl \\
+    w_{\gamma_2} (P(\epsilon,L), I(\epsilon))(a) &= \int_{l\in[\epsilon,L]} \int_{x,y\in M} a^2(x) \ \kappa_l(x,y) \ a^2(y) \ dx dy dl \\
     &= \left\langle a^2, \int_\epsilon^L e^{-lD} a^2 \ dl \right\rangle
   \end{align}
-  In this case the limit $\limit{\epsilon \lra 0} W_{\gamma_2}$ does exist!
+  In this case the limit $\limit{\epsilon \lra 0} w _{\gamma_2}$ does exist!
 \end{sketch}
 
 This fairly rough sketch is linked to a much deeper result whose proof we omit due to time constraints:
@@ -686,44 +685,56 @@ We will see in the subsequent material that and how we need to react to the infi
 \subsubsection{Interpretation of Feynman diagrams}
 \label{subsubsec:feynman_intepretation}
 
-The heat kernel can be interpreted as a form of transition propability such that we arrive at the following propability for a transition from $x$ to $y$:
-
+The heat kernel can be interpreted as a form of transition propability. Namely the kernel $\kappa_t(x,y)$ can be interpreted as the propability density that a particle in Brownian motion on $M$ starts at $x$ and reaches $y$ in times $t$. We arrive at the following propability for a transition from $x$ to $y$:
 \begin{equation} P(x,y) = \int_{l=0}^\infty e^{-lm^2} \int_{f\in X}  \exp\left( - \int_0^l ||df||^2 \right)\end{equation}
-where $X = \{f \colon [0,l] \lra M | f(0) = x, f(l) = y \}$ is the space of paths from $x$ to $y$. Remember that we defined the energy of such a path as
-\begin{equation} E(f) := - \int_0^l \langle df, df \rangle\end{equation}
+where $X_l = \{f \colon [0,l] \lra M | f(0) = x, f(l) = y \}$ is the space of paths from $x$ to $y$. The energy of such a path is defined as
+\begin{equation}
+  E(f) := \int_0^l \langle df, df \rangle.
+\end{equation}
 Now we can collect this as
-\begin{equation} P(x,y) = \int_0^\infty \kappa_l(x,y) \ dl\end{equation}
-To make this integral well-defined, we also need the \emph{Wiener} measure, which we won't go into detail about:
-\begin{equation} \kappa_f (x,y) = \int_X D_{Wiener} f\end{equation}
-To consider a particular interaction and think about why it physically corresponds to Feynman graphs, we take
-
-\begin{equation} S(\phi) = \int_M - \frac{1}{2} \phi D\phi + \frac{1}{3!} \phi^3\end{equation}
-
-note that this consideration is not necessarily well-defined and does contain quite some problems. Thus this discussion is more of a sketch. For $n$ particles we consider the expectation value
-
-\begin{equation} \mathds{E}(x_1, x_2, ..., x_n) = \int_{\phi \in \Ci(M)} e^{S(\phi)/\hbar} \phi(x_1) ... \phi(x_n)\end{equation}
-
+\begin{equation}
+  P(x,y) = \int_0^\infty \kappa_l(x,y) \ dl.
+\end{equation}
+To make this integral well-defined, we also need the \emph{Wiener} measure $D_{Wiener}$, which we won't go into detail about:
+\begin{equation}
+  \kappa_l (x,y) = \int_{X_l} D_{Wiener} f.
+\end{equation}
+Using the previously defined energy we can loosely write
+\begin{equation}
+  \kappa_l (x,y) = \int_{X_l} e^{- E(f)}.
+\end{equation}
+Now consider the following action:
+\begin{equation}
+  S(\phi) = \int_M \left( - \frac{1}{2} \phi D\phi + \frac{1}{3!} \phi^3 \right).
+\end{equation}
+Note that this discussion is more of a sketch since the actual treatment has quite some problems already. For $n$ particles we consider the expectation value
+\begin{equation}
+  \mathds{E}(x_1, ..., x_n) = \int_{\phi \in \Ci(M)} e^{S(\phi)/\hbar} \phi(x_1) ... \phi(x_n)
+\end{equation}
 Now we associate to $n$ particles $n$ external edges:
-
-\begin{equation} \mathds{E}(x_1, ..., x_n) = \sum_\gamma \frac{1}{|\Aut(\gamma)|} \hbar^{-\sigma(\gamma)} \int_{g \in Met_\gamma} \int_{f: \gamma \ra M} e^{-E(f)}\end{equation}
-where $Met_\gamma$ stands for the space of metrics on the space of curves $\gamma$ and $f$ are those maps $\gamma \lra M$ that take the endpoints of the $n$ external edges of $\gamma$ to $x_1,...,x_n$. Also consider the inverse assignment
-\begin{equation} f \colon \gamma \lra M, \quad \quad E(\gamma) \lmap (x_1,...,x_n)\end{equation}
-
+\begin{equation}
+  \mathds{E}(x_1, ..., x_n) = \sum_\gamma \frac{1}{|\Aut(\gamma)|} \hbar^{-g(\gamma)} \int_{g \in \Mett_\gamma} \int_{f\colon \gamma \ra M} e^{-E(f)}
+\end{equation}
+where $\Mett_\gamma$ stands for the space of metrics on the space of curves $\gamma$ and $f$ are those maps $\gamma \lra M$ that take the endpoints of the $n$ external edges of $\gamma$ to $x_1,...,x_n$. Also consider the inverse assignment
+\begin{equation}
+  f \colon \gamma \lra M, \quad \quad E(\gamma) \lmap (x_1,...,x_n)
+\end{equation}
 \begin{definition}[Local action functional]
   A functional $I \in \OO(\Ci(M))$ that can be written as $I = \sum_k I_k$ where $I_k$ is homogenous of degree $k$ in the variable $a \in \Ci(M)$, that is
   \begin{equation}I_k(\lambda a) = \lambda^k I_k(a)\end{equation}
-  and such that the $I_k$ can be written as
-  \begin{equation}I_k (a) = \sum_{j=1}^{S} \int_M D_{1,j} (a) ... D_{k,j} (a)\end{equation}
+  and such that each $I_k$ can, for some integer $s$, be written as
+  \begin{equation}
+    I_k (a) = \sum_{j=1}^{s} \int_M D_{1,j} (a) ... D_{k,j} (a)
+  \end{equation}
   where $D_{i,j}$ are differential operators on $M$ is called a \textbf{local action functional}.
 \end{definition}
-
-We will subsequently denote by $\OO_{loc}(\Ci(M))$ the \textbf{subspace of local action functionals}. This definition extends to the formal power series in $\hbar$ that is $I \in \OO(\Ci(M))\llbracket \hbar \rrbracket$ as follows:
+We will subsequently denote by $\OO_{loc}(\Ci(M))$ the \textbf{subspace of local action functionals}. This definition extends to local formal power series in $\hbar$ that is $I \in \OO_{loc}(\Ci(M))\llbracket \hbar \rrbracket$ as follows:
 \begin{equation} I = \sum_{i,k} \hbar^i I_{i,k}\end{equation}
-where the $I_{i,k}$ need to be in $\OO_{loc}(\Ci(M))$. We further define
+where the $I_{i,k}$ need to be in $\OO_{loc}(\Ci(M))$ for all $i,k$. We further define
 \begin{equation} \OO^+_{loc}(\Ci(M))\llbracket \hbar \rrbracket \subset \OO_{loc}(\Ci(M))\llbracket \hbar \rrbracket\end{equation}
 the subspace of local functionals which are at least cubic modulo $\hbar$. Finally we are prepared to define scalar QFTs:
 
-\begin{definition}[Perturbative scalar quantum field theories]
+\begin{definition}[Perturbative Scalar Quantum Field Theories]
 \label{def:PSQFTs}
   A \textbf{perturbative scalar quantum field theory} is given by a set of effective interactions
   \begin{equation}I[L] \in \OO^+_{loc}(\Ci(M))\llbracket \hbar \rrbracket \quad \forall L \in [0, \infty]\end{equation}
@@ -741,20 +752,22 @@ the subspace of local functionals which are at least cubic modulo $\hbar$. Final
     \begin{equation}\lim_{L \lra 0} L^{-d_R} \left( I_{i,k}[L](a) - \sum_{r=0}^R g_r(L) \Phi_r(a) \right) = 0\end{equation}
     for all $a \in \Ci(M)$.
   \end{enumerate}
-  We will denote by $\mathcal{Z}^{(a)}$ the set of perturbative quantum field theories and by $\mathcal{Z}^{(n)}$ the set of such theories defined modulo $\hbar^{n+1}$, that is ignoring terms in $\hbar$ of order higher than $n$. Further we denote
-  \begin{equation}\mathcal{Z}^{(\infty)} = \lim_{\longleftarrow} \mathcal{Z}^{(n)}\end{equation}
 \end{definition}
+The small-$L$ asymptotic expansion will later allows us to find divergences in the limit $\epsilon \lra 0$ and introduce counterterms in the form of a sum.
 
 \subsection{The structure of scalar perturbative QFTs}
 
-We now have a definition of quantum field theory and we might ask how we can connect it to a classical definition of quantum field theory without any effective interactions. This connection can be formulated in the following theorem:
+We now have a definition of quantum field theory and we might ask how we can connect it to a classical definition of quantum field theory without any effective interactions. Denote by $\mathcal{Z}^{(n)}$ the \textbf{set of perturbative quantum field theories} modulo $\hbar^{n+1}$, that is ignoring terms in $\hbar$ of order higher than $n$. Further we denote
+\begin{equation}
+  \mathcal{Z}^{(\infty)} = \lim_{\longleftarrow} \mathcal{Z}^{(n)}
+\end{equation}
 
 \begin{theo}
   $\mathcal{Z}^{(n+1)}$ is a principal bundle over $\mathcal{Z}^{(n)}$ with structure group the abelian group $\OO_{loc}(\Ci(M))$ (local action functionals on $M$). In particular, $\mathcal{Z}^{(0)}$ is canonically isomorphic to the space $\OO^+_{loc}(\Ci(M))$
 \end{theo}
 
 \begin{theo}
-  If we fix a \emph{normalisation scheme} (which we will define and explain later), we can find a section for each torsor $\mathcal{Z}^{(n+1)} \lra \mathcal{Z}^{(n)}$ and consequently a bijection between the set of perturbative quantum fields theories and the set of local action functionals $I \in \OO^+_{loc}(\Ci(M))\llbracket \hbar \rrbracket$.
+  If we fix a \textbf{renormalisation scheme} (which we will define and explain later), we can find a section for each torsor $\mathcal{Z}^{(n+1)} \lra \mathcal{Z}^{(n)}$ and consequently a bijection between the set of perturbative quantum fields theories $\mathcal{Z}^{(\infty)}$ and the set of local action functionals $I \in \OO^+_{loc}(\Ci(M))\llbracket \hbar \rrbracket$.
 \end{theo}
 
 While we might not find the time to discuss the proofs of the two above theorems, their statements are the most important points. The first one provides convenient and interesting structure, mainly telling us that once we restrict to the classical setting, we recover a classical action functional, hence providing a canonical transition from quantum to classical. The second theorem provides a direct link between local action functionals and perturbative QFTs, thus enabling the transition shown in the first.\\
@@ -791,7 +804,9 @@ where we allow $\gamma(t)$ and $\omega(t)$ to depend smoothly on $t$. But of cou
 \end{definition}
 
 Now we still investigate $w_\gamma(P(\epsilon,L), I(\epsilon))(a)$ in the limit $\epsilon \lra 0$. We interpret $w_\gamma$ as a function of $\epsilon,L,a$, thus in
-\begin{equation} \OO(\Ci(M), \Ci((0,\infty)_\epsilon)) \otimes \Ci((0,\infty)_L)\end{equation}
+\begin{equation}
+  \OO(\Ci(M), \Ci((0,\infty)_\epsilon) \otimes \Ci((0,\infty)_L))
+\end{equation}
 In particular, if we fix $\epsilon$, we have
 \begin{equation} w_\gamma \in \OO(\Ci(M), \Ci((0,\infty)_L))\end{equation}
 
@@ -802,13 +817,19 @@ This leads us to the following theorem which allows us to extract the singular t
   \begin{equation}w_\gamma (P(\epsilon,L), I[\epsilon]) \simeq \sum_{i=0}^{\infty} g_i(\epsilon) \psi_i\end{equation}
   where $g_i \in \mathcal{P}((0,\infty)_\epsilon)$ are periods and $\psi_i \in \OO(\Ci(M), \Ci((0,\infty)_L))$ such that
   \begin{enumerate}
-    \item \begin{equation}\lim_{\epsilon\lra 0} L^{-d_R} \left(w_\gamma - \sum_{r=0}^R g_r(\epsilon) \psi_r \right) = 0 \quad \forall a \in \Ci(M)\end{equation}
+    \item \begin{equation}
+      \lim_{\epsilon\lra 0} L^{-d_R} \left(w_\gamma - \sum_{r=0}^R g_r(\epsilon) \psi_r \right) = 0 \quad \forall a \in \Ci(M),
+    \end{equation}
 
     \item the $g_i(\epsilon)$ have finite order poles at $0$, i.e. for $\forall i \ \exists k$ such that
-    \begin{equation}\lim_{\epsilon\lra 0} \epsilon^k g_i(\epsilon) = 0\end{equation}
+    \begin{equation}
+      \lim_{\epsilon\lra 0} \epsilon^k g_i(\epsilon) = 0,
+    \end{equation}
 
     \item the $\psi_i$ have a small-$L$ asymptotic expansion of the form
-    \begin{equation}\psi_i \simeq \sum_{j=0}^{\infty} f_{i,j} (L) \psi_{i,j}\end{equation}
+    \begin{equation}
+      \psi_i \simeq \sum_{j=0}^{\infty} f_{i,j} (L) \psi_{i,j}
+    \end{equation}
     where $\psi_{i,j} \in \OO_{loc}(\Ci(M))$ and $f_{i,j} \in \Ci((0,\infty)_L)$.
   \end{enumerate}
 \end{theo}
@@ -829,13 +850,16 @@ Using this definition we can finally expand upon the previously mentioned \emph{
   Note that this decomposition is not unique, hence fixing a normalisation scheme is a \textbf{real choice}, since $\mathcal{P}((0,\infty))$ has the structure of a vector space.
 \end{definition}
 
-Introducing further notation using the decomposition at hand we define
-
 \begin{definition}[Singular Parts]
   Given a period $f \in \mathcal{P}((0,\infty))$ define its \textbf{singular part} to be the projection $\sing(f)$ of $f$ onto $\mathcal{P}((0,\infty))_{< 0}$.
 \end{definition}
 
-\textbf{From now on, we fix a renormalisation scheme.} From the previous theorem, take
+\begin{mdframed}
+\centering
+  \textbf{From now on, we fix a renormalisation scheme.}
+\end{mdframed}
+
+From the previous theorem, take
 \begin{equation} w_\gamma (P(\epsilon,L), I[\epsilon]) \simeq \sum_{i=0}^{\infty} g_i(\epsilon) \psi_i\end{equation}
 Now there exists an $N$ such that $\forall n > N$ the $g_n(\epsilon)$ admits a limit $\epsilon \lra 0$. As an \textbf{exercise} you can prove this claim. Now define
 \begin{equation} \psi_N := \sum_{i=0}^N g_i(\epsilon) \psi_i\end{equation}
@@ -845,11 +869,17 @@ We can collect these results and definitions into a theorem:
 
 \begin{theo}
   Let $I \in \OO_{loc}(\Ci(M)) \llbracket \hbar \rrbracket$ be a local action functional and let $\gamma$ be a connected stable graph. Then
-  \begin{equation}\sing_\epsilon(w_\gamma(P(\epsilon,L), I[\epsilon])) = \sum_i f_i(\epsilon) \psi_i \end{equation}
-  where $f_i(\epsilon) \in \mathcal{P}((0,\infty))_{<0}$ are singular periods (periods equivalent to their singular part) and the $\psi_i$ have a small-$L$ asymptotic expansions of the form
-  \begin{equation}\phi_i \simeq \sum_{i = 0}^\infty f_{i,j} \psi_{i,j}\end{equation}
+  \begin{equation}
+    \sing_\epsilon(w_\gamma(P(\epsilon,L), I[\epsilon])) = \sum_i f_i(\epsilon) \psi_i
+  \end{equation}
+  where $f_i(\epsilon) \in \mathcal{P}((0,\infty))_{<0}$ are singular periods (periods equivalent to their singular part) and the $\psi_i$ have small-$L$ asymptotic expansions of the form
+  \begin{equation}
+    \psi_i \simeq \sum_{i = 0}^\infty f_{i,j} \psi_{i,j}
+  \end{equation}
   where $\psi_{i,j} \in \OO_{loc}(\Ci(M))$ and $f_{i,j} \in \Ci((0,\infty)_L)$. Furthermore the limit
-  \begin{equation}\lim_{\epsilon \lra 0} \left( w_\gamma (P(\epsilon,L), I[\epsilon]) - \sing_\epsilon(w_\gamma (P(\epsilon,L), I[\epsilon])) \right)\end{equation}
+  \begin{equation}
+    \lim_{\epsilon \lra 0} \left( w_\gamma (P(\epsilon,L), I[\epsilon]) - \sing_\epsilon(w_\gamma (P(\epsilon,L), I[\epsilon])) \right)
+  \end{equation}
   exists in $\OO_{loc}(\Ci(M), \Ci((0,\infty)_L))$.
 \end{theo}
 
@@ -879,7 +909,7 @@ We can collect these results and definitions into a theorem:
   Thus taking the limit we obtain
   \begin{align}
     &\lim_{\epsilon \lra 0} W_{1,1}(P(\epsilon,L), I[\epsilon] - \hbar I_{1,1}^{CT}(\epsilon,L)) \\
-    = &\lim_{\epsilon \lra 0} \left( \reg_\epsilon(W_{1,1}(P(\epsilon,L))) + \sing_\epsilon(W_{1,1}(P(\epsilon,L))) - \sing_\epsilon(W_{1,1}(P(\epsilon,L))) \right)
+    = &\lim_{\epsilon \lra 0} \left[ \reg_\epsilon(W_{1,1}(P(\epsilon,L))) + \sing_\epsilon(W_{1,1}(P(\epsilon,L))) - \sing_\epsilon(W_{1,1}(P(\epsilon,L))) \right]
   \end{align}
   and thus the limit exists. Now we want to show that $I_{1,1}^{CT}$ is local. To this end note that
   \begin{align}
@@ -887,11 +917,14 @@ We can collect these results and definitions into a theorem:
     %TODO graphs?
   \end{align}
   Since $K_L$ is smooth the singular point of the derivative is zero. Further the singular point of $W_{1,1}$ does not depend on $L$ which implies
-  \begin{equation}I_{1,1}^{CT}(\epsilon, L) = I_{1,1}^{CT}(\epsilon)\end{equation}
+  \begin{equation}
+    I_{1,1}^{CT}(\epsilon, L) = I_{1,1}^{CT}(\epsilon)
+  \end{equation}
   Now recall that
-  \begin{equation}\sing_\epsilon w_\gamma = \sum_i f_i(\epsilon) \phi_i\end{equation}
-  where the $\phi_i$ have a small-$L$ asymptotic expansion. Thus $\sing_\epsilon w_\gamma$ is local. Having established the base case, we now use induction to conclude the proof:\\
-  Suppose we have constructed $I_{j,l}^{CT}(\epsilon)$ for all $(j,l)<(i,k)$ such that they satisfy our theorem. For convenience we define
+  \begin{equation}
+    \sing_\epsilon w_\gamma = \sum_i f_i(\epsilon) \psi_i
+  \end{equation}
+  where the $\psi_i$ have a small-$L$ asymptotic expansion. Thus $\sing_\epsilon w_\gamma$ is local. Having established the base case, we now use induction to conclude the proof: Suppose we have constructed $I_{j,l}^{CT}(\epsilon)$ for all $(j,l)<(i,k)$ such that they satisfy our theorem. For convenience we define
   \begin{align}
     W_{<(i,k)} (P,I) &= \sum_{(j,l)<(i,k)} \hbar^j W_{j,l}(P,I)\\
     &= \sum_{\gamma \in \Gamma_{<(i,k)}} \frac{\hbar^{g(\gamma)}}{|\Aut(\gamma)|} w_\gamma (P,I)
@@ -909,15 +942,15 @@ We can collect these results and definitions into a theorem:
 
 Now let $I \in \OO^+(\Ci(M))\llbracket\hbar\rrbracket$ be a local action functional. We define
 \begin{equation} I[L] := \lim_{\epsilon \lra 0} \left( W(P(\epsilon,L), I - I^{CT}(\epsilon)) \right) =: W^R(P(0,L), I)\end{equation}
-where $I \simeq I(\epsilon \ra 0) $.
+where $I \simeq I[\epsilon \ra 0] $ and the superscript $R$ stands for $renormalised$.
 
 \begin{ex}
   Prove that $I[L]$ satisfies the \eqref{eq:RGE_length} and the small-$L$ asymptotic expansion of the definition of a scalar PQFT.
 \end{ex}
 
-Conversely, let $\{I[L]\}$ be a collection of effective actions defining a theory. Now for
+Conversely, let $\{I[L]\}$ be a collection of effective interactions defining a theory. Now for
 \begin{equation} I = \sum_{i,k} \hbar^i I_{i,k}\end{equation}
-we want to construct the terms $I_{i,k}$. For $I_{0,0}$ just take the limit $\lim_{\epsilon \ra 0} W(P(\epsilon,L), I[L])$. Now let us suppose we have constructed $I_{r,s}$ for $(r,s)<(i,k)$ such that
+we want to construct the terms $I_{i,k}$. For $I_{0,0}$ just take the limit $\limit{\epsilon \ra 0} \ W(P(\epsilon,L), I[L])$. Now let us suppose we have constructed $I_{r,s}$ for $(r,s)<(i,k)$ such that
 \begin{equation} W^R_{a,b}\left(P(0,L), \sum_{(r,s)<(i,k)} \hbar^k I_{r,s}\right) = I_{a,b}(L)\end{equation}
 for all $(a,b) < (i,k)$. Now
 \begin{equation}I_{i,k} = I_{i,k}[L] - W^R_{i,k}\left(P(0,L), \sum_{(r,s)<(i,k)} \hbar^r I_{r,s} \right)\end{equation}
@@ -939,18 +972,20 @@ Thus we have established a bijection between theories and local power series in 
 
 \textbf{Problem:} The space of theories is an infinite-dimensional manifold. Physically, to specify a particular theory we would need an infinite number of experiments.\\
 
-Thus we want to consider a finite subset of these theories, namely renormalisable theories. \textbf{Classically} a theory is renormalisable, if it has a finite number of counterterms. But we saw that the number of counterterms depends on the choice of renormalisation scheme.
+The goal is to restrict to a finite subset of these theories, namely renormalisable theories. \textbf{Classically} a theory is renormalisable, if it has a finite number of counterterms. But we saw that the number of counterterms depends on the choice of renormalisation scheme.
 
 \begin{principle}
   A theory $\{S^{eff}[\Lambda]\}$ is renormalisable if $S^{eff}[\Lambda]$ does not grow too fast when $\Lambda \lra \infty$, measured in the "right" units appropriate to the energy scale.
 \end{principle}
 
-
-\textbf{Aside:} If $M = \RR^n$, it is not compact, but we can define a scalar PQFT in (more or less) the same way and get similar results. Define
-\begin{equation} R_l \colon \Ci(\RR^n) \lra \Ci(\RR^n), \quad \quad \phi(x) \lmap l^{1-n/2} \phi(l^{-1} x)\end{equation}
+If $M = \RR^n$, it is not compact, but we can define a scalar PQFT in (more or less) the same way and get similar results. Define
+\begin{equation}
+  R_l \colon \Ci(\RR^n) \lra \Ci(\RR^n), \quad \quad \phi(x) \lmap l^{1-n/2} \phi(l^{-1} x)
+\end{equation}
 and additionally the map
-\begin{equation} RG_l (S^{eff}[\Lambda]) (\phi) := S^{eff}[l^{-2} \Lambda](R_l(\phi))\end{equation}
-This leads us to the following result:
+\begin{equation}
+  RG_l (S^{eff}[\Lambda]) (\phi) := S^{eff}[l^{-2} \Lambda](R_l(\phi))
+\end{equation}
 
 \begin{lem}
   $RG_l$ is a flow on the space of theories. If $ \{S^{eff}[\Lambda]\}$ satisfies the \eqref{eq:RGE}, then so does $\{RG_l(S^{eff}[\Lambda])\}$. We call $RG_l$ the \textbf{local renormalisation group flow}.
@@ -964,7 +999,7 @@ This leads us to the following result:
 
 \begin{example}~
   \begin{itemize}
-    \item $\int_{\RR^4} \phi D \phi, \ \int \phi^4$ are of $\dim 0$.
+    \item $\int_{\RR^4} \phi D \phi, \ \int_{\RR^4} \phi^4$ are of $\dim 0$.
     \item $\int_{\RR^4} \phi^2$ is of $\dim 2$.
   \end{itemize}
 \end{example}
@@ -982,8 +1017,5 @@ This leads us to the following result:
   \begin{equation}\LL (\phi) = a \phi D \phi + b \phi^4 + c \phi^2\end{equation}
   for $a,b,c \in \RR\llbracket\hbar \rrbracket$ and such that $a = - \frac{1}{2}$ modulo $\hbar$ and $c = 0$ modulo $\hbar$.
 \end{corollary}
-
-
-
 
 \newpage

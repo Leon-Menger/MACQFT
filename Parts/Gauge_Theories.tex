@@ -4,41 +4,41 @@
 \subsection{Quantisation in the Presence of Local Symmetries}
 
 Recall that our chosen approach to the quantisation of (local) Lagrangian field theories deals with expressions of the form
-\begin{equation}\langle O_1 ... O_n \rangle := \frac{1}{Z} \int_\FF e^{i/\hbar S(\phi)} O_1(\phi) ... O_n(\phi) D\phi \end{equation}
+\begin{equation}\langle O_1 ... O_n \rangle := \frac{1}{\ZF} \int_\FF e^{i/\hbar S(\phi)} O_1(\phi) ... O_n(\phi) D\phi \end{equation}
 where $S = \int_M L$, the Lagrangian $L$ is a local $(0,top)$-form and $\FF = \Gamma(M, F)$. Further the $O_i$ are local action functionals on $\FF$ and we define
 \begin{equation}\ZF := \int_\FF e^{i/\hbar S(\phi)} D\phi \end{equation}
 where $D\phi$ is supposed to be "a measure" on $\FF$ which \textbf{does not exists in general}. Now for \textbf{finite dimensions}, given a measure $\mu$ on $X$ we have the \textbf{Stationary Phase Formula}
 \begin{align}\label{eq:StatPhase}\tag{SPF}
   \ZF := \int_X \mu e^{i/\hbar S_0} \ \underset{\hbar \lra 0}{\sim} \ &\left[ \sum_{x_0 \in Crit(S_0)} e^{i/\hbar S(x_0)} \left|\det\HH[S](x_0)\right|^{-1/2} \exp\left(i \frac{\pi}{4} \sgn(S(x_0))\right) \right]\\
-   &\cdot (2\pi \hbar)^{\dim(X)/2} \sum_{\gamma \ graph} \frac{\hbar^{-g(\gamma)}}{|\Aut(\gamma)|} \Phi_\gamma
+   &\cdot (2\pi \hbar)^{\dim(X)/2} \sum_{\gamma \ graph} \frac{\hbar^{-\chi(\gamma)}}{|\Aut(\gamma)|} \Phi_\gamma \nonumber
 \end{align}
-Where $\gamma$ are \emph{Feynman graphs}, $g(\gamma)$ is the genus of $\gamma$ and $\Phi(\gamma)$ is the weight of a graph. Note that here we have an \emph{implicit assumption}, namely that $\HH[S](x_0)$ is non-degenerate. In field theory, we use the stationary phase formula as a \emph{definition} of the "path integral".\\
+Where $\gamma$ are \emph{Feynman graphs}, $\chi(\gamma)$ is the Euler characteristic of $\gamma$ (thus $|V|-|E|$) and $\Phi(\gamma)$ is the weight of a graph. Note that here we have an \emph{implicit assumption}, namely that $\HH[S](x_0)$ is non-degenerate. In field theory, we use the stationary phase formula as a \emph{definition} of the "path integral".\\
 
-Now we can ask ourselves, if the possible degeneracy of $\HH[S](x_0)$ really is an issue. The answer is: \textbf{Yes!} Consider $\FF = \Gamma(M, F)$ with $M$ closed without boundary. Let further $S = \int_M L$. Now assume we are given a collection $\{V_\alpha\}^M$ of local symmetries \ref{def:LocalSymmetry} such that
+Now we can ask, if the possible degeneracy of $\HH[S](x_0)$ really is an issue. The answer is: \textbf{Yes!} Consider $\FF = \Gamma(M, F)$ with $M$ compact without boundary. Let further $S = \int_M L$. Now assume we are given a collection $\{V_\alpha\}^M$ of local symmetries \ref{def:LocalSymmetry} such that
 \begin{equation}\lie{V_\alpha} S = V_\alpha^{(i)} \frac{\delta S}{\delta \phi^{(i)}} = 0 \end{equation}
 Namely we obtain the \emph{Noether Identities}. Now consider
 \begin{align}
   0 = \frac{\delta}{\delta \phi^{(j)}} \left( V_\alpha^{(i)} \frac{\delta S}{\delta \phi^{(i)}} \right) = \HH[S]_{(ij)} V^{(i)}_\alpha + \frac{\delta S}{\delta \phi^{(i)}} \frac{\delta V_\alpha^i}{\delta \phi^{(j)}}
 \end{align}
-Thus we restrict to $x_0 \in Crit(S) = \{x \in \FF \ s.t. \ \delta S|_x = 0\}$ such that
-\begin{equation}\HH[S]_{(ij)}(x_0) V^{(i)}_\alpha = 0 \quad \Leftrightarrow \quad V_\alpha \ \text{is a local symmetry} \end{equation}
-
+Thus we restrict to $x_0 \in \Crit(S) = \{x \in \FF \ s.t. \ \delta S|_x = 0\}$ such that
+\begin{equation}
+  \HH[S]_{(ij)}(x_0) V^{(i)}_\alpha \overset{\nequiv}{=} 0 \quad \Leftrightarrow \quad V_\alpha \ \text{is a local symmetry}
+\end{equation}
 \begin{ex}
   Show that $\{V_\alpha \in \VF_{evol}(\FF)\}$ which are local symmetries of $S$ forms a Lie subalgebra of $\VF_{evol}(\FF)$. We further denote it by $\widetilde{\gf}$.
 \end{ex}
-
 Note that not all symmetries are "interesting" and thus not all symmetries are created equal. Consider a bivector field $\mu \in \Gamma(\bigwedge^2 (T\FF))$ and look at the vector field
-\begin{equation}\omega := \mu(\delta S), \quad \mu = \mu^{ij} \frac{\delta}{\delta \phi^{(i)}} \wedge \frac{\delta}{\delta \phi^{(j)}}, \quad \omega = \mu^{ij} \frac{\delta S}{\delta \phi^{(i)}} \frac{\delta S}{\delta \phi^{(j)}}, \quad \mu^{ij} = - \mu^{ji} \end{equation}
+\begin{equation}
+  \omega := \mu(\delta S), \quad \mu = \mu^{ij} \frac{\delta}{\delta \phi^{(i)}} \wedge \frac{\delta}{\delta \phi^{(j)}}, \quad \omega = \mu^{ij} \frac{\delta S}{\delta \phi^{(i)}} \frac{\delta S}{\delta \phi^{(j)}}, \quad \mu^{ij} = - \mu^{ji}
+\end{equation}
 Now we claim that $\omega$ is a local symmetry $\forall \mu$:
-
 \begin{proof}
   $\lie{\omega} S = \frac{\delta S}{\delta \phi^{(i)}} \omega^i = \frac{\delta S}{\delta \phi^{(i)}} \frac{\delta S}{\delta \phi^{(j)}} \mu^{ij} \equiv 0$
 \end{proof}
-
 This leads us to the following definition:
 
 \begin{definition}[Trivial Symmetries]
-  A local symmetry of the type $\omega = \mu(\delta S)$ is called a \textbf{trivial symmetry}. We denote the space of such trivial symmetries by $\tf$.
+  A local symmetry of the type $\omega = \mu(\delta S)$ for $\mu \in \Gamma(\bigwedge^2 (T\FF))$ is called a \textbf{trivial symmetry}. Denote the space of such trivial symmetries by $\tf$.
 \end{definition}
 
 \begin{lem}
@@ -49,24 +49,29 @@ This leads us to the following definition:
 \end{lem}
 
 \begin{rem}
-  Note that if $\omega$ is trivial, $\lie{\omega}S = 0$ does \textbf{not} impose nontrivial conditions, thus no Noether Identities. They are not associated to nontrivial conservation laws, currents, charges etc. In particular they vanish on $Crit(S)$.
+  Note that if $\omega$ is trivial, $\lie{\omega}S = 0$ does \textbf{not} impose nontrivial conditions, thus no Noether Identities. They are not associated to nontrivial conservation laws, currents, charges etc. Since they particularly vanish on $\Crit(S)$ they are still considered symmetries.
 \end{rem}
 
-No when treating theories with symmetries, we effectively want to work with a kind of quotient
-\begin{equation}\gf := \widetilde{\gf}/\tf\end{equation}
-Notice that $\mathfrak{J}$ is not necessarily a Lie subalgebra. However if
-\begin{equation}[\tf, \gf] \subset \tf, \quad \quad [\gf, \gf] = \tf + \gf \end{equation}
-and thus $\tf$ vanishes "on shell" (on $Crit(S)$), then \textbf{$\gf$ is a subalgebra on $Crit(S)$}. There are two main approaches to this:
+When considering theories with symmetries, we effectively want to work with a kind of quotient
+\begin{equation}
+  \gf := \widetilde{\gf}/\tf
+\end{equation}
+Notice that $\gf$ is not necessarily a Lie subalgebra:
+\begin{itemize}
+  \item $[\tf, \gf] \subset \tf$ thus $\tf$ is an ideal in $\gf$.
+  \item $[\gf, \gf] = \tf + \gf$ thus $\gf$ is closed "on-shell".
+\end{itemize}
+Thus \textbf{$\gf$ is a subalgebra at least on $\Crit(S)$}. There are two main approaches to this:
 
 \begin{itemize}
   \item Dealing with $\gf$'s that are closed everywhere (Lie subalgebras). This treatment is due to Beach, Rovet, Stara, Tyutin \textbf{(BRST)}
-  \item More generally searching a formalism that can treat both scenarios. This leads to the Batalin-Vilkovisky formalism \textbf{(BV)}.
+  \item More generally we search for a formalism that can treat Lie algebras $\gf$ that only form Lie subalgebras on $\Crit(S)$. This leads to the Batalin-Vilkovisky formalism \textbf{(BV)}.
 \end{itemize}
 
 Most cases of physical interest are such that $\gf$ is a Lie subalgebra but the conceptual generalisation of $BV$ will allow for
 \begin{itemize}
-  \item more general \textbf{gauge-fixing conditions}.
-  \item a treatment of boundary data.
+  \item more general \textbf{gauge-fixing conditions},
+  \item a treatment of boundary data,
   \item observables in $BV$ that are more general than those in $BRST$.
 \end{itemize}
 
@@ -78,7 +83,7 @@ Thus for the rest of the script assume that $\gf$ is a subalgebra.
 \begin{definition}[Lie group/algebra actions]
   Let $G$ be a Lie group with lie algebra $\gf$ and let $M$ be a smooth manifold.
   \begin{itemize}
-    \item A  \textbf{Lie group action} is a smooth map $R\colon G \times M \lra M$ such that for all $g \in G$ the map $R_g \colon M \lra M$ is a diffeomorphism. This is equivalent to $\widetilde{R} \colon G \lra Diff(M)$ being a group homomorphism.
+    \item A  \textbf{Lie group action} is a smooth map $R\colon G \times M \lra M$ such that for all $g \in G$ the map $R_g \colon M \lra M$ is a diffeomorphism. This is equivalent to $\widetilde{R} \colon G \lra \Diff(M)$ being a group homomorphism.
 
     \item A \textbf{Lie algebra action} on $M$ is a Lie algebra morphism
     \begin{equation}\rho \colon \gf \lra \VF(M) \end{equation}
@@ -93,7 +98,7 @@ Thus for the rest of the script assume that $\gf$ is a subalgebra.
 \end{example}
 
 \begin{definition}[Tangent Distributions]
-  Let $M$ be a smooth manifold. A \textbf{smooth (tangent) distribution} $\Delta$ of rank $k$ on $M$ is a subset $\Delta \subset TM$ such that $\forall p \in M$ the set $\Delta_p \subset T_p M$ is a $k$-dimensional subspace and such that there exists a neighbourhood $N_p$ over which there are $k$ linearly independent smooth vector fields with $\Delta_y = Span(X_1(y), ..., X_k(y))$ for $y \in N_p$. A smooth (tangent) distribution is \textbf{involutive} if $\Gamma(\Delta)$ forms a Lie subalgebra of $\VF(M)$.
+  Let $M$ be a smooth manifold. A \textbf{smooth (tangent) distribution} $\Delta$ of rank $k$ on $M$ is a subset $\Delta \subset TM$ such that $\forall p \in M$ the set $\Delta_p \subset T_p M$ is a $k$-dimensional subspace and such that there exists a neighbourhood $N_p$ over which there are $k$ linearly independent smooth vector fields with $\Delta_y = \Span(X_1(y), ..., X_k(y))$ for $y \in N_p$. A smooth (tangent) distribution is \textbf{involutive} if $\Gamma(\Delta)$ forms a Lie subalgebra of $\Gamma(TM)$.
 \end{definition}
 
 \begin{ex}
@@ -101,70 +106,100 @@ Thus for the rest of the script assume that $\gf$ is a subalgebra.
 \end{ex}
 
 \begin{rem}
-  Unsurprisingly, in infinite dimensions one need to be very careful. Say that $\delta \subset TM$ is a (smooth) subbundle. In order to keep the notion of a "finite rank" $k$ one can say that $\Delta_y$ is finitely generated as a $\Ci(M)$-span.\\
-  Notice that in finite dimensions \textbf{Frobenius' Theorem} states that an involutive smooth distribution is tangent to an integral submanifold $N \subset M$ s.t. $TN \simeq \Delta$. Unfortunately this does not generally hold true in infinite dimensions. It does when the manifolds are Banach, however for Fréchet manifolds it does not necessarily. \textbf{Warning:} The Inverse Function Theorem can also fail in Fréchet manifolds.
+  Unsurprisingly, in infinite dimensions one needs to be very careful. Say that $\delta \subset TM$ is a (smooth) subbundle. In order to keep the notion of a "finite rank" $k$ one can say that $\Delta_y$ is finitely generated as a $\Ci(M)$-span. Notice that in finite dimensions \textbf{Frobenius' Theorem} states that an involutive smooth distribution is tangent to an integral submanifold $N \subset M$ s.t. $TN \simeq \Delta$. Unfortunately this does not generally hold true in infinite dimensions. It does when the manifolds are Banach, however for Fréchet manifolds it does not necessarily. \textbf{Warning:} The Inverse Function Theorem can also fail in Fréchet manifolds.
 \end{rem}
 
 Now consider a Lie algebra action $\rho \colon \gf \lra \VF(M)$ and recall that $\VF(M) \simeq \Der(\Ci(M))$.
 
 \begin{definition}
   The space of $\Ci(M)$-valued $k$-forms on $\gf$ is defined to be
-  \begin{equation}C^k_{CE}(\gf ; \Ci(M)) := \Hom\left(\bigwedge^k \gf, \Ci(M)\right)\cong\bigwedge^k\mathfrak{g}^*\otimes\Ci(M). \end{equation}
+  \begin{equation}
+    C^k_{CE}(\gf ; \Ci(M)) := \Hom\left(\bigwedge^k \gf, \Ci(M)\right)\cong\bigwedge^k\mathfrak{g}^*\otimes\Ci(M).
+  \end{equation}
   This is called the \textbf{Chevalley--Eilenberg} complex for the Lie algebra action $\rho \colon \gf \lra \Der(\Ci(M))$. Now define the map
-  \begin{equation}d_{CE} \colon C^k_{CE}(\gf ; \Ci(M)) \lra C^{k+1}_{CE}(\gf ; \Ci(M)) \end{equation}
-  as
+  \begin{equation}
+    d_{CE} \colon C^k_{CE}(\gf ; \Ci(M)) \lra C^{k+1}_{CE}(\gf ; \Ci(M))
+  \end{equation}
+  such that the following properties hold:
   \begin{enumerate}
-    \item $\forall f\in \Ci(M)$ we have $df(X)= \rho(X)(f) \ \forall X \in \gf$
-    \item $\forall \alpha \in \gf^*$ we have $d_{CE}\alpha(X,Y) := - \alpha([X,Y]) \ \forall X,Y \in \gf$
+    \item $\forall f\in \Ci(M)$ we have $df(X) := \rho(X)(f) \ \forall X \in \gf$.
+    \item $\forall \alpha \in \gf^*$ we have $d_{CE}\alpha(X,Y) := - \alpha([X,Y]) \ \forall X,Y \in \gf$.
     \item We extend to $\bigwedge^\bullet \gf^*$ using the Leibniz rule
-    \begin{equation}d_{CE} (\alpha \wedge \beta) = d_{CE}\alpha \wedge \beta + (-1)^{|\alpha|} \wedge d_{CE} \beta \end{equation}
-    where $|\alpha| = k$ if $\alpha \in \bigwedge^k\gf^*$
+    \begin{equation}
+      d_{CE} (\alpha \wedge \beta) = d_{CE}\alpha \wedge \beta + (-1)^{|\alpha|} \wedge d_{CE} \beta
+    \end{equation}
+    where $|\alpha| = k$ if $\alpha \in \bigwedge^k\gf^*$.
     \item We extend to $\bigwedge^\bullet \gf^* \otimes \Ci(M)$ by
-    \begin{equation}d_{CE}(\omega \otimes f) = d_{CE} \omega \otimes f + (-1)^{|\omega|} \omega \otimes d_{CE} f\end{equation}
+    \begin{equation}
+      d_{CE}(\omega \otimes f) = d_{CE} \omega \otimes f + (-1)^{|\omega|} \omega \otimes d_{CE} f.
+    \end{equation}
   \end{enumerate}
 \end{definition}
 
 \begin{prop}
   $d_{CE}^2 = 0$ and hence $(C_{CE}^\bullet(\gf ; \Ci(M))$ is a cochain complex.
+\begin{proof}
+  Since by property $2.$ in the definition of $d_{CE}$ it is just the dual of the Lie bracket, it satisfies the Jacobi-Identity and thus squares to zero:
+  \begin{align}
+    d^2_{CE} \alpha(X,Y,Z) &= - d_{CE} \left[ \alpha([X,Y],Z) + \alpha([Z,X],Y) + \alpha([Y,Z],X) \right] \\
+    &= \alpha([[X,Y],Z] + [[Z,X],Y] + [[Y,Z],X]) = 0
+  \end{align}
+\end{proof}
 \end{prop}
 
-If $\{t_a\}$ is a basis of $\gf$ and $V_a = \rho(t_a)$, denote by $C^a \in \gf^*$ the coordinates in $\gf$, $\chi= C^a(X) t_a$, and structure constants $f_{ab}^c$ for the Lie algebra we obtain
-\begin{equation}d_{CE} = C^a V_a - \frac{1}{2} f^d_{ab} C^a C^b \dell{}{C^d} \end{equation}
+If $\{t_a\}$ is a basis of $\gf$ and $V_a = \rho(t_a)$, denote by $C^a \in \gf^*$ the coordinates in $\gf^*$ and structure constants $f_{ab}^c$ for the Lie algebra we obtain
+\begin{equation}
+  d_{CE} = C^a V_a - \frac{1}{2} f^d_{ab} C^a C^b \dell{}{C^d}
+\end{equation}
 Now it is immediate to prove the above proposition.\\
 
 The cohomology of the thus arising cochain complex is
-\begin{equation}H^k(C_{CE}^\bullet; \Ci(M)) := \frac{\ker(d_{CE}|_{C^k})}{\ker(d_{CE}|_{C^{k-1}})} \end{equation}
+\begin{equation}
+  H^k(C_{CE}^\bullet; \Ci(M)) := \frac{\ker(d_{CE}|_{C^k})}{\ker(d_{CE}|_{C^{k-1}})}
+\end{equation}
 
 \begin{rem}
-  The set $H^\circ (C_{CE}^\bullet; \Ci(M))$ is the set of $f \in \Ci(M)$ such that
+  The set $H^0 (C_{CE}^\bullet; \Ci(M))$ is the set of $f \in \Ci(M)$ such that
   \begin{equation}d_{CE} f = 0 \quad \Leftrightarrow \quad d_{CE} f(X) = 0 \quad \forall X\in \gf \end{equation}
-  which means $\rho(X)(f) = 0$ and thus $f$ is \textbf{invariant}. Thus we obtain
-  \begin{equation}H^\circ (C_{CE}^\bullet; \Ci(M)) \simeq \Ci(M)^\gf \end{equation}
+  hence $\rho(X)(f) = 0$, thus $f \in H^0 (C_{CE}^\bullet; \Ci(M))$ iff it is \textbf{invariant} under the Lie algebra action:
+  \begin{equation}
+    H^0 (C_{CE}^\bullet; \Ci(M)) \simeq \Ci(M)^\gf
+  \end{equation}
   where $\Ci(M)^\gf$ are $\gf$-invariant smooth functions on $M$.
 \end{rem}
 
 On $\bigwedge^\bullet \gf^*$ there are the following natural operations:
 \begin{align}
-  \forall \alpha \in \gf^* \quad \mathcal{E}(\alpha) \colon \bigwedge^k \gf^* &\lra \bigwedge^{k+1} \gf^*, \\
-  \omega &\lmap \alpha \wedge \omega \\
-  \forall X \in \gf \quad \imath(X) \colon \bigwedge^k \gf^* &\lra \bigwedge^{k-1} \gf^*, \\
-  \omega &\lmap \imath_X (\omega)
+  \forall \alpha \in \gf^* \quad \mathcal{E}(\alpha) \colon \bigwedge^k \gf^* &\lra \bigwedge^{k+1} \gf^*, \quad \quad \omega \lmap \alpha \wedge \omega \\
+  \forall X \in \gf \quad \imath(X) \colon \bigwedge^k \gf^* &\lra \bigwedge^{k-1} \gf^*, \quad \quad \omega \lmap \imath_X (\omega)
 \end{align}
 
 Now we extend $\imath_X$ by the graded Leibniz rule
 \begin{equation}\imath_X(\alpha \wedge \beta) = (\imath_X \alpha) \wedge \beta + (-1)^{|\alpha|} \alpha \wedge (\imath_X \beta) \end{equation}
 Now if $\{t_a\}$ and $\{\alpha^a\}$ are basis for $\gf$ and $\gf^*$ respectively, then
-\begin{equation}d_{CE} = \mathcal{E}(\alpha^a) \rho(t_a) - \frac{1}{2} \mathcal{E}(\alpha^a) \mathcal{E}(\alpha^b) \imath_{[t_a, t_b]} \end{equation}
-where we sum over repeated indices. This coincides with the formula above by defining $C^a \equiv \mathcal{E}(\alpha^a)$ and $\dell{}{C^a} \equiv \imath_{t_a}$. Thus we obtain
-\begin{equation}C^a C^b = \mathcal{E}(\alpha^a) \alpha^b = - \mathcal{E}(\alpha^b) \alpha^a = - C^b C^a \end{equation}
+\begin{equation}
+  d_{CE} = \mathcal{E}(\alpha^a) \rho(t_a) - \frac{1}{2} \mathcal{E}(\alpha^a) \mathcal{E}(\alpha^b) \imath_{[t_a, t_b]}
+\end{equation}
+where we sum over repeated indices. Now define $C^a \equiv \mathcal{E}(\alpha^a)$ and $\dell{}{C^a} \equiv \imath_{t_a}$ to obtain
+\begin{equation}
+  C^a C^b = \mathcal{E}(\alpha^a) \alpha^b = - \mathcal{E}(\alpha^b) \alpha^a = - C^b C^a
+\end{equation}
 such that
-\begin{equation}d_{CE} = C^a V_a - \frac{1}{2} f_{ab}^d C^a C^b \dell{}{C^d} \end{equation}
+\begin{equation}
+  d_{CE} = C^a V_a - \frac{1}{2} f_{ab}^d C^a C^b \dell{}{C^d}
+\end{equation}
 Now we need to consider the collection $\{C^a\}$ as \textbf{odd coordinates}. This corresponds to the notion of \textbf{Ghost Variables} or \textbf{Ghost Fields} in physics. Thus we can formulate
-\begin{equation}\Ci(M \times \gf[1]) \simeq \bigwedge^\bullet \gf^* \otimes \Ci(M) \cong \Hom(\bigwedge^\bullet \gf, \Ci(M)) \end{equation}
+\begin{equation}
+  \Ci(M \times \gf[1]) \simeq \bigwedge^\bullet \gf^* \otimes \Ci(M) \cong \Hom\left(\bigwedge^\bullet \gf, \Ci(M)\right)
+\end{equation}
 where $\gf[1]$ is a graded vector space, concentrated in degree $-1$. This leads us to
-\begin{equation}C_{CE}^\bullet (\gf ; \Ci(M)) \simeq \Ci(M \times \gf[1]) \end{equation}
+\begin{equation}
+  C_{CE}^\bullet (\gf ; \Ci(M)) \simeq \Ci(M \times \gf[1])
+\end{equation}
 which allows us to think of $d_{CE}$ as a vector field of degree $1$ which squares to zero. Thus we can also think of it as a \textbf{cohomological vector field} on $M_{min}:=M \times \gf[1]$ such that
-\begin{equation}\frac{1}{2} [d_{CE}, d_{CE}]_{\VF(M_{min})} = d_{CE}^2 = 0 \end{equation}
+\begin{equation}
+  \frac{1}{2} [d_{CE}, d_{CE}]_{\VF(M_{min})} = d_{CE}^2 = 0
+\end{equation}
 
 \subsection{BRST Formalism}
 
@@ -173,43 +208,46 @@ This subsection is dedicated to a concise formulation of the \textbf{Becchi--Rou
   \rho \colon \gf \lra \VF(F) \simeq \Der(\Ci(M))
 \end{equation}
 
-We associate to it the Chevally-Eilenberg complex
+We associate to it the Chevally-Eilenberg complex where $F_{min} = F \times \gf[1]$
 \begin{equation}
   C_{CE}^\bullet (\gf, \Ci(F)) \simeq \bigwedge^\bullet \gf^* \otimes \Ci(F) \simeq \Ci(F \times \gf[1]) = \Ci(F_{min})
 \end{equation}
 
 Now consider the product $F_{Aux} := \gf^* \times \gf^*[-1]$. We want to extend $d_{CE}$ to a cohomological vector field on
-\begin{equation}F_{BRST} := F_{min} \times F_{Aux} \end{equation}
+\begin{equation}
+  F_{BRST} := F_{min} \times F_{Aux} = F \times \gf[1] \times \gf^* \times \gf^*[-1]
+\end{equation}
 Luckily on $F_{Aux}$ there is a natural cohomological vector field:
 
 \begin{lem}
-  On $F_{Aux}$ consider the "vector field" $d_{Aux} \overline{c}_a = \lambda_a$ such that $d_{Aux} \lambda_a = 0$ where we are given a basis $\{e^a\}$ of $\gf^*$, the $\overline{c}_a$ are coordinates in $\gf^*[-1]$ and the $\lambda$ are coordinates in $\gf^*$. Then $d^2_{Aux} = 0$ and thus it is cohomological.
+  On $F_{Aux}$ consider the "vector field" $d_{Aux} \overline{c}_a = \lambda_a$ such that $d_{Aux} \lambda_a = 0$ where we are given a basis $\{e^a\}$ of $\gf^*$, the $\overline{c}_a$ are coordinates in $\gf^*[-1]$ and the $\lambda_a$ are coordinates in $\gf^*$. Then $d^2_{Aux} = 0$ and thus it is cohomological.
 \end{lem}
 
 Note that our conventions make $\overline{c}_a$ coordinates of degree $-1$ and $\lambda$ of degree $0$.
 
 \begin{ex}
-  Show that $\left( \Ci(F_{Aux}, d_{Aux}) \right) \simeq \left( \Omega^\bullet(\gf^*[-1], d_{dR}) \right)$. In particular, the cohomology of $\Ci(F_{Aux})$ vanishes.
+  Show that $\left( \Ci(F_{Aux}), d_{Aux} \right) \simeq \left( \Omega^\bullet(\gf^*[-1]), d_{dR} \right)$. In particular, the cohomology of $\Ci(F_{Aux})$ vanishes.
 \end{ex}
 
-We do not want to change the cohomology of $F_{min}$, which we know represents invariant functions. Thus we aim for a prescription of the form
+We do not want to change the cohomology of $F_{min}$ which represents invariant functions. Thus we aim for a prescription of the form
 \begin{equation}F_{min} \lra F_{BRST} = F_{min} \times F_{Aux} \end{equation}
-such that we only "add" fields that do not contribute. This allows for the following splitting:
-\begin{equation}\Ci(F_{BRST}) \simeq \Ci(F) \otimes \bigwedge^\bullet \gf^* \otimes \bigwedge^\bullet \gf \otimes S^\bullet \gf \simeq C_{CE}^\bullet (\gf, \Ci(F)) \otimes \Omega^\bullet_{dR}(\gf^*[-1]) \end{equation}
+such that we only "add" fields that do not contribute to the cohomology class. This allows for the following splitting:
+\begin{equation}
+  \Ci(F_{BRST}) \simeq \Ci(F) \otimes \bigwedge^\bullet \gf^* \otimes S^\bullet(\gf) \otimes \bigwedge^\bullet \gf \simeq C_{CE}^\bullet (\gf, \Ci(F)) \otimes \Omega^\bullet_{dR}(\gf^*[-1])
+\end{equation}
 which in turn allows us to define
 \begin{equation}
   d_{BRST} := d_{CE} + d_{Aux}
 \end{equation}
-Note that the auxilary variables (fields) are often called \textbf{Nakanishi-Lautrup fields}.
+Note that the auxilary variables (fields) are often called \textbf{Nakanishi-Lautrup fields}. Now let $S \in \Ci(F)$ such that $d_{CE} S = 0$. Namely $S$ is lifted to $F_{min}$ since it is invariant under $d_{CE}$ and thus in particular a $\gf$-invariant function. Thus use $H^0 (C_{CE}^\bullet; \Ci(M)) \simeq \Ci(M)^\gf$.\\
 
-Now let $S \in \Ci(F)$ such that $d_{CE} S = 0$ (namely $S$ is lifted to $F_{min}$). Then $S \in H^\circ (C^\bullet_{CE})$ and thus it is an invariant function. Now think of $S \in \Ci(F_{BRST})$ such that $S \in H^\circ(C^\bullet_{BRST}, d_{BRST})$. Thus applying gauge fixing we get for a gauge field $\psi_{gf}$ with $|\psi_{gf}| = 1$:
+Now think of $S \in \Ci(F_{BRST})$ such that $S \in H^0(C^\bullet_{BRST}, d_{BRST})$. Thus applying \textbf{gauge fixing} we get for a gauge field $\psi_{gf} \in \Ci(F_{Aux})^{(-1)}$ with $|\psi_{gf}| = 1$:
 \begin{equation}
   S_{gf} = S + d_{BRST} \psi_{gf} \quad \quad \Longrightarrow \quad \quad  [S_{gf}]_{BRST} = [S]_{BRST}
 \end{equation}
 A valid question is, why this should be relevant. To understand this, recall that if $S \in C(F)^\gf$ this means that $\HH[S](x_0)$ is degenerate. How about if we choose a different representative $S_{gf} = S + d_{BRST} \psi_{gf}$ such that $\HH[S_{gf}](x_0)$ is non-degenerate? We will pick up this thought after a short digression:
 
-\begin{rem}
-  \textbf{Integration on Super/Graded manifolds}\\
+\begin{rem}[Integration on Super/Graded manifolds]
   Note that everything formulated for super manifolds also applies to $\ZZ$-graded manifolds by sending a degree to the parity. Let $E \lra M$ be a rank $m$ vector bundle over $M$ where $\dim(M) = n$. Denote by $\Pi E=: \MM$ the (super) vector bundle obtained by shifting the degree of the fibre vector spaces by $1$ (which just reverses the parity in $\ZZ/2$ (super) grading).
 
   \begin{definition}[Berezin line bundle]
@@ -227,19 +265,33 @@ A valid question is, why this should be relevant. To understand this, recall tha
   \end{definition}
 
   Now consider a vector space $V$ and its parity-shifted version $\Pi V$. Now on $\Pi V$ let there be a function given as $f = f_0 + f_1 \theta$ with $f_0, f_1 \in \RR$ and $\theta$ an \emph{odd} coordinate such that
-  \begin{equation}\int d\theta = 0 \quad  \quad \int d\theta \theta = 1 \end{equation}
+  \begin{equation}
+    \int d\theta = 0 \quad  \quad \int d\theta \theta =
+  \end{equation}
   In $m$ dimensions we have
-  \begin{equation}\int d^m \theta := \int d\theta^m \int ... \int d\theta^1 \end{equation}
-  such that $\int d^m \theta \ \theta^1 ... \theta^m = 1$ and zero otherwise. Now $V^0 = V_m^\circ \oplus V^1_m$ such that we can decompose
-  \begin{equation}f = f^0 + f^1_i \theta^i + f^2_{ij} \theta^i \theta^j + ... \end{equation}
+  \begin{equation}
+    \int d^m \theta := \int d\theta^m \int ... \int d\theta
+  \end{equation}
+  such that $\int d^m \theta \ \theta^1 ... \theta^m = 1$ and zero otherwise. Now $V^0 = V_m^0 \oplus V^1_m$ such that we can decompose
+  \begin{equation}
+    f = f^0 + f^1_i \theta^i + f^2_{ij} \theta^i \theta^j + .
+  \end{equation}
   where $f^k \in \Ci(V^0)$. Now
-  \begin{equation}\int_V f d^mx \ d^m \theta = \int_{V^\circ} f^{top} \ d^n x \end{equation}
+  \begin{equation}
+    \int_V f d^n x \ d^m \theta = \int_{V^0} f^{top} \ d^n x
+  \end{equation}
   Thus changing coordinates in the form $\widetilde{\theta}^i = A^i_j \theta^j$ amounts to
-  \begin{equation}\widetilde{\theta}^1 ... \widetilde{\theta}^m = \det(A) \theta^1 ... \theta^m \end{equation}
+  \begin{equation}
+    \widetilde{\theta}^1 ... \widetilde{\theta}^m = \det(A) \theta^1 ... \theta^m
+  \end{equation}
   Now we enforce
-  \begin{equation}\int d^m \widetilde{\theta} \widetilde{\theta}^1 ... \widetilde{\theta}^m = 1 \end{equation}
+  \begin{equation}
+    \int d^m \widetilde{\theta} \widetilde{\theta}^1 ... \widetilde{\theta}^m = 1
+  \end{equation}
   such that $d^m \widetilde{\theta} = (\det(A))^{-1} d^m \theta$. In general by pure construction
-  \begin{equation}\langle \mu, (f)_{top} \rangle \in \Gamma(M, \bigwedge^n T^* M) \end{equation}
+  \begin{equation}
+    \langle \mu, (f)_{top} \rangle \in \Gamma\left(M, \bigwedge^n T^* M \right)
+  \end{equation}
   is a top-form and can be integrated. One can generalize this entire construction by looking at
   \begin{equation}
     \widetilde{Ber}(\MM) := Ber(\MM) \otimes \bigwedge^\bullet E^* \simeq \bigwedge^n T^*M \otimes \bigwedge^m E \otimes \bigwedge^\bullet E^*
@@ -266,9 +318,9 @@ A valid question is, why this should be relevant. To understand this, recall tha
       C & D
     \end{pmatrix} \\
     A &\in (\End(\RR^n) \otimes \Ci(S))_{even} \\
-    B &\in (\End(\RR^m) \otimes \Ci(S))_{even} \\
-    C &\in (\Hom(\RR^m, \RR^n) \otimes \Ci(S))_{odd} \\
-    D &\in (\Hom(\RR^n, \RR^m) \otimes \Ci(S))_{odd}
+    D &\in (\End(\RR^m) \otimes \Ci(S))_{even} \\
+    B &\in (\Hom(\RR^m, \RR^n) \otimes \Ci(S))_{odd} \\
+    C &\in (\Hom(\RR^n, \RR^m) \otimes \Ci(S))_{odd}
     \end{align}
   \endgroup
 
@@ -294,7 +346,7 @@ A valid question is, why this should be relevant. To understand this, recall tha
     \begin{equation}
       \mu_1 = \prod_{i,a} dx^i d\theta_a, \quad \quad \mu_2 = \prod_{j,b} dy^j d\psi_b
     \end{equation}
-    Now let $\phi \colon \RR^{n|m}_1 \lra \RR^{n|m}_2$ be a smooth map of supermanifolds and let $f \in \Ci_c(\RR^{n|m}_2)$ such that
+    Now let $\phi \colon \RR^{n|m}_1 \lra \RR^{n|m}_2$ be a smooth map of supermanifolds and let $f \in \Ci_c(\RR^{n|m}_2)$. Then
     \begin{equation}\int_{\RR^{n|m}_2} \mu_2 f = \int_{\RR^{n|m}_2} \mu_1 \sgn(\det(J_f^{nn})) \cdot \sdet(J_f) \phi^* f \end{equation}
     where
     \begin{align}
@@ -306,9 +358,9 @@ A valid question is, why this should be relevant. To understand this, recall tha
     \begin{pmatrix}
       \dell{y}{x} & \dell{y}{\theta} \\
       \dell{\psi}{x} & \dell{\psi}{\theta}
-    \end{pmatrix}
+    \end{pmatrix}.
     \end{align}
-    Where we think of $J_f$ as a function in $\End(\RR^{n|m}) \otimes \Ci(\RR^{n|m})$.
+    Here we think of $J_f$ as a function in $\End(\RR^{n|m}) \otimes \Ci(\RR^{n|m})$.
   \end{theo}
 
   \begin{definition}
@@ -334,7 +386,7 @@ A valid question is, why this should be relevant. To understand this, recall tha
     \begin{equation}
       \mu_{cord} = d^n x^i \prod_a D\theta_a
     \end{equation}
-    Thus we write a vectorfield locally as
+    Thus we write a vector field locally as
     \begin{equation}
       v = v^i \dell{}{x^i} + v^a \dell{}{\theta_a}
     \end{equation}
@@ -363,31 +415,31 @@ This lemma lets us formulate and prove the main theorem of BRST:
 
 \begin{theo}[BRST]
   Let $\rho \colon \gf \lra \VF(F)$ be a Lie algebra action on $F$ and let $\tilde{\mu}$ be a Berezinian on $F_{BRST}$ such that $\diver_{\tilde{\mu}}(d_{BRST}) = 0$. Define
-  \begin{equation}\lrangle{h}_\psi := \frac{\int_{F_{BRST}} \exp(i/\hbar S_{gf})h \tilde{\mu}}{\int_{F_{BRST}} \exp(i/\hbar S_{gf})\tilde{\mu}} \end{equation}
+  \begin{equation}\lrangle{h}_\psi := \frac{\int_{F_{BRST}} \exp(\tfrac{i}{\hbar} S_{gf})h \tilde{\mu}}{\int_{F_{BRST}} \exp(\tfrac{i}{\hbar} S_{gf})\tilde{\mu}} \end{equation}
   such that
-  \begin{enumerate}
-    \item $S_{gf} = S + d_{BRST} \psi, \ \ \psi \in \Ci(F_{BRST})^{(-1)}$
-    \item $d_{BRST} S = 0, \ \ d_{BRST} h = 0$
-  \end{enumerate}
+  \begin{align}
+      &1. \quad \quad S_{gf} = S + d_{BRST} \psi, \ \ \psi \in \Ci(F_{BRST})^{(-1)}\\
+      &2. \quad \quad d_{BRST} S = 0, \ \ d_{BRST} h = 0
+  \end{align}
   Then the following statements hold true:
   \begin{itemize}
     \item[a.] $\lrangle{h}_\psi$ is locally constant in $\psi$
-    \item[b.] If $g = d_{BRST} f \ \Rightarrow \ \lrangle{g}_\psi = 0 \ \forall \psi$
+    \item[b.] If $a = d_{BRST} b \ \Rightarrow \ \lrangle{a}_\psi = 0 \ \forall \psi$
   \end{itemize}
 \begin{proof}
   Let $\psi_t$ be a smooth family of "gauge fixing functions". Define
   \begin{equation}
-    I_{\psi_t} = \int_{F_{BRST}} \exp(i/\hbar (S+ d_{BRST} \psi_t)) h \tilde{\mu}
+    I_{\psi_t} = \int_{F_{BRST}} \exp(\tfrac{i}{\hbar} (S+ d_{BRST} \psi_t)) h \tilde{\mu}
   \end{equation}
   such that we can denote
   \begin{align}
-    \dd{}{t} I_{\psi_t} &= \frac{i}{\hbar} \int_{F_{BRST}} d_{BRST}\left(\dd{}{t}\psi_t\right) \exp(i/\hbar (S_{gf}(t))) h \tilde{\mu} \\
-    &= \frac{i}{\hbar} \int_{F_{BRST}} d_{BRST} \left( \dd{}{t}\psi_t \exp(i/\hbar (S_{gf}(t))) h \right) \tilde{\mu} \\
-    &= - \frac{i}{\hbar} \int_{F_{BRST}} (...) \diver(d_{BRST}) \tilde{\mu} = 0
+    \dd{}{t} I_{\psi_t} &= \frac{i}{\hbar} \int_{F_{BRST}} d_{BRST}\left(\dd{}{t}\psi_t\right) \exp(\tfrac{i}{\hbar} (S_{gf}(t))) h \tilde{\mu} \\
+    &= \frac{i}{\hbar} \int_{F_{BRST}} d_{BRST} \left( \dd{}{t}\psi_t \exp(\tfrac{i}{\hbar} S_{gf}(t)) h \right) \tilde{\mu} \\
+    &= - \frac{i}{\hbar} \int_{F_{BRST}} (...) \diver_{\tilde{\mu}}(d_{BRST}) \tilde{\mu} = 0
   \end{align}
   Now for the second part note that
   \begin{align}
-    \int_{F_{BRST}} \exp(i/\hbar S) d_{BRST} f \tilde{\mu} = \int_{F_{BRST}} d_{BRST} (...) \tilde{\mu} = - \int_{F_{BRST}} \diver(d_{BRST}) \tilde{\mu} = 0
+    \int_{F_{BRST}} \exp(i/\hbar S) d_{BRST} b \ \tilde{\mu} = \int_{F_{BRST}} d_{BRST} (...) \tilde{\mu} = - \int_{F_{BRST}} \diver_{\tilde{\mu}}(d_{BRST}) \tilde{\mu} = 0
   \end{align}
   which proves our theorem.
 \end{proof}
@@ -395,16 +447,14 @@ This lemma lets us formulate and prove the main theorem of BRST:
 
 Now given a Berezinian $\tilde{\mu}$ we always have $\diver_{\tilde{\mu}}(d_{BRST}) = 0$. Thus BRST integrals descend to the BRST cohomology. Namely the value of the integrals do not change if you change the representative of a cohomology class.
 \begin{equation}
-  \int_{F_{BRST}} \tilde{\mu} \ : H^\circ_{BRST} (\Ci(F_{BRST})) \lra \RR
+  \int_{F_{BRST}} \tilde{\mu} \ : H^\bullet_{BRST} (\Ci(F_{BRST})) \lra \RR
 \end{equation}
-If $S$ has a degenerate Hessian, we make our transition to $S_{gf} = S + d_{BRST} \psi$. The divergence-free condition is strong. In general we are interested in $d_{BRST}$-closed quantities like $\exp(i/ \hbar S_{gf}) h$ but not in $d_{BRST}$-exact quantities.\\
+If $S$ has a degenerate Hessian, we make our transition to $S_{gf} = S + d_{BRST} \psi$. However the divergence-free condition is a strong restriction. In general we are interested in $d_{BRST}$-closed quantities like $\exp(i/ \hbar S_{gf}) h$ but not in $d_{BRST}$-exact quantities.\\
 
 When $\gf$ is unimodular then $\sum f^b_{ba} = 0$ and we can find a $\gf$-invariant measure on $F$, then $\diver(v_a) \equiv 0$ and thus in particular $\diver(d_{BRST}) = 0$.
 
 \subsubsection{Interpretation of "gauge fixing"}
-Consider, as before, a manifold $F$ together with a Lie group/algebra action of $G$ (or $\gf$). Further suppose that we are given an invariant functions $S \colon F \lra \RR$ where $S \in \Ci(F)^G$ and an invariant volume form $\mu_F \in \Omega^n(F)^G$ (if $F$ is non compact, take $\mu_F$ compactly supported). The action of the Lie group traces out orbits along which $S$ is constant.\\
-
-Let us look at the integral
+Consider, as before, a manifold $F$ together with a Lie group/algebra action of $G$ (or $\gf$). Further suppose that we are given an invariant function $S \colon F \lra \RR$ where $S \in \Ci(F)^G$ and an invariant volume form $\mu_F \in \Omega^n(F)^G$ (if $F$ is non compact, take $\mu_F$ compactly supported). The action of the Lie group traces out orbits along which $S$ is constant. Let us look at the integral
 \begin{equation}
   I = \int_{F} \mu_F e^{i/\hbar S} \quad \lra \quad  I = \vol_G \int_{F / G} \widetilde{\mu}_F \ e^{i/\hbar \widetilde{S}}
 \end{equation}
@@ -420,7 +470,7 @@ Now this point of view does not generalise very well because a quotient can be v
 such that
 \begin{enumerate}
   \item $0 \in \gf$ is a regular value for $\phi$
-  \item $\Sigma := \phi^{-1}(0)$ intersects the $G$-orbits $N \geq 1$ times, transversally (locally, for $U$ a neighbourhood of an intersection point $T_p U = \gf \oplus T_p \Sigma$ for any $p \in \Sigma$)
+  \item $\Sigma := \phi^{-1}(0)$ intersects the $G$-orbits $N \geq 1$ times, transversally (locally, for $U \subset F$ a neighbourhood of an intersection point $T_p U \simeq \gf \oplus T_p \Sigma$ for any $p \in \Sigma$)
 \end{enumerate}
 
 \begin{sketch}[Faddeev-Popov trick]
@@ -451,12 +501,12 @@ such that
   \end{equation}
   Now a basis for $T^*_x F$ is $\{d\phi^1(x), ..., d\phi^m(x), \alpha_1, ..., \alpha_{n-m} \}$. Thus we define
   \begin{equation}
-    \mu = \bigwedge_{a=1}^m d\phi^a  \wedge \alpha_1 \wedge ... \wedge \alpha_{n-m}
+    \mu = \bigwedge_{a=1}^m d\phi^a  \wedge \alpha_1 \wedge ... \wedge \alpha_{n-m}.
   \end{equation}
-  with a little care we now observe
+  With a little care we obtain
   \begin{align}
     \imath_{v_1} ... \imath_{v_m} \mu &= \left( \sum_{\sigma \in S_m} (-1)^S \prod_{a = 1}^m \pair{d\phi^a(x)}{v_{S(a)}(x)} \right) \alpha_1 \wedge ... \wedge \alpha_{n-m}\\
-    &= \det(FP(x)) \cdot \alpha_1 \wedge ... \wedge \alpha_{n-m}
+    &= \det(FP(x)) \cdot \alpha_1 \wedge ... \wedge \alpha_{n-m}.
   \end{align}
   Now conclude the proof by "wedging" with $\bigwedge d\phi^a$ to arrive at the statement of the lemma.
 \end{proof}
@@ -467,7 +517,7 @@ We will need to keep this lemma in mind when going forward. Another helpful lemm
 \begin{lem}
   Denote by $Dc D\overline{c}$ the coordinate Berezinians on $\gf[1] \oplus \gf^*[-1]$. Then
   \begin{equation}
-    \det(FP(x)) = \frac{\hbar}{i} \int_{\gf[1] \oplus \gf^*[-1]} DcD\overline{c} \exp(i/\hbar \pair{\overline{c}}{FP \cdot c})
+    \det(FP(x)) = \left(\frac{\hbar}{i}\right)^m \int_{\gf[1] \oplus \gf^*[-1]} Dc \ D\overline{c} \exp(i/\hbar \pair{\overline{c}}{FP(x) \cdot c})
   \end{equation}
   The splitting $\gf[1] \oplus \gf^*[-1]$ was the original interpretation of \emph{ghosts/antighosts}. Moreover we now have an integral representation of the delta function in the form of
   \begin{equation}
@@ -478,9 +528,10 @@ We will need to keep this lemma in mind when going forward. Another helpful lemm
 \begin{theo}[Faddeev-Popov]
 \label{theorem:FP}
   \begin{align}
-    I &= \int_F \exp(i/\hbar S) = \frac{\vol(F)}{N} \int_F \mu \delta(\phi) \det(FP) e^{i/\hbar S} \\
-    &= \frac{\vol(F)}{N} \int_{F \times \gf[1] \times \gf^*[-1] \times \gf^*} \mu DcD\overline{c} d^m \lambda \exp\left( \frac{i}{\hbar} \left( S + \pair{\lambda}{\phi(x)} + \pair{\overline{c}}{FP(x) c} \right)\right)
+    I &= \int_F \exp(\tfrac{i}{\hbar} S) = \frac{\vol(G)}{N} \int_F \mu \delta(\phi) \det(FP) \exp(\tfrac{i}{\hbar} S) \\
+    &= \int_{F \times \gf[1] \times \gf^*[-1] \times \gf^*} \mu \ Dc \ D\overline{c} \ d^m \lambda \ \exp\left( \frac{i}{\hbar} \left( S + \pair{\lambda}{\phi(x)} + \pair{\overline{c}}{FP(x) c} \right)\right)
   \end{align}
+  We define $S_{FP} := \left( S + \pair{\lambda}{\phi(x)} + \pair{\overline{c}}{FP(x) c} \right)$.
 \end{theo}
 
 \begin{theo}[FP within BRST]
@@ -490,9 +541,9 @@ We will need to keep this lemma in mind when going forward. Another helpful lemm
     S_{gf} = S + d_{BRST} \psi = S_{FP}
   \end{equation}
 \begin{proof}
-  Note that
+  Note that due to $d_{Aux} \overline{c} = \lambda$ we get
   \begin{align}
-    d_{BRST} \psi = \pair{d_{BRST} \overline{c}}{\phi} + \pair{\overline{c}}{d_{BRST} \phi}
+    d_{BRST} \psi = \pair{d_{BRST} \overline{c}}{\phi} - \pair{\overline{c}}{d_{BRST} \phi} = \pair{\lambda}{\phi} - \pair{\overline{c}}{d_{BRST} \phi}
   \end{align}
   such that we can write
   \begin{align}
@@ -506,17 +557,17 @@ We will need to keep this lemma in mind when going forward. Another helpful lemm
   \begin{enumerate}
     \item Cumbersome minimal/nonminimal extension is \textbf{needed} to introduce $\psi$.
     \item BRST is inherently limited to Lie algebra actions. Thus $\widetilde{\gf} = \tf \oplus \gf$ where $\gf$ is a subalgebra.
-    \item The space of invariant functions, in physical terminology called \textbf{"The Observables"} are quantities that, in principle, can be measured. In BRST they do \textbf{not} "know" anything about $S$.
+    \item The space of invariant functions, in physical terminology called \textbf{"The Observables"} are quantities that, in principle, can be measured. In BRST they do \textbf{not} "know" anything about $S$: It is not required in the definition of $H^\bullet(C^\bullet_{CE})$.
   \end{enumerate}
 
-  Solving all of those problems we will look at functions that are invariant on $Crit(S)$, not globally. To incorporate this idea from the start will lead us to the \textbf{BV formalism}.
+  Solving all of those problems we will look at functions that are invariant on $\Crit(S)$, not globally. To incorporate this idea from the start will lead us to the \textbf{BV formalism}.
 \end{rem}
 
 
 \subsection{BV Formalism}
 \label{subsec:BVFormalism}
 
-The main idea of the BV formalism is to look at the space of functions invariant on $Crit(S)$ and not necessarily global. This less restrictive setting will eliminate many of the problems the BRST formulation inherently attains form its rather restrictive formulation.
+The main idea of the BV formalism is to look at the space of functions invariant on $\Crit(S)$ and not necessarily global. This less restrictive setting will eliminate many of the problems the BRST formulation inherently attains form its rather restrictive formulation.
 
 \subsubsection{Symplectic Preliminaries}
 First let us recall some background on graded symplectic geometry:\\
@@ -530,9 +581,9 @@ This is useful to decide the signs in the explicit calculations by defining the 
 \begin{equation}
   \td = \deg_{dR} + \gr
 \end{equation}
-Now recall that a graded $k$-symplectic manifold is a $\ZZ$-graded manifold $\MM$ together with a closed nondegenerate $2$-form $\omega$ of grade $\gr(\omega) = k$.
+Now recall that a graded $k$-symplectic manifold is a $\ZZ$-graded manifold $\MM$ together with a closed nondegenerate $2$-form $\omega$ of grade $\gr(\omega) = k$ inducing a natural isomorphism
 \begin{equation}
-  \omega^\# \colon T\MM \atob{\sim} T^* \MM[k]
+  \omega^{\musSharp{}} \colon T\MM \atob{\sim} T^* \MM[k]
 \end{equation}
 Now in infinite dimensions, one speaks of \emph{weak symplectic} forms, if $d \omega = 0$, such that $\omega^\#$ is \emph{injective}. For special cases we can use the following result due to Schwarz
 
