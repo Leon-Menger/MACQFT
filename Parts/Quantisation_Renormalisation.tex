@@ -124,8 +124,8 @@ The main idea of \emph{"Wilson low-energy theories"} is that observables can onl
 Now let $\Lambda \in I$ and define $J = [0,\Lambda)$. We thus define
 \begin{equation} \Ci(M)_J := \Ci(M)_{\leq \Lambda} \subseteq \Ci(M)\end{equation}
 and call it the \textbf{space of fields with energy at most $\Lambda$}. Observables in this framework, i.e. restricted to such fields, are functionals
-\begin{equation} O \colon \Ci(M)_{\leq \Lambda} \lra \RR\llbracket\hbar\rrbracket\end{equation}
-where $\RR\llbracket\hbar\rrbracket$ denotes formal power series in $\hbar$. We can extend each such operator $O$ to $\Ci(M)$ by composing it with the evident projection from $\Ci(M)_{\leq \Lambda}$. We define $Obs_{\leq \Lambda}$ to be the thus arising observables.\\
+\begin{equation} O \colon \Ci(M)_{\leq \Lambda} \lra \RR\pseries{\hbar}\end{equation}
+where $\RR\pseries{\hbar}$ denotes formal power series in $\hbar$. We can extend each such operator $O$ to $\Ci(M)$ by composing it with the evident projection from $\Ci(M)_{\leq \Lambda}$. We define $Obs_{\leq \Lambda}$ to be the thus arising observables.\\
 
 Now we investigate $\langle O_1, ..., O_n \rangle$ where $O_i \in Obs_{\leq \Lambda}$. We define quantities of this form as
 \begin{equation} \langle O_1, ..., O_n \rangle := \int_{\phi \in \Ci(M)_{\leq \Lambda}} e^{S_{eff}[\Lambda](\phi) / \hbar} \ O_1 ... O_n \ D\phi\end{equation}
@@ -138,7 +138,7 @@ Here, $D\phi$ is the Lebesgue measure on $\Ci(M)_{\leq \Lambda}$, $S_{eff}[\Lamb
 \begin{definition}(Scalar Quantum Field Theory)
 \label{def:scalar_qft}
   A \textbf{scalar (perturbative) quantum field theory} is a collection of effective actions
-  \begin{equation}S_{eff}[\Lambda]\colon \Ci(M)_{\leq \Lambda} \lra \RR\llbracket\hbar\rrbracket\end{equation}
+  \begin{equation}S_{eff}[\Lambda]\colon \Ci(M)_{\leq \Lambda} \lra \RR\pseries{\hbar}\end{equation}
   for all $\Lambda \in [0,\infty)$ such that
   \begin{enumerate}
     \item $S_{eff}[\Lambda]$ is a formal power series in both the field $\phi \in \Ci(M)_{\leq \Lambda}$ and the variable $\hbar$.
@@ -366,7 +366,7 @@ Show the following statements:
 
 Using $w_\gamma (P,I) \in \OO(U)$ we define
 \begin{equation}\label{eq:WPI}\tag{Weight}
-  W(P,I) = \sum_\gamma \frac{1}{|\Aut(\gamma)|} \hbar^{g(\gamma)} w_\gamma (P,I) \ \in \ \OO^+(U)\llbracket\hbar\rrbracket
+  W(P,I) = \sum_\gamma \frac{1}{|\Aut(\gamma)|} \hbar^{g(\gamma)} w_\gamma (P,I) \ \in \ \OO^+(U)\pseries{\hbar}
 \end{equation}
 where we sum over all connected stable graphs. This is a power series in $u \in U$ and in $\hbar$. We further define $W_{i,j}(P,I)$ to be the sum of all terms of $W(P,I)$ where $g(\gamma) = i$ and $|T(\gamma)| = j$.
 
@@ -430,7 +430,7 @@ This leads us to the following lemma:
 
 \begin{lem}
 \label{lemma:WPI}
-  \begin{equation}W(P,I)(a) = \hbar \ \log\{ \exp(\hbar \partial_P) \ \exp(I/\hbar) \} (a) \quad \in \OO^+(U)\llbracket\hbar\rrbracket\end{equation}
+  \begin{equation}W(P,I)(a) = \hbar \ \log\{ \exp(\hbar \partial_P) \ \exp(I/\hbar) \} (a) \quad \in \OO^+(U)\pseries{\hbar}\end{equation}
 \begin{proof}
   The case of $P=0$ is treated in \ref{lemma:P_zero}. Thus assume $P \neq 0$ such that
   \begin{equation}
@@ -940,7 +940,7 @@ We can collect these results and definitions into a theorem:
 \end{proof}
 \end{theo}
 
-Now let $I \in \OO^+(\Ci(M))\llbracket\hbar\rrbracket$ be a local action functional. We define
+Now let $I \in \OO^+(\Ci(M))\pseries{\hbar}$ be a local action functional. We define
 \begin{equation} I[L] := \lim_{\epsilon \lra 0} \left( W(P(\epsilon,L), I - I^{CT}(\epsilon)) \right) =: W^R(P(0,L), I)\end{equation}
 where $I \simeq I[\epsilon \ra 0] $ and the superscript $R$ stands for $renormalised$.
 

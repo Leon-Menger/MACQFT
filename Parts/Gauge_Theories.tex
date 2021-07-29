@@ -15,7 +15,10 @@ where $D\phi$ is supposed to be "a measure" on $\FF$ which \textbf{does not exis
 Where $\gamma$ are \emph{Feynman graphs}, $\chi(\gamma)$ is the Euler characteristic of $\gamma$ (thus $|V|-|E|$) and $\Phi(\gamma)$ is the weight of a graph. Note that here we have an \emph{implicit assumption}, namely that $\HH[S](x_0)$ is non-degenerate. In field theory, we use the stationary phase formula as a \emph{definition} of the "path integral".\\
 
 Now we can ask, if the possible degeneracy of $\HH[S](x_0)$ really is an issue. The answer is: \textbf{Yes!} Consider $\FF = \Gamma(M, F)$ with $M$ compact without boundary. Let further $S = \int_M L$. Now assume we are given a collection $\{V_\alpha\}^M$ of local symmetries \ref{def:LocalSymmetry} such that
-\begin{equation}\lie{V_\alpha} S = V_\alpha^{(i)} \frac{\delta S}{\delta \phi^{(i)}} = 0 \end{equation}
+\begin{equation}
+\label{eq:Noether}
+  \lie{V_\alpha} S = V_\alpha^{(i)} \frac{\delta S}{\delta \phi^{(i)}} = 0
+\end{equation}
 Namely we obtain the \emph{Noether Identities}. Now consider
 \begin{align}
   0 = \frac{\delta}{\delta \phi^{(j)}} \left( V_\alpha^{(i)} \frac{\delta S}{\delta \phi^{(i)}} \right) = \HH[S]_{(ij)} V^{(i)}_\alpha + \frac{\delta S}{\delta \phi^{(i)}} \frac{\delta V_\alpha^i}{\delta \phi^{(j)}}
@@ -369,6 +372,7 @@ A valid question is, why this should be relevant. To understand this, recall tha
   \end{definition}
 
   \begin{lem}
+  \label{lem:log}
     Let $\mu_0, \mu_1 \in BER(\MM)$ with
     \begin{equation}\mu_1 = \rho \mu_0 \quad \quad  \rho \in \Ci(\MM) \end{equation}
     then $V \in \VF(M)$, $\diver_{\mu_1}(V) = \diver_{\mu_0}(V) + V(\log(\rho))$
@@ -594,7 +598,7 @@ Now in infinite dimensions, one speaks of \emph{weak symplectic} forms, if $d \o
 
     \item There exists a global (non-canonical) symplectomorphism
     \begin{equation}
-      \phi \colon (\MM, \omega) \lra (T^*[-1]\MM, \omega_{can}), \quad \quad \omega_{can} = \sum_i dx^i \wedge d\xi_i
+      \phi \colon (\MM, \omega) \lra (T^*[-1]\MM, \omega_{can}), \quad \quad \omega_{can} := \sum_i dx^i \wedge d\xi_i
     \end{equation}
   \end{enumerate}
 \end{theo}
@@ -618,25 +622,25 @@ In finite dimensions one can prove that $\LL$ being Lagrangian is equivalent to 
 \begin{example}[Conormal Lagrangian]
   Let $C \subset M$ be a smooth submanifold. The shifted conormal bundle
   \begin{equation}
-    N^*[-1]C \subset T^*[-1]M
+    \LL_C := N^*[-1]C \subset T^*[-1]M
   \end{equation}
   is a Lagrangian submanifold. The proof is left as an interesting exercise to the reader.
 \end{example}
 
-Another important theorem, which will be given without proof due to the lack of time in this course, is the following results from symplectic geometry:
+Another important theorem, which will be given without proof due to the lack of time in this course, is the following result from symplectic geometry:
 
 \begin{theo}[Weinstein Tubular nbhd Theorem in $(-1)$-symplectic context]
   Let $\LL \subset \MM$ be a Lagrangian submanifold in $\MM$ where $\MM$ is $(-1)$-symplectic. Then there exist
   \begin{enumerate}
-    \item a tubular neighbourhood $U \subseteq \MM$ of $\LL$, i.e. a vector bundle $p \colon E \lra \LL$ together with a smooth map $J \colon E \lra \MM$ such that
+    \item A tubular neighbourhood $U \subseteq \MM$ of $\LL$, i.e. a vector bundle $p \colon E \lra \LL$ together with a smooth map $J \colon E \lra \MM$ such that for the zero section $0_E \colon x \in \LL \lmap 0 \in E_p$
     \begin{equation}
-      J \circ 0_E = i, \quad \quad i \colon \LL \lra \MM
+      J \circ 0_E = \imath, \quad \quad \imath \colon \LL \hookrightarrow \MM
     \end{equation}
-    and there exists $V \subseteq E$ with $0_E(\LL) \subset V$ such that $J|_V \atob{\sim} U$ is a diffeomorphism.
+    and there exists $V \subseteq E$ with $0_E(\LL) \subseteq V$ and $\LL \subseteq U$ such that $J|_V \atob{\sim} U$ is a diffeomorphism.
 
-    \item a tubular neighbourhood $U_0 \subset T^*[-1] \LL$ (with projection $p_0$) of the zero section $\LL_0 \equiv \LL$.
+    \item A tubular neighbourhood $U_0 \subset T^*[-1] \LL$ (with projection $p_0$) of the zero section $\LL_0 \equiv \LL$.
 
-    \item a symplectomorphism $\phi \colon U \atob{\sim} U_0$ such that $\phi(\LL) = \LL_0$ and $p_0 \circ \phi = \phi|_\LL \circ p$.
+    \item A symplectomorphism $\phi \colon U \atob{\sim} U_0$ such that $\phi(\LL) = \LL_0$ and $p_0 \circ \phi|_E = \phi|_\LL \circ p$.
   \end{enumerate}
 \end{theo}
 
@@ -654,18 +658,18 @@ Thus in a neighbourhood of a Lagrangian submanifold, the ambient $(-1)$-symplect
   We also define
   \begin{align}
     \omega |_{\Gamma_\psi} :&= \left. \pair{d\xi}{d\phi} \right|_{\Gamma_\psi} = \left. d \xi_a d\phi^a \right|_{\Gamma_\psi} \\
-    &= d\phi^a d (\partial_a \psi)  = d\phi^a \partial_a \partial_b d\psi^b = 0
+    &= d\phi^a d (\partial_a \psi)  = d\phi^a \partial_b (\partial_a \psi) d\phi^b= 0
   \end{align}
-  As an exercise check that $\dim(\graph(d \psi)) = \frac{1}{2} \dim(T^*[-1]F_{BRST})$. For $\psi = 0$ we get $\Gamma_0$ equal the zero section, thus $\Gamma_\psi$ is a kind of \emph{deformation} of the zero section.
+  The last equation holds due to the anticommutativity of odd-degree coordinates like $d\phi^a$ while the partial derivatives commute. As an exercise check that $\dim(\graph(d \psi)) = \frac{1}{2} \dim(T^*[-1]F_{BRST})$. For $\psi = 0$ we get $\Gamma_0$ equal the zero section, thus $\Gamma_\psi$ is a kind of \emph{deformation} of the zero section.
 \end{example}
 
 \subsubsection{Classification of Lagrangians}
 
 Let $\MM$ be a graded $(-1)$-symplectic manifold. Then
 \begin{enumerate}\label{Classfication_Lagrangian}
-  \item for $\LL \subset \MM$ a Lagrangian submanifold, there exists a submanifold $C \subset M$ and a symplectomorphism $\phi \colon \MM \atob{\sim} T^*[-1]M$ such that $\phi(\LL) = \LL_C \equiv \NC^*[-1] C \subset T^*[-1]M$.
+  \item for $\LL \subset \MM$ a Lagrangian submanifold, there exists a submanifold $C \subset M$ and a symplectomorphism $\phi \colon \MM \atob{\sim} T^*[-1]M$ such that $\phi(\LL) = \LL_C \equiv N^*[-1] C \subset T^*[-1]M$.
 
-  \item for $\LL \subset \MM$ a Lagrangian submanifold obtained from $\LL_C = \NC^*[-1] C$ where $C \subset M$ as a graph of $d\psi$ for some $\psi \in \Ci(\LL_C)^{(-1)}$ we can use the tubular neighbourhood theorem to identify the neighbourhood of $\LL_C$ with $T^*[-1]\LL_C$.
+  \item for $\LL \subset \MM$ a Lagrangian submanifold obtained from $\LL_C = N^*[-1] C$ where $C \subset M$ as a graph of $d\psi$ for some $\psi \in \Ci(\LL_C)^{(-1)}$ we can use the tubular neighbourhood theorem to identify the neighbourhood of $\LL_C$ with $T^*[-1]\LL_C$.
 \end{enumerate}
 
 We say that $\LL \sim \LL^\prime$ homotopic as Lagrangian submanifolds, iff there exists a family of Lagrangian submanifolds $\LL_t$ smoothly varying over  such that $\LL_0 = \LL$ and $\LL_1 = \LL^\prime$ for $t \in [0,1]$.
@@ -707,27 +711,31 @@ the "Batalin-Vilkovisky" Laplacian defined locally in any Darboux chart as the d
 If $\{\cdot, \cdot\}$ denotes the Poisson-brackets, we get $X_f = \{f, \cdot\}$ such that $\{f,g \} = X_f (g)$. For a Darboux chart $\{x^i, \xi_i\}$ and assuming that $\mu = \rho \cdot \mu_{coord}$ we obtain the following result:
 
 \begin{lem}
-  $\Delta_\mu = \Delta_{BV} + \frac{1}{2} \{f, \log(\rho)\}$.
+  $\Delta_\mu = \Delta_{BV} + \frac{1}{2} \{f, \log(\rho)\}$. Thus in particular $\Delta_{\mu_{coord}} = \Delta_{BV}$.
 \begin{proof}
-  First note that
+  First we need to check
   \begin{equation}
-    \Delta_{BV} f = - \frac{1}{2} \diver_{\mu_{coord}}(X_f)
+    \Delta_{BV} f = - \frac{1}{2} \diver_{\mu_{coord}}(X_f).
   \end{equation}
-  and further
+  The right hand side, by definition, is equal to
   \begin{equation}
-    \diver_{\mu_{coord}}(X_f) = \dell{}{x^i} X_f^{(x^i)} - \dell{}{\xi_i} X_f^{(\xi_i)}
+    \diver_{\mu_{coord}}(X_f) = \dell{}{x^i} X_f^{(x^i)} - \dell{}{\xi_i} X_f^{(\xi_i)}.
   \end{equation}
-  Together this lets us write
+  This lets us write
   \begin{align}
     \imath_{X_f} \omega = df \quad  &\Longleftrightarrow \quad  \imath_{X_f} dx^i d\xi_i = \dell{f}{x^i} dx^i - \dell{f}{\xi_i} d\xi_i \\
-     \quad &\Longleftrightarrow \quad  X_f^{(x^i)} = \dell{f}{x^i} \quad and \quad X_f^{(\xi_i)} = \dell{f}{\xi_i}
+     \quad &\Longleftrightarrow \quad  X_f^{(x^i)} = - \dell{f}{\xi_i} \quad and \quad X_f^{(\xi_i)} = \dell{f}{x^i}
   \end{align}
   This allows us to reformulate the divergence of the Hamiltionian vector field as
   \begin{align}
     \diver_{\mu_{coord}}(X_f) &= - \dell{}{x^i} \dell{}{\xi_i} f - \dell{}{\xi_i} \dell{}{x^i} f \\
     &= - 2 \sum_i \dell{}{x^i} \dell{}{\xi_i} f = - 2 \Delta_{BV} f
   \end{align}
-  Now using $\diver_{\rho \mu_{coord}} (X) = \diver_{\mu_{coord}} (X) + X(\log(\rho))$ we can conclude
+  Now using \ref{lem:log}
+  \begin{equation}
+    \diver_{\rho \mu_{coord}} (X) = \diver_{\mu_{coord}} (X) + X(\log(\rho))
+  \end{equation}
+  we can conclude
   \begin{equation}
     \Delta_\mu f = \Delta_{BV} f + \frac{1}{2} \{ f, \log(\rho) \}
   \end{equation}
@@ -736,13 +744,18 @@ If $\{\cdot, \cdot\}$ denotes the Poisson-brackets, we get $X_f = \{f, \cdot\}$ 
 \end{lem}
 
 \begin{rem}
-  Note that $\Delta_\mu$ does not necessarily square to $0$ as $\Delta_{BV}$ does. However it always will if $\mu$ is compatible with $\omega$.
+  Note that $\Delta_\mu$ does not necessarily square to $0$ as $\Delta_{BV}$ does. However it always will if $\mu$ is compatible with $\omega$, thus $\mu = \mu_{coord}$ and hence $\Delta_\mu = \Delta_{BV}$.
 \end{rem}
 
 \subsubsection{BV Integrals}
-Notice that so far we did not talk about physics at all. We merely introduced several notions about $(-1)$-symplectic manifolds. Having a well-defined integration will bring us quite a few steps closer to a physical theory using the given framework. To this end recall that $Ber(\MM) = \bigwedge^m T^* M \otimes \bigwedge^m E$. If $\MM = T^*[-1] M$ we obtain $Ber(\MM) = (\bigwedge^n T^*M)^{\otimes 2}$. Similarly if $\NC$ is a graded manifold $Ber(T^*[-1]\NC)|_\NC \cong Ber(\NC)^{\otimes 2}$.\\
+So far we merely introduced several notions about $(-1)$-symplectic manifolds. Having a well-defined integration will bring us closer to a physical theory. Recall that $Ber(\MM) = \bigwedge^n T^* M \otimes \bigwedge^m E$. If $\MM = T^*[-1] M$ we obtain $Ber(\MM) = (\bigwedge^n T^*M)^{\otimes 2}$. Similarly if $\NC$ is a graded manifold $Ber(T^*[-1]\NC)|_\NC \cong Ber(\NC)^{\otimes 2}$.
 
-%TODO diagram
+\begin{center}
+\begin{tikzcd}[sep = tiny]
+  \bigwedge^n T^* \NC \arrow[dr] & \otimes & \bigwedge^m T^*\NC \arrow[dl] \\
+  & T^* M &
+\end{tikzcd}
+\end{center}
 
 There is a canonical map sending a Berezinian $\mu$ on $T^*[-1]\NC$ to a Berezinian on $\NC$. We denote the induced Berezinian by $\sqrt{\mu|_\NC}$. Locally, denoting mixed-parity/degree coordinates on $\NC$ by $\{X^a\}$ and with $\{X^a, \Xi_a \}$ a Darboux chart for $T^*[-1]\NC$ we can write
 \begin{equation}
@@ -754,7 +767,7 @@ which is mapped to the following Berezinian on $\NC$:
 \end{equation}
 
 \begin{definition}[BV Integral]
-  Let $(\MM, \omega, \mu)$ be compatible. A \textbf{BV integral} is an integral of the form
+  Let $(\MM, \omega, \mu)$ be compatible. A \textbf{BV integral} is defined as
   \begin{equation}
     I_\LL = \int_{\LL \subset \MM} f \sqrt{\mu|_\LL}
   \end{equation}
@@ -771,8 +784,8 @@ Now if $\vol_M = \rho(x) dx^1 ... dx^n$ is a volume form on $M$ we arrive at the
 \begin{lem}
   The following two statements hold true when we consider coordinate transformations of the form $\widetilde{\theta} = \widetilde{\theta}(x, \theta)$ or $\widetilde{\xi} = \widetilde{\xi}(x, \xi)$:
   \begin{enumerate}
-    \item $ \int d^n \widetilde{\theta} \widetilde{\rho}^{-1} = \int d^n \theta \rho^{-1} $
-    \item $ \int d^n \widetilde{\xi} \widetilde{\rho} = \int d^n \xi \rho $
+    \item $ \int d^n \widetilde{\theta} \ \widetilde{\rho}^{-1} = \int d^n \theta \ \rho^{-1} $
+    \item $ \int d^n \widetilde{\xi} \ \widetilde{\rho} = \int d^n \xi \ \rho $
   \end{enumerate}
 \begin{proof}
   First note that
@@ -810,7 +823,7 @@ An interesting result regarding the odd Fourier Transformation is the following:
 \end{proof}
 \end{prop}
 
-Otherwise one can show that for $g \in \Ci(T[1]M)$ one can define
+Further one can show that for $g \in \Ci(T[1]M)$ one can define
 \begin{equation}
   \FF^{-1}[g] = \int d^n \theta \ \rho^{-1} \ e^{\xi_i \theta^i} g(x, \theta)
 \end{equation}
@@ -839,17 +852,17 @@ Now we can finally formulate the main result shouldering the BV formalism:
   \begin{equation}
     f \lmap \int_{\LL_C} f \sqrt{\mu_{\LL_C}} = \int_C \widetilde{f}\ \Big|_C
   \end{equation}
-  where $\widetilde{f}$ is the form representative of a function $f$ and the right hand side is thus seen as the integral of a differential form on $C$. Then in particular
+  where $\widetilde{f}$ is the Fourier transformed $f$ and thus its form representative. The right hand side is thus seen as the integral of a differential form on $C$. Then for the first statement we get
   \begin{equation}
-    \int_{\LL_C} \Delta_\mu g \sqrt{\mu_{\LL_C}} = \int_C d\widetilde{g} = 0
+    \int_{\LL_C} \Delta_\mu g \sqrt{\mu_{\LL_C}} = \int_C d\widetilde{g} = 0.
   \end{equation}
-  and further
+  Regarding the second we have
   \begin{equation}
-    \int_{\LL^\prime_C} f \sqrt{\mu_{\LL^\prime_C}} - \int_{\LL_C} f \sqrt{\mu_{\LL_C}} = \left( \int_{C^\prime} - \int_{C} \right) \widetilde{f} = \int_D d\widetilde{f} = 0
+    \int_{\LL^\prime_C} f \sqrt{\mu_{\LL^\prime_C}} - \int_{\LL_C} f \sqrt{\mu_{\LL_C}} = \left( \int_{C^\prime} - \int_{C} \right) \widetilde{f} = \int_D d\widetilde{f} = 0.
   \end{equation}
   We obtain the last equation by seeing that
   \begin{equation}
-    d \widetilde{f} = d \FF(f) = \FF \Delta f = 0
+    d \widetilde{f} = d \FF(f) = \FF \Delta_\mu f = 0
   \end{equation}
   as required per definition. Now since $\LL \sim \LL^\prime$ are homologous as cycles, $\LL \equiv \LL_C$ and $\LL^\prime = \LL^\prime_C$ such that there necessarily exists a submanifold $D \subset M$ with $\partial D = C^\prime - C$.\\
 
@@ -887,21 +900,22 @@ Now we can finally formulate the main result shouldering the BV formalism:
 \end{proof}
 \end{theo}
 
-The BV integral vanishes on $\Delta$-exact functions because regular integral vanish on $d$-exact forms. The BV integral does not depend on a particular Lagrangian inside a family of Lagrangians like $\LL_t$ if the function is $\Delta$-closed, since $d$-closed forms have the same property.
+The BV integral vanishes on $\Delta$-exact functions because regular integral vanish on $d$-exact forms. Further it doesn't depend on a particular Lagrangian inside a family of Lagrangians like $\LL_t$ if the function is $\Delta$-closed, the analogous property holds for $d$-closed forms.
 
+\newpage
 \subsection{Classical and Quantum BV formalism}
 
 \begin{definition}[BV Theory]
   The following set of data is called a \textbf{classical BV theory}:
   \begin{enumerate}
-    \item A $\ZZ$-graded manifold $\FF$ (the space of BV fields)
-    \item A $(-1)$-symplectic structure $\omega \in \Omega^2(\FF)^{(-1)}$ (the BV $2$-form)
-    \item A function $S \in \Ci(\FF)^{(0)}$ satisfying the Classical Master Equation \ref{ClassicalMasterEquation} $\{S, S\}_\omega = 0$ (the BV action or master action)
+    \item A $\ZZ$-graded manifold $\FF$ (the space of BV fields).
+    \item A $(-1)$-symplectic structure $\omega \in \Omega^2(\FF)^{(-1)}$ (the BV $2$-form).
+    \item A function $S \in \Ci(\FF)^{(0)}$ satisfying the Classical Master Equation \ref{ClassicalMasterEquation} $\{S, S\}_\omega = 0$ (the BV action or master action).
   \end{enumerate}
 \end{definition}
 
 \begin{rem}
-  Often it is convenient to work with the cohomological vector field $Q := \{S, \ \cdot \ \}$ or alternatively $\imath_Q \omega = dS$. Observe that $\lie{Q} \omega = 0$, i.e. $\imath_Q \omega$ is closed, but the degree reasons that we can always find $S$ given $Q$ with $\lie{Q} \omega = 0$ such that $\imath_Q \omega = dS$.
+  Often it is convenient to work with the cohomological vector field $Q := \{S, \ \cdot \ \}$ or equivalently $\imath_Q \omega = dS$. Observe that $\lie{Q} \omega = 0$, i.e. $\imath_Q \omega$ is closed, but the degree reasons that we can always find $S$ given $Q$ with $\lie{Q} \omega = 0$ such that $\imath_Q \omega = dS$.
 \end{rem}
 
 An important example which includes a huge part of interesting theories is the following:
@@ -909,18 +923,18 @@ An important example which includes a huge part of interesting theories is the f
 \begin{example}[BV-BRST]
   Recall the construction of BRST data $(F_{min}, d_{CE}, S_0)$ and\\ $(F_{BRST}, d_{BRST}, S_0)$. Now
   \begin{enumerate}
-    \item define $\FF := T^*[-1]F_{min} \atob{p} F_{min}$ with $\omega_{BV}$ the canonical symplectic form.
-    \item define $S_{BV} = p^* S_0 + \widehat{d}_{CE}$ and recall that $\widehat{d}_{CE}$ is the function in $\Ci(T^*[-1]F_{min})$ corresponding to a vector field on $F_{min}$.
-    \item define $Q_{BV} = X_{p^*S_0} + d_{CE}^{cl}$  where $d_{CE}^{cl}$ is the cotangent lift of $d_{CE}$ to $T^*[-1]F_{min}$.
+    \item define $\FF := T^*[-1]F_{min} \atob{p} F_{min}$ with $\omega_{BV}$ the canonical symplectic form, the same goes for $F_{BRST}$,
+    \item define $S_{BV} = p^* S_0 + \widetilde{d}_{CE}$ and recall that $\widetilde{d}_{CE}$ is the odd Fourier transformed function in $\Ci(T^*[-1]F_{min})$ corresponding to a vector field on $F_{min}$, the same goes for $d_{BRST}$,
+    \item define $Q_{BV} = X_{p^*S_0} + d_{CE}^{cl}$  where $d_{CE}^{cl}$ is the cotangent lift of $d_{CE}$ to $T^*[-1]F_{min}$, again the same goes for $d_{BRST}$.
   \end{enumerate}
   Now in a Darboux chart $\{\phi^a, \phi^\dagger_a\}$ we can write
   \begin{align}
-    \omega_{BV} &= \sum_a d\phi^a \wedge d\phi^\dagger_a \\
-    S_{BV} &= S_0 + \sum_a \Phi^a d^a_{CE}
+    \omega_{BV} &= \sum_a d\phi^a \wedge d\phi^\dagger_a, \\
+    S_{BV} &= S_0 + \sum_a \phi_a^\dagger d^a_{CE}
   \end{align}
-  where $d^a_{CE} = d_{CE}(\Phi^a)$. Then we arrive at $Q_{BV}$ such that
+  where $d^a_{CE} = d_{CE}(\phi^a)$, the $\phi^a$ are fields (in $\gf^*$) and $\phi_a^\dagger$ are antifields (in $\gf^*[-1]$). Then we arrive at $Q_{BV}$ such that
   \begin{equation}
-    \imath_{Q_{BV}} \omega_{BV} = dS_{BV}
+    \imath_{Q_{BV}} \omega_{BV} = dS_{BV}.
   \end{equation}
 \end{example}
 
@@ -930,9 +944,7 @@ An important example which includes a huge part of interesting theories is the f
     |x^i| &= 0 \quad \Lra \quad |x_i^\dagger| = -1, \\
     |c^a| &= 1 \quad \Lra \quad |c_a^\dagger| = -2,
   \end{align*}
-  In literature one often call the $x^i$ "physical fields" (degree $0$), the $c^a$ "ghost fields" (Chevally-Eilenberg generators), the $x_i^\dagger$ "anti-fields" (degree $-1$) and the $c_a^\dagger$ "antighosts" (degree $-2$).\\
-
-  Note that for $V^\bullet$ a graded vector space, $(V^\bullet)^{* (-k)} = (V^\bullet)^{(k)}$.
+  In literature one often call the $x^i$ "physical fields" (degree $0$), the $c^a$ "ghost fields" (Chevally-Eilenberg generators), the $x_i^\dagger$ "anti-fields" (degree $-1$) and the $c_a^\dagger$ "antighosts" (degree $-2$). Note that for $V^\bullet$ a graded vector space, $(V^\bullet)^{* (-k)} = (V^\bullet)^{(k)}$.
 \end{notation}
 
 Now while we already have a rough idea of physical and ghost fields, we need further investigation on the role of anti-fields and antighosts.
@@ -940,56 +952,56 @@ Now while we already have a rough idea of physical and ghost fields, we need fur
 
 \subsubsection{Constructing BV data}
 
-The main goal of this section is to construct the data necessary for a complete BV theory. This in turn will allows for a more insightful description of anti-fields and antighosts. Let $F$ be a smooth finite-dimensional manifold and let ${x^i}$ be coordinates on $F$ together with a function $S \in \Ci(F)$ in degree $0$.\\
+The main goal of this section is to construct the data necessary for a complete BV theory. This allows for an insightful description of anti-fields and antighosts. Let $F$ be a smooth finite-dimensional manifold and let ${x^i}$ be coordinates on $F$ together with a function $S \in \Ci(F)^{(0)}$.\\
 
-Now the set $\left\{\phi_i := \dell{S}{x^i}\right\}$ determines an ideal $I_S \subset \Ci(\FF)$ of functions vanishing on $\Crit(S) := \{ x \in F \ | \ dS(x) = 0 \}$
+The set $\left\{\phi_i := \dell{S}{x^i}\right\}$ determines an ideal $I_S \subset \Ci(F)$ of functions vanishing on $\Crit(S) := \{ x \in F \ | \ dS(x) = 0 \}$.
 Assume for now that there are no nontrivial symmetries of $S$. Now we \textbf{want} a complex $(\KK^\bullet, d_\KK)$ such that its cohomology in degree $0$ is the quotient $\Ci(F)/I_S \simeq \Ci(\Crit(S))$.\\
 
-The following is due to Koszul:\\
-Let $V^\bullet$ be a graded vector space such that $\dim(V) = \dim(F)$, e.g. $V \simeq T^*_x F$. For every coordinate $x^i$ generate a new coordinate $x^\dagger_i \in \Ci(V[-1]) \simeq \bigwedge^\bullet V^*$. Then we can define an operator $d_\KK$ on $\Ci(F) \otimes \Ci(V[-1]) =: \KK^\bullet$ by setting
+The following is due to Koszul: Let $V^\bullet$ be a graded vector space such that $\dim(V) = \dim(F)$, e.g. $V \simeq T^*_x F$. For every coordinate $x^i$ of $V$ generate a new coordinate $x^\dagger_i \in \Ci(V[-1]) \simeq \bigwedge^\bullet V^*$. Then we can define an operator $d_\KK$ on $\Ci(F) \otimes \Ci(V[-1]) =: \KK^\bullet$ by setting
 \begin{equation}
-  d_\KK x^\dagger_i := \phi^i \equiv \dell{S}{x^i}
+  d_\KK x^\dagger_i := \phi_i \equiv \dell{S}{x^i}, \quad \quad d_\KK x^i := 0
 \end{equation}
-Thus in particular $d_\KK^2 = 0$. Further for $f \in \KK^{(0)}$ we have $d_\KK f = 0 \ \Leftrightarrow \ f \in \Ci(F)$ but $f = d_\KK g \ \Leftrightarrow \ f \in I_S$ i.e. $fg = \sum_i g^i x^\dagger_i$.
+Thus in particular $d_\KK^2 = 0$. Further for $f \in \KK^{(0)}$ we have $d_\KK f = 0 \ \Leftrightarrow \ f \in \Ci(F)$ but $f = d_\KK g \ \Leftrightarrow \ f \in I_S$ i.e. $g = \sum_i g^i x^\dagger_i$. Thus $H^0(\KK^\bullet) = \Ci(F)/I_S$.
 
 \begin{prop}
   The \textbf{Koszul complex} $(\KK^\bullet, d_\KK)$ is a \textbf{resolution} of $\Ci(F)/I_S$.
 \begin{proof}
   We want a complex $C^\bullet$ such that $H^\bullet(C^\bullet) \simeq \Ci(F)/I_S \simeq \Ci(\Crit(S))$ and further $H^{-i} (C^\bullet) = 0$ for all $i > 0$. In our case $H^{-1} \neq 0$ iff $\exists R^i_\alpha$ such that $d_\KK (R^i_\alpha x^\dagger_i) = R^i_\alpha \phi^i = 0$ since there is nothing in degree $-2$ that can compensate the cocycle $R^i_\alpha x^\dagger_i$.\\
 
-  However $R^i_\alpha \phi^i \equiv R^i_\alpha \dell{S}{x^i} = 0$ (\textbf{Noether identity}) is equivalent to there being a vector field $V_\alpha \in \VF(F)$ with $V_\alpha = R^i_\alpha \dell{}{x^i}$ and such that $V_\alpha(S) = 0$. Namely such a cocycle exists iff $S$ admits nontrivial symmetries which we ruled out in the definition. This proves the claim.
+  However $R^i_\alpha \phi^i \equiv R^i_\alpha \dell{S}{x^i} = 0$ (\textbf{Noether identity} \ref{eq:Noether}) is equivalent to there being a vector field $V_\alpha \in \VF(F)$ with $V_\alpha = R^i_\alpha \dell{}{x^i}$ and such that $V_\alpha(S) = 0$. Namely such a cocycle exists iff $S$ admits nontrivial symmetries which we ruled out in the definition. This proves the claim.
 \end{proof}
 \end{prop}
 
-Now the coordinates $x^\dagger_i$ that were introduced in the BV construction are in fact \emph{Koszul generators}
+Now the coordinates $x^\dagger_i$ that were introduced in the BV construction are in fact \emph{Koszul generators}. When there are no nontrivial symmetries, we take
 \begin{align}
   \FF = T^*[-1]F \quad \Lra \quad d_\KK = \{ S_{cl}, \cdot \} \equiv Q
 \end{align}
 where $Q = \sum_i \phi_i \dell{}{x^\dagger_i}$. Now in the case where nontrivial symmetries exist, we have nontrivial cocycles $R^i_\alpha x^\dagger_i \in H^{-1}(\KK^\bullet)$. Thus we introduce new variables in degree $-2$.\\
 
-Let $d_1$ be the number of nontrivial Noether identities/symmetries. Namely it is the dimension of $\gf \in \widetilde{\gf} = \tf \oplus \gf$. Thus we introduce $c^\dagger_\alpha \in \Ci(\RR^{d_1}[-2])$ and set $d_\KK c^\dagger_\alpha = R^i_\alpha x^\dagger_i$ such that by pure construction $d_\KK^2 = 0$. Thus we define a bew complex
+Let $d_1$ be the number of nontrivial Noether identities/symmetries. Namely it is the dimension of $\gf \subset \widetilde{\gf} = \tf \oplus \gf$. Thus we introduce $c^\dagger_\alpha \in \Ci(\RR^{d_1}[-2])$ and set $d_\KK c^\dagger_\alpha := R^i_\alpha x^\dagger_i$ such that by pure construction $d_\KK^2 = 0$. Thus we define a new complex
 \begin{align}
   \KT^{(1)} :&= \Ci(F) \otimes \Ci(V[-1]) \otimes \Ci(\RR^{d_1}[-2]) \\
   &\simeq \Ci(T^*[-1]F \times \RR^{d_1}[-2])
 \end{align}
-Now if th Noether identities are all independent, i.e. if the symmetries are not reducible which means that $\rho \colon \gf \lra \VF(F)$ is injective, we have
+Now if the Noether identities are all independent, i.e. if the symmetries are not reducible which means that $\rho \colon \gf \lra \VF(F)$ is injective, we have
 \begin{equation}
-  H^\circ(\KT^{(1)}) \simeq \Ci(F)/I_S, \quad \quad H^{-i}(\KT^{(1)}) = 0 \ \ \forall i > 0
+  H^0(\KT^{(1)}) \simeq \Ci(F)/I_S, \quad \quad H^{-i}(\KT^{(1)}) = 0 \ \ \forall i > 0
 \end{equation}
 Now it could happen that there exist functions $r^\alpha_\beta \in \Ci(F)$ such that $r^\alpha_\beta R^i_\alpha = 0 \ \forall i$, namely relations among the symmetries. Thus there would exist a nontrivial cocycle $r^\alpha_\beta c^\dagger_\alpha \in H^{(-2)}(\KT^{(1)})$. Now we could repeat the procedure, adding $c^{(2)\dagger}_\beta \in \Ci(\RR^{d_2}[-3])$ and setting $d_2$ as the number of nontrivial relations such that $r^\alpha_\beta R^i_\alpha = 0$. This procedure can be inductively repeated leading us to
 \begin{align}
-  \KT^{(\infty)} :&= \Ci\left(T^*[-1]F \times \bigtimes_{k = 1}^\infty \RR^{d_k}[-k-1] \right) \\
-  H^\circ(\KT^{(\infty)}) &\simeq \Ci(F)/I_S, \quad \quad H^{-i}(\KT^{(\infty)}) = 0 \ \ \forall i > 0
+  \KT^{(\infty)} :&= \Ci(T^*[-1]F) \otimes \Ci\left(\bigotimes_{k = 1}^\infty \RR^{d_k}[-k-1] \right)\\
+  H^\bullet(\KT^{(\infty)}) = H^0(\KT^{(\infty)}) &\simeq \Ci(F)/I_S, \quad \quad H^{-i}(\KT^{(\infty)}) = 0 \ \ \forall i > 0
 \end{align}
 This is called the \textbf{Koszul-Tate resolution} of $\Ci(F)/I_S$ and $d_\KK$ is seen as the cohomological vector field on $T^*[-1]F \times \bigtimes_{k = 1}^\infty \RR^{d_k}[-k-1]$.\\
 
-The following is due to Batalin and Vilkovisky:\\
-We can adjoin coordinates $c^{(k)\alpha}$ for every $c^{(k)\dagger}_\alpha$ that we have from the $\KT$ construction where $-|c^{(k)\alpha}| = |c^{(k)\dagger}_\alpha| + 1$. In other words one looks at
+The following is due to Batalin and Vilkovisky: We can adjoin coordinates $c^{(k)\alpha}$ for every $c^{(k)\dagger}_\alpha$ that we have from the $\KT$ construction where $-|c^{(k)\alpha}| = |c^{(k)\dagger}_\alpha| + 1$. In other words one looks at
 \begin{equation}
-  BV^\bullet \Ci\left(T^*[-1]\left(F \times \bigtimes_{k = 1}^\infty \RR^{d_2}[-k-1]\right)\right)
+  BV^\bullet \Ci\left(T^*[-1]\left(F \times \bigtimes_{k = 1}^\infty \RR^{d_k}[-k-1]\right)\right)
 \end{equation}
-Now there exists a canonical symplectic form $\Omega_{BV}$.\\
+Now there exists a canonical symplectic form $\Omega_{BV}$.
 
+
+\subsubsection{Construction of the BV Action}
 Our next step is to reconstruct the "BV package". We start by looking at
 \begin{equation}
   d_\KK x^\dagger_i = \{ S_{cl}, \cdot \} \equiv Q_0
@@ -997,9 +1009,11 @@ Our next step is to reconstruct the "BV package". We start by looking at
 where we set $S_{cl} = S_0$. Now extend $S_0 \lmap S_1 := S_0 + x^\dagger_i R^i_\alpha c^\alpha$ and set $Q_1 := \{ S_1, \cdot \}$ such that $Q_1 c^\dagger_\alpha = d_\KK c^\dagger_\alpha \equiv R^i_\alpha x^\dagger_i$. Now we can calculate
 
 \begin{align}
-  Q_1 x^i &= \{ S_1, x^i \} = \pm \frac{\delta}{\delta x^\dagger_k} ( S_0 + x^\dagger_j R^j_\alpha c^\alpha) \frac{\delta}{\delta x^k} x^i \\
-  &= R^i_\alpha c^\alpha = c^\alpha V_\alpha(x^i)
+  Q_1 x^i &= \{ S_1, x^i \} = \frac{\delta}{\delta x^\dagger_k} ( S_0 + x^\dagger_j R^j_\alpha c^\alpha) \frac{\delta}{\delta x^k} x^i \\
+  &= R^i_\alpha c^\alpha = c^\alpha V_\alpha(x^i) \ (= c^\alpha \rho(t_a) (x^i))
 \end{align}
+
+The last equation in brackets only holds if there is a Lie algebra action, e.g. in the BV-BRST formalism.
 
 \begin{ex}
   Show that $\{S_0, S_1\} = 0$ iff $\{R^i_\alpha\}$ represents a local symmetry. Also show that $\{S_1, S_1\} = 0$.
@@ -1014,7 +1028,7 @@ In order to really reproduce the Chevalley--Eilenberg cohomology, we need to fur
 such that
 
 \begin{equation}
-  [V_\beta, V_\alpha] = f^\gamma{\beta\alpha} V_\gamma, \quad \quad f^\gamma_{\beta\alpha} = f^\gamma_{\beta\alpha} (x) \in \Ci(F)
+  [V_\beta, V_\alpha] = f^\gamma_{\beta\alpha} V_\gamma, \quad \quad f^\gamma_{\beta\alpha} = f^\gamma_{\beta\alpha} (x) \in \Ci(F)
 \end{equation}
 
 No generally both $R^i_\alpha$ and the $f^\alpha_{\beta\gamma}$ are functions on $F$. So it is \textbf{not} guaranteed that $\{S_2, S_2\} = 0$ and thus $Q_2 := \{S_2, \cdot\}$ is not necessarily a differential. The following theorem provides the necessary information to fix such problems:
@@ -1036,17 +1050,18 @@ Now the BV complex as constructed above achieves two main things:
   \item It looks at invariants over $\Crit(S)^{\gf}$. More generally than a Lie algebra, $\gf$ is a subset of symmetries which will be involutive on $\Crit(S)$.
 \end{enumerate}
 
-Consider a complement $\gf$ of trivial symmetries $\tf$ inside all symmetries $\widetilde{\gf}$ (for a function $S_{cl} \equiv S_0 \colon F \lra \RR$). We know that $\gf$ is a subalgebra "on shell", i.e. on $\Crit(S)$. Thus we construct $\KT^{(\infty)}$ such that $H^0(\KT^{(\infty)}) \simeq \Ci(\Crit(S))$ and use it as a $\gf$-module which means looking at the Chevally-Eilenberg complex for the $\gf$ action on $\Ci(\Crit(S))$. This leads us to the following result:
+Consider a complement $\gf$ of trivial symmetries $\tf$ inside all symmetries $\widetilde{\gf}$ (for a function $S_{cl} \equiv S_0 \colon F \lra \RR$). We know that $\gf$ is a subalgebra "on shell", i.e. on $\Crit(S)$. Thus we construct $\KT^{(\infty)}$ such that $H^0(\KT^{(\infty)}) = H^\bullet(\KT^{(\infty)}) \simeq \Ci(\Crit(S))$
+and use it as a $\gf$-module which means looking at the Chevally-Eilenberg complex for the $\gf$ action on $\Ci(\Crit(S))$. This leads us to the following result:
 
 \begin{theo}
-  $(BV^\bullet, Q_\infty) \simeq C^\bullet_{CE}(\gf, H^\bullet(\KT^{(\infty)}))$
+  $(BV^\bullet, Q_\infty) \simeq C^\bullet_{CE}(\gf, H^\bullet(\KT^{(\infty)})) = C^\bullet_{CE}(\gf, \Ci(\Crit(S)))$.
 \begin{proof}
   The proof is ommited since it is very technical and goes beyond the timescope of this course.
 \end{proof}
 \end{theo}
 
 \begin{corollary}
-  $H^\bullet(BV^\bullet) \simeq \Ci(\Crit(S))^\gf \simeq \Ci(\Crit(S)/\gf)$
+  $H^\bullet(BV^\bullet) \simeq \Ci(\Crit(S))^\gf \simeq \Ci(\Crit(S)/\gf)$.
 \end{corollary}
 
 Now this is all the data we need for a physical theory. We have a critical locust, symmetries and a set of evolution equations. Summing up, our procedure goes as follows:\\
@@ -1075,7 +1090,7 @@ This follows from the following fact about BV data: The BV Laplacian is \textbf{
 
 \begin{align}
   &\Delta_\mu (f \cdot g) = \Delta_\mu f \cdot g + (-1)^{|f|} f \cdot \Delta_\mu g + (-1)^{|f|} \{f,g\} \\
-  \Lra \quad &\Delta_\mu e^{i/\hbar S} = (-i \hbar)^{-2} \left( \frac{1}{2} \{S,S\} - i \hbar \Delta_\mu S \right) e^{i/\hbar S}
+  \Lra \quad &\Delta_\mu e^{i/\hbar S} = (-i \hbar)^{-2} \left( \frac{1}{2} \{S,S\} - i \hbar \Delta_\mu S \right) e^{i/\hbar S}.
 \end{align}
 
 Note that we say that $(\Ci(\FF), \Delta_\mu, \{\cdot, \cdot\})$ is a BV algebra if $\Delta_\mu$ is a derivation of the bracket. Sometimes it is convenient to think of power series in $(-i \hbar)$ instead of just $\hbar$. Thus
@@ -1086,20 +1101,20 @@ Note that we say that $(\Ci(\FF), \Delta_\mu, \{\cdot, \cdot\})$ is a BV algebra
 
 and \eqref{QME} is equivalent to the following set of equations
 
-\begin{align*}
+\begin{align}
   &\{S^{(0)}, S^{(0)}\} = 0 \quad \quad (CME)\\
-  &\{S^{(1)}, S^{(1)}\} + \Delta_\mu S^{(0)} = 0 \\
-  &\{S^{(2)}, S^{(2)}\} + \frac{1}{2} \{S^{(1)}, S^{(1)}\} + \Delta_\mu S^{(1)} = 0 \\
-  &...
-\end{align*}
+  &\{S^{(0)}, S^{(1)}\} + \Delta_\mu S^{(0)} = 0 \\
+  &\{S^{(0)}, S^{(2)}\} + \frac{1}{2} \{S^{(1)}, S^{(1)}\} + \Delta_\mu S^{(1)} = 0 \\
+  &... \nonumber
+\end{align}
 
-Now starting from a solution of the Classical Master Equation \eqref{ClassicalMasterEquation} for classical BV data, we can extend it to a power series in $\hbar$ that satisfies \eqref{QME}
+Now starting from a solution of the Classical Master Equation \eqref{ClassicalMasterEquation} for classical BV data, we can extend it to a power series in $\hbar$ that satisfies \eqref{QME} only if
 \begin{equation}
-  \Delta_\mu S^{(0)} = - \{S^{(0)},S^{(1)}\}
+  \Delta_\mu S^{(0)} = - \{S^{(0)},S^{(1)}\}.
 \end{equation}
-the class of $\Delta_\mu S^{(0)}$ in the $Q := \{S^{(0)}, \cdot\}$ cohomology to be trivial (i.e. $\Delta_\mu S^{(0)} = Q$-exact). Note that $Q$ is a differential by assumption. We can find an appropriate $S^{(1)}$ such that
+Namely the class of $\Delta_\mu S^{(0)}$ in the cohomology defined by $Q := \{S^{(0)}, \cdot\}$ vanishes (i.e. $\Delta_\mu S^{(0)} = Q$-exact). Note that $Q$ acts as a differential. This means that we can find an appropriate $S^{(1)}$ such that
 \begin{equation}
-  \frac{1}{2} \{S^{(1)}, S^{(1)}\} + \Delta_\mu S^{(1)} = - \{S^{(0)}, S^{(0)}\}
+  \frac{1}{2} \{S^{(1)}, S^{(1)}\} + \Delta_\mu S^{(1)} = - \{S^{(0)}, S^{(2)}\}.
 \end{equation}
 Now the question is if there is a $Q$-exact $S^{(1)}$ such that the above equation holds. There are indeed obstructions to this but in many cases this has a chance to work.
 
@@ -1108,6 +1123,7 @@ Now the question is if there is a $Q$-exact $S^{(1)}$ such that the above equati
   \begin{equation}\tag{$\blacksquare$}\label{BVCanonical}
     \dd{}{t} S_t = \{S_t, R_t\} - i \hbar \Delta_\mu R_t
   \end{equation}
+  We call $R_t$ the \textbf{generators of the canonical BV transformation}.
 \end{definition}
 
 If we denote $\{S_t, \cdot\} - i \hbar \Delta_\mu =: \delta_t$, a Quantum BV operator for $S_t$, then we can express \eqref{BVCanonical} as
@@ -1116,16 +1132,16 @@ If we denote $\{S_t, \cdot\} - i \hbar \Delta_\mu =: \delta_t$, a Quantum BV ope
 \end{equation}
 
 \begin{rem}
-  The Koszul-Tate condition eliminates cohomology in negative degrees. The problem of extending $CME \lra QME$ however is related to cohomology in positive degrees. Now in field theory, thus when working with $\infty$-dimensional manifolds, the requirement that $BV^\bullet$ has vanishing negative cohomology is a quite strong one which can hinder the above transition. A strictly better requirement is that $\dim(H^{-i}) < + \infty$.
+  The Koszul-Tate condition eliminates cohomology in negative degrees. The problem of extending $CME \lra QME$ however is related to cohomology in positive degrees. Now in field theory, namely when working with $\infty$-dimensional manifolds, the requirement that $BV^\bullet$ has vanishing negative cohomology is a quite strong one which can hinder the above transition. A strictly better requirement is that $\dim(H^{-i}) < + \infty$.
 \end{rem}
 
 Let us look at \eqref{QME} for the family $S_t$:
 \begin{equation}\tag{$QME_t$}\label{QMEt}
-  \frac{1}{2} \{S_t,S_t\} - i \hbar \Delta_\mu S_t = 0
+  \frac{1}{2} \{S_t,S_t\} - i \hbar \Delta_\mu S_t = 0.
 \end{equation}
-and thus in particular
+By differentiating the QME by time we thus obtain:
 \begin{equation}
-  \delta_t (\dot S_t) = 0
+  \delta_t (\dot S_t) = 0.
 \end{equation}
 
 \begin{lem}
@@ -1140,61 +1156,61 @@ Thus we see from \eqref{QMEt} that $\delta_t^2 = 0$ which means that $\delta_t$ 
 \begin{equation}
   \dd{}{t}[\eqref{QMEt}] = 0
 \end{equation}
-if \eqref{QMEt} is satisfied. Hence it is satisfied for all $t$ if $S_t, R_t$ parametrise a canonical transformation.
+if \eqref{QMEt} is satisfied. Hence it is satisfied for all $t$ if $S_t, R_t$ parametrise a canonical transformation. Altogether, \eqref{QMEt} is satisfied along equivalence classes of solutions.
 
 \begin{prop}
-  $\dd{}{t} e^{i/\hbar S_t} = \Delta_\mu \left( - i \hbar e^{i/\hbar S_t} R_t \right)$ and for $S \sim S^\prime$ we have $e^{i/\hbar S} - e^{i/\hbar S^\prime} = \Delta_\mu \left( - i \hbar \int_0^t dt e^{i/\hbar S_t} R_t \right)$
+  $\dd{}{t} e^{i/\hbar S_t} = \Delta_\mu \left( - i \hbar e^{i/\hbar S_t} R_t \right)$ and for $S \sim S^\prime$ we have $e^{i/\hbar S} - e^{i/\hbar S^\prime} = \Delta_\mu \left( - i \hbar \int_0^t dt e^{i/\hbar S_t} R_t \right)$.
 \end{prop}
 
 \begin{definition}
-  Define $\sigma := S_t + dt R_t$ such that $\sigma \in \Omega^\circ([0,1]) \otimes \Ci(\FF)\llbracket\hbar\rrbracket$. Then we have
+  Define $\sigma := S_t + dt R_t$ such that $\sigma \in \Omega^\circ([0,1]) \otimes \Ci(\FF)\pseries{\hbar}$. Then we have
   \begin{equation}\tag{extQME} \label{extendedQME}
-    \left( dt \wedge \dd{}{t} - i \hbar \Delta_\mu \right) e^{i/\hbar \sigma} = 0
+    \left( dt \wedge \dd{}{t} - i \hbar \Delta_\mu \right) e^{i/\hbar \sigma} = 0.
   \end{equation}
   This equation is sometimes referred to as the "extended QME" (Mn\"{e}v) or as "homotopies of solutions of the QME" (Costello).
 \end{definition}
 
-This brings us to the following central definition:
+\subsubsection{Quantum BV formalism}
 
-\begin{definition}[Quantum BV Formalism]
+\begin{definition}[Quantum BV Theory]
   A finite-dimensional \textbf{Quantum BV theory} is specified by the following set of data:
   \begin{enumerate}
-    \item A $\ZZ$-graded manifold $\FF$
-    \item A $(-1)$-symplectic form $\Omega$ on $\FF$
-    \item A Berezinian $\mu \in BER(\FF)$, compatible with $\Omega$
-    \item A function $S \in \Ci(\FF)\llbracket\hbar\rrbracket$ satisfying the \eqref{QME} (which is equivalent to $\delta_S := \{S, \cdot\}$ being a differential)
+    \item A $\ZZ$-graded manifold $\FF$.
+    \item A $(-1)$-symplectic form $\Omega$ on $\FF$.
+    \item A Berezinian $\mu \in BER(\FF)$, compatible with $\Omega$.
+    \item A function $S \in \Ci(\FF)\pseries{\hbar}$ satisfying the \eqref{QME} (which is equivalent to $\delta_S := \{S, \cdot\}$ being a differential).
   \end{enumerate}
 \end{definition}
 
 \begin{rem}
-  Note that the Hamiltionian vector field $X_S$ for the \textbf{full} BV quantum master function $S$ does \textbf{not} necessarily square to zero. However $\delta_S$ does. However we know that $\delta_S \mod \hbar = X_{S^{(0)}} =: Q_0$ will square to zero which is nothing but the \eqref{ClassicalMasterEquation}. Thus we always have a classical BV theory.
+  Note that the Hamiltionian vector field $X_S$ for the \textbf{full} BV quantum master function $S$ does \textbf{not} necessarily square to zero. However $\delta_S$ does and we know that $\delta_S \mod \hbar = X_{S^{(0)}} =: Q_0$ will square to zero which is nothing but the \eqref{ClassicalMasterEquation}. Thus we always have a classical BV theory.
 \end{rem}
 
 Given a Quantum BV theory we define the partition function to be
 \begin{equation}
-  \ZF := \int_{\LL \subset \FF} e^{i/\hbar S} \sqrt{\mu|_\LL}
+  \ZF_\LL := \int_{\LL \subset \FF} e^{\tfrac{i}{\hbar} S} \sqrt{\mu|_\LL},
 \end{equation}
-where $\LL$ is a Lagrangian submanifold of $\FF$. Now since $\Delta_\mu e^{i/\hbar S} = 0$ the value of $\ZF$ does not depend on a particular choice of $\LL$ inside the homotopy class $[\LL]$.\\
+where $\LL$ is a Lagrangian submanifold of $\FF$. Now since $\Delta_\mu e^{\tfrac{i}{\hbar} S} = 0$ the value of $\ZF$ does not depend on a particular choice of $\LL$ inside the homotopy class $[\LL]$.\\
 
-Now if $\FF = T^*[-1]F_{min}$ then $S$ is some lift of a classical action $S_{cl}$ on $F_{min}$. The zero section $\LL \equiv F_{min} \subset \FF$ is a valid Lagrangian submanifold but $\HH(S)$ is degenerate. Thus we deform $\LL_0 \sim \LL$ such that $\HH(S)$ is no longer degenerate and compute the integral here. This sums up the concept of gauge-fixing.
+Now if $\FF = T^*[-1]F_{min}$ then $S$ is some lift of a classical action $S_{cl}$ on $F_{min}$. The zero section $\LL \equiv F_{min} \subset \FF$ is a valid Lagrangian submanifold but $\HH(S)$ is degenerate. Thus we deform to $\LL_0 \sim \LL$ such that $\HH(S)$ is no longer degenerate and compute the integral here. This sums up the concept of gauge-fixing.
 
 \begin{rem}
-  Consider $\OO \in \Ci(\FF)\llbracket\hbar\rrbracket$. $\OO$ is an observable iff $\delta_S \OO = 0$. Then we can compute its expectation value to be
+  Consider $\OO \in \Ci(\FF)\pseries{\hbar}$. $\OO$ is an observable iff $\delta_S \OO = 0$. Then we can compute its expectation value to be
   \begin{equation}
-    \langle \OO \rangle := \frac{1}{2} \int_{\LL \subset \FF} \OO e^{i/\hbar S} \sqrt{\mu|_\LL}
+    \langle \OO \rangle := \frac{1}{2} \int_{\LL \subset \FF} \OO e^{\tfrac{i}{\hbar} S} \sqrt{\mu|_\LL}.
   \end{equation}
   However a nontrivial fact is that this notion does not behave well under product because $\delta_S$ is not a derivation of the product of functions. The arising problems and the above definition are subject to current research.
 \end{rem}
 
-If we again take the BV-BRST data from above, thus $\FF := T^*[-1]F_{BRST}$ and $S_{BV} = p^* S{cl} + d_{BRST}$ together with a function $\psi \in \Ci(F_{BRST})^{(-1)}$ we define
+If we again take the BV-BRST data from above, thus $\FF := T^*[-1]F_{BRST}$ and $S_{BV} = p^* S_{cl} + d_{BRST}$ together with a function $\psi \in \Ci(F_{BRST})^{(-1)}$ we define
 \begin{equation}
   \LL_\psi := \graph(d\psi)
 \end{equation}
 to obtain
 \begin{align}
-  S_{BV} |_{\LL_\psi} &= S_{BV} (\Phi^a, \Phi^\dagger_a = \dell{}{\Phi^a}\psi) = S_0 + \sum_a d^a_{BRST} \dell{}{\Phi^a}\psi) \\
+  S_{BV} |_{\LL_\psi} = S_{BV} \left( \Phi^a, \Phi^\dagger_a = \dell{}{\Phi^a} \psi \right) &= S_0 + \sum_a d^a_{BRST} \dell{}{\Phi^a}\psi \\
   &= S_0 + d_{BRST} \psi = S_{gf} \\
-  \int_{\LL_\psi \subset T^*[-1]F_{BRST}} e^{i/\hbar S_{BV}} \sqrt{\mu|_{\LL_\psi}} &= \int_{F_{BRST}} e^{i/\hbar S_{gf}} D\Phi
+  \int_{\LL_\psi \subset T^*[-1]F_{BRST}} e^{ \tfrac{i}{\hbar} S_{BV}} \sqrt{\mu|_{\LL_\psi}} &= \int_{F_{BRST}} e^{\tfrac{i}{\hbar} S_{gf}} D\Phi
 \end{align}
 
 \begin{rem}
@@ -1202,7 +1218,7 @@ to obtain
 \end{rem}
 
 \subsection{BV Fibre Integrals}
-Let $(\FF^{\prime}, \omega^{\prime})$ and $(\FF^{\prime\prime}, \omega^{\prime\prime})$ two $(-1)$-symplectic manifold and $\FF := \FF^\prime \times \FF^{\prime\prime}$ with $\omega := \omega^\prime \otimes 1 + 1 \otimes \omega^{\prime\prime} \in \Omega^\bullet(\FF^\prime) \otimes \Omega^\bullet(\FF^{\prime\prime})$.
+Let $(\FF^{\prime}, \omega^{\prime})$ and $(\FF^{\prime\prime}, \omega^{\prime\prime})$ be two $(-1)$-symplectic manifolds and $\FF := \FF^\prime \times \FF^{\prime\prime}$ with $\omega := \omega^\prime \otimes 1 + 1 \otimes \omega^{\prime\prime} \in \Omega^\bullet(\FF^\prime) \otimes \Omega^\bullet(\FF^{\prime\prime})$.
 
 \begin{definition}[BV Fibre Integral]
   IF $\LL \subset \FF^{\prime\prime}$ is a Lagrangian submanifold and if $\mu^{\prime\prime}$ is a Berezinian on $\FF^{\prime\prime}$ we have a map
@@ -1214,9 +1230,9 @@ Let $(\FF^{\prime}, \omega^{\prime})$ and $(\FF^{\prime\prime}, \omega^{\prime\p
 
 \begin{theo}[Stokes for BV fibre integrals]~
   \begin{enumerate}
-    \item $P_*^{(\LL)}$ is a chain map intertwining the BV Laplacians $\Delta_\mu$ on $\FF$ and $\Delta_{\mu^\prime}$ on $\FF^\prime$, i.e.
+    \item $P_*^{(\LL)}$ is a chain map relating the BV Laplacians $\Delta_\mu$ on $\FF$ and $\Delta_{\mu^\prime}$ on $\FF^\prime$, i.e.
     \begin{equation}
-      \Delta_{\mu^\prime} P_*^{(\LL)} = P_*^{(\LL)} \Delta_\mu
+      \Delta_{\mu^\prime} \circ P_*^{(\LL)} = P_*^{(\LL)} \circ \Delta_\mu
     \end{equation}
     where $\mu = \mu^\prime \cdot \mu^{\prime\prime}$.
 
@@ -1230,25 +1246,26 @@ Let $(\FF^{\prime}, \omega^{\prime})$ and $(\FF^{\prime\prime}, \omega^{\prime\p
 
 
 \begin{definition}[Effective BV Actions]
-  Let $S \in \Ci(\FF)\llbracket\hbar\rrbracket$ be a solution of the \eqref{QME} on $\FF$. Then we call $S^\prime \in \Ci(\FF^\prime)\llbracket\hbar\rrbracket$ the \textbf{effective BV action} for $S$ induced on $\FF^\prime$ (given $\LL$) iff
+  Let $\FF := \FF^\prime \times \FF^{\prime\prime}$ as above and $S \in \Ci(\FF)\pseries{\hbar}$ be a solution of the \eqref{QME} on $\FF$. Then we call $S^\prime \in \Ci(\FF^\prime)\pseries{\hbar}$ the \textbf{effective BV action} for $S$ induced on $\FF^\prime$ (given $\LL$) iff
   \begin{equation}
     e^{i/\hbar S^\prime} = P_*^{(\LL)} \left( e^{i/\hbar S} \right)
   \end{equation}
 \end{definition}
 
-\begin{corollary}~
+\begin{corollary}
+  Let $\FF, S$ and $S^\prime$ be as above, then:
   \begin{enumerate}
     \item If $S$ is a solution of the \eqref{QME} on $\FF$ then $S^\prime$ is a solution of the \eqref{QME} on $\FF^\prime$.
 
     \item If $S$ is a solution of the \eqref{QME} on $\FF$ and $\LL \sim \LL^\prime$ in $\FF^{\prime\prime}$ then the corresponding effective actions are equivalent (i.e. related by a canonical transformation) (w.r.t. $\Delta_{\mu^\prime}$).
 
-    \item IF $S \sim S^\prime$ are two solutions of the \eqref{QME} (equivalent by means of a canonical transformation), then their respective effective actions w.r.t. the same Lagrangian submanifold $\LL$ are also equivalent.
+    \item If $S \sim S^\prime$ are two solutions of the \eqref{QME} (equivalent by means of a canonical transformation), then their respective effective actions w.r.t. the same Lagrangian submanifold $\LL$ are also equivalent.
   \end{enumerate}
 \end{corollary}
 
 In short the BV fibre integral defines a map
 \begin{equation}
-  \Sol(QME(\FF))/\sim \atob{P_*^{[\LL]}} \Sol(QME(\FF^\prime))/\sim
+  \Sol(QME(\FF))/\sim \quad \atob{P_*^{[\LL]}} \quad \Sol(QME(\FF^\prime))/\sim
 \end{equation}
 where $[\LL]$ is a homotopy class of Lagrangians in $\FF^{\prime\prime}$. We are going to use this fibre integral to interpret the renormalisation group flow/Wilson's effective action picture. Summing up we want a "tower" of theories
 \begin{equation}
@@ -1256,7 +1273,7 @@ where $[\LL]$ is a homotopy class of Lagrangians in $\FF^{\prime\prime}$. We are
 \end{equation}
 where on the left we have a local theory, in the middle we have finite-energy theories and on the right we have the zero modes. This will lead us to
 \begin{equation}
-  P_*^{\Lambda \Lambda^\prime} e^{i/\hbar S_\Lambda(\phi)} = \int_{[\Lambda, \Lambda^\prime]} D\widetilde{\phi} \ e^{i/\hbar S(\phi + \widetilde{\phi})} = e^{i/\hbar S_{\Lambda^\prime}}
+  P_*^{\Lambda \Lambda^\prime} e^{i/\hbar S_\Lambda(\phi)} = \int_{[\Lambda, \Lambda^\prime]} D\widetilde{\phi} \ e^{i/\hbar S(\phi + \widetilde{\phi})} = e^{i/\hbar S_{\Lambda^\prime}(\phi)}
 \end{equation}
 
 \begin{rem}
@@ -1273,16 +1290,16 @@ Our goal in this chapter is to construct an $\infty$-dimensional generalisation 
 Now the space of BV fields is given by the sections $\FF = \Gamma(M, F)$ in the sense of classical field theory. Thus we know how to make sense of $J^\infty F$, $\Ci(J^\infty F)$, $C_{loc}^\infty(\FF)$ and so on.
 
 \begin{rem}
-  An important caveat in this setting is the definition of \textbf{duals}. We want to define $T^*[-1] \EE$ where $\EE = \Gamma(M, E)$. For simplicity we assume $E$ to be a vector bundle. The symbol $*$ in $E^*$ is used to denote the vector bundle $E^* := E^\vee \otimes Dens(M) \lra M$ where $E^\vee$ is the fibrewise dual. Thus define
+  An important caveat in this setting is the definition of \textbf{duals}. We want to define $T^*[-1] \FF$ where $\FF = \Gamma(M, F)$. For simplicity we assume $F$ to be a vector bundle. The symbol $*$ in $F^*$ is used to denote the vector bundle $F^* := F^\vee \otimes Dens(M) \lra M$ where $F^\vee$ is the fibrewise dual. Thus define
   \begin{equation}
-    \EE^* := \Gamma(M, E^*), \quad \quad T^*[-1]\EE := \EE \times \EE^*[-1]
+    \FF^* := \Gamma(M, F^*), \quad \quad T^*[-1]\FF := \FF \times \FF^*[-1]
   \end{equation}
-  Alternatively one can use distributional sections and then consider the "strong dual" of the space of sections $\EE$. This ansatz is chosen in \emph{Perturbative Algebraic QFT}. With a little work one can extend the above ansatz to any fibre bundle $E \lra M$ by dualising $TE$ instead.
+  Alternatively one can use distributional sections and then consider the "strong dual" of the space of sections $\FF$. This ansatz is chosen in \emph{Perturbative Algebraic QFT}. With a little work one can extend the above ansatz to any fibre bundle $F \lra M$ by dualising $TF$ instead.
 \end{rem}
 
-The above remark lets us conclude the following: \textbf{Anti-fields} are "coordinates" in the cotangent fibre of $T^*[-1]\EE$ where $\EE = \Gamma(M, E)$. Thus $\phi^\dagger \in \Gamma(M, E^\vee \otimes Dens(M)) = \Gamma(M, E^*)$. Notice that $\EE^* = \Gamma(M, E^*)$. Now there exists a nondegenerate (weak) pairing
+The above remark lets us conclude the following: \textbf{Anti-fields} are "coordinates" in the cotangent fibre of $T^*[-1]\FF$ where $\FF = \Gamma(M, F)$. Thus $\phi^\dagger \in \Gamma(M, F^\vee \otimes Dens(M)) = \Gamma(M, F^*) = \FF^*$. Now there exists a nondegenerate (weak) pairing
 \begin{align}
-  T_\phi \EE \otimes T^*_\phi \EE &\lra \CC/\RR \\
+  T_\phi \FF \otimes T^*_\phi \FF &\lra \CC \\
   (v_\phi, \alpha_\phi) &\lmap \int_M \pair{v_\phi}{\alpha_\phi}
 \end{align}
 where $\pair{\cdot}{\cdot}$ is a $Dens(M)$-valued fibrewise pairing. This can be written as the local $2$-form
@@ -1290,25 +1307,24 @@ where $\pair{\cdot}{\cdot}$ is a $Dens(M)$-valued fibrewise pairing. This can be
   \Omega = \int_M \pair{\delta \phi}{\delta \phi^\dagger}
 \end{equation}
 Then given a local Lagrangian field theory $(M, F, L)$ with $F \lra M$ a fibre bundle and $L \in \Omega_{loc}^{0,top}(\FF \times M)$ together with a set of local symmetries $\{V_a\}$ for now assumed to originate from a Lie algebra action
-
 \begin{align}
-  \rho \colon \gf &\lra \VF_{loc}(\FF) \quad \text{for some Lie group} \ \ G\\
+  \rho \colon \gf &\lra \VF(\FF) \quad \text{for some Lie group} \ \ G\\
   \im(\rho) &\simeq \Gamma(M, \gf) \quad \quad M \times \gf \lra M
 \end{align}
 
- Note that this is a simplification, the generalisation works analogously to the previously discussed cases! In this setting the space of BV fields is the space of smooth section of $T^*[-1](F \times \gf[1])$, i.e. $\psi \in \Gamma(M, F)$, $\psi^\dagger \in \Gamma(M, T^*F \otimes Dens(M))$, $c \in \Gamma(M, \gf[1])$, $c^\dagger \in \Gamma(M, \gf^*[-2] \otimes Dens(M))$. Then Ghost fields $c$ are functions on $M$ with values in the Lie algebra. For an even basis $\{t_a\}$ we have
+Note that this is a simplification, the generalisation works analogously to the previously discussed cases! In this setting the space of BV fields is the space of smooth sections of $T^*[-1](F \times \gf[1])$, i.e. $\phi \in \Gamma(M, F)$, $\phi^\dagger \in \Gamma(M, T^*F \otimes Dens(M))$, $c \in \Gamma(M, \gf[1])$, $c^\dagger \in \Gamma(M, \gf^*[-2] \otimes Dens(M))$. Then Ghost fields $c$ are functions on $M$ with values in the Lie algebra. For an even basis $\{t_a\}$ we have
 
- \begin{align}
-   c = c^a (x) t_a \quad \quad |c^a| = 1 \quad \quad |t_a| = 0 \quad \quad |c| = 1
- \end{align}
+\begin{equation}
+ c = c^a (x) t_a \quad \quad |c^a| = 1 \quad \quad |t_a| = 0 \quad \quad |c| = 1
+\end{equation}
 
 Now we go an define the rest of the BV data
 
 \begin{equation}
-  \Omega_{BV} = \int_M \pair{\delta \phi}{\delta \phi^\dagger} = \int \pair{\delta \psi}{\delta \psi^\dagger} + \pair{\delta c^a}{\delta c^\dagger_a}
+  \Omega_{BV} = \int_M \pair{\delta \phi}{\delta \phi^\dagger} = \int_M \pair{\delta \phi}{\delta \phi^\dagger} + \pair{\delta c^a}{\delta c^\dagger_a}.
 \end{equation}
 
-The BV action functional, if $S = \int_M L$ is given by
+The BV action functional, if $S = \int_M L$, is given by
 
 \begin{equation}
   S_{BV} = p^* S + \int_M \pair{\phi^\dagger}{Q_{CE} \phi}
@@ -1317,30 +1333,30 @@ The BV action functional, if $S = \int_M L$ is given by
 where $p \colon \FF_{BV} \lra \FF \times \Gamma(M, \gf[1])$ for $\FF_{BV} = T^*[-1](\FF \times \Gamma(M, \gf[1]))$. Further $Q_{CE}$ is a local (evolutionary) vector field on $\FF_{CE}$ such that
 
 \begin{equation}
-  Q_{CE}(\psi) = c^a V_a(\psi) \quad \quad Q_{CE} (c) = \frac{1}{2} [c,c]
+  Q_{CE}(\phi) = c^a V_a(\phi) \quad \quad Q_{CE} (c) = \frac{1}{2} [c,c].
 \end{equation}
 
+\subsubsection{Yang--Mills and Chern--Simons Theory}
 \begin{example}[Yang--Mills theory]
   Let $(M,g)$ be a $4$-dimensional Riemannian manifold and let $\gf$ be a semisimple Lie algebra with an invariant (a.k.a.\ cyclic) inner product $\pair{\cdot}{\cdot}$. Here "invariant" means
 
   \begin{equation}
-    \pair{X}{[Y,Z]} = \pair{[X,Y]}{Z} \quad \forall X,Y,Z \in \gf
+    \pair{X}{[Y,Z]} = \pair{[X,Y]}{Z} \quad \forall X,Y,Z \in \gf.
   \end{equation}
 
-  Further assume that we have a trivial principal bundle $P \lra M$ such that the connections are identified with $\gf$-valued $1$-forms $\AC \simeq \Omega^1 (M, \gf) \simeq \Omega^1 (M) \otimes \gf$ thus $A \in \AC$ can be written as $A = A^a_i dx^i t_a$.\\
-  The "gauge group" $G = \Ci(M, G)$ acts on $\AC$ by $(g, A) \lmap A^g := g^{-1} A g + g^{-1} dg$ and infinitesimally we have the Lie algebra action
+  Further assume that we have a trivial principal bundle $P \lra M$ such that the connections are identified with $\gf$-valued $1$-forms $\AC \simeq \Omega^1 (M, \gf) \simeq \Omega^1 (M) \otimes \gf$ thus $A \in \AC$ can be written as $A = A^a_i dx^i t_a$. The "gauge group" $G = \Ci(M, G)$ acts on $\AC$ by $(g, A) \lmap A^g := g^{-1} A g + g^{-1} dg$ and infinitesimally we have the Lie algebra action
 
   \begin{equation}
     \rho \colon (X,A) \lmap A + d_A X = A + dX + [A,X]
   \end{equation}
 
-  where $X \in Lie(G) \simeq \Ci(M, \gf)$ and $d_A X \in \Omega^1(M, \gf)$. Now the Yang-Mills action functional is
+  where $X \in \gf \simeq \Ci(M, \gf)$ and $d_A X \in \Omega^1(M, \gf)$. Now the Yang-Mills action functional for $F_A := d A + \frac{1}{2} [A,A]$ is defined as
   \begin{equation}
-    S_{YM_2} = \int \frac{1}{2} \pair{F_A}{* F_A}_\gf
+    S_{YM_2} := \int_M \frac{1}{2} \pair{F_A}{* F_A}_\gf.
   \end{equation}
   Note that $\pair{\cdot}{\cdot}_\gf$ extends to a pairing on $\Omega^\bullet(M) \otimes \gf$ by denoting
   \begin{equation}
-    \pair{\omega_1 \otimes E_1}{\omega_2 \otimes E_2} = \int \omega_1 \wedge \omega_2 \pair{E_1}{E_2}_\gf
+    \pair{\omega_1 \otimes E_1}{\omega_2 \otimes E_2} = \int \omega_1 \wedge \omega_2 \pair{E_1}{E_2}_\gf.
   \end{equation}
 
   \begin{lem}
@@ -1354,35 +1370,35 @@ where $p \colon \FF_{BV} \lra \FF \times \Gamma(M, \gf[1])$ for $\FF_{BV} = T^*[
     \end{align}
     But then we can compute
     \begin{align}
-      \int D_X \left( \pair{F_A}{*F_A} \right) = \int \pair{[F_A, X]}{*F_A} + \pair{F_A}{ [*F_A, X]} = 0
+      \int_M D_X \left( \pair{F_A}{*F_A} \right) = \int_M \pair{[F_A, X]}{*F_A} + \pair{F_A}{ [*F_A, X]} = 0.
     \end{align}
     Thus the pairing is indeed invariant.
   \end{proof}
   \end{lem}
 
-  Now we "promote" $X$ to a ghost field $C$ and look at $T^*[-1](\AA \times Lie(G)[1])$ with fields $((A,A^\dagger), (C, C^\dagger))$. Then
+  Now we "promote" $X$ to a ghost field $C$ and look at $T^*[-1](\AC \times Lie(G)[1])$ with fields $((A,A^\dagger), (C, C^\dagger))$. Then define
   \begin{equation}
-    \Omega_{BV} = \int_M \pair{\delta A}{\delta A^\dagger} + \pair{\delta C}{\delta C^\dagger}
+    \Omega_{BV} = \int_M \pair{\delta A}{\delta A^\dagger} + \pair{\delta C}{\delta C^\dagger}.
   \end{equation}
-  where we tacitly identified $\gf \ra \gf^*$ in the first pairing. Thus we arrive at the following BV action:
+  Thus we arrive at the following BV action:
 
   \begin{equation}
-    S_{BV} = \int \frac{1}{2} \pair{F_A}{*F_A} + \pair{A^\dagger}{d_A C} + \frac{1}{2} \pair{C^\dagger}{[C,C]}
+    S^{BV}_{YM_2} = \int_M \frac{1}{2} \pair{F_A}{*F_A} + \pair{A^\dagger}{d_A C} + \frac{1}{2} \pair{C^\dagger}{[C,C]}.
   \end{equation}
 
   Assuming $\partial M = \emptyset$ we can compute $\imath_{Q_{BV}} \Omega_{BV} = \delta S_{BV}$ as well as
   \begin{align}
-    Q_{BV} A &= d_A C\\
-    Q_{BV} C &= \frac{1}{2} [C,C] \\
-    Q_{BV} A^\dagger &= d_A *F_A + [C,A^\dagger] \\
-    Q_{BV} C^\dagger &= -d_A A^\dagger - [C,C^\dagger]
+    Q_{BV} A &= d_A C,\\
+    Q_{BV} C &= \frac{1}{2} [C,C], \\
+    Q_{BV} A^\dagger &= d_A *F_A + [C,A^\dagger], \\
+    Q_{BV} C^\dagger &= -d_A A^\dagger - [C,C^\dagger].
   \end{align}
   \begin{proof}
     \begin{align}
-      \imath_Q \Omega = &\int \pair{Q_A}{\delta A^\dagger} + \pair{Q_{A^\dagger}}{\delta A} + \pair{Q_C}{\delta C^\dagger} + \pair{Q_{C^\dagger}}{\delta C} \\
-      \delta S_{BV} = &\int \pair{d_A * F_A}{\delta A} + \pair{\delta A^\dagger}{d_A C} - \pair{A^\dagger}{[\delta A, C]}\\
+      \imath_Q \Omega = &\int_M \pair{Q_A}{\delta A^\dagger} + \pair{Q_{A^\dagger}}{\delta A} + \pair{Q_C}{\delta C^\dagger} + \pair{Q_{C^\dagger}}{\delta C} \\
+      \delta S^{BV}_{YM_2} = &\int_M \pair{d_A * F_A}{\delta A} + \pair{\delta A^\dagger}{d_A C} - \pair{A^\dagger}{[\delta A, C]}\\
       &+ \pair{A^\dagger}{d_A \delta C} + \frac{1}{2} \pair{\delta C^\dagger}{[C,C]} - \pair{C^\dagger}{[C, \delta C]} \\
-      = &\int \pair{d_A * F_A}{\delta A} + \pair{d_A C}{\delta A} + \pair{[A^\dagger,C]}{\delta A}\\
+      = &\int_M \pair{d_A * F_A}{\delta A} + \pair{d_A C}{\delta A} + \pair{[A^\dagger,C]}{\delta A}\\
       &- \pair{d_A A^\dagger}{\delta C} + \frac{1}{2} \pair{[C,C]}{\delta C^\dagger} - \pair{[C^\dagger, C]}{\delta C} \\
     \end{align}
   \end{proof}
@@ -1390,17 +1406,17 @@ where $p \colon \FF_{BV} \lra \FF \times \Gamma(M, \gf[1])$ for $\FF_{BV} = T^*[
   \begin{rem}
     Note that for signs we use the total degree:
     \begin{align}
-      td(A) &= f.d. + g.h. = 1, \quad \quad td(C) = f.d. + g.h. = 1\\
+      \td(A) &= \deg(A) + \gr(A) = 1, \quad \quad \td(C) = \deg(C) + \gr(C) = 1\\
       \Lra \quad [A,C] &= [C,A], \quad \quad [C,C] \neq 0
     \end{align}
-    Further note that $td(\delta) = 1$ and $td(d) = 1$ such that $td(dA) = 2 = td(\delta A)$.
+    Further note that $\td(\delta) = 1$ and $\td(d) = 1$ such that $\td(dA) = 2 = \td(\delta A)$.
   \end{rem}
 
   For clarity:
   \begin{align}
     \FF_{YM} = \Omega^1(M) \otimes \gf \times \Omega^0(M) \otimes \gf \times \Omega^3(M) \otimes \gf[-1] \times \Omega^{top}(M) \otimes \gf[-2]
   \end{align}
-  where $T^*(\AA \Omega^\circ (M) \otimes \gf)$ such that $\pair{\phi}{\phi^\dagger} \in Dens(M)$. Now we can turn to a first order formulation of Yang-Mills theory:
+  where $T^*(\AC \Omega^\circ (M) \otimes \gf)$ such that $\pair{\phi}{\phi^\dagger} \in Dens(M)$. Now we can turn to a first order formulation of Yang-Mills theory:
   \begin{align}
     \FF_{YM_1} &= T^*[-1]\left( \Omega^1(M) \otimes \gf \times \Omega^2(M) \otimes \gf \times \Omega^0(M) \otimes \gf[-1] \right) \\
     \Omega_{YM_1} &= \int \pair{\delta A}{\delta A^\dagger} + \pair{\delta B}{\delta B^\dagger} + \pair{\delta C}{\delta C^\dagger}
@@ -1422,17 +1438,17 @@ where $p \colon \FF_{BV} \lra \FF \times \Gamma(M, \gf[1])$ for $\FF_{BV} = T^*[
 \begin{example}[Chern Simons theory]
   Let $M$ be a $3$-dimensional oriented manifold with a trivial principal $G$-bundle $P \lra M$ over it. Then note $\gf = Lie(G)$ such that $\AC \simeq \Omega^1(M) \otimes \gf$. Now the action is given by
   \begin{equation}
-    S_{CS}^0 = \int \frac{1}{2} \pair{A}{dA} + \frac{1}{6} \pair{A}{[A,A]}
+    S_{CS}^0 = \int_M \frac{1}{2} \pair{A}{dA} + \frac{1}{6} \pair{A}{[A,A]}
   \end{equation}
-  where $F_{CS} = \AA \simeq \Omega^1(M) \otimes \gf$. Now we get
+  where $F_{CS} = \AC \simeq \Omega^1(M) \otimes \gf$. Now we get
   \begin{align}
     \delta L_{CS} &= \frac{1}{2} \pair{\delta A}{dA} + \frac{1}{2} \pair{A}{d \delta A} + \frac{1}{6} \pair{\delta A}{[A,A]} + \frac{1}{3} \pair{A}{[A,\delta A]} \\
     &= \pair{\delta A}{F_A} - d \left( \frac{1}{2} \pair{A}{\delta A} \right)
   \end{align}
-  The latter term gives us a symplectic form on $\AA(\Sigma, \gf)$ while the former gives the equation of motion for CS theory. When $F_A = 0$ we have \textbf{flat connections}.
+  The latter term gives us a symplectic form on $\AC(\Sigma, \gf)$ while the former gives the equation of motion for CS theory. When $F_A = 0$ we have \textbf{flat connections}.
 
   \begin{ex}
-    The usual Lie algebra action is $A \lmap A + d_A X$. Show that $S_{CS}$ is invariant under this action. Further compute the boundary term: $L_V (L_{CS}) = d(-)$.
+    The usual Lie algebra action is $A \lmap A + d_A X$. Show that $S_{CS}$ is invariant under this action. Further compute the boundary form $\gamma = - \frac{1}{2} \pair{A}{\delta A}$.
   \end{ex}
 
   Now we can define
@@ -1447,8 +1463,9 @@ where $p \colon \FF_{BV} \lra \FF \times \Gamma(M, \gf[1])$ for $\FF_{BV} = T^*[
 
 Now the question is, how we can extend out previous quantum considerations into the BV setting for field theory. To this end, consider a gauge-fixing Lagrangian submanifold as the image of a "gauge-fixing operator" \cite{Costello}.
 
+\subsection{Gauge fixing Lagrangian as gauge fixing operator}
 \begin{definition}
-  A \textbf{gauge-fixing operator} on a free BV theory $S^0$ is a quadratic functional given by
+  A \textbf{gauge-fixing operator} on a free BV theory, i.e. such that $S$ is a quadratic function, is given by
   \begin{equation}
     Q^{GF} \colon \FF \lra \FF
   \end{equation}
@@ -1470,15 +1487,15 @@ Now the question is, how we can extend out previous quantum considerations into 
     Q_{BV} &\equiv d_\KK \quad \Lra \quad Q_{BV} \phi^\dagger = d *_g d\phi \equiv \Delta_g \phi \\
     Q_{BV} &\colon \FF^{(0)} \lra \FF^{(1)}
   \end{align}
-  Thus the gauge-fixing operator is the identity seen as a map $Q^{GF} \colon \FF^{(1)} \lra \FF^{(0)}$ such that $[Q, Q^{GF}] = \Delta_g$. The Lagrangian submanifold $\LL_0 \cong \Ci(M) \longleftrightarrow \FF$ is obtained as $\im(Q^{GF})$. Integrating on a BV path integral on this Lagrangian submanifold is the same as quantising scalar fields in the sense that we have previously seen.
+  Thus the gauge-fixing operator is the identity seen as a map $Q^{GF} \colon \FF^{(1)} \lra \FF^{(0)}$ such that $[Q, Q^{GF}] = \Delta_g$. The Lagrangian submanifold $\FF^{(0)} \cong \Ci(M) \lra \FF$ is obtained as $\im(Q^{GF})$. Integrating on a BV path integral on this Lagrangian submanifold is the same as quantising scalar fields in the sense that we have previously seen.
 \end{rem}
 
 \subsubsection{Gauge fixing in $CS$ and $YM_1$}
 
 \begin{theo}[Hodge decomposition]
-  Let $(M,g)$ be a smooth Riemannian manifold. Then there exists an orhtogonal decomposition
+  Let $(M,g)$ be a smooth Riemannian manifold. Then there exists an orthogonal decomposition
   \begin{equation}
-    \Omega^k(M) = d\Omega^{k-1}(M) \oplus \HH^k(M) \oplus d^* \Omega^{k+1}(M)
+    \Omega^k(M) = d\Omega^{k-1}(M) \oplus \HH^k(M) \oplus \delta \Omega^{k+1}(M)
   \end{equation}
   where $\HH^k(M) = \{\alpha \in \Omega^k(M) | \Delta_g \alpha = 0 \}$. If $M$ is compact, $\HH^k(M)$ is the $k$-th de Rham cohomology group of $M$, namely $\HH^k(M) = H^k_{dR}(M,d)$.
 \end{theo}
@@ -1491,50 +1508,50 @@ Now the question is, how we can extend out previous quantum considerations into 
   \end{align}
   Further we have
   \begin{align}
-    d^* := * d * \colon \Omega^{k+1}(M) \lra \Omega^{k}(M) \\
-    \Delta_g \equiv (d + d^*)^2 = dd^* + d^* d
+    \delta := * d * \colon \Omega^{k+1}(M) \lra \Omega^{k}(M) \\
+    \Delta_g \equiv (d + \delta)^2 = d\delta + \delta d
   \end{align}
 \end{rem}
 
 \begin{prop}
-  Assume $H^k_{dR}(M,d) = 0$ for any $k > 0$ and $M$ compact. Then $\ker(d^*) \subset \Omega^\circ(M) \otimes \gf$ is a Lagrangian submanifold.
+  Assume $H^k_{dR}(M,d) = 0$ for any $k > 0$ and $M$ compact. Then $\ker(\delta) \subset \Omega^\bullet(M) \otimes \gf$ is a Lagrangian submanifold.
 \begin{proof}
-  This is rather a sketch of the proof: For a submanifold to be Lagrangian, it needs to be isotropic with an isotropic complement. Thus if $W = V \oplus V^\prime$ we have $V$ and $V^\prime$ isotropic. Now $\LL = \ker(d^*)$ is isotropic, i.e. $\Omega_{BV}$ vanishes on $\LL$. Thus for $\omega_2 = d^* \alpha_2$ we obtain
+  This is rather a sketch of the proof: For a submanifold to be Lagrangian, it needs to be isotropic with an isotropic complement. Thus if $W = V \oplus V^\prime$ we have $V$ and $V^\prime$ isotropic. Now $\LL = \ker(\delta)$ is isotropic, i.e. $\Omega_{BV}$ vanishes on $\LL$. Thus for $\omega_2 = \delta \alpha_2$ we obtain
   \begin{align}
-    &\pair{\omega_1}{\omega_2}|_{\ker(d^*)} = \pair{\omega_1}{d^* \alpha_2}|_{\ker(d^*)} = \pm \pair{d^* \omega_1}{\alpha_2}|_{\ker(d^*)} = 0
+    &\pair{\omega_1}{\omega_2}|_{\ker(\delta)} = \pair{\omega_1}{\delta \alpha_2}|_{\ker(\delta)} = \pm \pair{\delta \omega_1}{\alpha_2}|_{\ker(\delta)} = 0
   \end{align}
-  The same argument holds for $d$-exact and $d$-closed forms. Thus there exists a decomposition $\Omega^k(M) = d\text{-exact} \oplus d^*\text{-exact}$ into isotropic subspaces.
+  The same argument holds for $d$-exact and $d$-closed forms. Thus there exists a decomposition $\Omega^k(M) = d\text{-exact} \oplus \delta\text{-exact}$ into isotropic subspaces.
 \end{proof}
 \end{prop}
 
 \begin{rem}
-  When looking at manifolds with nontrivial cohomology, thus becomes very complicated since
-  $\Omega^\bullet(M) = d\Omega \oplus d^* \Omega \oplus \HH$
+  When looking at manifolds with nontrivial cohomology, this becomes very complicated since
+  $\Omega^\bullet(M) = d\Omega \oplus \delta \Omega \oplus \HH$
   where the first two spaces harbour the path integral and the third the "effective fields".
 \end{rem}
 
-A good gauge-fixing operator for $CS$-theory is precisely $d^*$ since $d^{*2} = 0$, $|d^*| = -1$, $d^* \colon \Omega^k \lra \Omega^{k-1}$ and $[Q_{BV}, d^*] = \Delta_g$ because $Q \equiv d$. Note that $Q_0 A = dC + [A,C]$. This sloppines comes from the fact that \textit{Costello} \cite{Costello} defines a "free" BV operator as given by the quadratic part of the BV action:
+A good gauge-fixing operator for $CS$-theory is precisely $\delta$ since $\delta^2 = 0$, $|\delta| = -1$, $\delta \colon \Omega^k \lra \Omega^{k-1}$ and $[Q_{BV}, \delta] = \Delta_g$ because $Q \equiv d$. Note that $Q_0 A = dC + [A,C]$. This sloppines comes from the fact that \textit{Costello} \cite{Costello} defines a "free" BV operator as given by the quadratic part of the BV action:
 \begin{equation}
   S_{CS} = \int \frac{1}{2} \pair{A}{dA} + \pair{A^\dagger}{dC} + \frac{1}{6} \pair{A}{[A,A]} + \pair{A^\dagger}{[A,C]}
 \end{equation}
 
 \begin{rem}
   Chern Simons theory in principle does \textbf{not} require a specification of any metric in order to be defined and work. Thus it classifies as a so-called "Topological Theory" since it is independent of a metric. When working with gauge-fixing however, we need to fix a metric, even in this theory. Thus one needs to ask in how far the gauge-fixing procedure is independent of the choice of a metric. In his 1989 paper %TODO reference
-  Witten has shown that one can remove "most" of the dependence on $g$. However it remains an open question if it is completely independent. Current belief is that it should be, although a full proof has yet to be developed. in $YM_1$ theory one can use the same gauge fixing using the same Riemannian structure $(M,g)$.
+  Witten has shown that one can remove "most" of the dependence on $g$. However it remains an open question if it is completely independent. Current belief is that it should be, although a full proof has yet to be developed. In $YM_1$ theory one can use the same gauge fixing using the same Riemannian structure $(M,g)$.
 \end{rem}
 
 \begin{notation}
-  One typically calls $\ker(d^*)$ the \textbf{Lorenz gauge} (namely thinking of $\ker(d^*)$ as an isotropic subspace of the fields) when one chooses $d^*A = 0$, thus $A \in \ker(d^*)$. This is typically written as $*d* A \lra \partial_\mu A^\mu = 0$, a form well-known from electrodynamics.
+  One typically calls $A \in \ker(\delta)$ the \textbf{Lorenz gauge} (namely thinking of $\ker(\delta)$ as an isotropic subspace of the fields) where one chooses $\delta A = 0$, thus $A \in \ker(\delta)$. This is typically written as $*d* A \lra \partial_\mu A^\mu = 0$, a form well-known from electrodynamics.
 \end{notation}
 
 
 \subsubsection{Quantum BV field theory}
 
-Classical BV field theories make perfect sense with minimal adaptations from the finite-dimensional case. This however turns out to be quite more complex for a quantum formulation. First remember that
+Classical BV field theories makes perfect sense with minimal adaptations from the finite-dimensional case. This however turns out to be quite more complex for a quantum formulation. First note:
 \begin{equation}
-  \Delta_\mu f = - \frac{1}{2} \diver_\mu(X_f)
+  \Delta_\mu f = - \frac{1}{2} \diver_\mu(X_f).
 \end{equation}
-However this \emph{requires} a Berezinian which in infinite dimensions is generally not defined! Now there exist several types of "regularisation attempts" to define $\Delta_\mu$. Some try to regularise the heat kernel \cite{Costello} while other probe triangulations/decompositions of manifolds into cells (a kind of finite-dimensional filter) \cite{Mnev, ...}. Again others start from local functionals and deform the product among functionals. As a "byproduct" they obtain "$\Delta$". This ansatz is called "Deformation Quantisation" and can be found in \cite{PAQFT}. In this subchapter we will only consider the first ansatz. Note that this is a very active field of research and while some approaches are more widespread, there is none that is considered the "right" approach.\\
+However this \emph{requires} a Berezinian which in infinite dimensions is generally not defined! Now there exist several types of "regularisation attempts" to define $\Delta_\mu$. Some try to regularise the heat kernel \cite{Costello} while others probe triangulations/decompositions of manifolds into cells (a kind of finite-dimensional filter) \cite{Mnev, ...}. Again others start from local functionals and deform the product among functionals. As a "byproduct" they obtain "$\Delta$". This ansatz is called "Deformation Quantisation" and can be found in \cite{PAQFT}. In this subchapter we will only consider the first ansatz. Note that this is a very active field of research and while some approaches are more widespread, there is none that is considered the "right" approach.\\
 
 Consider $\EE = \Gamma(M, E)$ where $E \lra M$ is a vector bundle, graded and endowed with a $(-1)$-symplectic pairing $\pair{\cdot}{\cdot}$ such that $\Omega_{BV}(V,W) = \pair{V}{W}$.
 
@@ -1556,8 +1573,7 @@ Now we denote $\widetilde{Q} = Q \otimes 1 + 1 \otimes Q$ on $\EE^{\otimes 2}$. 
   For $K$ as before we have $(\widetilde{Q} K) * \psi \equiv [Q, K *] \psi$.
 \begin{proof}
   \begin{align}
-    &((Q \otimes 1 + 1 \otimes Q ) K ) * \psi \\
-    = \ \ &(QK_1 \otimes ) K_2 + (-1)^{|K_1|} K_1 \otimes Q K_2 ) * \psi \\
+    ((Q \otimes 1 + 1 \otimes Q ) K ) * \psi = \ \ &(QK_1 \otimes ) K_2 + (-1)^{|K_1|} K_1 \otimes Q K_2 ) * \psi \\
     = \ \ & (-1)^{|K|} QK_1 \pair{K_2}{\psi} + (-1)^{|K|} (-1)^{|K_1|} K_1 \pair{Q K_2}{\psi} \\
     = \ \ & Q \cdot (K*\psi) - (-1)^{|K|} K * Q \psi = ... \\
     = \ \ &(-1)^{|K|} QK_1 \pair{K_2}{\psi} + (-1)^{|K|} (-1)^{|K_1|} K_1 \pair{QK_2}{\psi}
@@ -1565,14 +1581,14 @@ Now we denote $\widetilde{Q} = Q \otimes 1 + 1 \otimes Q$ on $\EE^{\otimes 2}$. 
 \end{proof}
 \end{lem}
 
-Now assume that we are given a gauge-fixing operator $Q^{GF}$ such that $D = [Q, Q^{GF}]$ is our generalised Laplacian. This is sufficient to make sense of the heat kernel of $e^{-lD}$. Let $K_l \in \EE \otimes \EE$ be defined as $K_L * \psi = \exp(-lD) \psi$.
+Now assume that we are given a gauge-fixing operator $Q^{GF}$ such that $D = [Q, Q^{GF}]$ is our generalised Laplacian. This is sufficient to make sense of the heat kernel of $e^{-LD}$. Let $K_L \in \EE \otimes \EE$ be defined as $K_L * \psi = \exp(-LD) \psi$.
 
 \begin{definition}
   The (gauge-fixed) propagator is defined as
   \begin{equation}
-    P(\epsilon, L) := \int_\epsilon^L (Q^{GF} \otimes 1) K_l \ dl
+    P(\epsilon, L) := \int_\epsilon^L (Q^{GF} \otimes 1) K_L \ dl
   \end{equation}
-  such that $P(\epsilon,L) * \psi = Q^{GF} \int_\epsilon^L e^{-lD} \psi \ dl$. Thus it lands in $\in(Q^{GF})$.
+  such that $P(\epsilon,L) * \psi = Q^{GF} \int_\epsilon^L e^{-LD} \psi \ dl$. Thus it lands in $\in(Q^{GF})$.
 \end{definition}
 
 Now recall that given an element $K \in \EE^{\otimes 2}$ we can define a second-order operator as
@@ -1583,14 +1599,14 @@ Now recall that given an element $K \in \EE^{\otimes 2}$ we can define a second-
 \begin{definition}
   The scale-$l$ BV Laplacian is defined as
   \begin{equation}
-    \Delta_L := - \partial_{K_l} \colon \Ci(\EE) \lra \Ci(\EE)
+    \Delta_L := - \partial_{K_L} \colon \Ci(\EE) \lra \Ci(\EE)
   \end{equation}
 \end{definition}
 
 \begin{definition}
-  A functional $S \in \Ci(\EE)\llbracket\hbar\rrbracket$ satisfies the scale-$L$ \eqref{QME} iff
+  A functional $S \in \Ci(\EE)\pseries{\hbar}$ satisfies the scale-$L$ \eqref{QME} iff
   \begin{equation} \tag{$[QME]_L$} \label{QMEL}
-    \Delta_L \exp\left( 1/\hbar S \right) = 0 \quad \iff \quad \frac{1}{2} \{S,S\}_L + \hbar \Delta_L S = 0
+    \Delta_L \exp\left( \tfrac{1}{\hbar} S \right) = 0 \quad \iff \quad \frac{1}{2} \{S,S\}_L + \hbar \Delta_L S = 0
   \end{equation}
   where
   \begin{equation}
@@ -1601,23 +1617,23 @@ Now recall that given an element $K \in \EE^{\otimes 2}$ we can define a second-
 
 Note that, in order to align with the respective parts in Costello \cite{Costello}, we did not choose a complex phase for the appearing exponentials. They are purely real.\\
 
-It is often convenient to split $S$ into a \emph{free} (quadratic) part $S_0$ and an \emph{interaction} (cubic) part $I$ such that $S = S_0 + I$. Now choosing $Q_0 := \{S_0, \cdot \}$ we have a \emph{classic free BV operator}. Thus we can reformulate the definition of the \eqref{QME} for interaction terms. $I$ satisfies \eqref{QMEL} iff
-\begin{equation}
+It is often convenient to split $S$ into a \emph{free} (quadratic) part $S_0$ and an \emph{interaction} (cubic) part $I$ such that $S = S_0 + I$. Now choosing $Q_0 := \{S_0, \cdot \}$ we have a \emph{classical free BV operator}. Thus we can reformulate the definition of the \eqref{QME} for interaction terms. $I$ satisfies \eqref{QMEL} iff
+\begin{equation}\tag{$[I-QME]_L$} \label{IQMEL}
   (Q_0 + \Delta_L) \exp(1/\hbar I) = 0 \quad \iff \quad Q_0 I + \frac{1}{2} \{I,I\}_L + \hbar \Delta_L I = 0
 \end{equation}
 
 \begin{definition}[Pre-Theories]
-  A \textbf{Pre-Theory} is a collection of effective interactions $\{F[L]\}$ such that the following conditions hold:
+  A \textbf{Pre-Theory} is a collection of effective interactions $\{I[L]\}$ such that the following conditions hold:
   \begin{enumerate}
-    \item Each $I \in \Ci(\EE)\llbracket\hbar\rrbracket$ is of degree $0$ and at least cubic modulo $\hbar$.
-    \item The $RGE$ $I[L] = W(P(\epsilon, L), I[\epsilon])$ is satisfied, where we defined \\$W(P(\epsilon, L), I[\epsilon]) = \hbar \log \left( \exp(\hbar \partial_{P(\epsilon,L)}) e^{I/\hbar} \right)$ (formally analogous to the scalar field theory case).
+    \item Each $I \in \Ci(\EE)\pseries{\hbar}$ is of degree $0$ and at least cubic modulo $\hbar$.
+    \item The $RGE$ $I[L] = W(P(\epsilon, L), I[\epsilon])$ is satisfied, where we defined \\$W(P(\epsilon, L), I[\epsilon]) = \hbar \log \left( \exp(\hbar \partial_{P(\epsilon,L)}) e^{I/\hbar} \right)$ \ref{lemma:WPI} (formally analogous to the scalar field theory case).
     \item Each $I_{i,k}[L]$ has a small-$L$ asymptotic expansion in terms of local functionals, where $(i,k)$ indicate the homogeneous part of degree $k$ of the $\hbar^i$ coefficient.
   \end{enumerate}
-  Further, a \textbf{Theory} is a Pre-Theory such that $I[L]$ satisfies \eqref{QMEL} for all $L$.
+  Further, a \textbf{Theory} is a Pre-Theory such that $I[L]$ satisfies \eqref{IQMEL} for all $L$. The space of Pre-Theories forms a presheaf.
 \end{definition}
 
 \begin{prop}
-  A functional $I \in \Ci(\EE)\llbracket\hbar\rrbracket$ satisfies $[QME]_\epsilon$ iff it satisfies $[QME]_L$. Note that this is the same as the BV theorem for fibre integrals.
+  A functional $I \in \Ci(\EE)\pseries{\hbar}$ satisfies $[QME]_\epsilon$ iff it satisfies $[QME]_L$. Note that this is the same as the BV theorem for fibre integrals.
 \begin{proof}
   Note that $P(\epsilon,L)$ is the kernel of $\int_\epsilon^L Q^{GF} e^{-lD} \ dl$. Now this lets us denote
   \begin{equation}
