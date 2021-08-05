@@ -533,7 +533,7 @@ We will need to keep this lemma in mind when going forward. Another helpful lemm
 \label{theorem:FP}
   \begin{align}
     I &= \int_F \exp(\tfrac{i}{\hbar} S) = \frac{\vol(G)}{N} \int_F \mu \delta(\phi) \det(FP) \exp(\tfrac{i}{\hbar} S) \\
-    &= \int_{F \times \gf[1] \times \gf^*[-1] \times \gf^*} \mu \ Dc \ D\overline{c} \ d^m \lambda \ \exp\left( \frac{i}{\hbar} \left( S + \pair{\lambda}{\phi(x)} + \pair{\overline{c}}{FP(x) c} \right)\right)
+    &= \frac{\vol(G)}{N (2\pi i)^m} \int_{F \times \gf[1] \times \gf^*[-1] \times \gf^*} \mu \ Dc \ D\overline{c} \ d^m \lambda \ \exp\left( \frac{i}{\hbar} \left( S + \pair{\lambda}{\phi(x)} + \pair{\overline{c}}{FP(x) c} \right)\right)
   \end{align}
   We define $S_{FP} := \left( S + \pair{\lambda}{\phi(x)} + \pair{\overline{c}}{FP(x) c} \right)$.
 \end{theo}
@@ -1586,9 +1586,9 @@ Now assume that we are given a gauge-fixing operator $Q^{GF}$ such that $D = [Q,
 \begin{definition}
   The (gauge-fixed) propagator is defined as
   \begin{equation}
-    P(\epsilon, L) := \int_\epsilon^L (Q^{GF} \otimes 1) K_L \ dl
+    P(\epsilon, L) := \int_\epsilon^L (Q^{GF} \otimes 1) K_l \ dl
   \end{equation}
-  such that $P(\epsilon,L) * \psi = Q^{GF} \int_\epsilon^L e^{-LD} \psi \ dl$. Thus it lands in $\in(Q^{GF})$.
+  such that $P(\epsilon,L) * \psi = Q^{GF} \int_\epsilon^l e^{-LD} \psi \ dl$. Thus it lands in $\in(Q^{GF})$.
 \end{definition}
 
 Now recall that given an element $K \in \EE^{\otimes 2}$ we can define a second-order operator as
@@ -1597,7 +1597,7 @@ Now recall that given an element $K \in \EE^{\otimes 2}$ we can define a second-
 \end{equation}
 
 \begin{definition}
-  The scale-$l$ BV Laplacian is defined as
+  The scale-$L$ BV Laplacian is defined as
   \begin{equation}
     \Delta_L := - \partial_{K_L} \colon \Ci(\EE) \lra \Ci(\EE)
   \end{equation}
